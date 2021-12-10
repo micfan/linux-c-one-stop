@@ -2,5 +2,5 @@
 authors = ["Mahoo"]
 language = "en"
 multilingual = false
-src = "docs"
+src = "src"
 title = "Linux C 编程一站式学习"
