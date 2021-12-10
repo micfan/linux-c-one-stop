@@ -1,0 +1,1010 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>链表、二叉树和哈希表 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html" class="active"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-26-章-链表二叉树和哈希表"><a class="header" href="#第-26-章-链表二叉树和哈希表">第 26 章 链表、二叉树和哈希表</a></h1>
+<h2 id="1-链表"><a class="header" href="#1-链表">1. 链表</a></h2>
+<h3 id="11-单链表"><a class="header" href="#11-单链表">1.1. 单链表</a></h3>
+<p><a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch23-%E6%8C%87%E9%92%88#c23-6">第 23 章「指针」图 23.6「链表」</a>所示的链表即单链表（Single Linked List），本节我们学习如何创建和操作这种链表。每个链表有一个头指针，通过头指针可以找到第一个节点，每个节点都可以通过指针域找到它的后继，最后一个节点的指针域为 <code>NULL</code>，表示没有后继。数组在内存中是连续存放的，而链表在内存中的布局是不规则的，我们知道访问某个数组元素 <code>b[n]</code> 时可以通过 <code>基地址 + n×每个元素的字节数</code> 得到它地址，或者说数组支持随机访问，而链表是不支持随机访问的，只能通过前一个元素的指针域得知后一个元素的地址，因此只能从头指针开始顺序访问各节点。以下代码实现了单链表的基本操作。</p>
+<p id="e26-1">例 26.1. 单链表</p>
+<pre><code class="language-c">/* linkedlist.h */
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
+typedef struct node *link;
+struct node {
+	unsigned char item;
+	link next;
+};
+
+link make_node(unsigned char item);
+void free_node(link p);
+link search(unsigned char key);
+void insert(link p);
+void delete(link p);
+void traverse(void (*visit)(link));
+void destroy(void);
+void push(link p);
+link pop(void);
+
+#endif
+/* linkedlist.c */
+#include &lt;stdlib.h&gt;
+#include &quot;linkedlist.h&quot;
+
+static link head = NULL;
+
+link make_node(unsigned char item)
+{
+	link p = malloc(sizeof *p);
+	p-&gt;item = item;
+	p-&gt;next = NULL;
+	return p;
+}
+
+void free_node(link p)
+{
+	free(p);
+}
+
+link search(unsigned char key)
+{
+	link p;
+	for (p = head; p; p = p-&gt;next)
+		if (p-&gt;item == key)
+			return p;
+	return NULL;
+}
+
+void insert(link p)
+{
+	p-&gt;next = head;
+	head = p;
+}
+
+void delete(link p)
+{
+	link pre;
+	if (p == head) {
+		head = p-&gt;next;
+		return;
+	}
+	for (pre = head; pre; pre = pre-&gt;next)
+		if (pre-&gt;next == p) {
+			pre-&gt;next = p-&gt;next;
+			return;
+		}
+}
+
+void traverse(void (*visit)(link))
+{
+	link p;
+	for (p = head; p; p = p-&gt;next)
+		visit(p);
+}
+
+void destroy(void)
+{
+	link q, p = head;
+	head = NULL;
+	while (p) {
+		q = p;
+		p = p-&gt;next;
+		free_node(q);
+	}
+}
+
+void push(link p)
+{
+	insert(p);
+}
+
+link pop(void)
+{
+	if (head == NULL)
+		return NULL;
+	else {
+		link p = head;
+		head = head-&gt;next;
+		return p;
+	}
+}
+/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;linkedlist.h&quot;
+
+void print_item(link p)
+{
+	printf(&quot;%d\n&quot;, p-&gt;item); 
+}
+
+int main(void)
+{
+	link p = make_node(10);
+	insert(p);
+	p = make_node(5);
+	insert(p);
+	p = make_node(90);
+	insert(p);
+	p = search(5);
+	delete(p);
+	free_node(p);
+	traverse(print_item);
+	destroy();
+
+	p = make_node(100);
+	push(p);
+	p = make_node(200);
+	push(p);
+	p = make_node(250);
+	push(p);
+	while (p = pop()) {
+		print_item(p);
+		free_node(p);
+	}
+
+	return 0;
+}
+</code></pre>
+<p>在初始化时把头指针 <code>head</code> 初始化为 <code>NULL</code>，表示空链表。然后 <code>main</code> 函数调用 <code>make_node</code> 创建几个节点，分别调用 <code>insert</code> 插入到链表中。</p>
+<pre><code class="language-c">void insert(link p)
+{
+	p-&gt;next = head;
+	head = p;
+}
+</code></pre>
+<p id="c26-1">图 26.1. 链表的插入操作</p>
+<p><img src="../images/linkedlist.insert.png" alt="链表的插入操作" /></p>
+<p>正如上图所示，<code>insert</code> 函数虽然简单，其中也隐含了一种特殊情况（Special Case）的处理，当 <code>head</code> 为 <code>NULL</code> 时，执行 <code>insert</code> 操作插入第一个节点之后，<code>head</code> 指向第一个节点，而第一个节点的 <code>next</code> 指针域成为 <code>NULL</code>，这很合理，因为它也是最后一个节点。所以空链表虽然是一种特殊情况，却不需要特殊的代码来处理，和一般情况用同样的代码处理即可，这样写出来的代码更简洁，但是在读代码时要想到可能存在的特殊情况。当然，<code>insert</code> 函数传进来的参数 <code>p</code> 也可能有特殊情况，传进来的 <code>p</code> 可能是 <code>NULL</code>，甚至是野指针，本章的函数代码都假定调用者的传进来的参数是合法的，不对参数做特别检查。事实上，对指针参数做检查是不现实的，如果传进来的是 <code>NULL</code> 还可以检查一下，如果传进来的是野指针，根本无法检查它指向的内存单元是不是合法的，C 标准库的函数通常也不做这种检查，例如 <code>strcpy(p, NULL)</code> 就会引起段错误。</p>
+<p>接下来 <code>main</code> 函数调用 <code>search</code> 在链表中查找某个节点，如果找到就返回指向该节点的指针，找不到就返回 <code>NULL</code>。</p>
+<pre><code class="language-c">link search(unsigned char key)
+{
+	link p;
+	for (p = head; p; p = p-&gt;next)
+		if (p-&gt;item == key)
+			return p;
+	return NULL;
+}
+</code></pre>
+<p><code>search</code> 函数其实也隐含了对于空链表这种特殊情况的处理，如果是空链表则循环体一次都不执行，直接返回 <code>NULL</code>。</p>
+<p>然后 <code>main</code> 函数调用 <code>delete</code> 从链表中摘除用 <code>search</code> 找到的节点，最后调用 <code>free_node</code> 释放它的存储空间。</p>
+<pre><code class="language-c">void delete(link p)
+{
+	link pre;
+	if (p == head) {
+		head = p-&gt;next;
+		return;
+	}
+	for (pre = head; pre; pre = pre-&gt;next)
+		if (pre-&gt;next == p) {
+			pre-&gt;next = p-&gt;next;
+			return;
+		}
+}
+</code></pre>
+<p id="c26-2">图 26.2. 链表的删除操作</p>
+<p><img src="../images/linkedlist.delete.png" alt="链表的删除操作" /></p>
+<p>从上图可以看出，要摘除一个节点需要首先找到它的前趋然后才能做摘除操作，而在单链表中通过某个节点只能找到它的后继而不能找到它的前趋，所以删除操作要麻烦一些，需要从第一个节点开始依次查找要摘除的节点的前趋。<code>delete</code> 操作也要处理一种特殊情况，如果要摘除的节点是链表的第一个节点，它是没有前趋的，这种情况要用特殊的代码处理，而不能和一般情况用同样的代码处理。这样很不爽，能不能把这种特殊情况转化为一般情况呢？可以把 <code>delete</code> 函数改成这样：</p>
+<pre><code class="language-c">void delete(link p)
+{
+	link *pnext;
+	for (pnext = &amp;head; *pnext; pnext = &amp;(*pnext)-&gt;next)
+		if (*pnext == p) {
+			*pnext = p-&gt;next;
+			return;
+		}
+}
+</code></pre>
+<p id="c26-3">图 26.3. 消除特殊情况的链表删除操作</p>
+<p><img src="../images/linkedlist.pdelete.png" alt="消除特殊情况的链表删除操作" /></p>
+<p>定义一个指向指针的指针 <code>pnext</code>，在 <code>for</code> 循环中 <code>pnext</code> 遍历的是指向链表中各节点的指针域，这样就把 <code>head</code> 指针和各节点的 <code>next</code> 指针统一起来了，可以在一个循环中处理。</p>
+<p>然后 <code>main</code> 函数调用 <code>traverse</code> 函数遍历整个链表，调用 <code>destroy</code> 函数销毁整个链表。请读者自己阅读这两个函数的代码。</p>
+<p>如果限定每次只在链表的头部插入和删除元素，就形成一个 LIFO 的访问序列，所以在链表头部插入和删除元素的操作实现了堆栈的 <code>push</code> 和 <code>pop</code> 操作，<code>main</code> 函数的最后几步把链表当成堆栈来操作，从打印的结果可以看到出栈的顺序和入栈是相反的。想一想，用链表实现的堆栈和<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch12-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97#_2-%E5%A0%86%E6%A0%88">第 12 章「栈与队列」第 2 节「堆栈」</a>中用数组实现的堆栈相比有什么优点和缺点？</p>
+<h4 id="习题"><a class="header" href="#习题">习题</a></h4>
+<ol>
+<li>
+<p>修改 <code>insert</code> 函数实现插入排序的功能，链表中的数据按从小到大排列，每次插入数据都要在链表中找到合适的位置再插入。在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch11-%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%9F%A5%E6%89%BE?id=_6-%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE">第 11 章「排序与查找」第 6 节「折半查找」</a>中我们看到，如果数组中的元素是有序排列的，可以用折半查找算法更快地找到某个元素，想一想如果链表中的节点是有序排列的，是否适用折半查找算法？为什么？</p>
+</li>
+<li>
+<p>基于单链表实现队列的 <code>enqueue</code> 和 <code>dequeue</code> 操作。在链表的末尾再维护一个指针 <code>tail</code>，在 <code>tail</code> 处 <code>enqueue</code>，在 <code>head</code> 处 <code>dequeue</code>。想一想能不能反过来，在 <code>head</code> 处 <code>enqueue</code> 而在 <code>tail</code> 处 <code>dequeue</code>？</p>
+</li>
+<li>
+<p>实现函数 <code>void reverse(void);</code> 将单链表反转。如下图所示。</p>
+ <p id="c26-4">图 26.4. 单链表的反转</p>
+<p><img src="../images/linkedlist.reverse.png" alt="单链表的反转" /></p>
+</li>
+</ol>
+<h3 id="12-双向链表"><a class="header" href="#12-双向链表">1.2. 双向链表</a></h3>
+<p>链表的 <code>delete</code> 操作需要首先找到要摘除的节点的前趋，而在单链表中找某个节点的前趋需要从表头开始依次查找，对于 n 个节点的链表，删除操作的时间复杂度为 O(n)。可以想像得到，如果每个节点再维护一个指向前趋的指针，删除操作就像插入操作一样容易了，时间复杂度为 O(1)，这称为双向链表（Doubly Linked List）。要实现双向链表只需在上一节代码的基础上改动两个地方。</p>
+<p>在 <code>linkedlist.h</code> 中修改链表节点的结构体定义：</p>
+<pre><code class="language-c">struct node {
+	unsigned char item;
+	link prev, next;
+};
+</code></pre>
+<p>在 <code>linkedlist.c</code> 中修改 <code>insert</code> 和 <code>delete</code> 函数：</p>
+<pre><code class="language-c">void insert(link p)
+{
+	p-&gt;next = head;
+	if (head)
+		head-&gt;prev = p;
+	head = p;
+	p-&gt;prev = NULL;
+}
+
+void delete(link p)
+{
+	if (p-&gt;prev)
+		p-&gt;prev-&gt;next = p-&gt;next;
+	else
+		head = p-&gt;next;
+	if (p-&gt;next)
+		p-&gt;next-&gt;prev = p-&gt;prev;
+}
+</code></pre>
+<p id="c26-4">图 26.5. 双向链表</p>
+<p><img src="../images/linkedlist.doubly.png" alt="双向链表" /></p>
+<p>由于引入了 <code>prev</code> 指针，<code>insert</code> 和 <code>delete</code> 函数中都有一些特殊情况需要用特殊的代码处理，不能和一般情况用同样的代码处理，这非常不爽，如果在表头和表尾各添加一个 Sentinel 节点（这两个节点只用于界定表头和表尾，不保存数据），就可以把这些特殊情况都转化为一般情况了。</p>
+<p id="e26-2">例 26.2. 带 Sentinel 的双向链表</p>
+<pre><code class="language-c">/* doublylinkedlist.h */
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
+
+typedef struct node *link;
+struct node {
+	unsigned char item;
+	link prev, next;
+};
+
+link make_node(unsigned char item);
+void free_node(link p);
+link search(unsigned char key);
+void insert(link p);
+void delete(link p);
+void traverse(void (*visit)(link));
+void destroy(void);
+void enqueue(link p);
+link dequeue(void);
+
+#endif
+/* doublylinkedlist.c */
+#include &lt;stdlib.h&gt;
+#include &quot;doublylinkedlist.h&quot;
+
+struct node tailsentinel;
+struct node headsentinel = {0, NULL, &amp;tailsentinel};
+struct node tailsentinel = {0, &amp;headsentinel, NULL};
+
+static link head = &amp;headsentinel;
+static link tail = &amp;tailsentinel;
+
+link make_node(unsigned char item)
+{
+	link p = malloc(sizeof *p);
+	p-&gt;item = item;
+	p-&gt;prev = p-&gt;next = NULL;
+	return p;
+}
+
+void free_node(link p)
+{
+	free(p);
+}
+
+link search(unsigned char key)
+{
+	link p;
+	for (p = head-&gt;next; p != tail; p = p-&gt;next)
+		if (p-&gt;item == key)
+			return p;
+	return NULL;
+}
+
+void insert(link p)
+{
+	p-&gt;next = head-&gt;next;
+	head-&gt;next-&gt;prev = p;
+	head-&gt;next = p;
+	p-&gt;prev = head;
+}
+
+void delete(link p)
+{
+	p-&gt;prev-&gt;next = p-&gt;next;
+	p-&gt;next-&gt;prev = p-&gt;prev;
+}
+
+void traverse(void (*visit)(link))
+{
+	link p;
+	for (p = head-&gt;next; p != tail; p = p-&gt;next)
+		visit(p);
+}
+
+void destroy(void)
+{
+	link q, p = head-&gt;next;
+	head-&gt;next = tail;
+	tail-&gt;prev = head;
+	while (p != tail) {
+		q = p;
+		p = p-&gt;next;
+		free_node(q);
+	}
+}
+
+void enqueue(link p)
+{
+	insert(p);
+}
+
+link dequeue(void)
+{
+	if (tail-&gt;prev == head)
+		return NULL;
+	else {
+		link p = tail-&gt;prev;
+		delete(p);
+		return p;
+	}
+}
+/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;doublylinkedlist.h&quot;
+
+void print_item(link p)
+{
+	printf(&quot;%d\n&quot;, p-&gt;item); 
+}
+
+int main(void)
+{
+	link p = make_node(10);
+	insert(p);
+	p = make_node(5);
+	insert(p);
+	p = make_node(90);
+	insert(p);
+	p = search(5);
+	delete(p);
+	free_node(p);
+	traverse(print_item);
+	destroy();
+
+	p = make_node(100);
+	enqueue(p);
+	p = make_node(200);
+	enqueue(p);
+	p = make_node(250);
+	enqueue(p);
+	while (p = dequeue()) {
+		print_item(p);
+		free_node(p);
+	}
+
+	return 0;
+}
+</code></pre>
+<p id="c26-6">图 26.6. 带Sentinel的双向链表</p>
+<p><img src="../images/linkedlist.sentinel.png" alt="带 Sentinel 的双向链表" /></p>
+<p>这个例子也实现了队列的 <code>enqueue</code> 和 <code>dequeue</code> 操作，现在每个节点有了 <code>prev</code> 指针，可以反过来在 <code>head</code> 处 <code>enqueue</code> 而在 <code>tail</code> 处 <code>dequeue</code> 了。</p>
+<p>现在结合<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch12-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97#_5-%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97">第 12 章「栈与队列」第 5 节「环形队列」</a>想一想，其实用链表实现环形队列是最自然的，以前基于数组实现环形队列，我们还需要「假想」它是首尾相接的，而如果基于链表实现环形队列，我们本来就可以用指针串成首尾相接的。把上面的程序改成环形链表（Circular Linked List）也非常简单，只需要把 <code>doublylinkedlist.c</code> 中的</p>
+<pre><code class="language-c">struct node tailsentinel;
+struct node headsentinel = {0, NULL, &amp;tailsentinel};
+struct node tailsentinel = {0, &amp;headsentinel, NULL};
+
+static link head = &amp;headsentinel;
+static link tail = &amp;tailsentinel;
+</code></pre>
+<p>改成：</p>
+<pre><code class="language-c">struct node sentinel = {0, &amp;sentinel, &amp;sentinel};
+static link head = &amp;sentinel;
+</code></pre>
+<p>再把 <code>doublylinkedlist.c</code> 中所有的 <code>tail</code> 替换成 <code>head</code> 即可，相当于把 <code>head</code> 和 <code>tail</code> 合二为一了。</p>
+<p id="c26-7">图 26.7. 环形链表</p>
+<p><img src="../images/linkedlist.circular.png" alt="环形链表" /></p>
+<h3 id="13-静态链表"><a class="header" href="#13-静态链表">1.3. 静态链表</a></h3>
+<p>回想一下我们在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch12-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97#e12-4">第 12 章「栈与队列」 例 12.4「用广度优先搜索解迷宫问题」</a>中使用的数据结构，我把图重新画在下面。</p>
+<p id="c26-8">图 26.8. 广度优先搜索的队列数据结构</p>
+<p><img src="../images/stackqueue.bfsqueue.png" alt="广度优先搜索的队列数据结构" /></p>
+<p>这是一个静态分配的数组，每个数组元素都有 <code>row</code>、<code>col</code> 和 <code>predecessor</code> 三个成员，<code>predecessor</code> 成员保存一个数组下标，指向数组中的另一个元素，这其实也是链表的一种形式，称为静态链表，例如上图中的第 6、4、2、1、0 个元素串成一条链表。</p>
+<h3 id="14-本节综合练习"><a class="header" href="#14-本节综合练习">1.4. 本节综合练习</a></h3>
+<ol>
+<li>Josephus 是公元 1 世纪的著名历史学家，相传在一次战役中他和另外几个人被围困在山洞里，他们宁死不屈，决定站成一圈，每次数到三个人就杀一个，直到全部死光为止。Josephus 和他的一个朋友不想死，于是串通好了站在适当的位置上，最后只剩下他们俩的时候这个游戏就停止了。如果一开始的人数为 <code>N</code>，每次数到 <code>M</code> 个人就杀一个，那么要想不死应该站在什么位置呢？这个问题比较复杂，<em>具体数学</em> 的 1.3 节研究了 Josephus 问题的解，有兴趣的读者可以参考。现在我们做个比较简单的练习，用链表模拟 Josephus 他们玩的这个游戏，<code>N</code> 和 <code>M</code> 作为命令行参数传入，每个人的编号依次是 1 ~ N，打印每次被杀者的编号，打印最后一个幸存者的编号。</li>
+</ol>
+<p>2、在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch25-C-%E6%A0%87%E5%87%86%E5%BA%93#_211-%E6%9C%AC%E8%8A%82%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0">第 25 章第 2.11 节「本节综合练习」的习题 1</a> 中规定了一种日志文件的格式，每行是一条记录，由行号、日期、时间三个字段组成，由于记录是按时间先后顺序写入的，可以看作所有记录是按日期排序的，对于日期相同的记录再按时间排序。现在要求从这样的一个日志文件中读出所有记录组成一个链表，在链表中首先按时间排序，对于时间相同的记录再按日期排序，最后写回文件中。比如原文件的内容是：</p>
+<pre><code class="language-bash">1 2009-7-30 15:16:42
+2 2009-7-30 15:16:43
+3 2009-7-31 15:16:41
+4 2009-7-31 15:16:42
+5 2009-7-31 15:16:43
+6 2009-7-31 15:16:44
+</code></pre>
+<p>重新排序输出的文件内容是：</p>
+<pre><code class="language-bash">1 2009-7-31 15:16:41
+2 2009-7-30 15:16:42
+3 2009-7-31 15:16:42
+4 2009-7-30 15:16:43
+5 2009-7-31 15:16:43
+6 2009-7-31 15:16:44
+</code></pre>
+<h2 id="2-二叉树"><a class="header" href="#2-二叉树">2. 二叉树</a></h2>
+<h3 id="21-二叉树的基本概念"><a class="header" href="#21-二叉树的基本概念">2.1. 二叉树的基本概念</a></h3>
+<p>链表的每个节点可以有一个后继，而二叉树（Binary Tree）的每个节点可以有两个后继。比如这样定义二叉树的节点：</p>
+<pre><code class="language-c">typedef struct node *link;
+struct node {
+	unsigned char item;
+	link l, r;
+};
+</code></pre>
+<p>这样的节点可以组织成下图所示的各种形态。</p>
+<p id="c26-9">图 26.9. 二叉树的定义和举例</p>
+<p><img src="../images/linkedlist.binarytree.png" alt="二叉树的定义和举例" /></p>
+<p>二叉树可以这样递归地定义：</p>
+<ol>
+<li>就像链表有头指针一样，每个二叉树都有一个根指针（上图中的 <code>root</code> 指针）指向它。根指针可以是 <code>NULL</code>，表示空二叉树，或者</li>
+<li>根指针可以指向一个节点，这个节点除了有数据成员之外还有两个指针域，这两个指针域又分别是另外两个二叉树（左子树和右子树）的根指针。</li>
+</ol>
+<p>上图举例示意了几种情况。</p>
+<ul>
+<li>单节点的二叉树：左子树和右子树都是空二叉树。</li>
+<li>只有左子树的二叉树：右子树是空二叉树。</li>
+<li>只有右子树的二叉树：左子树是空二叉树。</li>
+<li>一般的二叉树：左右子树都不为空。注意右侧由圈和线段组成的简化图示，以后我们都采用这种简化图示法，在圈中标上该节点数据成员的值。</li>
+</ul>
+<p>链表的遍历方法是显而易见的：从前到后遍历即可。二叉树是一种树状结构，如何做到把所有节点都走一遍不重不漏呢？有以下几种方法：</p>
+<p id="c26-10">图 26.10. 二叉树的遍历</p>
+<p><img src="../images/linkedlist.binarytraverse.png" alt="二叉树的遍历" /></p>
+<p>前序（Pre-order Traversal）、中序（In-order Traversal）、后序遍历（Post-order Traversal）和深度优先搜索的顺序类似，层序遍历（Level-order Traversal）和广度优先搜索的顺序类似。</p>
+<p>前序和中序遍历的结果合在一起可以唯一确定二叉树的形态，也就是说根据遍历结果可以构造出二叉树。过程如下图所示：</p>
+<p id="c26-11">图 26.11. 根据前序和中序遍历结果构造二叉树</p>
+<p><img src="../images/linkedlist.constructbinary.png" alt="根据前序和中序遍历结果构造二叉树" /></p>
+<p>想一想，根据中序和后序遍历结果能否构造二叉树？根据前序和后序遍历结果能否构造二叉树？</p>
+<p id="e26-3">例 26.3. 二叉树</p>
+<pre><code class="language-c">/* binarytree.h */
+#ifndef BINARYTREE_H
+#define BINARYTREE_H
+
+typedef struct node *link;
+struct node {
+     unsigned char item;
+     link l, r;
+};
+
+link init(unsigned char VLR[], unsigned char LVR[], int n);
+void pre_order(link t, void (*visit)(link));
+void in_order(link t, void (*visit)(link));
+void post_order(link t, void (*visit)(link));
+int count(link t);
+int depth(link t);
+void destroy(link t);
+
+#endif
+/* binarytree.c */
+#include &lt;stdlib.h&gt;
+#include &quot;binarytree.h&quot;
+
+static link make_node(unsigned char item)
+{
+	link p = malloc(sizeof *p);
+	p-&gt;item = item;
+	p-&gt;l = p-&gt;r = NULL;
+	return p;
+}
+
+static void free_node(link p)
+{
+	free(p);
+}
+
+link init(unsigned char VLR[], unsigned char LVR[], int n)
+{
+	link t;
+	int k;
+	if (n &lt;= 0)
+		return NULL;
+	for (k = 0; VLR[0] != LVR[k]; k++);
+	t = make_node(VLR[0]);
+	t-&gt;l = init(VLR+1, LVR, k);
+	t-&gt;r = init(VLR+1+k, LVR+1+k, n-k-1);
+	return t;
+}
+
+void pre_order(link t, void (*visit)(link))
+{
+	if (!t)
+		return;
+	visit(t);
+	pre_order(t-&gt;l, visit);
+	pre_order(t-&gt;r, visit);
+}
+
+void in_order(link t, void (*visit)(link))
+{
+	if (!t)
+		return;
+	in_order(t-&gt;l, visit);
+	visit(t);
+	in_order(t-&gt;r, visit);
+}
+
+void post_order(link t, void (*visit)(link))
+{
+	if (!t)
+		return;
+	post_order(t-&gt;l, visit);
+	post_order(t-&gt;r, visit);
+	visit(t);
+}
+
+int count(link t)
+{
+	if (!t)
+		return 0;
+	return 1 + count(t-&gt;l) + count(t-&gt;r);
+}
+
+int depth(link t)
+{
+	int dl, dr;
+	if (!t)
+		return 0;
+	dl = depth(t-&gt;l);
+	dr = depth(t-&gt;r);
+	return 1 + (dl &gt; dr ? dl : dr);
+}
+
+void destroy(link t)
+{
+	post_order(t, free_node);
+}
+/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;binarytree.h&quot;
+
+void print_item(link p)
+{
+	printf(&quot;%d&quot;, p-&gt;item);
+}
+
+int main()
+{
+	unsigned char pre_seq[] = { 4, 2, 1, 3, 6, 5, 7 };
+	unsigned char in_seq[] = { 1, 2, 3, 4, 5, 6, 7 };
+	link root = init(pre_seq, in_seq, 7);
+	pre_order(root, print_item);
+	putchar('\n');
+	in_order(root, print_item);
+	putchar('\n');
+	post_order(root, print_item);
+	putchar('\n');
+	printf(&quot;count=%d depth=%d\n&quot;, count(root), depth(root));
+	destroy(root);
+	return 0;
+}
+</code></pre>
+<h4 id="习题-1"><a class="header" href="#习题-1">习题</a></h4>
+<ol>
+<li>
+<p>本节描述了二叉树的递归定义，想一想单链表的递归定义应该怎么表述？请仿照本节的例子用递归实现单链表的各种操作函数：</p>
+<pre><code class="language-c">link init(unsigned char elements[], int n);
+void pre_order(link t, void (*visit)(link));
+void post_order(link t, void (*visit)(link));
+int count(link t);
+void destroy(link t);
+</code></pre>
+</li>
+</ol>
+<h3 id="22-排序二叉树"><a class="header" href="#22-排序二叉树">2.2. 排序二叉树</a></h3>
+<p>排序二叉树（BST，Binary Search Tree）具有这样的性质：对于二叉树中的任意节点，如果它有左子树或右子树，则该节点的数据成员大于左子树所有节点的数据成员，且小于右子树所有节点的数据成员。排序二叉树的中序遍历结果是从小到大排列的，其实上一节的<a href="#c26-10">图 26.10「二叉树的遍历」</a>就是排序二叉树。</p>
+<p id="e26-4">例 26.4. 排序二叉树</p>
+<pre><code class="language-c">/* bst.h */
+#ifndef BST_H
+#define BST_H
+
+typedef struct node *link;
+struct node {
+     unsigned char item;
+     link l, r;
+};
+
+link search(link t, unsigned char key);
+link insert(link t, unsigned char key);
+link delete(link t, unsigned char key);
+void print_tree(link t);
+
+#endif
+/* bst.c */
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &quot;bst.h&quot;
+
+static link make_node(unsigned char item)
+{
+	link p = malloc(sizeof *p);
+	p-&gt;item = item;
+	p-&gt;l = p-&gt;r = NULL;
+	return p;
+}
+
+static void free_node(link p)
+{
+	free(p);
+}
+
+link search(link t, unsigned char key)
+{
+	if (!t)
+		return NULL;
+	if (t-&gt;item &gt; key)
+		return search(t-&gt;l, key);
+	if (t-&gt;item &lt; key)
+		return search(t-&gt;r, key);
+	/* if (t-&gt;item == key) */
+	return t;
+}
+
+link insert(link t, unsigned char key)
+{
+	if (!t)
+		return make_node(key);
+	if (t-&gt;item &gt; key) /* insert to left subtree */
+		t-&gt;l = insert(t-&gt;l, key);
+	else /* if (t-&gt;item &lt;= key), insert to right subtree */
+		t-&gt;r = insert(t-&gt;r, key);
+	return t;
+}
+
+link delete(link t, unsigned char key)
+{
+	link p;
+	if (!t)
+		return NULL;
+	if (t-&gt;item &gt; key) /* delete from left subtree */
+		t-&gt;l = delete(t-&gt;l, key);
+	else if (t-&gt;item &lt; key) /* delete from right subtree */
+		t-&gt;r = delete(t-&gt;r, key);
+	else { /* if (t-&gt;item == key) */
+		if (t-&gt;l == NULL &amp;&amp; t-&gt;r == NULL) { /* if t is leaf node */
+			free_node(t);
+			t = NULL;
+		} else if (t-&gt;l) { /* if t has left subtree */
+			/* replace t with the rightmost node in left subtree */
+			for (p = t-&gt;l; p-&gt;r; p = p-&gt;r);
+			t-&gt;item = p-&gt;item;
+			t-&gt;l = delete(t-&gt;l, t-&gt;item);
+		} else { /* if t has right subtree */
+			/* replace t with the leftmost node in right subtree */
+			for (p = t-&gt;r; p-&gt;l; p = p-&gt;l);
+			t-&gt;item = p-&gt;item;
+			t-&gt;r = delete(t-&gt;r, t-&gt;item);
+		}
+	}
+	return t;
+}
+
+void print_tree(link t)
+{
+	if (t) {
+		printf(&quot;(&quot;);
+		printf(&quot;%d&quot;, t-&gt;item);
+		print_tree(t-&gt;l);
+		print_tree(t-&gt;r);
+		printf(&quot;)&quot;);
+	} else
+		printf(&quot;()&quot;);
+}
+/* main.c */
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#include &quot;bst.h&quot;
+
+#define RANGE 100
+#define N 6
+
+void print_item(link p)
+{
+	printf(&quot;%d&quot;, p-&gt;item);
+}
+
+int main()
+{
+	int i, key;
+	link root = NULL;
+	srand(time(NULL));
+	for (i = 0; i &lt; N; i++)
+		root = insert(root, rand() % RANGE);
+	printf(&quot;\t\\tree&quot;);
+	print_tree(root);
+	printf(&quot;\n\n&quot;);
+	while (root) {
+		key = rand() % RANGE;
+		if (search(root, key)) {
+			printf(&quot;delete %d in tree\n&quot;, key);
+			root = delete(root, key);
+			printf(&quot;\t\\tree&quot;);
+			print_tree(root);
+			printf(&quot;\n\n&quot;);
+		}
+	}
+}
+$ ./a.out
+	\tree(83(77(15()(35()()))())(86()(93()())))
+
+delete 86 in tree
+	\tree(83(77(15()(35()()))())(93()()))
+
+delete 35 in tree
+	\tree(83(77(15()())())(93()()))
+
+delete 93 in tree
+	\tree(83(77(15()())())())
+
+delete 15 in tree
+	\tree(83(77()())())
+
+delete 83 in tree
+	\tree(77()())
+
+delete 77 in tree
+	\tree()
+</code></pre>
+<p>程序的运行结果可以用 Greg Lee 编写的 <a href="http://www.essex.ac.uk/linguistics/clmt/latex4ling/trees/tree/">The Tree Preprocessor</a> 转换成树形：</p>
+<pre><code class="language-bash">$ ./a.out | ./tree/tree
+	     83
+          ___|___
+          |     |
+          77    86
+         _|__  _|__
+         |  |  |  |
+         15       93
+        _|__     _|__
+        |  |     |  |
+           35
+          _|__
+          |  |
+
+delete 86 in tree
+	     83
+          ___|___
+          |     |
+          77    93
+         _|__  _|__
+         |  |  |  |
+         15
+        _|__
+        |  |
+           35
+          _|__
+          |  |
+
+delete 35 in tree
+	     83
+          ___|___
+          |     |
+          77    93
+         _|__  _|__
+         |  |  |  |
+         15
+        _|__
+        |  |
+
+delete 93 in tree
+	   83
+          _|__
+          |  |
+          77
+         _|__
+         |  |
+         15
+        _|__
+        |  |
+
+delete 15 in tree
+	  83
+         _|__
+         |  |
+         77
+        _|__
+        |  |
+
+delete 83 in tree
+	 77
+        _|__
+        |  |
+
+delete 77 in tree
+</code></pre>
+<h2 id="3-哈希表"><a class="header" href="#3-哈希表">3. 哈希表</a></h2>
+<p>下图示意了哈希表（Hash Table）这种数据结构。</p>
+<p id="c26-12">图 26.12. 哈希表</p>
+<p><img src="../images/linkedlist.hashtab.png" alt="哈希表" /></p>
+<p>如上图所示，首先分配一个指针数组，数组的每个元素是一个链表的头指针，每个链表称为一个槽（Slot）。哪个数据应该放入哪个槽中由哈希函数决定，在这个例子中我们简单地选取哈希函数 h(x) = x % 11，这样任意数据 x 都可以映射成 0 ~ 10 之间的一个数，就是槽的编号，将数据放入某个槽的操作就是链表的插入操作。</p>
+<p>如果每个槽里至多只有一个数据，可以想像这种情况下 <code>search</code>、<code>insert</code> 和 <code>delete</code> 操作的时间复杂度都是 O(1)，但有时会有多个数据被哈希函数映射到同一个槽中，这称为碰撞（Collision），设计一个好的哈希函数可以把数据比较均匀地分布到各个槽中，尽量避免碰撞。如果能把 n 个数据比较均匀地分布到 m 个槽中，每个糟里约有 n/m 个数据，则 <code>search</code>、<code>insert</code> 和 <code>delete</code> 和操作的时间复杂度都是 O(n/m)，如果 n 和 m 的比是常数，则时间复杂度仍然是 O(1)。一般来说，要处理的数据越多，构造哈希表时分配的槽也应该越多，所以 n 和 m 成正比这个假设是成立的。</p>
+<p>请读者自己编写程序构造这样一个哈希表，并实现 <code>search</code>、<code>insert</code> 和 <code>delete</code>操作。</p>
+<p>如果用我们学过的各种数据结构来表示 n 个数据的集合，下表是 <code>search</code>、<code>insert</code> 和 <code>delete</code> 操作在平均情况下的时间复杂度比较。</p>
+<p id="t26-1">表 26.1. 各种数据结构的 search、insert 和 delete 操作在平均情况下的时间复杂度比较</p>
+<table><thead><tr><th>数据结构</th><th>search</th><th>insert</th><th>delete</th></tr></thead><tbody>
+<tr><td>数组</td><td>O(n)，有序数组折半查找是 O(lgn)</td><td>O(n)</td><td>O(n)</td></tr>
+<tr><td>双向链表</td><td>O(n)</td><td>O(1)</td><td>O(1)</td></tr>
+<tr><td>排序二叉树</td><td>O(lgn)</td><td>O(lgn)</td><td>O(lgn)</td></tr>
+<tr><td>哈希表（n 与槽数 m 成正比）</td><td>O(1)</td><td>O(1)</td><td>O(1)</td></tr>
+</tbody></table>
+<h3 id="习题-2"><a class="header" href="#习题-2">习题</a></h3>
+<ol>
+<li>统计一个文本文件中每个单词的出现次数，然后按出现次数排序并打印输出。单词由连续的英文字母组成，不区分大小写。</li>
+<li>实现一个函数求两个数组的交集：<code>size_t intersect(const int a[], size_t nmema, const int b[], size_t nmemb, int c[], size_t nmemc);</code>。数组元素是 32 位 int 型的。数组 <code>a</code> 有 <code>nmema</code> 个元素且各不相同，数组 <code>b</code> 有 <code>nmemb</code> 个元素且各不相同。要求找出数组 <code>a</code> 和数组 <code>b</code> 的交集保存到数组 <code>c</code> 中，<code>nmemc</code> 是数组 <code>c</code> 的最大长度，返回值表示交集中实际有多少个元素，如果交集中实际的元素数量超过了 <code>nmemc</code> 则返回 <code>nmemc</code> 个元素。数组 <code>a</code> 和数组 <code>b</code> 的元素数量可能会很大（比如上百万个），需要设计尽可能快的算法。</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2-C-语言本质/ch25-C-标准库.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../2-C-语言本质/ch27-本阶段总结.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2-C-语言本质/ch25-C-标准库.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../2-C-语言本质/ch27-本阶段总结.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

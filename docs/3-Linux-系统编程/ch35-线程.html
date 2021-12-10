@@ -1,0 +1,732 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>线程 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html" class="active"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-35-章-线程"><a class="header" href="#第-35-章-线程">第 35 章 线程</a></h1>
+<h2 id="1-线程的概念"><a class="header" href="#1-线程的概念">1. 线程的概念</a></h2>
+<p>我们知道，进程在各自独立的地址空间中运行，进程之间共享数据需要用 <code>mmap</code> 或者进程间通信机制，本节我们学习如何在一个进程的地址空间中执行多个线程。有些情况需要在一个进程中同时执行多个控制流程，这时候线程就派上了用场，比如实现一个图形界面的下载软件，一方面需要和用户交互，等待和处理用户的鼠标键盘事件，另一方面又需要同时下载多个文件，等待和处理从多个网络主机发来的数据，这些任务都需要一个「等待-处理」的循环，可以用多线程实现，一个线程专门负责与用户交互，另外几个线程每个线程负责和一个网络主机通信。</p>
+<p>以前我们讲过，<code>main</code> 函数和信号处理函数是同一个进程地址空间中的多个控制流程，多线程也是如此，但是比信号处理函数更加灵活，信号处理函数的控制流程只是在信号递达时产生，在处理完信号之后就结束，而多线程的控制流程可以长期并存，操作系统会在各线程之间调度和切换，就像在多个进程之间调度和切换一样。由于同一进程的多个线程共享同一地址空间，因此 Text  Segment、Data  Segment 是共享的，如果定义一个函数，在各线程中都可以调用，如果定义一个全局变量，在各线程中都可以访问到，除此之外，各线程还共享以下进程资源和环境：</p>
+<ul>
+<li>文件描述符表</li>
+<li>每种信号的处理方式（<code>SIG_IGN</code>、<code>SIG_DFL</code> 或者自定义的信号处理函数）</li>
+<li>当前工作目录</li>
+<li>用户 id 和组 id</li>
+</ul>
+<p>但有些资源是每个线程各有一份的：</p>
+<ul>
+<li>线程 id</li>
+<li>上下文，包括各种寄存器的值、程序计数器和栈指针</li>
+<li>栈空间</li>
+<li><code>errno</code> 变量</li>
+<li>信号屏蔽字</li>
+<li>调度优先级</li>
+</ul>
+<p>我们将要学习的线程库函数是由 POSIX 标准定义的，称为 POSIX thread 或者 pthread。在 Linux 上线程函数位于 <code>libpthread</code> 共享库中，因此在编译时要加上 <code>-lpthread</code> 选项。</p>
+<h2 id="2-线程控制"><a class="header" href="#2-线程控制">2. 线程控制</a></h2>
+<h3 id="21-创建线程"><a class="header" href="#21-创建线程">2.1. 创建线程</a></h3>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_create(pthread_t *restrict thread,
+	const pthread_attr_t *restrict attr,
+	void *(*start_routine)(void*), void *restrict arg);
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号。以前学过的系统函数都是成功返回 0，失败返回 -1，而错误号保存在全局变量 <code>errno</code> 中，而 pthread 库的函数都是通过返回值返回错误号，虽然每个线程也都有一个 <code>errno</code>，但这是为了兼容其它函数接口而提供的，pthread 库本身并不使用它，通过返回值返回错误码更加清晰。</p>
+<p>在一个线程中调用 pthread_create() 创建新的线程后，当前线程从 pthread_create() 返回继续往下执行，而新的线程所执行的代码由我们传给 <code>pthread_create</code> 的函数指针 <code>start_routine</code> 决定。<code>start_routine</code> 函数接收一个参数，是通过 <code>pthread_create</code> 的 <code>arg</code> 参数传递给它的，该参数的类型为 <code>void *</code>，这个指针按什么类型解释由调用者自己定义。<code>start_routine</code> 的返回值类型也是 <code>void *</code>，这个指针的含义同样由调用者自己定义。<code>start_routine</code> 返回时，这个线程就退出了，其它线程可以调用 <code>pthread_join</code> 得到 <code>start_routine</code> 的返回值，类似于父进程调用 <code>wait(2)</code> 得到子进程的退出状态，稍后详细介绍 <code>pthread_join</code>。</p>
+<p><code>pthread_create</code> 成功返回后，新创建的线程的id被填写到 <code>thread</code> 参数所指向的内存单元。我们知道进程 id 的类型是 <code>pid_t</code>，每个进程的 id 在整个系统中是唯一的，调用 <code>getpid(2)</code> 可以获得当前进程的 id，是一个正整数值。线程 id 的类型是 <code>thread_t</code>，它只在当前进程中保证是唯一的，在不同的系统中 <code>thread_t</code> 这个类型有不同的实现，它可能是一个整数值，也可能是一个结构体，也可能是一个地址，所以不能简单地当成整数用 <code>printf</code> 打印，调用 <code>pthread_self(3)</code> 可以获得当前线程的 id。</p>
+<p><code>attr</code> 参数表示线程属性，本章不深入讨论线程属性，所有代码例子都传 <code>NULL</code> 给 <code>attr</code> 参数，表示线程属性取缺省值，感兴趣的读者可以参考 <em>APUE2e</em>。首先看一个简单的例子：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+
+pthread_t ntid;
+
+void printids(const char *s)
+{
+	pid_t      pid;
+	pthread_t  tid;
+
+	pid = getpid();
+	tid = pthread_self();
+	printf(&quot;%s pid %u tid %u (0x%x)\n&quot;, s, (unsigned int)pid,
+	       (unsigned int)tid, (unsigned int)tid);
+}
+
+void *thr_fn(void *arg)
+{
+	printids(arg);
+	return NULL;
+}
+
+int main(void)
+{
+	int err;
+
+	err = pthread_create(&amp;ntid, NULL, thr_fn, &quot;new thread: &quot;);
+	if (err != 0) {
+		fprintf(stderr, &quot;can't create thread: %s\n&quot;, strerror(err));
+		exit(1);
+	}
+	printids(&quot;main thread:&quot;);
+	sleep(1);
+
+	return 0;
+}
+</code></pre>
+<p>编译运行结果如下：</p>
+<pre><code class="language-bash">$ gcc main.c -lpthread
+$ ./a.out
+main thread: pid 7398 tid 3084450496 (0xb7d8fac0)
+new thread:  pid 7398 tid 3084446608 (0xb7d8eb90)
+</code></pre>
+<p>可知在 Linux 上，<code>thread_t</code> 类型是一个地址值，属于同一进程的多个线程调用 <code>getpid(2)</code> 可以得到相同的进程号，而调用 <code>pthread_self(3)</code> 得到的线程号各不相同。</p>
+<p>由于 <code>pthread_create</code> 的错误码不保存在 <code>errno</code> 中，因此不能直接用 <code>perror(3)</code> 打印错误信息，可以先用 <code>strerror(3)</code> 把错误码转换成错误信息再打印。</p>
+<p>如果任意一个线程调用了 <code>exit</code> 或 <code>_exit</code>，则整个进程的所有线程都终止，由于从 <code>main</code> 函数 <code>return</code> 也相当于调用 <code>exit</code>，为了防止新创建的线程还没有得到执行就终止，我们在 <code>main</code> 函数 <code>return</code> 之前延时 1 秒，这只是一种权宜之计，即使主线程等待 1 秒，内核也不一定会调度新创建的线程执行，下一节我们会看到更好的办法。</p>
+<p>思考题：主线程在一个全局变量 <code>ntid</code> 中保存了新创建的线程的 id，如果新创建的线程不调用 <code>pthread_self</code> 而是直接打印这个 <code>ntid</code>，能不能达到同样的效果？</p>
+<h3 id="22-终止线程"><a class="header" href="#22-终止线程">2.2. 终止线程</a></h3>
+<p>如果需要只终止某个线程而不终止整个进程，可以有三种方法：</p>
+<ul>
+<li>从线程函数 <code>return</code>。这种方法对主线程不适用，从 <code>main</code> 函数 <code>return</code> 相当于调用 <code>exit</code>。</li>
+<li>一个线程可以调用 <code>pthread_cancel</code> 终止同一进程中的另一个线程。</li>
+<li>线程可以调用 <code>pthread_exit</code> 终止自己。</li>
+</ul>
+<p>用 <code>pthread_cancel</code> 终止一个线程分同步和异步两种情况，比较复杂，本章不打算详细介绍，读者可以参考 <em>APUE2e</em>。下面介绍 <code>pthread_exit</code> 的和 <code>pthread_join</code> 的用法。</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+void pthread_exit(void *value_ptr);
+</code></pre>
+<p><code>value_ptr</code> 是 <code>void *</code> 类型，和线程函数返回值的用法一样，其它线程可以调用 <code>pthread_join</code> 获得这个指针。</p>
+<p>需要注意，<code>pthread_exit</code> 或者 <code>return</code> 返回的指针所指向的内存单元必须是全局的或者是用 <code>malloc</code> 分配的，不能在线程函数的栈上分配，因为当其它线程得到这个返回指针时线程函数已经退出了。</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_join(pthread_t thread, void **value_ptr);
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号</p>
+<p>调用该函数的线程将挂起等待，直到 id 为 <code>thread</code> 的线程终止。<code>thread</code> 线程以不同的方法终止，通过 <code>pthread_join</code> 得到的终止状态是不同的，总结如下：</p>
+<ul>
+<li>如果 <code>thread</code> 线程通过 <code>return</code> 返回，<code>value_ptr</code> 所指向的单元里存放的是 <code>thread</code> 线程函数的返回值。</li>
+<li>如果 <code>thread</code> 线程被别的线程调用 <code>pthread_cancel</code> 异常终止掉，<code>value_ptr</code> 所指向的单元里存放的是常数 <code>PTHREAD_CANCELED</code>。</li>
+<li>如果 <code>thread</code> 线程是自己调用 <code>pthread_exit</code> 终止的，<code>value_ptr</code> 所指向的单元存放的是传给 <code>pthread_exit</code> 的参数。</li>
+</ul>
+<p>如果对 <code>thread</code> 线程的终止状态不感兴趣，可以传 <code>NULL</code> 给 <code>value_ptr</code> 参数。</p>
+<p>看下面的例子（省略了出错处理）：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+
+void *thr_fn1(void *arg)
+{
+	printf(&quot;thread 1 returning\n&quot;);
+	return (void *)1;
+}
+
+void *thr_fn2(void *arg)
+{
+	printf(&quot;thread 2 exiting\n&quot;);
+	pthread_exit((void *)2);
+}
+
+void *thr_fn3(void *arg)
+{
+	while(1) {
+		printf(&quot;thread 3 writing\n&quot;);
+		sleep(1);
+	}
+}
+
+int main(void)
+{
+	pthread_t   tid;
+	void        *tret;
+
+	pthread_create(&amp;tid, NULL, thr_fn1, NULL);
+	pthread_join(tid, &amp;tret);
+	printf(&quot;thread 1 exit code %d\n&quot;, (int)tret);
+
+	pthread_create(&amp;tid, NULL, thr_fn2, NULL);
+	pthread_join(tid, &amp;tret);
+	printf(&quot;thread 2 exit code %d\n&quot;, (int)tret);
+
+	pthread_create(&amp;tid, NULL, thr_fn3, NULL);
+	sleep(3);
+	pthread_cancel(tid);
+	pthread_join(tid, &amp;tret);
+	printf(&quot;thread 3 exit code %d\n&quot;, (int)tret);
+
+	return 0;
+}
+</code></pre>
+<p>运行结果是：</p>
+<pre><code class="language-bash">$ ./a.out 
+thread 1 returning
+thread 1 exit code 1
+thread 2 exiting
+thread 2 exit code 2
+thread 3 writing
+thread 3 writing
+thread 3 writing
+thread 3 exit code -1
+</code></pre>
+<p>可见在 Linux 的 pthread 库中常数 <code>PTHREAD_CANCELED</code> 的值是 -1。可以在头文件 <code>pthread.h</code> 中找到它的定义：</p>
+<pre><code class="language-c">#define PTHREAD_CANCELED ((void *) -1)
+</code></pre>
+<p>一般情况下，线程终止后，其终止状态一直保留到其它线程调用 <code>pthread_join</code> 获取它的状态为止。但是线程也可以被置为 detach 状态，这样的线程一旦终止就立刻回收它占用的所有资源，而不保留终止状态。不能对一个已经处于 detach 状态的线程调用 <code>pthread_join</code>，这样的调用将返回 <code>EINVAL</code>。对一个尚未 detach 的线程调用 <code>pthread_join</code> 或 <code>pthread_detach</code> 都可以把该线程置为 detach 状态，也就是说，不能对同一线程调用两次 <code>pthread_join</code>，或者如果已经对一个线程调用了 <code>pthread_detach</code> 就不能再调用 <code>pthread_join</code> 了。</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_detach(pthread_t tid);
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号。</p>
+<h2 id="3-线程间同步"><a class="header" href="#3-线程间同步">3. 线程间同步</a></h2>
+<h3 id="31-mutex"><a class="header" href="#31-mutex">3.1. mutex</a></h3>
+<p>多个线程同时访问共享数据时可能会冲突，这跟前面讲信号时所说的可重入性是同样的问题。比如两个线程都要把某个全局变量增加 1，这个操作在某平台需要三条指令完成：</p>
+<ol>
+<li>从内存读变量值到寄存器</li>
+<li>寄存器的值加 1</li>
+<li>将寄存器的值写回内存</li>
+</ol>
+<p>假设两个线程在多处理器平台上同时执行这三条指令，则可能导致下图所示的结果，最后变量只加了一次而非两次。</p>
+<p id="c35-1">图 35.1. 并行访问冲突</p>
+<p><img src="../images/thread.corrupt.png" alt="并行访问冲突" /></p>
+<p>思考一下，如果这两个线程在单处理器平台上执行，能够避免这样的问题吗？</p>
+<p>我们通过一个简单的程序观察这一现象。上图所描述的现象从理论上是存在这种可能的，但实际运行程序时很难观察到，为了使现象更容易观察到，我们把上述三条指令做的事情用更多条指令来做：</p>
+<pre><code class="language-c">		val = counter;
+		printf(&quot;%x: %d\n&quot;, (unsigned int)pthread_self(), val + 1);
+		counter = val + 1;
+</code></pre>
+<p>我们在「读取变量的值」和「把变量的新值保存回去」这两步操作之间插入一个 <code>printf</code> 调用，它会执行 <code>write</code> 系统调用进内核，为内核调度别的线程执行提供了一个很好的时机。我们在一个循环中重复上述操作几千次，就会观察到访问冲突的现象。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+
+#define NLOOP 5000
+
+int counter;                /* incremented by threads */
+
+void *doit(void *);
+
+int main(int argc, char **argv)
+{
+	pthread_t tidA, tidB;
+
+	pthread_create(&amp;tidA, NULL, &amp;doit, NULL);
+	pthread_create(&amp;tidB, NULL, &amp;doit, NULL);
+
+        /* wait for both threads to terminate */
+	pthread_join(tidA, NULL);
+	pthread_join(tidB, NULL);
+
+	return 0;
+}
+
+void *doit(void *vptr)
+{
+	int    i, val;
+
+	/*
+	 * Each thread fetches, prints, and increments the counter NLOOP times.
+	 * The value of the counter should increase monotonically.
+	 */
+
+	for (i = 0; i &lt; NLOOP; i++) {
+		val = counter;
+		printf(&quot;%x: %d\n&quot;, (unsigned int)pthread_self(), val + 1);
+		counter = val + 1;
+	}
+
+	return NULL;
+}
+</code></pre>
+<p>我们创建两个线程，各自把 <code>counter</code> 增加 5000 次，正常情况下最后 <code>counter</code> 应该等于 10000，但事实上每次运行该程序的结果都不一样，有时候数到 5000 多，有时候数到 6000 多。</p>
+<pre><code class="language-bash">$ ./a.out
+b76acb90: 1
+b76acb90: 2
+b76acb90: 3
+b76acb90: 4
+b76acb90: 5
+b7eadb90: 1
+b7eadb90: 2
+b7eadb90: 3
+b7eadb90: 4
+b7eadb90: 5
+b76acb90: 6
+b76acb90: 7
+b7eadb90: 6
+b76acb90: 8
+...
+</code></pre>
+<p>对于多线程的程序，访问冲突的问题是很普遍的，解决的办法是引入互斥锁（Mutex，Mutual Exclusive Lock），获得锁的线程可以完成「读-修改-写」的操作，然后释放锁给其它线程，没有获得锁的线程只能等待而不能访问共享数据，这样「读-修改-写」三步操作组成一个原子操作，要么都执行，要么都不执行，不会执行到中间被打断，也不会在其它处理器上并行做这个操作。</p>
+<p>Mutex 用 <code>pthread_mutex_t</code> 类型的变量表示，可以这样初始化和销毁：</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_mutex_destroy(pthread_mutex_t *mutex);
+int pthread_mutex_init(pthread_mutex_t *restrict mutex,
+       const pthread_mutexattr_t *restrict attr);
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号。</p>
+<p><code>pthread_mutex_init</code> 函数对 Mutex 做初始化，参数 <code>attr</code> 设定 Mutex 的属性，如果 <code>attr</code> 为 <code>NULL</code> 则表示缺省属性，本章不详细介绍 Mutex 属性，感兴趣的读者可以参考 <em>APUE2e</em>。用 <code>pthread_mutex_init</code> 函数初始化的 Mutex 可以用 <code>pthread_mutex_destroy</code> 销毁。如果 Mutex 变量是静态分配的（全局变量或 <code>static</code> 变量），也可以用宏定义 <code>PTHREAD_MUTEX_INITIALIZER</code> 来初始化，相当于用 <code>pthread_mutex_init</code> 初始化并且 <code>attr</code> 参数为 <code>NULL</code>。Mutex 的加锁和解锁操作可以用下列函数：</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+int pthread_mutex_trylock(pthread_mutex_t *mutex);
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号。</p>
+<p>一个线程可以调用 pthread_mutex_lock 获得 Mutex，如果这时另一个线程已经调用 pthread_mutex_lock 获得了该 Mutex，则当前线程需要挂起等待，直到另一个线程调用 pthread_mutex_unlock 释放 Mutex，当前线程被唤醒，才能获得该 Mutex 并继续执行。</p>
+<p>如果一个线程既想获得锁，又不想挂起等待，可以调用 pthread_mutex_trylock，如果 Mutex 已经被另一个线程获得，这个函数会失败返回 EBUSY，而不会使线程挂起等待。</p>
+<p>现在我们用 Mutex 解决先前的问题：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+
+#define NLOOP 5000
+
+int counter;                /* incremented by threads */
+pthread_mutex_t counter_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+void *doit(void *);
+
+int main(int argc, char **argv)
+{
+	pthread_t tidA, tidB;
+
+	pthread_create(&amp;tidA, NULL, doit, NULL);
+	pthread_create(&amp;tidB, NULL, doit, NULL);
+
+        /* wait for both threads to terminate */
+	pthread_join(tidA, NULL);
+	pthread_join(tidB, NULL);
+
+	return 0;
+}
+
+void *doit(void *vptr)
+{
+	int     i, val;
+
+	/*
+	 * Each thread fetches, prints, and increments the counter NLOOP times.
+	 * The value of the counter should increase monotonically.
+	 */
+
+	for (i = 0; i &lt; NLOOP; i++) {
+		pthread_mutex_lock(&amp;counter_mutex);
+
+		val = counter;
+		printf(&quot;%x: %d\n&quot;, (unsigned int)pthread_self(), val + 1);
+		counter = val + 1;
+
+		pthread_mutex_unlock(&amp;counter_mutex);
+	}
+
+	return NULL;
+}
+</code></pre>
+<p>这样运行结果就正常了，每次运行都能数到 10000。</p>
+<p>看到这里，读者一定会好奇：Mutex 的两个基本操作 lock 和 unlock 是如何实现的呢？假设 Mutex 变量的值为 1 表示互斥锁空闲，这时某个进程调用 lock 可以获得锁，而 Mutex 的值为 0 表示互斥锁已经被某个线程获得，其它线程再调用 lock 只能挂起等待。那么 lock 和 unlock 的伪代码如下：</p>
+<pre><code class="language-c">lock:
+	if(mutex &gt; 0){
+		mutex = 0;
+		return 0;
+	} else
+		挂起等待;
+	goto lock;
+
+unlock:
+	mutex = 1;
+	唤醒等待 Mutex 的线程;
+	return 0;
+</code></pre>
+<p>unlock 操作中唤醒等待线程的步骤可以有不同的实现，可以只唤醒一个等待线程，也可以唤醒所有等待该 Mutex 的线程，然后让被唤醒的这些线程去竞争获得这个 Mutex，竞争失败的线程继续挂起等待。</p>
+<p>细心的读者应该已经看出问题了：对 Mutex 变量的读取、判断和修改不是原子操作。如果两个线程同时调用 lock，这时 Mutex 是 1，两个线程都判断 mutex&gt;0 成立，然后其中一个线程置 mutex=0，而另一个线程并不知道这一情况，也置 mutex=0，于是两个线程都以为自己获得了锁。</p>
+<p>为了实现互斥锁操作，大多数体系结构都提供了 swap 或 exchange 指令，该指令的作用是把寄存器和内存单元的数据相交换，由于只有一条指令，保证了原子性，即使是多处理器平台，访问内存的总线周期也有先后，一个处理器上的交换指令执行时另一个处理器的交换指令只能等待总线周期。现在我们把 lock 和 unlock 的伪代码改一下（以 x86 的 xchg 指令为例）：</p>
+<pre><code class="language-c">lock:
+	movb $0, %al
+	xchgb %al, mutex
+	if(al 寄存器的内容 &gt; 0){
+		return 0;
+	} else
+		挂起等待;
+	goto lock;
+
+unlock:
+	movb $1, mutex
+	唤醒等待 Mutex 的线程;
+	return 0;
+</code></pre>
+<p>unlock 中的释放锁操作同样只用一条指令实现，以保证它的原子性。</p>
+<p>也许还有读者好奇，「挂起等待」和「唤醒等待线程」的操作如何实现？每个 Mutex 有一个等待队列，一个线程要在 Mutex 上挂起等待，首先在把自己加入等待队列中，然后置线程状态为睡眠，然后调用调度器函数切换到别的线程。一个线程要唤醒等待队列中的其它线程，只需从等待队列中取出一项，把它的状态从睡眠改为就绪，加入就绪队列，那么下次调度器函数执行时就有可能切换到被唤醒的线程。</p>
+<p>一般情况下，如果同一个线程先后两次调用 lock，在第二次调用时，由于锁已经被占用，该线程会挂起等待别的线程释放锁，然而锁正是被自己占用着的，该线程又被挂起而没有机会释放锁，因此就永远处于挂起等待状态了，这叫做死锁（Deadlock）。另一种典型的死锁情形是这样：线程 A 获得了锁 1，线程 B 获得了锁 2，这时线程 A 调用 lock 试图获得锁 2，结果是需要挂起等待线程 B 释放锁 2，而这时线程 B 也调用 lock 试图获得锁 1，结果是需要挂起等待线程 A 释放锁 1，于是线程 A 和 B 都永远处于挂起状态了。不难想象，如果涉及到更多的线程和更多的锁，有没有可能死锁的问题将会变得复杂和难以判断。</p>
+<p>写程序时应该尽量避免同时获得多个锁，如果一定有必要这么做，则有一个原则：如果所有线程在需要多个锁时都按相同的先后顺序（常见的是按 Mutex 变量的地址顺序）获得锁，则不会出现死锁。比如一个程序中用到锁1、锁2、锁3，它们所对应的 Mutex 变量的地址是锁1&lt;锁2&lt;锁3，那么所有线程在需要同时获得 2 个或 3 个锁时都应该按锁1、锁2、锁3 的顺序获得。如果要为所有的锁确定一个先后顺序比较困难，则应该尽量使用 pthread_mutex_trylock 调用代替 pthread_mutex_lock 调用，以免死锁。</p>
+<h3 id="32-condition-variable"><a class="header" href="#32-condition-variable">3.2. Condition Variable</a></h3>
+<p>线程间的同步还有这样一种情况：线程 A 需要等某个条件成立才能继续往下执行，现在这个条件不成立，线程 A 就阻塞等待，而线程 B 在执行过程中使这个条件成立了，就唤醒线程 A 继续执行。在 pthread 库中通过条件变量（Condition Variable）来阻塞等待一个条件，或者唤醒等待这个条件的线程。Condition Variable 用 <code>pthread_cond_t</code> 类型的变量表示，可以这样初始化和销毁：</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_cond_destroy(pthread_cond_t *cond);
+int pthread_cond_init(pthread_cond_t *restrict cond,
+       const pthread_condattr_t *restrict attr);
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号。</p>
+<p>和 Mutex 的初始化和销毁类似，<code>pthread_cond_init</code> 函数初始化一个 Condition Variable，<code>attr</code> 参数为 <code>NULL</code> 则表示缺省属性，<code>pthread_cond_destroy</code> 函数销毁一个 Condition Variable。如果 Condition Variable 是静态分配的，也可以用宏定义 <code>PTHEAD_COND_INITIALIZER</code> 初始化，相当于用 <code>pthread_cond_init</code> 函数初始化并且 <code>attr</code> 参数为 <code>NULL</code>。Condition Variable 的操作可以用下列函数：</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+
+int pthread_cond_timedwait(pthread_cond_t *restrict cond,
+       pthread_mutex_t *restrict mutex,
+       const struct timespec *restrict abstime);
+int pthread_cond_wait(pthread_cond_t *restrict cond,
+       pthread_mutex_t *restrict mutex);
+int pthread_cond_broadcast(pthread_cond_t *cond);
+int pthread_cond_signal(pthread_cond_t *cond);
+</code></pre>
+<p>返回值：成功返回 0，失败返回错误号。</p>
+<p>可见，一个 Condition Variable 总是和一个 Mutex 搭配使用的。一个线程可以调用 <code>pthread_cond_wait</code> 在一个 Condition Variable 上阻塞等待，这个函数做以下三步操作：</p>
+<ol>
+<li>释放 Mutex</li>
+<li>阻塞等待</li>
+<li>当被唤醒时，重新获得 Mutex 并返回</li>
+</ol>
+<p><code>pthread_cond_timedwait</code> 函数还有一个额外的参数可以设定等待超时，如果到达了 <code>abstime</code> 所指定的时刻仍然没有别的线程来唤醒当前线程，就返回 <code>ETIMEDOUT</code>。一个线程可以调用 <code>pthread_cond_signal</code> 唤醒在某个 Condition Variable 上等待的另一个线程，也可以调用 <code>pthread_cond_broadcast</code> 唤醒在这个 Condition Variable 上等待的所有线程。</p>
+<p>下面的程序演示了一个生产者-消费者的例子，生产者生产一个结构体串在链表的表头上，消费者从表头取走结构体。</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+
+struct msg {
+	struct msg *next;
+	int num;
+};
+
+struct msg *head;
+pthread_cond_t has_product = PTHREAD_COND_INITIALIZER;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+void *consumer(void *p)
+{
+	struct msg *mp;
+
+	for (;;) {
+		pthread_mutex_lock(&amp;lock);
+		while (head == NULL)
+			pthread_cond_wait(&amp;has_product, &amp;lock);
+		mp = head;
+		head = mp-&gt;next;
+		pthread_mutex_unlock(&amp;lock);
+		printf(&quot;Consume %d\n&quot;, mp-&gt;num);
+		free(mp);
+		sleep(rand() % 5);
+	}
+}
+
+void *producer(void *p)
+{
+	struct msg *mp;
+	for (;;) {
+		mp = malloc(sizeof(struct msg));
+		mp-&gt;num = rand() % 1000 + 1;
+		printf(&quot;Produce %d\n&quot;, mp-&gt;num);
+		pthread_mutex_lock(&amp;lock);
+		mp-&gt;next = head;
+		head = mp;
+		pthread_mutex_unlock(&amp;lock);
+		pthread_cond_signal(&amp;has_product);
+		sleep(rand() % 5);
+	}
+}
+
+int main(int argc, char *argv[]) 
+{
+	pthread_t pid, cid;  
+
+	srand(time(NULL));
+	pthread_create(&amp;pid, NULL, producer, NULL);
+	pthread_create(&amp;cid, NULL, consumer, NULL);
+	pthread_join(pid, NULL);
+	pthread_join(cid, NULL);
+	return 0;
+}
+</code></pre>
+<p>执行结果如下：</p>
+<pre><code class="language-bash">$ ./a.out 
+Produce 744
+Consume 744
+Produce 567
+Produce 881
+Consume 881
+Produce 911
+Consume 911
+Consume 567
+Produce 698
+Consume 698
+</code></pre>
+<h4 id="习题"><a class="header" href="#习题">习题</a></h4>
+<ol>
+<li>在本节的例子中，生产者和消费者访问链表的顺序是 LIFO 的，请修改程序，把访问顺序改成 FIFO。</li>
+</ol>
+<h3 id="33-semaphore"><a class="header" href="#33-semaphore">3.3. Semaphore</a></h3>
+<p>Mutex 变量是非 0 即 1 的，可看作一种资源的可用数量，初始化时 Mutex 是 1，表示有一个可用资源，加锁时获得该资源，将 Mutex 减到 0，表示不再有可用资源，解锁时释放该资源，将 Mutex 重新加到 1，表示又有了一个可用资源。</p>
+<p>信号量（Semaphore）和 Mutex 类似，表示可用资源的数量，和 Mutex 不同的是这个数量可以大于 1。</p>
+<p>本节介绍的是 POSIX semaphore 库函数，详见 sem_overview(7)，这种信号量不仅可用于同一进程的线程间同步，也可用于不同进程间的同步。</p>
+<pre><code class="language-c">#include &lt;semaphore.h&gt;
+
+int sem_init(sem_t *sem, int pshared, unsigned int value);
+int sem_wait(sem_t *sem);
+int sem_trywait(sem_t *sem);
+int sem_post(sem_t * sem);
+int sem_destroy(sem_t * sem);
+</code></pre>
+<p>semaphore 变量的类型为 sem_t，sem_init() 初始化一个 semaphore 变量，value 参数表示可用资源的数量，pshared 参数为 0 表示信号量用于同一进程的线程间同步，本节只介绍这种情况。在用完 semaphore 变量之后应该调用 sem_destroy() 释放与 semaphore 相关的资源。</p>
+<p>调用 sem_wait() 可以获得资源，使 semaphore 的值减 1，如果调用 sem_wait() 时 semaphore 的值已经是 0，则挂起等待。如果不希望挂起等待，可以调用 sem_trywait()。调用 sem_post() 可以释放资源，使 semaphore 的值加 1，同时唤醒挂起等待的线程。</p>
+<p>上一节生产者——消费者的例子是基于链表的，其空间可以动态分配，现在基于固定大小的环形队列重写这个程序：</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;semaphore.h&gt;
+
+#define NUM 5
+int queue[NUM];
+sem_t blank_number, product_number;
+
+void *producer(void *arg) 
+{
+	int p = 0;
+	while (1) {
+		sem_wait(&amp;blank_number);
+		queue[p] = rand() % 1000 + 1;
+		printf(&quot;Produce %d\n&quot;, queue[p]);
+		sem_post(&amp;product_number);
+		p = (p+1)%NUM;
+		sleep(rand()%5);
+	}
+}
+
+void *consumer(void *arg) 
+{
+	int c = 0;
+	while (1) {
+		sem_wait(&amp;product_number);
+		printf(&quot;Consume %d\n&quot;, queue[c]);
+		queue[c] = 0;
+		sem_post(&amp;blank_number);
+		c = (c+1)%NUM;
+		sleep(rand()%5);
+	}
+}
+
+int main(int argc, char *argv[]) 
+{
+	pthread_t pid, cid;  
+
+	sem_init(&amp;blank_number, 0, NUM);
+	sem_init(&amp;product_number, 0, 0);
+	pthread_create(&amp;pid, NULL, producer, NULL);
+	pthread_create(&amp;cid, NULL, consumer, NULL);
+	pthread_join(pid, NULL);
+	pthread_join(cid, NULL);
+	sem_destroy(&amp;blank_number);
+	sem_destroy(&amp;product_number);
+	return 0;
+}
+</code></pre>
+<h4 id="习题-1"><a class="header" href="#习题-1">习题</a></h4>
+<ol>
+<li>本节和上一节的例子给出一个重要的提示：用 Condition Variable 可以实现 Semaphore。请用 Condition Variable 实现 Semaphore，然后用自己实现的 Semaphore 重写本节的程序。</li>
+</ol>
+<h3 id="34-其它线程间同步机制"><a class="header" href="#34-其它线程间同步机制">3.4. 其它线程间同步机制</a></h3>
+<p>如果共享数据是只读的，那么各线程读到的数据应该总是一致的，不会出现访问冲突。只要有一个线程可以改写数据，就必须考虑线程间同步的问题。由此引出了读者写者锁（Reader-Writer   Lock）的概念，Reader 之间并不互斥，可以同时读共享数据，而 Writer 是独占的（exclusive），在 Writer 修改数据时其它 Reader 或 Writer 不能访问数据，可见 Reader-Writer Lock 比 Mutex 具有更好的并发性。</p>
+<p>用挂起等待的方式解决访问冲突不见得是最好的办法，因为这样毕竟会影响系统的并发性，在某些情况下解决访问冲突的问题可以尽量避免挂起某个线程，例如 Linux 内核的 Seqlock、RCU（read-copy-update）等机制。</p>
+<p>关于这些同步机制的细节，有兴趣的读者可以参考 <em>APUE2e</em>。</p>
+<h2 id="4-编程练习"><a class="header" href="#4-编程练习">4. 编程练习</a></h2>
+<p>哲学家就餐问题。这是由计算机科学家 Dijkstra 提出的经典死锁场景。</p>
+<p>原版的故事里有五个哲学家（不过我们写的程序可以有 N 个哲学家），这些哲学家们只做两件事——思考和吃饭，他们思考的时候不需要任何共享资源，但是吃饭的时候就必须使用餐具，而餐桌上的餐具是有限的，原版的故事里，餐具是叉子，吃饭的时候要用两把叉子把面条从碗里捞出来。很显然把叉子换成筷子会更合理，所以：一个哲学家需要两根筷子才能吃饭。</p>
+<p>现在引入问题的关键：这些哲学家很穷，只买得起五根筷子。他们坐成一圈，两个人的中间放一根筷子。哲学家吃饭的时候必须同时得到左手边和右手边的筷子。如果他身边的任何一位正在使用筷子，那他只有等着。</p>
+<p>假设哲学家的编号是 A、B、C、D、E，筷子编号是 1、2、3、4、5，哲学家和筷子围成一圈如下图所示：</p>
+<p id="c35-2">图 35.2. 哲学家问题</p>
+<p><img src="../images/thread.philosopher.png" alt="哲学家问题" /></p>
+<p>每个哲学家都是一个单独的线程，每个线程循环做以下动作：思考 rand()%10 秒，然后先拿左手边的筷子再拿右手边的筷子（筷子这种资源可以用 mutex 表示），有任何一边拿不到就一直等着，全拿到就吃饭 rand()%10 秒，然后放下筷子。</p>
+<p>编写程序仿真哲学家就餐的场景：</p>
+<pre><code class="language-c">Philosopher A fetches chopstick 5
+Philosopher B fetches chopstick 1
+Philosopher B fetches chopstick 2
+Philosopher D fetches chopstick 3
+Philosopher B releases chopsticks 1 2
+Philosopher A fetches chopstick 1
+Philosopher C fetches chopstick 2
+Philosopher A releases chopsticks 5 1
+...
+</code></pre>
+<p>分析一下，这个过程有没有可能产生死锁？调用 usleep(3) 函数可以实现微秒级的延时，试着用 usleep(3) 加快仿真的速度，看能不能观察到死锁现象。然后修改上述算法避免产生死锁。 </p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>正则表达式 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html" class="active"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-32-章-正则表达式"><a class="header" href="#第-32-章-正则表达式">第 32 章 正则表达式</a></h1>
+<h2 id="1-引言"><a class="header" href="#1-引言">1. 引言</a></h2>
+<p>以前我们用 <code>grep</code> 在一个文件中找出包含某些字符串的行，比如在头文件中找出一个宏定义。其实 <code>grep</code> 还可以找出<strong>符合某个模式（Pattern）的一类字符串</strong>。例如找出所有符合 <code>xxxxx@xxxx.xxx</code> 模式的字符串（也就是 email 地址），要求 <code>x</code> 字符可以是字母、数字、下划线、小数点或减号，email 地址的每一部分可以有一个或多个 <code>x</code> 字符，例如 <code>abc.d@ef.com</code>、<code>1_2@987-6.54</code>，当然符合这个模式的不全是合法的 email 地址，但至少可以做一次初步筛选，筛掉 <code>a.b</code>、<code>c@d</code> 等肯定不是 email 地址的字符串。再比如，找出所有符合 <code>yyy.yyy.yyy.yyy</code> 模式的字符串（也就是 IP 地址），要求 y 是 0 - 9 的数字，IP 地址的每一部分可以有 1 - 3 个 y 字符。</p>
+<p>如果要用 <code>grep</code> 查找一个模式，如何表示这个模式，这一类字符串，而不是一个特定的字符串呢？从这两个简单的例子可以看出，要表示一个模式至少应该包含以下信息：</p>
+<ul>
+<li>字符类（Character Class）：如上例的 x 和 y，它们在模式中表示一个字符，但是取值范围是一类字符中的任意一个。</li>
+<li>数量限定符（Quantifier）： 邮件地址的每一部分可以有<strong>一个或多个</strong> x 字符，IP 地址的每一部分可以有 <strong>1 - 3 个</strong> y 字符</li>
+<li>各种字符类以及普通字符之间的位置关系：例如邮件地址分三部分，用普通字符 <code>@</code> 和 <code>.</code> 隔开，IP 地址分四部分，用 <code>.</code> 隔开，每一部分都可以用字符类和数量限定符描述。为了表示位置关系，还有位置限定符（Anchor）的概念，将在下面介绍。</li>
+</ul>
+<p>规定一些特殊语法表示字符类、数量限定符和位置关系，然后用这些特殊语法和普通字符一起表示一个模式，这就是正则表达式（Regular Expression）。例如 email 地址的正则表达式可以写成 <code>[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z0-9_.-]+</code>，IP 地址的正则表达式可以写成 <code>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}</code>。下一节介绍正则表达式的语法，我们先看看正则表达式在 <code>grep</code> 中怎么用。例如有这样一个文本文件 <code>testfile</code>：</p>
+<pre><code class="language-txt">192.168.1.1
+1234.234.04.5678
+123.4234.045.678
+abcde
+</code></pre>
+<p>查找其中包含 IP 地址的行：</p>
+<pre><code class="language-bash">$ egrep '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' testfile
+192.168.1.1
+1234.234.04.5678
+</code></pre>
+<p><code>egrep</code> 相当于 <code>grep -E</code>，表示采用 Extended 正则表达式语法。<code>grep</code> 的正则表达式有 Basic 和 Extended 两种规范，它们之间的区别下一节再解释。另外还有 <code>fgrep</code> 命令，相当于 <code>grep -F</code>，表示只搜索固定字符串而不搜索正则表达式模式，不会按正则表达式的语法解释后面的参数。</p>
+<p>注意正则表达式参数用单引号括起来了，因为正则表达式中用到的很多特殊字符在 Shell 中也有特殊含义（例如 <code>\</code>），只有用单引号括起来才能保证这些字符原封不动地传给 <code>grep</code> 命令，而不会被 Shell 解释掉。</p>
+<p><code>192.168.1.1</code> 符合上述模式，由三个 <code>.</code> 隔开的四段组成，每段都是 1 到 3 个数字，所以这一行被找出来了，可为什么 <code>1234.234.04.5678</code> 也被找出来了呢？因为 <code>grep</code> 找的是<strong>包含</strong>某一模式的行，这一行包含一个符合模式的字符串 <code>234.234.04.567</code>。相反，<code>123.4234.045.678</code> 这一行不包含符合模式的字符串，所以不会被找出来。</p>
+<p><code>grep</code> 是一种查找过滤工具，正则表达式在 <code>grep</code>中用来查找符合模式的字符串。其实正则表达式还有一个重要的应用是验证用户输入是否合法，例如用户通过网页表单提交自己的 email 地址，就需要用程序验证一下是不是合法的 email 地址，这个工作可以在网页的 JavaScript 中做，也可以在网站后台的程序中做，例如 PHP、Perl、Python、Ruby、Java 或 C，所有这些语言都支持正则表达式，可以说，目前不支持正则表达式的编程语言实在很少见。除了编程语言之外，很多 UNIX 命令和工具也都支持正则表达式，例如 grep、vi、sed、awk、emacs 等等。「正则表达式」就像「变量」一样，它是一个广泛的概念，而不是某一种工具或编程语言的特性。</p>
+<h2 id="1-基本语法"><a class="header" href="#1-基本语法">1. 基本语法</a></h2>
+<p>我们知道 C 的变量和 Shell 脚本变量的定义和使用方法很不相同，表达能力也不相同，C 的变量有各种类型，而 Shell 脚本变量都是字符串。同样道理，各种工具和编程语言所使用的正则表达式规范的语法并不相同，表达能力也各不相同，有的正则表达式规范引入很多扩展，能表达更复杂的模式，但各种正则表达式规范的基本概念都是相通的。本节介绍 <code>egrep(1)</code> 所使用的正则表达式，它大致上符合 POSIX 正则表达式规范，详见 <code>regex(7)</code>（看这个 man page 对你的英文绝对是很好的锻炼）。希望读者仿照上一节的例子，一边学习语法，一边用 <code>egrep</code> 命令做实验。</p>
+<p id="t32-1">表 32.1. 字符类</p>
+<table><thead><tr><th>字符</th><th>含义</th><th>举例</th></tr></thead><tbody>
+<tr><td><code>.</code></td><td>匹配任意一个字符</td><td><code>abc.</code> 可以匹配 <code>abcd</code>、<code>abc9</code> 等</td></tr>
+<tr><td><code>[]</code></td><td>匹配括号中的任意一个字符</td><td><code>[abc]d</code> 可以匹配 <code>ad</code>、<code>bd</code> 或 <code>cd</code></td></tr>
+<tr><td><code>-</code></td><td>在 <code>[]</code> 括号内表示字符范围</td><td>`[0-9a-fA-F]``` 可以匹配一位十六进制数字</td></tr>
+<tr><td><code>^</code></td><td>位于 <code>[]</code> 括号内的开头，匹配除括号中的字符之外的任意一个字符</td><td><code>[^xy]</code> 匹配除 <code>xy</code> 之外的任一字符，因此 <code>[^xy]1</code> 可以匹配 <code>a1</code>、<code>b1</code> 但不匹配 <code>x1</code>、<code>y1</code></td></tr>
+<tr><td><code>[[:xxx:]]</code></td><td><code>grep</code> 工具预定义的一些命名字符类</td><td><code>[[:alpha:]]</code> 匹配一个字母，<code>[[:digit:]]</code> 匹配一个数字</td></tr>
+</tbody></table>
+<p id="t32-2">表 32.2. 数量限定符</p>
+<table><thead><tr><th>字符</th><th>含义</th><th>举例</th></tr></thead><tbody>
+<tr><td><code>?</code></td><td>紧跟在它前面的单元应匹配零次或一次</td><td><code>[0-9]?\.[0-9]</code> 匹配 <code>0.0</code>、<code>2.3</code>、<code>.5</code> 等，由于 <code>.</code> 在正则表达式中是一个特殊字符，所以需要用 <code>\</code> 转义一下，取字面值</td></tr>
+<tr><td><code>+</code></td><td>紧跟在它前面的单元应匹配一次或多次</td><td><code>[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z0-9_.-]+</code> 匹配 email 地址</td></tr>
+<tr><td><code>*</code></td><td>紧跟在它前面的单元应匹配零次或多次</td><td><code>[0-9][0-9]*</code> 匹配至少一位数字，等价于 <code>[0-9]+</code>，<code>[a-zA-Z_]+[a-zA-Z_0-9]*</code> 匹配 C 语言的标识符</td></tr>
+<tr><td><code>{N}</code></td><td>紧跟在它前面的单元应精确匹配 <code>N</code> 次</td><td><code>[1-9][0-9]{2}</code> 匹配从 <code>100</code> 到 <code>999</code> 的整数</td></tr>
+<tr><td><code>{N,}</code></td><td>紧跟在它前面的单元应匹配至少 <code>N</code> 次</td><td><code>[1-9][0-9]{2,}</code>匹配三位以上（含三位）的整数</td></tr>
+<tr><td><code>{,M}</code></td><td>紧跟在它前面的单元应匹配最多 <code>M</code> 次</td><td><code>[0-9]{,1}</code> 相当于<code>[0-9]?</code></td></tr>
+<tr><td><code>{N,M}</code></td><td>紧跟在它前面的单元应匹配至少 <code>N</code> 次，最多 <code>M</code> 次</td><td><code>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}</code> 匹配 IP 地址</td></tr>
+</tbody></table>
+<p>再次注意 <code>grep</code> 找的是包含某一模式的行，而不是完全匹配某一模式的行。再举个例子，如果文本文件的内容是</p>
+<pre><code class="language-txt">aaabc
+aad
+efg
+</code></pre>
+<p>查找 <code>a*</code> 这个模式的结果是三行都被找出来了</p>
+<pre><code class="language-bash">$ egrep 'a*' testfile 
+aabc
+aad
+efg
+</code></pre>
+<p><code>a*</code> 匹配 0 个或多个 <code>a</code>，而第三行包含 0 个<code>a</code>，所以也包含了这一模式。单独用 <code>a*</code> 这样的正则表达式做查找没什么意义，一般是把 <code>a*</code> 作为正则表达式的一部分来用。</p>
+<p id="t32-3">表 32.3. 位置限定符</p>
+<table><thead><tr><th>字符</th><th>含义</th><th>举例</th></tr></thead><tbody>
+<tr><td><code>^</code></td><td>匹配行首的位置</td><td><code>^Content</code> 匹配位于一行开头的 <code>Content</code></td></tr>
+<tr><td><code>$</code></td><td>匹配行末的位置</td><td><code>;$</code> 匹配位于一行结尾的 <code>;</code> 号，<code>^$</code> 匹配空行</td></tr>
+<tr><td><code>\&lt;</code></td><td>匹配单词开头的位置</td><td><code>\&lt;th</code> 匹配 <code>... this</code>，但不匹配 <code>ethernet</code>、<code>tenth</code></td></tr>
+<tr><td><code>\&gt;</code></td><td>匹配单词结尾的位置</td><td><code>p\&gt;</code> 匹配 <code>leap ...</code>，但不匹配 <code>parent</code>、<code>sleepy</code></td></tr>
+<tr><td><code>\b</code></td><td>匹配单词开头或结尾的位置</td><td><code>\bat\b</code> 匹配 <code>... at ...</code>，但不匹配 <code>cat</code>、<code>atexit</code>、<code>batch</code></td></tr>
+<tr><td><code>\B</code></td><td>匹配非单词开头和结尾的位置</td><td><code>\Bat\B</code> 匹配 <code>battery</code>，但不匹配 <code>... attend</code>、<code>hat ...</code></td></tr>
+</tbody></table>
+<p>位置限定符可以帮助 <code>grep</code> 更准确地查找，例如上一节我们用 <code>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}</code> 查找 IP 地址，找到这两行</p>
+<pre><code class="language-bash">192.168.1.1
+1234.234.04.5678
+</code></pre>
+<p>如果用 <code>^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$</code> 查找，就可以把 <code>1234.234.04.5678</code> 这一行过滤掉了。</p>
+<p id="t32-4">表 32.4. 其它特殊字符</p>
+<table><thead><tr><th>字符</th><th>含义</th><th>举例</th></tr></thead><tbody>
+<tr><td><code>\</code></td><td>转义字符，普通字符转义为特殊字符，特殊字符转义为普通字符</td><td>普通字符<code>&lt;</code>写成<code>\&lt;</code>表示单词开头的位置，特殊字符<code>.</code>写成<code>\.</code>以及<code>\</code>写成<code>\\</code>就当作普通字符来匹配</td></tr>
+<tr><td><code>()</code></td><td>将正则表达式的一部分括起来组成一个单元，可以对整个单元使用数量限定符</td><td><code>([0-9]{1,3}\.){3}[0-9]{1,3}</code>匹配IP地址</td></tr>
+<tr><td>`</td><td>`</td><td>连接两个子表达式，表示或的关系</td></tr>
+</tbody></table>
+<p>以上介绍的是 <code>grep</code> 正则表达式的 Extended 规范，Basic 规范也有这些语法，只是字符 <code>?+{}|()</code> 应解释为普通字符，要表示上述特殊含义则需要加 <code>\</code> 转义。如果用 <code>grep</code> 而不是 <code>egrep</code>，并且不加 <code>-E</code> 参数，则应该遵照 Basic 规范来写正则表达式。</p>
+<h2 id="3-sed"><a class="header" href="#3-sed">3. sed</a></h2>
+<p><code>sed</code> 意为流编辑器（Stream Editor），在 Shell 脚本和 Makefile 中作为过滤器使用非常普遍，也就是把前一个程序的输出引入 sed 的输入，经过一系列编辑命令转换为另一种格式输出。<code>sed</code> 和 <code>vi</code> 都源于早期 UNIX 的 <code>ed</code> 工具，所以很多 <code>sed</code> 命令和 <code>vi</code> 的末行命令是相同的。</p>
+<p><code>sed</code> 命令行的基本格式为</p>
+<pre><code class="language-bash">sed option 'script' file1 file2 ...
+sed option -f scriptfile file1 file2 ...
+</code></pre>
+<p><code>sed</code> 处理的文件既可以由标准输入重定向得到，也可以当命令行参数传入，命令行参数可以一次传入多个文件，<code>sed</code> 会依次处理。<code>sed</code> 的编辑命令可以直接当命令行参数传入，也可以写成一个脚本文件然后用 <code>-f</code> 参数指定，编辑命令的格式为</p>
+<pre><code class="language-bash">/pattern/action
+</code></pre>
+<p>其中 <code>pattern</code> 是正则表达式，<code>action</code> 是编辑操作。<code>sed</code> 程序一行一行读出待处理文件，如果某一行与 <code>pattern</code> 匹配，则执行相应的 <code>action</code>，如果一条命令没有 <code>pattern</code> 而只有 <code>action</code> ，这个 <code>action</code> 将作用于待处理文件的每一行。</p>
+<p id="t32-5">表 32.5. 常用的 sed 命令</p>
+<table><thead><tr><th><code>/pattern/p</code></th><th>打印匹配 <code>pattern</code> 的行</th></tr></thead><tbody>
+<tr><td><code>/pattern/d</code></td><td>删除匹配 <code>pattern</code> 的行</td></tr>
+<tr><td><code>/pattern/s/pattern1/pattern2/</code></td><td>查找符合 <code>pattern</code> 的行，将该行第一个匹配<code>pattern1</code> 的字符串替换为 <code>pattern2</code></td></tr>
+<tr><td><code>/pattern/s/pattern1/pattern2/g</code></td><td>查找符合 <code>pattern</code> 的行，将该行所有匹配<code>pattern1</code> 的字符串替换为 <code>pattern2</code></td></tr>
+</tbody></table>
+<p>使用 <code>p</code> 命令需要注意，<code>sed</code> 是把待处理文件的内容连同处理结果一起输出到标准输出的，因此 <code>p</code> 命令表示除了把文件内容打印出来之外还额外打印一遍匹配 <code>pattern</code> 的行。比如一个文件 <code>testfile</code> 的内容是</p>
+<pre><code class="language-text">123
+abc
+456
+</code></pre>
+<p>打印其中包含 <code>abc</code> 的行</p>
+<pre><code class="language-bash">$ sed '/abc/p' testfile
+123
+abc
+abc
+456
+</code></pre>
+<p>要想只输出处理结果，应加上 <code>-n</code> 选项，这种用法相当于 <code>grep</code> 命令</p>
+<pre><code class="language-bash">$ sed -n '/abc/p' testfile
+abc
+</code></pre>
+<p>使用 <code>d</code> 命令就不需要 <code>-n</code> 参数了，比如删除含有 <code>abc</code> 的行</p>
+<pre><code class="language-bash">$ sed '/abc/d' testfile
+123
+456
+</code></pre>
+<p>注意，<code>sed</code> 命令不会修改原文件，删除命令只表示某些行不打印输出，而不是从原文件中删去。</p>
+<p>使用查找替换命令时，可以把匹配 <code>pattern1</code> 的字符串复制到 <code>pattern2</code> 中，比如：</p>
+<pre><code class="language-bash">$ sed 's/bc/-&amp;-/' testfile
+123
+a-bc-
+456
+</code></pre>
+<p><code>pattern2</code> 中的 <code>&amp;</code> 表示原文件的当前行中与 <code>pattern1</code> 相匹配的字符串，再比如：</p>
+<pre><code class="language-bash">$ sed 's/\([0-9]\)\([0-9]\)/-\1-~\2~/' testfile
+-1-~2~3
+abc
+-4-~5~6
+</code></pre>
+<p><code>pattern2</code> 中的 <code>\1</code> 表示与 <code>pattern1</code> 的第一个 <code>()</code> 括号相匹配的内容，<code>\2</code> 表示与 <code>pattern1</code> 的第二个 <code>()</code> 括号相匹配的内容。<code>sed</code> 默认使用 Basic 正则表达式规范，如果指定了 <code>-r</code> 选项则使用 Extended 规范，那么 <code>()</code> 括号就不必转义了。</p>
+<p>如果 <code>testfile</code> 的内容是</p>
+<pre><code class="language-html">&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;
+&lt;body&gt;Welcome to the world of regexp!&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+<p>现在要去掉所有的 HTML 标签，使输出结果为</p>
+<pre><code class="language-text">Hello World
+Welcome to the world of regexp!
+</code></pre>
+<p>怎么做呢？如果用下面的命令</p>
+<pre><code class="language-bash">$ sed 's/&lt;.*&gt;//g' testfile
+</code></pre>
+<p>结果是两个空行，把所有字符都过滤掉了。这是因为，正则表达式中的数量限定符会匹配尽可能长的字符串，这称为贪心的（Greedy）<sup>[39]</sup>。比如 <code>sed</code> 在处理第一行时，<code>&lt;.*&gt;</code> 匹配的并不是 <code>&lt;html&gt;</code> 或 <code>&lt;head&gt;</code> 这样的标签，而是</p>
+<pre><code class="language-html">&lt;html&gt;&lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;
+</code></pre>
+<p>这样一整行，因为这一行开头是 <code>&lt;</code>，中间是若干个任意字符，末尾是 <code>&gt;</code>。那么这条命令怎么改才对呢？留给读者思考。</p>
+<blockquote>
+<p><sup>[39]</sup> 有些正则表达式规范支持 Non-greedy 的数量限定符，匹配尽可能短的字符串，例如在 Python 中 <code>*?</code> 和 <code>*</code> 一样表示 0 个或任意多个，但前者是 Non-greedy 的。</p>
+</blockquote>
+<h2 id="4-awk"><a class="header" href="#4-awk">4. awk</a></h2>
+<p><code>sed</code> 以行为单位处理文件，<code>awk</code> 比 <code>sed</code> 强的地方在于不仅能以行为单位还能以列为单位处理文件。<code>awk</code> 缺省的行分隔符是换行，缺省的列分隔符是连续的空格和 Tab，但是行分隔符和列分隔符都可以自定义，比如 <code>/etc/passwd</code> 文件的每一行有若干个字段，字段之间以 <code>:</code> 分隔，就可以重新定义 <code>awk</code> 的列分隔符为 <code>:</code> 并以列为单位处理这个文件。<code>awk</code> 实际上是一门很复杂的脚本语言，还有像 C 语言一样的分支和循环结构，但是基本用法和 <code>sed</code> 类似，<code>awk</code> 命令行的基本形式为：</p>
+<pre><code class="language-bash">awk option 'script' file1 file2 ...
+awk option -f scriptfile file1 file2 ...
+</code></pre>
+<p>和 <code>sed</code> 一样，<code>awk</code> 处理的文件既可以由标准输入重定向得到，也可以当命令行参数传入，编辑命令可以直接当命令行参数传入，也可以用 <code>-f</code> 参数指定一个脚本文件，编辑命令的格式为：</p>
+<pre><code class="language-bash">/pattern/{actions}
+condition{actions}
+</code></pre>
+<p>和 <code>sed</code> 类似，<code>pattern</code> 是正则表达式，<code>actions</code> 是一系列操作。<code>awk</code> 程序一行一行读出待处理文件，如果某一行与 <code>pattern</code> 匹配，或者满足 <code>condition</code> 条件，则执行相应的 <code>actions</code>，如果一条 <code>awk</code> 命令只有 <code>actions</code> 部分，则 <code>actions</code> 作用于待处理文件的每一行。比如文件 <code>testfile</code> 的内容表示某商店的库存量：</p>
+<pre><code class="language-text">ProductA  30
+ProductB  76
+ProductC  55
+</code></pre>
+<p>打印每一行的第二列:</p>
+<pre><code class="language-bash">$ awk '{print $2;}' testfile
+30
+76
+55
+</code></pre>
+<p>自动变量 <code>$1</code>、<code>$2</code> 分别表示第一列、第二列等，类似于 Shell 脚本的位置参数，而 <code>$0</code> 表示整个当前行。再比如，如果某种产品的库存量低于 75 则在行末标注需要订货：</p>
+<pre><code class="language-bash">$ awk '$2&lt;75 {printf &quot;%s\t%s\n&quot;, $0, &quot;REORDER&quot;;} $2&gt;=75 {print $0;}' testfile
+ProductA  30    REORDER
+ProductB  76
+ProductC  55    REORDER
+</code></pre>
+<p>可见 <code>awk</code> 也有和 C 语言非常相似的 <code>printf</code> 函数。<code>awk</code> 命令的 <code>condition</code> 部分还可以是两个特殊的 <code>condition</code> —— <code>BEGIN</code> 和 <code>END</code>，对于每个待处理文件，<code>BEGIN</code> 后面的 <code>actions</code> 在处理整个文件之前执行一次，<code>END</code> 后面的 <code>actions</code> 在整个文件处理完之后执行一次。</p>
+<p><code>awk</code> 命令可以像 C 语言一样使用变量（但不需要定义变量），比如统计一个文件中的空行数</p>
+<pre><code class="language-bash">$ awk '/^ *$/ {x=x+1;} END {print x;}' testfile
+</code></pre>
+<p>就像 Shell 的环境变量一样，有些 <code>awk</code> 变量是预定义的有特殊含义的：</p>
+<p id="t32-6">表 32.6. awk 常用的内建变量</p>
+<table><thead><tr><th>FILENAME</th><th>当前输入文件的文件名，该变量是只读的</th></tr></thead><tbody>
+<tr><td>NR</td><td>当前行的行号，该变量是只读的，<code>R</code> 代表 record</td></tr>
+<tr><td>NF</td><td>当前行所拥有的列数，该变量是只读的，<code>F</code> 代表 field</td></tr>
+<tr><td>OFS</td><td>输出格式的列分隔符，缺省是空格</td></tr>
+<tr><td>FS</td><td>输入文件的列分融符，缺省是连续的空格和 Tab</td></tr>
+<tr><td>ORS</td><td>输出格式的行分隔符，缺省是换行符</td></tr>
+<tr><td>RS</td><td>输入文件的行分隔符，缺省是换行符</td></tr>
+</tbody></table>
+<p>例如打印系统中的用户帐号列表</p>
+<pre><code class="language-bash">$ awk 'BEGIN {FS=&quot;:&quot;} {print $1;}' /etc/passwd
+</code></pre>
+<p><code>awk</code> 还可以像 C 语言一样使用 <code>if</code>/<code>else</code>、<code>while</code>、<code>for</code> 控制结构，此处从略。</p>
+<h2 id="5-练习在-c-语言中使用正则表达式"><a class="header" href="#5-练习在-c-语言中使用正则表达式">5. 练习：在 C 语言中使用正则表达式</a></h2>
+<p>POSIX 规定了正则表达式的 C 语言库函数，详见 <code>regex(3)</code>。我们已经学习了很多 C 语言库函数的用法，读者应该具备自己看懂 man 手册的能力了。本章介绍了正则表达式在 <code>grep</code>、<code>sed</code>、<code>awk</code> 中的用法，学习要能够举一反三，请读者根据 <code>regex(3)</code> 自己总结正则表达式在 C 语言中的用法，写一些简单的程序，例如验证用户输入的 IP 地址或 email 地址格式是否正确。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../3-Linux-系统编程/ch31-Shell-脚本.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../3-Linux-系统编程/ch33-信号.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../3-Linux-系统编程/ch31-Shell-脚本.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../3-Linux-系统编程/ch33-信号.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

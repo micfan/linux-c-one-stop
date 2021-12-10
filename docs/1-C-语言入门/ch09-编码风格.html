@@ -1,0 +1,605 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>编码风格 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html" class="active"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-9-章-编码风格"><a class="header" href="#第-9-章-编码风格">第 9 章 编码风格</a></h1>
+<p>代码风格好不好就像字写得好不好看一样，如果一个公司招聘秘书，肯定不要字写得难看的，同理，代码风格糟糕的程序员肯定也是不称职的。虽然编译器不会挑剔难看的代码，照样能编译通过，但是和你一个 Team 的其他程序员肯定受不了，你自己也受不了，写完代码几天之后再来看，自己都不知道自己写的是什么。<em>SICP</em> 里有句话说得好：<em>Thus, programs must be written for people to read, and only incidentally for machines to execute.</em> 代码主要是为了写给人看的，而不是写给机器看的，只是顺便也能用机器执行而已，如果是为了写给机器看那直接写机器指令就好了，没必要用高级语言了。代码和语言文字一样是为了表达思想、记载信息，所以一定要写得清楚整洁才能有效地表达。正因为如此，在一个软件项目中，代码风格一般都用文档规定死了，所有参与项目的人不管他自己原来是什么风格，都要遵守统一的风格，例如 Linux 内核的 <em>CodingStyle</em> 就是这样一个文档。本章我们以内核的代码风格为基础来讲解好的编码风格都有哪些规定，这些规定的 Rationale 是什么。我只是以 Linux 内核为例来讲解编码风格的概念，并没有说内核编码风格就一定是最好的编码风格，但 Linux 内核项目如此成功，就足以说明它的编码风格是最好的 C 语言编码风格之一了。</p>
+<h2 id="1-缩进和空白"><a class="header" href="#1-缩进和空白">1. 缩进和空白</a></h2>
+<p>我们知道 C 语言的语法对缩进和空白没有要求，空格、<code>Tab</code>、换行都可以随意写，实现同样功能的代码可以写得很好看，也可以写得很难看。例如上一章<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch08-%E6%95%B0%E7%BB%84#e8-5">第 8 章「数组」第 5 节「多维数组」例 8.5「剪刀石头布」</a>的代码如果写成这样就很难看了：</p>
+<p id="e9-1">例 9.1. 缺少缩进和空白的代码</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+int main(void)
+{
+char gesture[3][10]={&quot;scissor&quot;,&quot;stone&quot;,&quot;cloth&quot;};
+int man,computer,result, ret;
+srand(time(NULL));
+while(1){
+computer=rand()%3;
+printf(&quot;\nInput your gesture (0-scissor 1-stone 2-cloth):\n&quot;);
+ret=scanf(&quot;%d&quot;,&amp;man);
+if(ret!=1||man&lt;0||man&gt;2){
+printf(&quot;Invalid input! Please input 0, 1 or 2.\n&quot;);
+continue;
+}
+printf(&quot;Your gesture: %s\tComputer's gesture: %s\n&quot;,gesture[man],gesture[computer]);
+result=(man-computer+4)%3-1;
+if(result&gt;0)printf(&quot;You win!\n&quot;);
+else if(result==0)printf(&quot;Draw!\n&quot;);
+else printf(&quot;You lose!\n&quot;);
+}
+return 0;
+}
+</code></pre>
+<p>一是缺少空白字符，代码密度太大，看着很费劲。二是没有缩进，看不出来哪个 <code>{</code> 和哪个 <code>}</code> 配对，像这么短的代码还能凑合着看，如果代码超过一屏就完全没法看了。<em>CodingStyle</em> 中关于空白字符并没有特别规定，因为基本上所有的 C 代码风格对于空白字符的规定都差不多，主要有以下几条。</p>
+<ol>
+<li>
+<p>关键字 <code>if</code>、<code>while</code>、<code>for</code> 与其后的控制表达式的(括号之间插入一个空格分隔，但括号内的表达式应紧贴括号。例如：</p>
+<pre><code class="language-c">while␣(1);
+</code></pre>
+</li>
+<li>
+<p>双目运算符的两侧各插入一个空格分隔，单目运算符和操作数之间不加空格，例如 <code>i␣=␣i␣+␣1</code>、<code>++i</code>、<code>!(i␣&lt;␣1)</code>、<code>-x</code>、<code>&amp;a[1]</code> 等。</p>
+</li>
+<li>
+<p>后缀运算符和操作数之间也不加空格，例如取结构体成员 <code>s.a</code>、函数调用 <code>foo(arg1)</code>、取数组成员 <code>a[i]</code>。</p>
+</li>
+<li>
+<p><code>,</code> 号和 <code>;</code> 号之后要加空格，这是英文的书写习惯，例如 <code>for␣(i␣=␣1;␣i␣&lt;␣10;␣i++)</code>、<code>foo(arg1,␣arg2)</code>。</p>
+</li>
+<li>
+<p>以上关于双目运算符和后缀运算符的规则并没有严格要求，有时候为了突出优先级也可以写得更紧凑一些，例如 <code>for␣(i=1;␣i&lt;10;␣i++)</code>、<code>distance␣=␣sqrt(x*x␣+␣y*y)</code> 等。但是省略的空格一定不要误导了读代码的人，例如 <code>a||b␣&amp;&amp;␣c</code> 很容易让人理解成错误的优先级。</p>
+</li>
+<li>
+<p>由于 UNIX 系统标准的字符终端是 24 行 80 列的，接近或大于 80 个字符的较长语句要折行写，折行后用空格和上面的表达式或参数对齐，例如：</p>
+<pre><code class="language-c">if␣(sqrt(x*x␣+␣y*y)␣&gt;␣5.0
+    &amp;&amp;␣x␣&lt;␣0.0
+    &amp;&amp;␣y␣&gt;␣0.0)
+</code></pre>
+<p>再比如：</p>
+<pre><code class="language-c">foo(sqrt(x*x␣+␣y*y),
+    a[i-1]␣+␣b[i-1]␣+␣c[i-1])
+</code></pre>
+</li>
+<li>
+<p>较长的字符串可以断成多个字符串然后分行书写，例如：</p>
+<pre><code class="language-c">printf(&quot;This is such a long sentence that &quot;
+       &quot;it cannot be held within a line\n&quot;);
+</code></pre>
+<p>C 编译器会自动把相邻的多个字符串接在一起，以上两个字符串相当于一个字符串 <code>&quot;This is such a long sentence that it cannot be held within a line\n&quot;</code>。</p>
+</li>
+<li>
+<p>有的人喜欢在变量定义语句中用 <code>Tab</code> 字符，使变量名对齐，这样看起来很美观。</p>
+<pre><code class="language-c">       →int    →a, b;
+       →double →c;
+</code></pre>
+</li>
+</ol>
+<p>内核代码风格关于缩进的规则有以下几条。</p>
+<ol>
+<li>
+<p>要用缩进体现出语句块的层次关系，使用 <code>Tab</code> 字符缩进，不能用空格代替 <code>Tab</code>。在标准的字符终端上一个 <code>Tab</code> 看起来是 8 个空格的宽度，如果你的文本编辑器可以设置 <code>Tab</code> 的显示宽度是几个空格，建议也设成 8，这样大的缩进使代码看起来非常清晰。如果有的行用空格做缩进，有的行用 <code>Tab</code> 做缩进，甚至空格和 <code>Tab</code> 混用，那么一旦改变了文本编辑器的 <code>Tab</code> 显示宽度就会看起来非常混乱，所以内核代码风格规定只能用 <code>Tab</code> 做缩进，不能用空格代替 <code>Tab</code>。</p>
+</li>
+<li>
+<p><code>if/else</code>、<code>while</code>、<code>do/while</code>、<code>for</code>、<code>switch</code> 这些可以带语句块的语句，语句块的 <code>{</code> 或 <code>}</code> 应该和关键字写在同一行，用空格隔开，而不是单独占一行。例如应该这样写：</p>
+<pre><code class="language-c">if␣(...)␣{
+       →语句列表
+}␣else␣if␣(...)␣{
+       →语句列表
+}
+</code></pre>
+<p>但很多人习惯这样写：</p>
+<pre><code class="language-c">if␣(...)
+{
+       →语句列表
+}
+else␣if␣(...)
+{
+       →语句列表
+}
+</code></pre>
+<p>内核的写法和 <em>K&amp;R</em> 一致，好处是不必占太多行，使得一屏能显示更多代码。这两种写法用得都很广泛，只要在同一个项目中能保持统一就可以了。</p>
+</li>
+<li>
+<p>函数定义的 <code>{</code> 和 <code>}</code> 单独占一行，这一点和语句块的规定不同，例如：</p>
+<pre><code class="language-c">int␣foo(int␣a,␣int␣b)
+{
+       →语句列表
+}
+</code></pre>
+</li>
+<li>
+<p><code>switch</code> 和语句块里的 <code>case</code>、<code>default</code> 对齐写，也就是说语句块里的 <code>case</code>、<code>default</code> 标号相对于 <code>switch</code> 不往里缩进，但标号下的语句要往里缩进。例如：</p>
+<pre><code class="language-c">      →switch␣(c)␣{
+      →case 'A':
+      →       →语句列表
+      →case 'B':
+      →       →语句列表
+      →default:
+      →       →语句列表
+      →}
+</code></pre>
+<p>用于 <code>goto</code> 语句的自定义标号应该顶头写不缩进，而不管标号下的语句缩进到第几层。</p>
+</li>
+<li>
+<p>代码中每个逻辑段落之间应该用一个空行分隔开。例如每个函数定义之间应该插入一个空行，头文件、全局变量定义和函数定义之间也应该插入空行，例如：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int g;
+double h;
+
+int foo(void)
+{
+       →语句列表
+}
+
+int bar(int a)
+{
+       →语句列表
+}
+
+int main(void)
+{
+       →语句列表
+}
+</code></pre>
+</li>
+<li>
+<p>一个函数的语句列表如果很长，也可以根据相关性分成若干组，用空行分隔。这条规定不是严格要求，通常把变量定义组成一组，后面加空行，<code>return</code> 语句之前加空行，例如：</p>
+<pre><code class="language-c">int main(void)
+{
+       →int    →a, b;
+       →double →c;
+
+       →语句组1
+
+       →语句组2
+
+       →return 0;
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="2-注释"><a class="header" href="#2-注释">2. 注释</a></h2>
+<p>单行注释应采用 <code>/*␣comment␣*/</code> 的形式，用空格把界定符和文字分开。多行注释最常见的是这种形式：</p>
+<pre><code class="language-c">/*
+␣*␣Multi-line
+␣*␣comment
+␣*/
+</code></pre>
+<p>也有更花哨的形式：</p>
+<pre><code class="language-c">/*************\
+* Multi-line  *
+* comment     *
+\*************/
+</code></pre>
+<p>使用注释的场合主要有以下几种。</p>
+<ol>
+<li>
+<p>整个源文件的顶部注释。说明此模块的相关信息，例如文件名、作者和版本历史等，顶头写不缩进。例如内核源代码目录下的 <code>kernel/sched.c</code> 文件的开头：</p>
+<pre><code>/*
+ *  kernel/sched.c
+ *
+ *  Kernel scheduler and related syscalls
+ *
+ *  Copyright (C) 1991-2002  Linus Torvalds
+ *
+ *  1996-12-23  Modified by Dave Grothe to fix bugs in semaphores and
+ *              make semaphores SMP safe
+ *  1998-11-19  Implemented schedule_timeout() and related stuff
+ *              by Andrea Arcangeli
+ *  2002-01-04  New ultra-scalable O(1) scheduler by Ingo Molnar:
+ *              hybrid priority-list and round-robin design with
+ *              an array-switch method of distributing timeslices
+ *              and per-CPU runqueues.  Cleanups and useful suggestions
+ *              by Davide Libenzi, preemptible kernel bits by Robert Love.
+ *  2003-09-03  Interactivity tuning by Con Kolivas.
+ *  2004-04-02  Scheduler domains code by Nick Piggin
+ */
+</code></pre>
+</li>
+<li>
+<p>函数注释。说明此函数的功能、参数、返回值、错误码等，写在函数定义上侧，和此函数定义之间不留空行，顶头写不缩进。</p>
+</li>
+<li>
+<p>相对独立的语句组注释。对这一组语句做特别说明，写在语句组上侧，和此语句组之间不留空行，与当前语句组的缩进一致。</p>
+</li>
+<li>
+<p>代码行右侧的简短注释。对当前代码行做特别说明，一般为单行注释，和代码之间至少用一个空格隔开，一个源文件中所有的右侧注释最好能上下对齐。尽管<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch02-%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F#e2-1">第 2 章「常量、变量和表达式」第 1 节「继续 Hello World」例 2.1「带更多注释的Hello World」</a>讲过注释可以穿插在一行代码中间，但不建议这么写。内核源代码目录下的 <code>lib/radix-tree.c</code> 文件中的一个函数包含了上述三种注释：</p>
+<pre><code class="language-c">/**
+ *      radix_tree_insert    -    insert into a radix tree
+ *      @root:          radix tree root
+ *      @index:         index key
+ *      @item:          item to insert
+ *
+ *      Insert an item into the radix tree at position @index.
+ */
+int radix_tree_insert(struct radix_tree_root *root,
+                        unsigned long index, void *item)
+{
+        struct radix_tree_node *node = NULL, *slot;
+        unsigned int height, shift;
+        int offset;
+        int error;
+
+        /* Make sure the tree is high enough.  */
+        if ((!index &amp;&amp; !root-&gt;rnode) ||
+                        index &gt; radix_tree_maxindex(root-&gt;height)) {
+                error = radix_tree_extend(root, index);
+                if (error)
+                        return error;
+        }
+
+        slot = root-&gt;rnode;
+        height = root-&gt;height;
+        shift = (height-1) * RADIX_TREE_MAP_SHIFT;
+
+        offset = 0;                     /* uninitialised var warning */
+        do {
+                if (slot == NULL) {
+                        /* Have to add a child node.  */
+                        if (!(slot = radix_tree_node_alloc(root)))
+                                return -ENOMEM;
+                        if (node) {
+                                node-&gt;slots[offset] = slot;
+                                node-&gt;count++;
+                        } else
+                                root-&gt;rnode = slot;
+                }
+
+                /* Go a level down */
+                offset = (index &gt;&gt; shift) &amp; RADIX_TREE_MAP_MASK;
+                node = slot;
+                slot = node-&gt;slots[offset];
+                shift -= RADIX_TREE_MAP_SHIFT;
+                height--;
+        } while (height &gt; 0);
+
+        if (slot != NULL)
+                return -EEXIST;
+
+        BUG_ON(!node);
+        node-&gt;count++;
+        node-&gt;slots[offset] = item;
+        BUG_ON(tag_get(node, 0, offset));
+        BUG_ON(tag_get(node, 1, offset));
+
+        return 0;
+}
+</code></pre>
+<p><em>CodingStyle</em> 中特别指出，函数内的注释要尽可能少用。写注释主要是为了说明你的代码「能做什么」（比如函数接口定义），而不是为了说明「怎样做」，只要代码写得足够清晰，「怎样做」是一目了然的，如果你需要用注释才能解释清楚，那就表示你的代码可读性很差，除非是特别需要提醒注意的地方才使用函数内注释。</p>
+</li>
+<li>
+<p>复杂的结构体定义比函数更需要注释。例如内核源代码目录下的 <code>kernel/sched.c</code> 文件中定义了这样一个结构体：</p>
+<pre><code class="language-c">/*
+ * This is the main, per-CPU runqueue data structure.
+ *
+ * Locking rule: those places that want to lock multiple runqueues
+ * (such as the load balancing or the thread migration code), lock
+ * acquire operations must be ordered by ascending &amp;runqueue.
+ */
+struct runqueue {
+        spinlock_t lock;
+
+        /*
+         * nr_running and cpu_load should be in the same cacheline because
+         * remote CPUs use both these fields when doing load calculation.
+         */
+        unsigned long nr_running;
+#ifdef CONFIG_SMP
+        unsigned long cpu_load[3];
+#endif
+        unsigned long long nr_switches;
+
+        /*
+         * This is part of a global counter where only the total sum
+         * over all CPUs matters. A task can increase this counter on
+         * one CPU and if it got migrated afterwards it may decrease
+         * it on another CPU. Always updated under the runqueue lock:
+         */
+        unsigned long nr_uninterruptible;
+
+        unsigned long expired_timestamp;
+        unsigned long long timestamp_last_tick;
+        task_t *curr, *idle;
+        struct mm_struct *prev_mm;
+        prio_array_t *active, *expired, arrays[2];
+        int best_expired_prio;
+        atomic_t nr_iowait;
+
+#ifdef CONFIG_SMP
+        struct sched_domain *sd;
+
+        /* For active balancing */
+        int active_balance;
+        int push_cpu;
+
+        task_t *migration_thread;
+        struct list_head migration_queue;
+        int cpu;
+#endif
+
+#ifdef CONFIG_SCHEDSTATS
+        /* latency stats */
+        struct sched_info rq_sched_info;
+
+        /* sys_sched_yield() stats */
+        unsigned long yld_exp_empty;
+        unsigned long yld_act_empty;
+        unsigned long yld_both_empty;
+        unsigned long yld_cnt;
+
+        /* schedule() stats */
+        unsigned long sched_switch;
+        unsigned long sched_cnt;
+        unsigned long sched_goidle;
+
+        /* try_to_wake_up() stats */
+        unsigned long ttwu_cnt;
+        unsigned long ttwu_local;
+#endif
+};
+</code></pre>
+</li>
+<li>
+<p>复杂的宏定义和变量声明也需要注释。例如内核源代码目录下的 <code>include/linux/jiffies.h</code> 文件中的定义：</p>
+<pre><code class="language-c">/* TICK_USEC_TO_NSEC is the time between ticks in nsec assuming real ACTHZ and  */
+/* a value TUSEC for TICK_USEC (can be set bij adjtimex)                */
+#define TICK_USEC_TO_NSEC(TUSEC) (SH_DIV (TUSEC * USER_HZ * 1000, ACTHZ, 8))
+
+/* some arch's have a small-data section that can be accessed register-relative
+ * but that can only take up to, say, 4-byte variables. jiffies being part of
+ * an 8-byte variable may not be correctly accessed unless we force the issue
+ */
+#define __jiffy_data  __attribute__((section(&quot;.data&quot;)))
+
+/*
+ * The 64-bit value is not volatile - you MUST NOT read it
+ * without sampling the sequence number in xtime_lock.
+ * get_jiffies_64() will do this for you as appropriate.
+ */
+extern u64 __jiffy_data jiffies_64;
+extern unsigned long volatile __jiffy_data jiffies;
+</code></pre>
+</li>
+</ol>
+<h2 id="3-标识符命名"><a class="header" href="#3-标识符命名">3. 标识符命名</a></h2>
+<p>标识符命名应遵循以下原则：</p>
+<ol>
+<li>
+<p>标识符命名要清晰明了，可以使用完整的单词和易于理解的缩写。短的单词可以通过去元音形成缩写，较长的单词可以取单词的头几个字母形成缩写。看别人的代码看多了就可以总结出一些缩写惯例，例如 <code>count</code> 写成 <code>cnt</code>，<code>block</code> 写成 <code>blk</code>，<code>length</code> 写成 <code>len</code>，<code>window</code> 写成 <code>win</code>，<code>message</code> 写成 <code>msg</code>，<code>number</code> 写成 <code>nr</code>，<code>temporary</code> 可以写成 <code>temp</code>，也可以进一步写成 <code>tmp</code>，最有意思的是 <code>internationalization</code> 写成 <code>i18n</code>，词根 <code>trans</code> 经常缩写成 <code>x</code>，例如 <code>transmit</code> 写成 <code>xmt</code>。我就不多举例了，请读者在看代码时自己注意总结和积累。</p>
+</li>
+<li>
+<p>内核编码风格规定变量、函数和类型采用全小写加下划线的方式命名，常量（比如宏定义和枚举常量）采用全大写加下划线的方式命名，比如上一节举例的函数名 <code>radix_tree_insert</code>、类型名 <code>struct radix_tree_root</code>、常量名 <code>RADIX_TREE_MAP_SHIFT</code> 等。</p>
+<p>微软发明了一种变量命名法叫匈牙利命名法（Hungarian notation），在变量名中用前缀表示类型，例如 <code>iCnt</code>（i 表示 int）、<code>pMsg</code>（p 表示 pointer）、<code>lpszText</code>（lpsz 表示 long pointer to a zero-ended string）等。Linus 在 <em>CodingStyle</em> 中毫不客气地讽刺了这种写法：<em>Encoding  the type of a function into the name (so-called Hungarian notation) is  brain damaged - the compiler knows the types anyway and can check those,  and it only confuses the programmer.  No wonder MicroSoft makes buggy  programs.</em> 代码风格本来就是一个很有争议的问题，如果你接受本章介绍的内核编码风格（也是本书所有范例代码的风格），就不要使用大小写混合的变量命名方式<sup>[19]</sup>，更不要使用匈牙利命名法。</p>
+<blockquote>
+<p><sup>[19]</sup> 大小写混合的命名方式是 Modern C++ 风格所提倡的，在 C++ 代码中很普遍，称为 CamelCase，大概是因为有高有低像驼峰一样。</p>
+</blockquote>
+</li>
+<li>
+<p>全局变量和全局函数的命名一定要详细，不惜多用几个单词多写几个下划线，例如函数名<code>radix_tree_insert</code>，因为它们在整个项目的许多源文件中都会用到，必须让使用者明确这个变量或函数是干什么用的。局部变量和只在一个源文件中调用的内部函数的命名可以简略一些，但不能太短。尽量不要使用单个字母做变量名，只有一个例外：用 <code>i</code>、<code>j</code>、<code>k</code> 做循环变量是可以的。</p>
+</li>
+<li>
+<p>针对中国程序员的一条特别规定：禁止用汉语拼音做标识符，可读性极差。</p>
+</li>
+</ol>
+<h2 id="4-函数"><a class="header" href="#4-函数">4. 函数</a></h2>
+<p>每个函数都应该设计得尽可能简单，简单的函数才容易维护。应遵循以下原则：</p>
+<ol>
+<li>实现一个函数只是为了做好一件事情，不要把函数设计成用途广泛、面面俱到的，这样的函数肯定会超长，而且往往不可重用，维护困难。</li>
+<li>函数内部的缩进层次不宜过多，一般以少于 4 层为宜。如果缩进层次太多就说明设计得太复杂了，应考虑分割成更小的函数（Helper Function）来调用。</li>
+<li>函数不要写得太长，建议在 24 行的标准终端上不超过两屏，太长会造成阅读困难，如果一个函数超过两屏就应该考虑分割函数了。<em>CodingStyle</em> 中特别说明，如果一个函数在概念上是简单的，只是长度很长，这倒没关系。例如函数由一个大的 <code>switch</code> 组成，其中有非常多的 <code>case</code>，这是可以的，因为各 <code>case</code> 分支互不影响，整个函数的复杂度只等于其中一个 <code>case</code> 的复杂度，这种情况很常见，例如 TCP 协议的状态机实现。</li>
+<li>执行函数就是执行一个动作，函数名通常应包含动词，例如 <code>get_current</code>、<code>radix_tree_insert</code>。</li>
+<li>比较重要的函数定义上侧必须加注释，说明此函数的功能、参数、返回值、错误码等。</li>
+<li>另一种度量函数复杂度的办法是看有多少个局部变量，5 到 10 个局部变量已经很多了，再多就很难维护了，应该考虑分割成多个函数。</li>
+</ol>
+<h2 id="5-indent-工具"><a class="header" href="#5-indent-工具">5. indent 工具</a></h2>
+<p>indent 工具可以把代码格式化成某种风格，例如把<a href="#e9-1">本章第 1 节例 9.1「缺少缩进和空白的代码」</a>格式化成内核编码风格：</p>
+<pre><code class="language-bash">$ indent -kr -i8 main.c 
+$ cat main.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+int main(void)
+{
+	char gesture[3][10] = { &quot;scissor&quot;, &quot;stone&quot;, &quot;cloth&quot; };
+	int man, computer, result, ret;
+	srand(time(NULL));
+	while (1) {
+		computer = rand() % 3;
+		printf
+		    (&quot;\nInput your gesture (0-scissor 1-stone 2-cloth):\n&quot;);
+		ret = scanf(&quot;%d&quot;, &amp;man);
+		if (ret != 1 || man &lt; 0 || man &gt; 2) {
+			printf(&quot;Invalid input! Please input 0, 1 or 2.\n&quot;);
+			continue;
+		}
+		printf(&quot;Your gesture: %s\tComputer's gesture: %s\n&quot;,
+		       gesture[man], gesture[computer]);
+		result = (man - computer + 4) % 3 - 1;
+		if (result &gt; 0)
+			printf(&quot;You win!\n&quot;);
+		else if (result == 0)
+			printf(&quot;Draw!\n&quot;);
+		else
+			printf(&quot;You lose!\n&quot;);
+	}
+	return 0;
+}
+</code></pre>
+<p><code>-kr</code> 选项表示 K&amp;R 风格，<code>-i8</code> 表示缩进 8 个空格的长度。如果没有指定 <code>-nut</code> 选项，则每 8 个缩进空格会自动用一个 <code>Tab</code> 代替。注意 indent 命令会直接修改原文件，而不是打印到屏幕上或者输出到另一个文件，这一点和很多 UNIX 命令不同。可以看出，<code>-kr -i8</code> 两个选项格式化出来的代码已经很符合本章介绍的代码风格了，添加了必要的缩进和空白，较长的代码行也会自动折行。美中不足的是没有添加适当的空行，因为 indent 工具也不知道哪几行代码在逻辑上是一组的，空行还是要自己动手添，当然原有的空行肯定不会被 indent 删去的。</p>
+<p>如果你采纳本章介绍的<em>内核编码风格</em>，基本上 <code>-kr -i8</code> 这两个参数就够用了。indent 工具也有支持其它编码风格的选项，具体请参考 Man Page。有时候 indent 工具的确非常有用，比如某个项目中途决定改变编码风格（这很少见），或者往某个项目中添加的几个代码文件来自另一个编码风格不同的项目，但绝不能因为有了 indent 工具就肆无忌惮，一开始把代码写得乱七八糟，最后再依靠 indent 去清理。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-C-语言入门/ch08-数组.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../1-C-语言入门/ch10-gdb.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-C-语言入门/ch08-数组.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../1-C-语言入门/ch10-gdb.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

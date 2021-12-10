@@ -1,0 +1,1119 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>链接详解 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html" class="active"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-20-章-链接详解"><a class="header" href="#第-20-章-链接详解">第 20 章 链接详解</a></h1>
+<h2 id="1-多目标文件的链接"><a class="header" href="#1-多目标文件的链接">1. 多目标文件的链接</a></h2>
+<p>现在我们把<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch12-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97#e12-1">第 12 章「栈与队列」例 12.1「用堆栈实现倒序打印」</a>拆成两个程序文件，<code>stack.c</code> 实现堆栈，而 <code>main.c</code> 使用堆栈：</p>
+<pre><code class="language-c">/* stack.c */
+char stack[512];
+int top = -1;
+
+void push(char c)
+{
+	stack[++top] = c;
+}
+
+char pop(void)
+{
+	return stack[top--];
+}
+
+int is_empty(void)
+{
+	return top == -1;
+}
+</code></pre>
+<p>这段程序和原来有点不同，在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch12-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97#e12-1">第 12 章「栈与队列」例 12.1「用堆栈实现倒序打印」</a>中 <code>top</code> 总是指向栈顶元素的下一个元素，而在这段程序中 <code>top</code> 总是指向栈顶元素，所以要初始化成 <code>-1</code> 才表示空堆栈，这两种堆栈使用习惯都很常见。</p>
+<pre><code class="language-c">/* main.c */
+#include &lt;stdio.h&gt;
+
+int a, b = 1;
+
+int main(void)
+{
+	push('a');
+	push('b');
+	push('c');
+	
+	while(!is_empty())
+		putchar(pop());
+	putchar('\n');
+
+	return 0;
+}
+</code></pre>
+<p><code>a</code> 和 <code>b</code> 这两个变量没有用，只是为了顺便说明链接过程才加上的。编译的步骤和以前一样，可以一步编译：</p>
+<pre><code class="language-bash">$ gcc main.c stack.c -o main
+</code></pre>
+<p>也分可以多步编译：</p>
+<pre><code class="language-bash">$ gcc -c main.c
+$ gcc -c stack.c
+$ gcc main.o stack.o -o main
+</code></pre>
+<p>如果按照<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB#_2-main-%E5%87%BD%E6%95%B0%E5%92%8C%E5%90%AF%E5%8A%A8%E4%BE%8B%E7%A8%8B">上章第 2 节「main 函数和启动例程」</a>的做法，用 <code>nm</code> 命令查看目标文件的符号表，会发现 <code>main.o</code> 中有未定义的符号 <code>push</code>、<code>pop</code>、<code>is_empty</code>、<code>putchar</code>，前三个符号在 <code>stack.o</code> 中实现了，链接生成可执行文件 <code>main</code> 时可以做符号解析，而 <code>putchar</code> 是 <code>libc</code> 的库函数，在可执行文件 <code>main</code> 中仍然是未定义的，要在程序运行时做动态链接。</p>
+<p>我们通过 <code>readelf -a main</code> 命令可以看到，<code>main</code> 的 <code>.bss</code> 段合并了 <code>main.o</code> 和 <code>stack.o</code> 的 <code>.bss</code> 段，其中包含了变量 <code>a</code> 和 <code>stack</code>，<code>main</code> 的 <code>.data</code> 段也合并了 <code>main.o</code> 和 <code>stack.o</code> 的 <code>.data</code> 段，其中包含了变量 <code>b</code> 和 <code>top</code>，<code>main</code> 的 <code>.text</code> 段合并了 <code>main.o</code> 和 <code>stack.o</code> 的 <code>.text</code> 段，包含了各函数的定义。如下图所示。</p>
+<p id="c20-1">图 20.1. 多目标文件的链接</p>
+<p><img src="../images/link.multiobj.png" alt="多目标文件的链接" /></p>
+<p>为什么在可执行文件 <code>main</code> 的每个段中来自 <code>main.o</code> 的变量或函数都在前面，而来自 <code>stack.o</code> 的变量或函数都在后面呢？我们可以试试把 <code>gcc</code> 命令中的两个目标文件反过来写：</p>
+<pre><code class="language-bash">$ gcc stack.o main.o -o main
+</code></pre>
+<p>结果正如我们所预料的，可执行文件 <code>main</code> 的每个段中来自 <code>main.o</code> 的变量或函数都排到后面了。实际上链接的过程是由一个链接脚本（Linker Script）控制的，链接脚本决定了给每个段分配什么地址，如何对齐，哪个段在前，哪个段在后，哪些段合并到同一个 Segment，另外链接脚本还要插入一些符号到最终生成的文件中，例如 <code>__bss_start</code>、<code>_edata</code>、<code>_end</code> 等。如果用 <code>ld</code> 做链接时没有用 <code>-T</code> 选项指定链接脚本，则使用 <code>ld</code> 的默认链接脚本，默认链接脚本可以用 <code>ld --verbose</code> 命令查看（由于比较长，只列出一些片断）：</p>
+<pre><code class="language-bash">$ ld --verbose
+...
+using internal linker script:
+==================================================
+/* Script for -z combreloc: combine and sort reloc sections */
+OUTPUT_FORMAT(&quot;elf32-i386&quot;, &quot;elf32-i386&quot;,
+	      &quot;elf32-i386&quot;)
+OUTPUT_ARCH(i386)
+ENTRY(_start)
+...
+SECTIONS
+{
+  /* Read-only sections, merged into text segment: */
+  PROVIDE (__executable_start = 0x08048000); . = 0x08048000 + SIZEOF_HEADERS;
+  .interp         : { *(.interp) }
+  .note.gnu.build-id : { *(.note.gnu.build-id) }
+  .hash           : { *(.hash) }
+  .gnu.hash       : { *(.gnu.hash) }
+  .dynsym         : { *(.dynsym) }
+  .dynstr         : { *(.dynstr) }
+  .gnu.version    : { *(.gnu.version) }
+  .gnu.version_d  : { *(.gnu.version_d) }
+  .gnu.version_r  : { *(.gnu.version_r) }
+  .rel.dyn        :
+...
+  .rel.plt        : { *(.rel.plt) }
+...
+  .init           :
+...
+  .plt            : { *(.plt) }
+  .text           :
+...
+  .fini           :
+...
+  .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
+...
+  .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) }
+...
+  /* Adjust the address for the data segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = ALIGN (CONSTANT (MAXPAGESIZE)) - ((CONSTANT (MAXPAGESIZE) - .) &amp; (CONSTANT (MAXPAGESIZE) - 1)); . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));
+...
+  .ctors          :
+...
+  .dtors          :
+...
+  .jcr            : { KEEP (*(.jcr)) }
+...
+  .dynamic        : { *(.dynamic) }
+  .got            : { *(.got) }
+...
+  .got.plt        : { *(.got.plt) }
+  .data           :
+...
+  _edata = .; PROVIDE (edata = .);
+  __bss_start = .;
+  .bss            :
+...
+  _end = .; PROVIDE (end = .);
+  . = DATA_SEGMENT_END (.);
+  /* Stabs debugging sections.  */
+...
+  /* DWARF debug sections.
+     Symbols in the DWARF debugging sections are relative to the beginning
+     of the section so we begin them at 0.  */
+...
+}
+
+
+==================================================
+</code></pre>
+<p><code>ENTRY(_start)</code> 说明 <code>_start</code> 是整个程序的入口点，因此 <code>_start</code> 是入口点并不是规定死的，是可以改用其它函数做入口点的。</p>
+<p><code>PROVIDE (__executable_start = 0x08048000); . = 0x08048000 + SIZEOF_HEADERS;</code> 是 Text Segment 的起始地址，这个 Segment 包含后面列出的那些段，<code>.plt</code>、<code>.text</code>、<code>.rodata</code> 等等。每个段的描述格式都是「段名 : { 组成 }」，例如 <code>.plt : { *(.plt) }</code>，左边表示最终生成的文件的 <code>.plt</code> 段，右边表示所有目标文件的 <code>.plt</code> 段，意思是最终生成的文件的 <code>.plt</code> 段由各目标文件的 <code>.plt</code> 段组成。</p>
+<p><code>.  = ALIGN (CONSTANT (MAXPAGESIZE)) - ((CONSTANT (MAXPAGESIZE) - .) &amp;  (CONSTANT (MAXPAGESIZE) - 1)); . = DATA_SEGMENT_ALIGN (CONSTANT  (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));</code> 是 Data Segment 的起始地址，要做一系列的对齐操作，这个 Segment 包含后面列出的那些段，<code>.got</code>、<code>.data</code>、<code>.bss</code>等等。</p>
+<p>Data Segment 的后面还有其它一些 Segment，主要是调试信息。关于链接脚本就介绍这么多，本书不做深入讨论。</p>
+<h2 id="2-定义和声明"><a class="header" href="#2-定义和声明">2. 定义和声明</a></h2>
+<h3 id="21-extern-和-static-关键字"><a class="header" href="#21-extern-和-static-关键字">2.1. extern 和 static 关键字</a></h3>
+<p>在上一节我们把两个程序文件放在一起编译链接，<code>main.c</code> 用到的函数 <code>push</code>、<code>pop</code> 和 <code>is_empty</code> 由 <code>stack.c</code> 提供，其实有一点小问题，我们用 <code>-Wall</code> 选项编译 <code>main.c</code> 可以看到：</p>
+<pre><code class="language-bash">$ gcc -c main.c -Wall
+main.c: In function ‘main’:
+main.c:8: warning: implicit declaration of function ‘push’
+main.c:12: warning: implicit declaration of function ‘is_empty’
+main.c:13: warning: implicit declaration of function ‘pop’
+</code></pre>
+<p>这个问题我们在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#_2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0">第 3 章「简单函数」第 2 节「自定义函数」</a>讨论过，由于编译器在处理函数调用代码时没有找到函数原型，只好根据函数调用代码做隐式声明，把这三个函数声明为：</p>
+<pre><code class="language-c">int push(char);
+int pop(void);
+int is_empty(void);
+</code></pre>
+<p>现在你应该比学<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#_2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0">第 3 章「简单函数」第 2 节「自定义函数」</a>的时候更容易理解这条规则了。为什么编译器在处理函数调用代码时需要有函数原型？因为必须知道参数的类型和个数以及返回值的类型才知道生成什么样的指令。为什么隐式声明靠不住呢？因为隐式声明是从函数调用代码推导而来的，而事实上函数定义的形参类型可能跟函数调用代码传的实参类型并不一致，如果函数定义带有可变参数（例如 <code>printf</code>），那么从函数调用代码也看不出来这个函数带有可变参数，另外，从函数调用代码也看不出来返回值应该是什么类型，所以隐式声明只能规定返回值都是 int 型的。既然隐式声明靠不住，那编译器为什么不自己去找函数定义，而非要让我们在调用之前写函数原型呢？因为编译器往往不知道去哪里找函数定义，像上面的例子，我让编译器编译 <code>main.c</code>，而这几个函数的定义却在 <code>stack.c</code> 里，编译器又怎么会知道呢？所以编译器只能通过隐式声明来猜测函数原型，这种猜测往往会出错，但在比较简单的情况下还算可用，比如上一节的例子这么编译过去了也能得到正确结果。</p>
+<p>现在我们在 <code>main.c</code> 中声明这几个函数的原型：</p>
+<pre><code class="language-c">/* main.c */
+#include &lt;stdio.h&gt;
+
+extern void push(char);
+extern char pop(void);
+extern int is_empty(void);
+
+int main(void)
+{
+	push('a');
+	push('b');
+	push('c');
+	
+	while(!is_empty())
+		putchar(pop());
+	putchar('\n');
+
+	return 0;
+}
+</code></pre>
+<p>这样编译器就不会报警告了。在这里 <code>extern</code> 关键字表示这个标识符具有 External Linkage。External Linkage 的定义在上一章讲过，但现在应该更容易理解了，<code>push</code> 这个标识符具有 External Linkage 指的是：如果把 <code>main.c</code> 和 <code>stack.c</code> 链接在一起，如果 <code>push</code> 在 <code>main.c</code> 和 <code>stack.c</code> 中都有声明（在 <code>stack.c</code> 中的声明同时也是定义），那么这些声明指的是同一个函数，链接之后是同一个 <code>GLOBAL</code> 符号，代表同一个地址。函数声明中的 <code>extern</code> 也可以省略不写，不写 <code>extern</code> 的函数声明也表示这个函数具有 External Linkage。</p>
+<p>如果用 <code>static</code> 关键字修饰一个函数声明，则表示该标识符具有 Internal Linkage，例如有以下两个程序文件：</p>
+<pre><code class="language-c">/* foo.c */
+static void foo(void) {}
+/* main.c */
+void foo(void);
+int main(void) { foo(); return 0; }
+</code></pre>
+<p>编译链接在一起会出错：</p>
+<pre><code class="language-bash">$ gcc foo.c main.c
+/tmp/ccRC2Yjn.o: In function `main':
+main.c:(.text+0x12): undefined reference to `foo'
+collect2: ld returned 1 exit status
+</code></pre>
+<p>虽然在 <code>foo.c</code> 中定义了函数 <code>foo</code>，但这个函数只具有 Internal Linkage，只有在 <code>foo.c</code> 中多次声明才表示同一个函数，而在 <code>main.c</code> 中声明就不表示它了。如果把 <code>foo.c</code> 编译成目标文件，函数名 <code>foo</code> 在其中是一个 <code>LOCAL</code> 的符号，不参与链接过程，所以在链接时，<code>main.c</code> 中用到一个 External Linkage 的 <code>foo</code> 函数，链接器却找不到它的定义在哪儿，无法确定它的地址，也就无法做符号解析，只好报错。<strong>凡是被多次声明的变量或函数，必须有且只有一个声明是定义，如果有多个定义，或者一个定义都没有，链接器就无法完成链接</strong>。</p>
+<p>以上讲了用 <code>static</code> 和 <code>extern</code> 修饰函数声明的情况。现在来看用它们修饰变量声明的情况。仍然用 <code>stack.c</code> 和 <code>main.c</code> 的例子，如果我想在 <code>main.c</code> 中直接访问 <code>stack.c</code> 中定义的变量 <code>top</code>，则可以用 <code>extern</code> 声明它：</p>
+<pre><code class="language-c">/* main.c */
+#include &lt;stdio.h&gt;
+
+void push(char);
+char pop(void);
+int is_empty(void);
+extern int top;
+
+int main(void)
+{
+	push('a');
+	push('b');
+	push('c');
+	printf(&quot;%d\n&quot;, top);
+	
+	while(!is_empty())
+		putchar(pop());
+	putchar('\n');
+	printf(&quot;%d\n&quot;, top);
+
+	return 0;
+}
+</code></pre>
+<p>变量 <code>top</code> 具有 External Linkage，它的存储空间是在 <code>stack.c</code> 中分配的，所以 <code>main.c</code> 中的变量声明 <code>extern int top;</code> 不是变量定义，因为它不分配存储空间。以上函数和变量声明也可以写在 <code>main</code> 函数体里面，使所声明的标识符具有块作用域：</p>
+<pre><code class="language-c">int main(void)
+{
+	void push(char);
+	char pop(void);
+	int is_empty(void);
+	extern int top;
+
+	push('a');
+	push('b');
+	push('c');
+	printf(&quot;%d\n&quot;, top);
+	
+	while(!is_empty())
+		putchar(pop());
+	putchar('\n');
+	printf(&quot;%d\n&quot;, top);
+
+	return 0;
+}
+</code></pre>
+<p>注意，变量声明和函数声明有一点不同，函数声明的 <code>extern</code> 可写可不写，而变量声明如果不写 <code>extern</code> 意思就完全变了，如果上面的例子不写 <code>extern</code> 就表示在 <code>main</code> 函数中定义一个局部变量 <code>top</code>。另外要注意，<code>stack.c</code> 中的定义是 <code>int top = -1;</code>，而 <code>main.c</code> 中的声明不能加 Initializer，如果上面的例子写成 <code>extern int top = -1;</code> 则编译器会报错。</p>
+<p>在 <code>main.c</code> 中可以通过变量声明来访问 <code>stack.c</code> 中的变量 <code>top</code>，但是从实现 <code>stack.c</code> 这个模块的角度来看，<code>top</code> 这个变量是不希望被外界访问到的，变量 <code>top</code> 和 <code>stack</code> 都属于这个模块的内部状态，外界应该只允许通过 <code>push</code> 和 <code>pop</code> 函数来改变模块的内部状态，这样才能保证堆栈的 LIFO 特性，如果外界可以随机访问 <code>stack</code> 或者随便修改 <code>top</code>，那么堆栈的状态就乱了。那怎么才能阻止外界访问 <code>top</code> 和 <code>stack</code> 呢？答案就是用 <code>static</code> 关键字把它们声明为 Internal Linkage 的：</p>
+<pre><code class="language-c">/* stack.c */
+static char stack[512];
+static int top = -1;
+
+void push(char c)
+{
+	stack[++top] = c;
+}
+
+char pop(void)
+{
+	return stack[top--];
+}
+
+int is_empty(void)
+{
+	return top == -1;
+}
+</code></pre>
+<p>这样，即使在 <code>main.c</code> 中用 <code>extern</code> 声明也访问不到 <code>stack.c</code> 的变量 <code>top</code> 和 <code>stack</code>。从而保护了 <code>stack.c</code> 模块的内部状态，这也是一种封装（Encapsulation）的思想。</p>
+<p>用 <code>static</code> 关键字声明具有 Internal Linkage 的函数也是出于这个目的。在一个模块中，有些函数是提供给外界使用的，也称为导出（Export）给外界使用，这些函数声明为 External Linkage 的。有些函数只在模块内部使用而不希望被外界访问到，则声明为 Internal Linkage 的。</p>
+<h3 id="22-头文件"><a class="header" href="#22-头文件">2.2. 头文件</a></h3>
+<p>我们继续前面关于 <code>stack.c</code> 和 <code>main.c</code> 的讨论。<code>stack.c</code> 这个模块封装了 <code>top</code> 和 <code>stack</code> 两个变量，导出了 <code>push</code>、<code>pop</code>、<code>is_empty</code> 三个函数接口，已经设计得比较完善了。但是使用这个模块的每个程序文件都要写三个函数声明也是很麻烦的，假设又有一个 <code>foo.c</code>也使用这个模块，<code>main.c</code> 和 <code>foo.c</code> 中各自要写三个函数声明。重复的代码总是应该尽量避免的，以前我们通过各种办法把重复的代码提取出来，比如在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch08-%E6%95%B0%E7%BB%84#_2-%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9A%E7%BB%9F%E8%AE%A1%E9%9A%8F%E6%9C%BA%E6%95%B0">第 8 章「数组」第 2 节「数组应用实例：统计随机数」</a>讲过用宏定义避免硬编码的问题，这次有什么办法呢？答案就是可以自己写一个头文件 <code>stack.h</code>：</p>
+<pre><code class="language-c">/* stack.h */
+#ifndef STACK_H
+#define STACK_H
+extern void push(char);
+extern char pop(void);
+extern int is_empty(void);
+#endif
+</code></pre>
+<p>这样在 <code>main.c</code> 中只需包含这个头文件就可以了，而不需要写三个函数声明：</p>
+<pre><code class="language-c">/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;stack.h&quot;
+
+int main(void)
+{
+	push('a');
+	push('b');
+	push('c');
+	
+	while(!is_empty())
+		putchar(pop());
+	putchar('\n');
+
+	return 0;
+}
+</code></pre>
+<p>首先说为什么 <code>#include &lt;stdio.h&gt;</code> 用角括号，而 <code>#include &quot;stack.h&quot;</code> 用引号。对于用角括号包含的头文件，<code>gcc</code> 首先查找 <code>-I</code> 选项指定的目录，然后查找系统的头文件目录（通常是 <code>/usr/include</code>，在我的系统上还包括 <code>/usr/lib/gcc/i486-linux-gnu/4.3.2/include</code>）；而对于用引号包含的头文件，<code>gcc</code> 首先查找包含头文件的 <code>.c</code> 文件所在的目录，然后查找 <code>-I</code> 选项指定的目录，然后查找系统的头文件目录。</p>
+<p>假如三个代码文件都放在当前目录下：</p>
+<pre><code class="language-bash">$ tree
+.
+|-- main.c
+|-- stack.c
+`-- stack.h
+
+0 directories, 3 files
+</code></pre>
+<p>则可以用 <code>gcc -c main.c</code> 编译，<code>gcc</code> 会自动在 <code>main.c</code> 所在的目录中找到 <code>stack.h</code>。假如把 <code>stack.h</code> 移到一个子目录下：</p>
+<pre><code class="language-bash">$ tree
+.
+|-- main.c
+`-- stack
+    |-- stack.c
+    `-- stack.h
+
+1 directory, 3 files
+</code></pre>
+<p>则需要用 <code>gcc -c main.c -Istack</code> 编译。用 <code>-I</code> 选项告诉 <code>gcc</code> 头文件要到子目录 <code>stack</code> 里找。</p>
+<p>在 <code>#include</code> 预处理指示中可以使用相对路径，例如把上面的代码改成 <code>#include &quot;stack/stack.h&quot;</code>，那么编译时就不需要加 <code>-Istack</code> 选项了，因为 <code>gcc</code> 会自动在 <code>main.c</code> 所在的目录中查找，而头文件相对于 <code>main.c</code> 所在目录的相对路径正是 <code>stack/stack.h</code>。</p>
+<p>在 <code>stack.h</code> 中我们又看到两个新的预处理指示 <code>#ifndef STACK_H</code> 和 <code>#endif</code>，意思是说，如果 <code>STACK_H</code> 这个宏没有定义过，那么从 <code>#ifndef</code> 到 <code>#endif</code> 之间的代码就包含在预处理的输出结果中，否则这一段代码就不出现在预处理的输出结果中。<code>stack.h</code> 这个头文件的内容整个被 <code>#ifndef</code> 和 <code>#endif</code> 括起来了，如果在包含这个头文件时 <code>STACK_H</code> 这个宏已经定义过了，则相当于这个头文件里什么都没有，包含了一个空文件。这有什么用呢？假如 <code>main.c</code> 包含了两次 <code>stack.h</code>：</p>
+<pre><code class="language-c">...
+#include &quot;stack.h&quot;
+#include &quot;stack.h&quot;
+
+int main(void)
+{
+...
+</code></pre>
+<p>则第一次包含 <code>stack.h</code> 时并没有定义 <code>STACK_H</code> 这个宏，因此头文件的内容包含在预处理的输出结果中：</p>
+<pre><code class="language-c">...
+#define STACK_H
+extern void push(char);
+extern char pop(void);
+extern int is_empty(void);
+#include &quot;stack.h&quot;
+
+int main(void)
+{
+...
+</code></pre>
+<p>其中已经定义了 <code>STACK_H</code> 这个宏，因此第二次再包含 <code>stack.h</code> 就相当于包含了一个空文件，这就避免了头文件的内容被重复包含。这种保护头文件的写法称为 Header Guard，以后我们每写一个头文件都要加上 Header Guard，宏定义名就用头文件名的大写形式，这是规范的做法。</p>
+<p>那为什么需要防止重复包含呢？谁会把一个头文件包含两次呢？像上面那么明显的错误没人会犯，但有时候重复包含的错误并不是那么明显的。比如：</p>
+<pre><code class="language-c">#include &quot;stack.h&quot;
+#include &quot;foo.h&quot;
+</code></pre>
+<p>然而 <code>foo.h</code> 里又包含了 <code>bar.h</code>，<code>bar.h</code> 里又包含了 <code>stack.h</code>。在规模较大的项目中头文件包含头文件的情况很常见，经常会包含四五层，这时候重复包含的问题就很难发现了。比如在我的系统头文件目录 <code>/usr/include</code> 中，<code>errno.h</code> 包含了 <code>bits/errno.h</code>，后者又包含了 <code>linux/errno.h</code>，后者又包含了 <code>asm/errno.h</code>，后者又包含了 <code>asm-generic/errno.h</code>。</p>
+<p>另外一个问题是，就算我是重复包含了头文件，那有什么危害么？像上面的三个函数声明，在程序中声明两次也没有问题，对于具有 External Linkage 的函数，声明任意多次也都代表同一个函数。重复包含头文件有以下问题：</p>
+<ol>
+<li>一是使预处理的速度变慢了，要处理很多本来不需要处理的头文件。</li>
+<li>二是如果有 <code>foo.h</code> 包含 <code>bar.h</code>，<code>bar.h</code> 又包含 <code>foo.h</code> 的情况，预处理器就陷入死循环了（其实编译器都会规定一个包含层数的上限）。</li>
+<li>三是头文件里有些代码不允许重复出现，虽然变量和函数允许多次声明（只要不是多次定义就行），但头文件里有些代码是不允许多次出现的，比如 <code>typedef</code> 类型定义和结构体 Tag 定义等，在一个程序文件中只允许出现一次。</li>
+</ol>
+<p>还有一个问题，既然要 <code>#include</code> 头文件，那我不如直接在 <code>main.c</code> 中 <code>#include &quot;stack.c&quot;</code> 得了。这样把 <code>stack.c</code> 和 <code>main.c</code> 合并为同一个程序文件，相当于又回到最初的<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch12-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97#e12-1">第 12 章「栈与队列」例 12.1「用堆栈实现倒序打印」</a>了。当然这样也能编译通过，但是在一个规模较大的项目中不能这么做，假如又有一个 <code>foo.c</code> 也要使用 <code>stack.c</code> 这个模块怎么办呢？如果在 <code>foo.c</code> 里面也 <code>#include &quot;stack.c&quot;</code>，就相当于 <code>push</code>、<code>pop</code>、<code>is_empty</code> 这三个函数在 <code>main.c</code> 和 <code>foo.c</code> 中都有定义，那么 <code>main.c</code> 和 <code>foo.c</code> 就不能链接在一起了。如果采用包含头文件的办法，那么这三个函数只在 <code>stack.c</code> 中定义了一次，最后可以把 <code>main.c</code>、<code>stack.c</code>、<code>foo.c</code> 链接在一起。如下图所示：</p>
+<p id="c20-2">图 20.2. 为什么要包含头文件而不是 .c 文件</p>
+<p><img src="../images/link.includeh.png" alt="为什么要包含头文件而不是.c文件" /></p>
+<p>同样道理，头文件中的变量和函数声明一定不能是定义。如果头文件中出现变量或函数定义，这个头文件又被多个 <code>.c</code> 文件包含，那么这些 <code>.c</code> 文件就不能链接在一起了。</p>
+<h3 id="23-定义和声明的详细规则"><a class="header" href="#23-定义和声明的详细规则">2.3. 定义和声明的详细规则</a></h3>
+<p>以上两节关于定义和声明只介绍了最基本的规则，在写代码时掌握这些基本规则就够用了，但其实C语言关于定义和声明还有很多复杂的规则，在分析错误原因或者维护规模较大的项目时需要了解这些规则。本节的两个表格出自 <em>Standard C</em>。</p>
+<p>首先看关于函数声明的规则。</p>
+<p id="t20-1">表 20.1. Storage Class 关键字对函数声明的作用</p>
+<table><thead><tr><th>Storage Class</th><th>File Scope Declaration</th><th>Block Scope Declaration</th></tr></thead><tbody>
+<tr><td>none</td><td>previous linkage  can define</td><td>previous linkage  cannot define</td></tr>
+<tr><td>extern</td><td>previous linkage  can define</td><td>previous linkage  cannot define</td></tr>
+<tr><td>static</td><td>internal linkage  can define</td><td>N/A</td></tr>
+</tbody></table>
+<p>以前我们说「<code>extern</code> 关键字表示这个标识符具有 External Linkage」其实是不准确的，准确地说应该是 Previous  Linkage。Previous Linkage 的定义是：这次声明的标识符具有什么样的 Linkage 取决于前一次声明，这前一次声明具有相同的标识符名，而且必须是文件作用域的声明，如果在程序文件中找不到前一次声明（这次声明是第一次声明），那么这个标识符具有 External Linkage。例如在一个程序文件中在文件作用域两次声明同一个函数：</p>
+<pre><code class="language-c">static int f(void); /* internal linkage */
+extern int f(void); /* previous linkage */
+</code></pre>
+<p>则这里的 <code>extern</code> 修饰的标识符具有 Interanl Linkage 而不是 External Linkage。从上表的前两行可以总结出我们先前所说的规则「函数声明加不加 <code>extern</code> 关键字都一样」。上表也说明了在文件作用域允许定义函数，在块作用域不允许定义函数，或者说函数定义不能嵌套。另外，在块作用域中不允许用 <code>static</code> 关键字声明函数。</p>
+<p>关于变量声明的规则要复杂一些：</p>
+<p id="t20-2">表 20.2. Storage Class关键字对变量声明的作用</p>
+<table><thead><tr><th>Storage Class</th><th>File Scope Declaration</th><th>Block Scope Declaration</th></tr></thead><tbody>
+<tr><td>none</td><td>external linkage  static duration  static initializer  tentative definition</td><td>no linkage  automatic duration  dynamic initializer  definition</td></tr>
+<tr><td>extern</td><td>previous linkage  static duration  no initializer[*]  not a definition</td><td>previous linkage  static duration  no initializer  not a definition</td></tr>
+<tr><td>static</td><td>internal linkage  static duration  static initializer  tentative definition</td><td>no linkage  static duration  static initializer  definition</td></tr>
+</tbody></table>
+<p>上表的每个单元格里分成四行，分别描述变量的链接属性、生存期，以及这种变量如何初始化，是否算变量定义。链接属性有 External  Linkage、Internal Linkage、No Linkage 和 Previous Linkage 四种情况，生存期有 Static  Duration 和 Automatic Duration 两种情况，请参考本章和上一章的定义。初始化有 Static  Initializer 和 Dynamic  Initializer 两种情况，前者表示 Initializer 中只能使用常量表达式，表达式的值必须在编译时就能确定，后者表示 Initializer 中可以使用任意的右值表达式，表达式的值可以在运行时计算。是否算变量定义有三种情况，Definition（算变量定义）、Not  a Definition（不算变量定义）和 Tentative Definition（暂定的变量定义）。什么叫「暂定的变量定义」呢？一个变量声明具有文件作用域，没有 Storage Class 关键字修饰，或者用 <code>static</code> 关键字修饰，那么如果它有 Initializer 则编译器认为它就是一个变量定义，如果它没有 Initializer 则编译器暂定它是变量定义，如果程序文件中有这个变量的明确定义就用明确定义，如果程序文件没有这个变量的明确定义，就用这个暂定的变量定义<sup>[32]</sup>，这种情况下变量以 0 初始化。在 <em>C99</em> 中有一个例子：</p>
+<pre><code class="language-c">int i1 = 1; // definition, external linkage
+static int i2 = 2; // definition, internal linkage
+extern int i3 = 3; // definition, external linkage
+int i4; // tentative definition, external linkage
+static int i5; // tentative definition, internal linkage
+int i1; // valid tentative definition, refers to previous
+int i2; // 6.2.2 renders undefined, linkage disagreement
+int i3; // valid tentative definition, refers to previous
+int i4; // valid tentative definition, refers to previous
+int i5; // 6.2.2 renders undefined, linkage disagreement
+extern int i1; // refers to previous, whose linkage is external
+extern int i2; // refers to previous, whose linkage is internal
+extern int i3; // refers to previous, whose linkage is external
+extern int i4; // refers to previous, whose linkage is external
+extern int i5; // refers to previous, whose linkage is internal
+</code></pre>
+<p>变量 <code>i2</code> 和 <code>i5</code> 第一次声明为 Internal Linkage，第二次又声明为 External Linkage，这是不允许的，编译器会报错。注意上表中标有 <code>[*]</code> 的单元格，对于文件作用域的 <code>extern</code> 变量声明，C99 是允许带 Initializer 的，并且认为它是一个定义，但是 <code>gcc</code> 对于这种写法会报警告，为了兼容性应避免这种写法。</p>
+<blockquote>
+<p><sup>[32]</sup> 由于本书没有提及将不完全类型进行组合的问题，所以这条规则被我简化了，真正的规则还要复杂一些。读者可以参考 C99 中有关 Incomplete Type 和 Composite Type 的条款。Tentative Definition 的完整定义在 C99 的 6.9.2 节条款 2。</p>
+</blockquote>
+<h2 id="3-静态库"><a class="header" href="#3-静态库">3. 静态库</a></h2>
+<p>有时候需要把一组代码编译成一个库，这个库在很多项目中都要用到，例如 <code>libc</code> 就是这样一个库，我们在不同的程序中都会用到 <code>libc</code> 中的库函数（例如 <code>printf</code>），也会用到 <code>libc</code> 中的变量（例如以后要讲到的 <code>environ</code> 变量）。本节介绍怎么创建这样一个库。</p>
+<p>我们继续用 <code>stack.c</code> 的例子。为了便于理解，我们把 <code>stack.c</code> 拆成四个程序文件（虽然实际上没太大必要），把 <code>main.c</code> 改得简单一些，头文件 <code>stack.h</code> 不变，本节用到的代码如下所示：</p>
+<pre><code class="language-c">/* stack.c */
+char stack[512];
+int top = -1;
+/* push.c */
+extern char stack[512];
+extern int top;
+
+void push(char c)
+{
+	stack[++top] = c;
+}
+/* pop.c */
+extern char stack[512];
+extern int top;
+
+char pop(void)
+{
+	return stack[top--];
+}
+/* is_empty.c */
+extern int top;
+
+int is_empty(void)
+{
+	return top == -1;
+}
+/* stack.h */
+#ifndef STACK_H
+#define STACK_H
+extern void push(char);
+extern char pop(void);
+extern int is_empty(void);
+#endif
+/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;stack.h&quot;
+
+int main(void)
+{
+	push('a');
+	return 0;
+}
+</code></pre>
+<p>这些文件的目录结构是：</p>
+<pre><code class="language-bash">$ tree
+.
+|-- main.c
+`-- stack
+    |-- is_empty.c
+    |-- pop.c
+    |-- push.c
+    |-- stack.c
+    `-- stack.h
+
+1 directory, 6 files
+</code></pre>
+<p>我们把 <code>stack.c</code>、<code>push.c</code>、<code>pop.c</code>、<code>is_empty.c</code> 编译成目标文件：</p>
+<pre><code class="language-bash">$ gcc -c stack/stack.c stack/push.c stack/pop.c stack/is_empty.c
+</code></pre>
+<p>然后打包成一个静态库 <code>libstack.a</code>：</p>
+<pre><code class="language-bash">$ ar rs libstack.a stack.o push.o pop.o is_empty.o
+ar: creating libstack.a
+</code></pre>
+<p>库文件名都是以 <code>lib</code> 开头的，静态库以 <code>.a</code> 作为后缀，表示 Archive。<code>ar</code> 命令类似于 <code>tar</code> 命令，起一个打包的作用，但是把目标文件打包成静态库只能用 <code>ar</code> 命令而不能用 <code>tar</code> 命令。选项 <code>r</code> 表示将后面的文件列表添加到文件包，如果文件包不存在就创建它，如果文件包中已有同名文件就替换成新的。<code>s</code> 是专用于生成静态库的，表示为静态库创建索引，这个索引被链接器使用。<code>ranlib</code> 命令也可以为静态库创建索引，以上命令等价于：</p>
+<pre><code class="language-bash">$ ar r libstack.a stack.o push.o pop.o is_empty.o
+$ ranlib libstack.a
+</code></pre>
+<p>然后我们把 <code>libstack.a</code> 和 <code>main.c</code> 编译链接在一起：</p>
+<pre><code class="language-bash">$ gcc main.c -L. -lstack -Istack -o main
+</code></pre>
+<p><code>-L</code> 选项告诉编译器去哪里找需要的库文件，<code>-L.</code> 表示在当前目录找。<code>-lstack</code> 告诉编译器要链接 <code>libstack</code> 库，<code>-I</code> 选项告诉编译器去哪里找头文件。注意，即使库文件就在当前目录，编译器默认也不会去找的，所以 <code>-L.</code> 选项不能少。编译器默认会找的目录可以用 <code>-print-search-dirs</code> 选项查看：</p>
+<pre><code class="language-bash">$ gcc -print-search-dirs
+install: /usr/lib/gcc/i486-linux-gnu/4.3.2/
+programs: =/usr/lib/gcc/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/:/usr/libexec/gcc/i486-linux-gnu/4.3.2/:/usr/libexec/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../i486-linux-gnu/bin/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../i486-linux-gnu/bin/
+libraries: =/usr/lib/gcc/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../i486-linux-gnu/lib/i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../i486-linux-gnu/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../i486-linux-gnu/4.3.2/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib/:/lib/i486-linux-gnu/4.3.2/:/lib/../lib/:/usr/lib/i486-linux-gnu/4.3.2/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../i486-linux-gnu/lib/:/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../:/lib/:/usr/lib/
+</code></pre>
+<p>其中的 <code>libraries</code> 就是库文件的搜索路径列表，各路径之间用 <code>:</code> 号隔开。编译器会在这些搜索路径以及 <code>-L</code> 选项指定的路径中查找用 <code>-l</code> 选项指定的库，比如 <code>-lstack</code>，编译器会首先找有没有共享库 <code>libstack.so</code>，如果有就链接它，如果没有就找有没有静态库 <code>libstack.a</code>，如果有就链接它。所以编译器是优先考虑共享库的，如果希望编译器只链接静态库，可以指定 <code>-static</code> 选项。</p>
+<p>那么链接共享库和链接静态库有什么区别呢？在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB#_2-main-%E5%87%BD%E6%95%B0%E5%92%8C%E5%90%AF%E5%8A%A8%E4%BE%8B%E7%A8%8B">上章第 2 节「main 函数和启动例程」</a>讲过，在链接 <code>libc</code> 共享库时只是指定了动态链接器和该程序所需要的库文件，并没有真的做链接，可执行文件 <code>main</code> 中调用的 <code>libc</code> 库函数仍然是未定义符号，要在运行时做动态链接。而在链接静态库时，链接器会把静态库中的目标文件取出来和可执行文件真正链接在一起。我们通过反汇编看上一步生成的可执行文件 <code>main</code>：</p>
+<pre><code class="language-bash">$ objdump -d main
+...
+08048394 &lt;main&gt;:
+ 8048394:       8d 4c 24 04             lea    0x4(%esp),%ecx
+ 8048398:       83 e4 f0                and    $0xfffffff0,%esp
+ 804839b:       ff 71 fc                pushl  -0x4(%ecx)
+...
+080483c0 &lt;push&gt;:
+ 80483c0:       55                      push   %ebp
+ 80483c1:       89 e5                   mov    %esp,%ebp
+ 80483c3:       83 ec 04                sub    $0x4,%esp
+</code></pre>
+<p>有意思的是，<code>main.c</code> 只调用了 <code>push</code> 这一个函数，所以链接生成的可执行文件中也只有 <code>push</code> 而没有 <code>pop</code> 和 <code>is_empty</code>。这是使用静态库的一个好处，链接器可以从静态库中只取出需要的部分来做链接。如果是直接把那些目标文件和 <code>main.c</code> 编译链接在一起：</p>
+<pre><code class="language-bash">$ gcc main.c stack.o push.o pop.o is_empty.o -Istack -o main
+</code></pre>
+<p>则没有用到的函数也会链接进来。当然另一个好处就是使用静态库只需写一个库文件名，而不需要写一长串目标文件名。</p>
+<h2 id="4-共享库"><a class="header" href="#4-共享库">4. 共享库</a></h2>
+<h3 id="41-编译链接运行"><a class="header" href="#41-编译链接运行">4.1. 编译、链接、运行</a></h3>
+<p>组成共享库的目标文件和一般的目标文件有所不同，在编译时要加 <code>-fPIC</code> 选项，例如：</p>
+<pre><code class="language-bash">$ gcc -c -fPIC stack/stack.c stack/push.c stack/pop.c stack/is_empty.c
+</code></pre>
+<p><code>-f</code> 后面跟一些编译选项，<code>PIC</code> 是其中一种，表示生成位置无关代码（Position Independent Code）。那么用 <code>-fPIC</code> 生成的目标文件和一般的目标文件有什么不同呢？下面分析这个问题。</p>
+<p>我们知道一般的目标文件称为 Relocatable，在链接时可以把目标文件中各段的地址做重定位，重定位时需要修改指令。我们先不加 <code>-fPIC</code> 选项编译生成目标文件：</p>
+<pre><code class="language-bash">$ gcc -c -g stack/stack.c stack/push.c stack/pop.c stack/is_empty.c
+</code></pre>
+<p>由于接下来要用 <code>objdump -dS</code> 把反汇编指令和源代码穿插起来分析，所以用 <code>-g</code> 选项加调试信息。注意，加调试信息必须在编译每个目标文件时用 <code>-g</code> 选项，而不能只在最后编译生成可执行文件时用 <code>-g</code> 选项。反汇编查看 <code>push.o</code>：</p>
+<pre><code class="language-bash">$ objdump -dS push.o 
+
+push.o:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 &lt;push&gt;:
+/* push.c */
+extern char stack[512];
+extern int top;
+
+void push(char c)
+{
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	83 ec 04             	sub    $0x4,%esp
+   6:	8b 45 08             	mov    0x8(%ebp),%eax
+   9:	88 45 fc             	mov    %al,-0x4(%ebp)
+	stack[++top] = c;
+   c:	a1 00 00 00 00       	mov    0x0,%eax
+  11:	83 c0 01             	add    $0x1,%eax
+  14:	a3 00 00 00 00       	mov    %eax,0x0
+  19:	8b 15 00 00 00 00    	mov    0x0,%edx
+  1f:	0f b6 45 fc          	movzbl -0x4(%ebp),%eax
+  23:	88 82 00 00 00 00    	mov    %al,0x0(%edx)
+}
+  29:	c9                   	leave  
+  2a:	c3                   	ret
+</code></pre>
+<p>指令中凡是用到 <code>stack</code> 和 <code>top</code> 的地址都用 0x0 表示，准备在重定位时修改。再看 <code>readelf</code> 输出的 <code>.rel.text</code> 段的信息：</p>
+<pre><code class="language-bash">Relocation section '.rel.text' at offset 0x848 contains 4 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+0000000d  00001001 R_386_32          00000000   top
+00000015  00001001 R_386_32          00000000   top
+0000001b  00001001 R_386_32          00000000   top
+00000025  00001101 R_386_32          00000000   stack
+</code></pre>
+<p>标出了指令中有四处需要在重定位时修改。下面编译链接成可执行文件之后再做反汇编分析：</p>
+<pre><code class="language-bash">$ gcc -g main.c stack.o push.o pop.o is_empty.o -Istack -o main
+$ objdump -dS main
+...
+080483c0 &lt;push&gt;:
+/* push.c */
+extern char stack[512];
+extern int top;
+
+void push(char c)
+{
+ 80483c0:       55                      push   %ebp
+ 80483c1:       89 e5                   mov    %esp,%ebp
+ 80483c3:       83 ec 04                sub    $0x4,%esp
+ 80483c6:       8b 45 08                mov    0x8(%ebp),%eax
+ 80483c9:       88 45 fc                mov    %al,-0x4(%ebp)
+        stack[++top] = c;
+ 80483cc:       a1 10 a0 04 08          mov    0x804a010,%eax
+ 80483d1:       83 c0 01                add    $0x1,%eax
+ 80483d4:       a3 10 a0 04 08          mov    %eax,0x804a010
+ 80483d9:       8b 15 10 a0 04 08       mov    0x804a010,%edx
+ 80483df:       0f b6 45 fc             movzbl -0x4(%ebp),%eax
+ 80483e3:       88 82 40 a0 04 08       mov    %al,0x804a040(%edx)
+}
+ 80483e9:       c9                      leave  
+ 80483ea:       c3                      ret    
+ 80483eb:       90                      nop    
+...
+</code></pre>
+<p>原来指令中的 0x0 被修改成了 0x804a010 和 0x804a040，这样做了重定位之后，各段的加载地址就定死了，因为在指令中使用了绝对地址。</p>
+<p>现在看用 <code>-fPIC</code> 编译生成的目标文件有什么不同：</p>
+<pre><code class="language-bash">$ gcc -c -g -fPIC stack/stack.c stack/push.c stack/pop.c stack/is_empty.c
+$ objdump -dS push.o
+
+push.o:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 &lt;push&gt;:
+/* push.c */
+extern char stack[512];
+extern int top;
+
+void push(char c)
+{
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	53                   	push   %ebx
+   4:	83 ec 04             	sub    $0x4,%esp
+   7:	e8 fc ff ff ff       	call   8 &lt;push+0x8&gt;
+   c:	81 c3 02 00 00 00    	add    $0x2,%ebx
+  12:	8b 45 08             	mov    0x8(%ebp),%eax
+  15:	88 45 f8             	mov    %al,-0x8(%ebp)
+	stack[++top] = c;
+  18:	8b 83 00 00 00 00    	mov    0x0(%ebx),%eax
+  1e:	8b 00                	mov    (%eax),%eax
+  20:	8d 50 01             	lea    0x1(%eax),%edx
+  23:	8b 83 00 00 00 00    	mov    0x0(%ebx),%eax
+  29:	89 10                	mov    %edx,(%eax)
+  2b:	8b 83 00 00 00 00    	mov    0x0(%ebx),%eax
+  31:	8b 08                	mov    (%eax),%ecx
+  33:	8b 93 00 00 00 00    	mov    0x0(%ebx),%edx
+  39:	0f b6 45 f8          	movzbl -0x8(%ebp),%eax
+  3d:	88 04 0a             	mov    %al,(%edx,%ecx,1)
+}
+  40:	83 c4 04             	add    $0x4,%esp
+  43:	5b                   	pop    %ebx
+  44:	5d                   	pop    %ebp
+  45:	c3                   	ret    
+
+Disassembly of section .text.__i686.get_pc_thunk.bx:
+
+00000000 &lt;__i686.get_pc_thunk.bx&gt;:
+   0:	8b 1c 24             	mov    (%esp),%ebx
+   3:	c3                   	ret
+</code></pre>
+<p>指令中用到的 <code>stack</code> 和 <code>top</code> 的地址不再以 0x0 表示，而是以 <code>0x0(%ebx)</code> 表示，但其中还是留有 0x0 准备做进一步修改。再看 <code>readelf</code> 输出的 <code>.rel.text</code> 段：</p>
+<pre><code class="language-bash">Relocation section '.rel.text' at offset 0x94c contains 6 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00000008  00001202 R_386_PC32        00000000   __i686.get_pc_thunk.bx
+0000000e  0000130a R_386_GOTPC       00000000   _GLOBAL_OFFSET_TABLE_
+0000001a  00001403 R_386_GOT32       00000000   top
+00000025  00001403 R_386_GOT32       00000000   top
+0000002d  00001403 R_386_GOT32       00000000   top
+00000035  00001503 R_386_GOT32       00000000   stack
+</code></pre>
+<p><code>top</code> 和 <code>stack</code> 对应的记录类型不再是 <code>R_386_32</code> 了，而是 <code>R_386_GOT32</code>，有什么区别呢？我们先编译生成共享库再做反汇编分析：</p>
+<pre><code class="language-bash">$ gcc -shared -o libstack.so stack.o push.o pop.o is_empty.o
+$ objdump -dS libstack.so
+...
+0000047c &lt;push&gt;:
+/* push.c */
+extern char stack[512];
+extern int top;
+
+void push(char c)
+{
+ 47c:	55                   	push   %ebp
+ 47d:	89 e5                	mov    %esp,%ebp
+ 47f:	53                   	push   %ebx
+ 480:	83 ec 04             	sub    $0x4,%esp
+ 483:	e8 ef ff ff ff       	call   477 &lt;__i686.get_pc_thunk.bx&gt;
+ 488:	81 c3 6c 1b 00 00    	add    $0x1b6c,%ebx
+ 48e:	8b 45 08             	mov    0x8(%ebp),%eax
+ 491:	88 45 f8             	mov    %al,-0x8(%ebp)
+	stack[++top] = c;
+ 494:	8b 83 f4 ff ff ff    	mov    -0xc(%ebx),%eax
+ 49a:	8b 00                	mov    (%eax),%eax
+ 49c:	8d 50 01             	lea    0x1(%eax),%edx
+ 49f:	8b 83 f4 ff ff ff    	mov    -0xc(%ebx),%eax
+ 4a5:	89 10                	mov    %edx,(%eax)
+ 4a7:	8b 83 f4 ff ff ff    	mov    -0xc(%ebx),%eax
+ 4ad:	8b 08                	mov    (%eax),%ecx
+ 4af:	8b 93 f8 ff ff ff    	mov    -0x8(%ebx),%edx
+ 4b5:	0f b6 45 f8          	movzbl -0x8(%ebp),%eax
+ 4b9:	88 04 0a             	mov    %al,(%edx,%ecx,1)
+}
+ 4bc:	83 c4 04             	add    $0x4,%esp
+ 4bf:	5b                   	pop    %ebx
+ 4c0:	5d                   	pop    %ebp
+ 4c1:	c3                   	ret    
+ 4c2:	90                   	nop    
+ 4c3:	90                   	nop    
+...
+</code></pre>
+<p>和先前的结果不同，指令中的 <code>0x0(%ebx)</code> 被修改成 <code>-0xc(%ebx)</code> 和 <code>-0x8(%ebx)</code>，而不是修改成绝对地址。所以共享库各段的加载地址并没有定死，可以加载到任意位置，因为指令中没有使用绝对地址，因此称为位置无关代码。另外，注意这几条指令：</p>
+<pre><code class="language-asm6502"> 494:	8b 83 f4 ff ff ff    	mov    -0xc(%ebx),%eax
+ 49a:	8b 00                	mov    (%eax),%eax
+ 49c:	8d 50 01             	lea    0x1(%eax),%edx
+</code></pre>
+<p>和先前的指令对比一下：</p>
+<pre><code class="language-asm6502"> 80483cc:       a1 10 a0 04 08          mov    0x804a010,%eax
+ 80483d1:       83 c0 01                add    $0x1,%eax
+</code></pre>
+<p>可以发现，<code>-0xc(%ebx)</code> 这个地址并不是变量 <code>top</code> 的地址，这个地址的内存单元中又保存了另外一个地址，这另外一个地址才是变量 <code>top</code> 的地址，所以 <code>mov    -0xc(%ebx),%eax</code> 是把变量 <code>top</code> 的地址传给 <code>eax</code>，而 <code>mov    (%eax),%eax</code> 才是从 <code>top</code> 的地址中取出 <code>top</code> 的值传给 <code>eax</code>。<code>lea    0x1(%eax),%edx</code> 是把 <code>top</code> 的值加 1 存到 <code>edx</code> 中，如下图所示：</p>
+<p id="c20-3">图 20.3. 间接寻址</p>
+<p><img src="../images/link.indirect.png" alt="间接寻址" /></p>
+<p><code>top</code> 和 <code>stack</code> 的绝对地址保存在一个地址表中，而指令通过地址表做间接寻址，因此避免了将绝对地址写死在指令中，这也是一种避免硬编码的策略。</p>
+<p>现在把 <code>main.c</code> 和共享库编译链接在一起，然后运行：</p>
+<pre><code class="language-bash">$ gcc main.c -g -L. -lstack -Istack -o main
+$ ./main 
+./main: error while loading shared libraries: libstack.so: cannot open shared object file: No such file or directory
+</code></pre>
+<p>结果出乎意料，编译的时候没问题，由于指定了 <code>-L.</code> 选项，编译器可以在当前目录下找到 <code>libstack.so</code>，而运行时却说找不到 <code>libstack.so</code>。那么运行时在哪些路径下找共享库呢？我们先用 <code>ldd</code> 命令查看可执行文件依赖于哪些共享库：</p>
+<pre><code class="language-bash">$ ldd main
+	linux-gate.so.1 =&gt;  (0xb7f5c000)
+	libstack.so =&gt; not found
+	libc.so.6 =&gt; /lib/tls/i686/cmov/libc.so.6 (0xb7dcf000)
+	/lib/ld-linux.so.2 (0xb7f42000)
+</code></pre>
+<p><code>ldd</code> 模拟运行一遍 <code>main</code>，在运行过程中做动态链接，从而得知这个可执行文件依赖于哪些共享库，每个共享库都在什么路径下，加载到进程地址空间的什么地址。<code>/lib/ld-linux.so.2</code> 是动态链接器，它的路径是在编译链接时指定的，我们在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB?id=_2-main-%E5%87%BD%E6%95%B0%E5%92%8C%E5%90%AF%E5%8A%A8%E4%BE%8B%E7%A8%8B">上章第 2 节「main 函数和启动例程」</a>讲过 <code>gcc</code> 在做链接时用 <code>-dynamic-linker</code> 指定动态链接器的路径，它也像其它共享库一样加载到进程的地址空间中。<code>libc.so.6</code> 的路径 <code>/lib/tls/i686/cmov/libc.so.6</code> 是由动态链接器 <code>ld-linux.so.2</code> 在做动态链接时搜索到的，而 <code>libstack.so</code> 的路径没有找到。<code>linux-gate.so.1</code> 这个共享库其实并不存在于文件系统中，它是由内核虚拟出来的共享库，所以它没有对应的路径，它负责处理系统调用。总之，共享库的搜索路径由动态链接器决定，从 <code>ld.so(8)</code> 的 Man Page 可以查到共享库路径的搜索顺序：</p>
+<ol>
+<li>首先在环境变量 <code>LD_LIBRARY_PATH</code> 所记录的路径中查找。</li>
+<li>然后从缓存文件 <code>/etc/ld.so.cache</code> 中查找。这个缓存文件由 <code>ldconfig</code> 命令读取配置文件 <code>/etc/ld.so.conf</code> 之后生成，稍后详细解释。</li>
+<li>如果上述步骤都找不到，则到默认的系统路径中查找，先是 /usr/lib 然后是 /lib。</li>
+</ol>
+<p>先试试第一种方法，在运行 <code>main</code> 时通过环境变量 <code>LD_LIBRARY_PATH</code> 把当前目录添加到共享库的搜索路径：</p>
+<pre><code class="language-bash">$ LD_LIBRARY_PATH=. ./main
+</code></pre>
+<p>这种方法只适合在开发中临时用一下，通常 <code>LD_LIBRARY_PATH</code> 是不推荐使用的，尽量不要设置这个环境变量，理由可以参考 <em>Why LD_LIBRARY_PATH is bad</em>。</p>
+<p>再试试第二种方法，这是最常用的方法。把 <code>libstack.so</code> 所在目录的绝对路径（比如 /home/akaedu/somedir）添加到 <code>/etc/ld.so.conf</code> 中（该文件中每个路径占一行），然后运行 <code>ldconfig</code>：</p>
+<pre><code class="language-bash">$ sudo ldconfig -v
+...
+/home/akaedu/somedir:
+        libstack.so -&gt; libstack.so
+/lib:
+        libe2p.so.2 -&gt; libe2p.so.2.3
+        libncursesw.so.5 -&gt; libncursesw.so.5.6
+...
+/usr/lib:
+        libkdeinit_klauncher.so -&gt; libkdeinit_klauncher.so
+        libv4l2.so.0 -&gt; libv4l2.so.0
+...
+/usr/lib64:
+/lib/tls: (hwcap: 0x8000000000000000)
+/usr/lib/sse2: (hwcap: 0x0000000004000000)
+...
+/usr/lib/tls: (hwcap: 0x8000000000000000)
+...
+/usr/lib/i686: (hwcap: 0x0008000000000000)
+/usr/lib/i586: (hwcap: 0x0004000000000000)
+...
+/usr/lib/i486: (hwcap: 0x0002000000000000)
+...
+/lib/tls/i686: (hwcap: 0x8008000000000000)
+/usr/lib/i686/cmov: (hwcap: 0x0008000000008000)
+...
+/lib/tls/i686/cmov: (hwcap: 0x8008000000008000)
+</code></pre>
+<p><code>ldconfig</code> 命令除了处理 <code>/etc/ld.so.conf</code> 中配置的目录之外，还处理一些默认目录，如 <code>/lib</code>、<code>/usr/lib</code> 等，处理之后生成 <code>/etc/ld.so.cache</code> 缓存文件，动态链接器就从这个缓存中搜索共享库。hwcap 是 x86 平台的 Linux 特有的一种机制，系统检测到当前平台是 i686 而不是 i586 或 i486，所以在运行程序时使用 i686 的库，这样可以更好地发挥平台的性能，也可以利用一些新的指令，所以上面 <code>ldd</code> 命令的输出结果显示动态链接器搜索到的 <code>libc</code> 是 <code>/lib/tls/i686/cmov/libc.so.6</code>，而不是 <code>/lib/libc.so.6</code>。现在再用 <code>ldd</code> 命令查看，<code>libstack.so</code> 就能找到了：</p>
+<pre><code class="language-bash">$ ldd main
+	linux-gate.so.1 =&gt;  (0xb809c000)
+	libstack.so =&gt; /home/akaedu/somedir/libstack.so (0xb806a000)
+	libc.so.6 =&gt; /lib/tls/i686/cmov/libc.so.6 (0xb7f0c000)
+	/lib/ld-linux.so.2 (0xb8082000)
+</code></pre>
+<p>第三种方法就是把 <code>libstack.so</code> 拷到 <code>/usr/lib</code> 或 <code>/lib</code> 目录，这样可以确保动态链接器能找到这个共享库。</p>
+<p>其实还有第四种方法，在编译可执行文件 <code>main</code> 的时候就把 <code>libstack.so</code> 的路径写死在可执行文件中：</p>
+<pre><code class="language-bash">$ gcc main.c -g -L. -lstack -Istack -o main -Wl,-rpath,/home/akaedu/somedir
+</code></pre>
+<p><code>-Wl,-rpath,/home/akaedu/somedir</code> 表示 <code>-rpath /home/akaedu/somedir</code> 是由 <code>gcc</code> 传递给链接器的选项。可以看到 <code>readelf</code> 的结果多了一条 <code>rpath</code> 记录：</p>
+<pre><code class="language-bash">$ readelf -a main
+...
+Dynamic section at offset 0xf10 contains 23 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libstack.so]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000f (RPATH)                      Library rpath: [/home/akaedu/somedir]
+...
+</code></pre>
+<p>还可以看出，可执行文件运行时需要哪些共享库也都记录在 <code>.dynamic</code> 段中。当然 <code>rpath</code> 这种办法也是不推荐的，把共享库的路径定死了，失去了灵活性。</p>
+<h3 id="42-动态链接的过程"><a class="header" href="#42-动态链接的过程">4.2. 动态链接的过程</a></h3>
+<p>本节研究一下在 <code>main.c</code> 中调用共享库的函数 <code>push</code> 是如何实现的。首先反汇编看一下 <code>main</code> 的指令：</p>
+<pre><code class="language-bash">$ objdump -dS main
+...
+Disassembly of section .plt:
+
+080483a8 &lt;__gmon_start__@plt-0x10&gt;:
+ 80483a8:	ff 35 f8 9f 04 08    	pushl  0x8049ff8
+ 80483ae:	ff 25 fc 9f 04 08    	jmp    *0x8049ffc
+ 80483b4:	00 00                	add    %al,(%eax)
+...
+080483d8 &lt;push@plt&gt;:
+ 80483d8:	ff 25 08 a0 04 08    	jmp    *0x804a008
+ 80483de:	68 10 00 00 00       	push   $0x10
+ 80483e3:	e9 c0 ff ff ff       	jmp    80483a8 &lt;_init+0x30&gt;
+
+Disassembly of section .text:
+...
+080484a4 &lt;main&gt;:
+/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;stack.h&quot;
+
+int main(void)
+{
+ 80484a4:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+ 80484a8:	83 e4 f0             	and    $0xfffffff0,%esp
+ 80484ab:	ff 71 fc             	pushl  -0x4(%ecx)
+ 80484ae:	55                   	push   %ebp
+ 80484af:	89 e5                	mov    %esp,%ebp
+ 80484b1:	51                   	push   %ecx
+ 80484b2:	83 ec 04             	sub    $0x4,%esp
+	push('a');
+ 80484b5:	c7 04 24 61 00 00 00 	movl   $0x61,(%esp)
+ 80484bc:	e8 17 ff ff ff       	call   80483d8 &lt;push@plt&gt;
+...
+</code></pre>
+<p>和<a href="#_3-%E9%9D%99%E6%80%81%E5%BA%93">本章第 3 节「静态库」</a>链接静态库不同，<code>push</code> 函数没有链接到可执行文件中。而且 <code>call   80483d8 &lt;push@plt&gt;</code> 这条指令调用的也不是 <code>push</code> 函数的地址。共享库是位置无关代码，在运行时可以加载到任意地址，其加载地址只有在动态链接时才能确定，所以在 <code>main</code> 函数中不可能直接通过绝对地址调用 <code>push</code> 函数，也是通过间接寻址来找 <code>push</code> 函数的。对照着上面的指令，我们用 <code>gdb</code> 跟踪一下：</p>
+<pre><code class="language-bash">$ gdb main
+...
+(gdb) start
+Breakpoint 1 at 0x80484b5: file main.c, line 7.
+Starting program: /home/akaedu/somedir/main 
+main () at main.c:7
+7		push('a');
+(gdb) si
+0x080484bc	7		push('a');
+(gdb) si
+0x080483d8 in push@plt ()
+Current language:  auto; currently asm
+</code></pre>
+<p>跳转到 <code>.plt</code> 段中，现在将要执行一条 <code>jmp    *0x804a008</code> 指令，我们看看 0x804a008 这个地址里存的是什么：</p>
+<pre><code class="language-bash">(gdb) x 0x804a008
+0x804a008 &lt;_GLOBAL_OFFSET_TABLE_+20&gt;:	0x080483de
+</code></pre>
+<p>原来就是下一条指令 <code>push   $0x10</code> 的地址。继续跟踪下去：</p>
+<pre><code class="language-bash">(gdb) si
+0x080483de in push@plt ()
+(gdb) si
+0x080483e3 in push@plt ()
+(gdb) si
+0x080483a8 in ?? ()
+(gdb) si
+0x080483ae in ?? ()
+(gdb) si
+0xb806a080 in ?? () from /lib/ld-linux.so.2
+</code></pre>
+<p>最终进入了动态链接器 <code>/lib/ld-linux.so.2</code>，在其中完成动态链接的过程并调用 <code>push</code> 函数，我们不深入这些细节了，直接用 <code>finish</code> 命令返回到 <code>main</code> 函数：</p>
+<pre><code class="language-bash">(gdb) finish
+Run till exit from #0  0xb806a080 in ?? () from /lib/ld-linux.so.2
+main () at main.c:8
+8		return 0;
+Current language:  auto; currently c
+</code></pre>
+<p>这时再看看 0x804a008 这个地址里存的是什么：</p>
+<pre><code class="language-bash">(gdb) x 0x804a008
+0x804a008 &lt;_GLOBAL_OFFSET_TABLE_+20&gt;:	0xb803f47c
+(gdb) x 0xb803f47c
+0xb803f47c &lt;push&gt;:	0x53e58955
+</code></pre>
+<p>动态链接器已经把 <code>push</code> 函数的地址存在这里了，所以下次再调用 <code>push</code> 函数就可以直接从 <code>jmp    *0x804a008</code> 指令跳到它的地址，而不必再进入 <code>/lib/ld-linux.so.2</code> 做动态链接了。</p>
+<h3 id="43-共享库的命名惯例"><a class="header" href="#43-共享库的命名惯例">4.3. 共享库的命名惯例</a></h3>
+<p>你可能已经注意到了，系统的共享库通常带有符号链接，例如：</p>
+<pre><code class="language-bash">$ ls -l  /lib
+...
+-rwxr-xr-x  1 root root 1315024 2009-01-09 22:10 libc-2.8.90.so
+lrwxrwxrwx  1 root root      14 2008-07-04 05:58 libcap.so.1 -&gt; libcap.so.1.10
+-rw-r--r--  1 root root   10316 2007-08-01 03:20 libcap.so.1.10
+lrwxrwxrwx  1 root root      14 2008-11-01 08:55 libcap.so.2 -&gt; libcap.so.2.10
+-rw-r--r--  1 root root   13792 2008-06-12 21:39 libcap.so.2.10
+...
+lrwxrwxrwx  1 root root      14 2009-01-13 09:28 libc.so.6 -&gt; libc-2.8.90.so
+...
+$ ls -l /usr/lib/libc.so
+-rw-r--r-- 1 root root 238 2009-01-09 21:59 /usr/lib/libc.so
+</code></pre>
+<p>按照共享库的命名惯例，每个共享库有三个文件名：real name、soname 和 linker name。真正的库文件（而不是符号链接）的名字是 real name，包含完整的共享库版本号。例如上面的 <code>libcap.so.1.10</code>、<code>libc-2.8.90.so</code> 等。</p>
+<p>soname 是一个符号链接的名字，只包含共享库的主版本号，主版本号一致即可保证库函数的接口一致，因此应用程序的 <code>.dynamic</code> 段只记录共享库的 soname，只要 soname 一致，这个共享库就可以用。例如上面的 <code>libcap.so.1</code> 和 <code>libcap.so.2</code> 是两个主版本号不同的 <code>libcap</code>，有些应用程序依赖于 <code>libcap.so.1</code>，有些应用程序依赖于 <code>libcap.so.2</code>，但对于依赖 <code>libcap.so.1</code> 的应用程序来说，真正的库文件不管是 <code>libcap.so.1.10</code> 还是 <code>libcap.so.1.11</code> 都可以用，所以使用共享库可以很方便地升级库文件而不需要重新编译应用程序，这是静态库所没有的优点。注意 <code>libc</code> 的版本编号有一点特殊，<code>libc-2.8.90.so</code> 的主版本号是 6 而不是 2 或 2.8。</p>
+<p>linker name 仅在编译链接时使用，<code>gcc</code> 的 <code>-L</code> 选项应该指定 linker name 所在的目录。有的 linker name 是库文件的一个符号链接，有的 linker name 是一段链接脚本。例如上面的 <code>libc.so</code> 就是一个 linker name，它是一段链接脚本：</p>
+<pre><code class="language-bash">$ cat /usr/lib/libc.so
+/* GNU ld script
+   Use the shared library, but some functions are only in
+   the static library, so try that secondarily.  */
+OUTPUT_FORMAT(elf32-i386)
+GROUP ( /lib/libc.so.6 /usr/lib/libc_nonshared.a  AS_NEEDED ( /lib/ld-linux.so.2 ) )
+</code></pre>
+<p>下面重新编译我们的 <code>libstack</code>，指定它的 soname：</p>
+<pre><code class="language-bash">$ gcc -shared -Wl,-soname,libstack.so.1 -o libstack.so.1.0 stack.o push.o pop.o is_empty.o
+</code></pre>
+<p>这样编译生成的库文件是 <code>libstack.so.1.0</code>，是 real name，但这个库文件中记录了它的 soname 是 <code>libstack.so.1</code>：</p>
+<pre><code class="language-bash">$ readelf -a libstack.so.1.0
+...
+Dynamic section at offset 0xf10 contains 22 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000e (SONAME)                     Library soname: [libstack.so.1]
+...
+</code></pre>
+<p>如果把 <code>libstack.so.1.0</code> 所在的目录加入 <code>/etc/ld.so.conf</code> 中，然后运行 <code>ldconfig</code> 命令，<code>ldconfig</code> 会自动创建一个 soname 的符号链接：</p>
+<pre><code class="language-bash">$ sudo ldconfig
+$ ls -l libstack*
+lrwxrwxrwx 1 root    root       15 2009-01-21 17:52 libstack.so.1 -&gt; libstack.so.1.0
+-rwxr-xr-x 1 akaedu  akaedu  10142 2009-01-21 17:49 libstack.so.1.0
+</code></pre>
+<p>但这样编译链接 <code>main.c</code> 却会报错：</p>
+<pre><code class="language-bash">$ gcc main.c -L. -lstack -Istack -o main
+/usr/bin/ld: cannot find -lstack
+collect2: ld returned 1 exit status
+</code></pre>
+<p>注意，要做这个实验，你得把先前编译的 <code>libstack</code> 共享库、静态库都删掉，如果先前拷到 <code>/lib</code> 或者 <code>/usr/lib</code> 下了也删掉，只留下 <code>libstack.so.1.0</code> 和 <code>libstack.so.1</code>，这样你会发现编译器不认这两个名字，因为编译器只认 linker name。可以先创建一个 linker name 的符号链接，然后再编译就没问题了：</p>
+<pre><code class="language-bash">$ ln -s libstack.so.1.0 libstack.so
+$ gcc main.c -L. -lstack -Istack -o main
+</code></pre>
+<h2 id="5-虚拟内存管理"><a class="header" href="#5-虚拟内存管理">5. 虚拟内存管理</a></h2>
+<p>我们知道操作系统利用体系结构提供的 VA 到 PA 的转换机制实现虚拟内存管理。有了共享库的基础知识之后，现在我们可以进一步理解虚拟内存管理了。首先分析一个例子：</p>
+<pre><code class="language-bash">$ ps
+  PID TTY          TIME CMD
+29977 pts/0    00:00:00 bash
+30032 pts/0    00:00:00 ps
+$ cat /proc/29977/maps 
+08048000-080f4000 r-xp 00000000 08:15 688142     /bin/bash
+080f4000-080f9000 rw-p 000ac000 08:15 688142     /bin/bash
+080f9000-080fe000 rw-p 080f9000 00:00 0 
+09283000-09497000 rw-p 09283000 00:00 0          [heap]
+b7ca8000-b7cb2000 r-xp 00000000 08:15 581665     /lib/tls/i686/cmov/libnss_files-2.8.90.so
+b7cb2000-b7cb3000 r--p 00009000 08:15 581665     /lib/tls/i686/cmov/libnss_files-2.8.90.so
+b7cb3000-b7cb4000 rw-p 0000a000 08:15 581665     /lib/tls/i686/cmov/libnss_files-2.8.90.so
+...
+b7e15000-b7f6d000 r-xp 00000000 08:15 581656     /lib/tls/i686/cmov/libc-2.8.90.so
+b7f6d000-b7f6f000 r--p 00158000 08:15 581656     /lib/tls/i686/cmov/libc-2.8.90.so
+b7f6f000-b7f70000 rw-p 0015a000 08:15 581656     /lib/tls/i686/cmov/libc-2.8.90.so
+...
+b7fbd000-b7fd7000 r-xp 00000000 08:15 565466     /lib/ld-2.8.90.so
+b7fd7000-b7fd8000 r-xp b7fd7000 00:00 0          [vdso]
+b7fd8000-b7fd9000 r--p 0001a000 08:15 565466     /lib/ld-2.8.90.so
+b7fd9000-b7fda000 rw-p 0001b000 08:15 565466     /lib/ld-2.8.90.so
+bfac5000-bfada000 rw-p bffeb000 00:00 0          [stack]
+</code></pre>
+<p>用 <code>ps</code> 命令查看当前终端下的进程，得知 <code>bash</code> 进程的 id 是 29977，然后用 <code>cat /proc/29977/maps</code> 命令查看它的虚拟地址空间。<code>/proc</code> 目录中的文件并不是真正的磁盘文件，而是由内核虚拟出来的文件系统，当前系统中运行的每个进程在 <code>/proc</code> 下都有一个子目录，目录名就是进程的 id，查看目录下的文件可以得到该进程的相关信息。此外，用 <code>pmap 29977</code> 命令也可以得到类似的输出结果。</p>
+<p id="c20-4">图 20.4. 进程地址空间</p>
+<p><img src="../images/link.addrspace.png" alt="进程地址空间" /></p>
+<p>在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch17-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80?id=_4-mmu">第 17 章「计算机体系结构基础」第 4 节「MMU」</a>讲过，x86 平台的虚拟地址空间是 0x0000  0000~0xffff ffff，大致上前 3GB（0x0000 0000 ~ 0xbfff ffff）是用户空间，后 1GB（0xc000  0000~0xffff ffff）是内核空间，在这里得到了印证。0x0804 8000-0x080f 4000 是从 <code>/bin/bash</code> 加载到内存的，访问权限为 <code>r-x</code>，表示 Text Segment，包含 <code>.text</code> 段、<code>.rodata</code> 段、<code>.plt</code> 段等。0x080f 4000 - 0x080f 9000 也是从 <code>/bin/bash</code> 加载到内存的，访问权限为 <code>rw-</code>，表示 Data Segment，包含 <code>.data</code> 段、<code>.bss</code> 段等。</p>
+<p>0x0928 3000-0x0949 7000 不是从磁盘文件加载到内存的，这段空间称为堆（Heap），以后会讲到用 <code>malloc</code> 函数动态分配内存是在这里分配的。从 0xb7ca 8000 开始是共享库的映射空间，每个共享库也分为几个 Segment，每个 Segment 有不同的访问权限。可以看到，从堆空间的结束地址（0x0949 7000）到共享库映射空间的起始地址（0xb7ca 8000）之间有很大的地址空洞，在动态分配内存时堆空间是可以向高地址增长的。堆空间的地址上限（0x09497000）称为 Break，堆空间要向高地址增长就要抬高 Break，映射新的虚拟内存页面到物理内存，这是通过系统调用 <code>brk</code> 实现的，<code>malloc</code> 函数也是调用 <code>brk</code> 向内核请求分配内存的。</p>
+<p><code>/lib/ld-2.8.90.so</code> 就是动态链接器 <code>/lib/ld-linux.so.2</code>，后者是前者的符号链接。标有 <code>[vdso]</code> 的地址范围是 <code>linux-gate.so.1</code> 的映射空间，我们讲过这个共享库是由内核虚拟出来的。0xbfac  5000 - 0xbfad  a000是栈空间，其中高地址的部分保存着进程的环境变量和命令行参数，低地址的部分保存函数栈帧，栈空间是向低地址增长的，但显然没有堆空间那么大的可供增长的余地，因为实际的应用程序动态分配大量内存的并不少见，但是有几十层深的函数调用并且每层调用都有很多局部变量的非常少见。总之，栈空间是可能用尽的，并且比堆空间更容易用尽，在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch05-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0?id=_3-%E9%80%92%E5%BD%92">第 5 章「深入理解函数」第 3 节「递归」</a>讲过，无穷递归会用尽栈空间最终导致段错误。</p>
+<p>虚拟内存管理起到了什么作用呢？可以从以下几个方面来理解。</p>
+<p>第一，虚拟内存管理可以控制物理内存的访问权限。物理内存本身是不限制访问的，任何地址都可以读写，而操作系统要求不同的页面具有不同的访问权限，这是利用 CPU 模式和 MMU 的内存保护机制实现的。例如，Text Segment被只读保护起来，防止被错误的指令意外改写，内核地址空间也被保护起来，防止在用户模式下执行错误的指令意外改写内核数据。这样，执行错误指令或恶意代码的破坏能力受到了限制，顶多使当前进程因段错误终止，而不会影响整个系统的稳定性。</p>
+<p>第二，虚拟内存管理最主要的作用是让每个进程有独立的地址空间。所谓独立的地址空间是指，不同进程中的同一个 VA 被 MMU 映射到不同的 PA，并且在某一个进程中访问任何地址都不可能访问到另外一个进程的数据，这样使得任何一个进程由于执行错误指令或恶意代码导致的非法内存访问都不会意外改写其它进程的数据，不会影响其它进程的运行，从而保证整个系统的稳定性。另一方面，每个进程都认为自己独占整个虚拟地址空间，这样链接器和加载器的实现会比较容易，不必考虑各进程的地址范围是否冲突。</p>
+<p>继续前面的实验，再打开一个终端窗口，看一下这个新的 <code>bash</code> 进程的地址空间，可以发现和先前的 <code>bash</code> 进程地址空间的布局差不多：</p>
+<pre><code class="language-bash">$ ps
+  PID TTY          TIME CMD
+30697 pts/1    00:00:00 bash
+30749 pts/1    00:00:00 ps
+$ cat /proc/30697/maps
+08048000-080f4000 r-xp 00000000 08:15 688142     /bin/bash
+080f4000-080f9000 rw-p 000ac000 08:15 688142     /bin/bash
+080f9000-080fe000 rw-p 080f9000 00:00 0 
+082d7000-084f9000 rw-p 082d7000 00:00 0          [heap]
+b7cf1000-b7cfb000 r-xp 00000000 08:15 581665     /lib/tls/i686/cmov/libnss_files-2.8.90.so
+b7cfb000-b7cfc000 r--p 00009000 08:15 581665     /lib/tls/i686/cmov/libnss_files-2.8.90.so
+b7cfc000-b7cfd000 rw-p 0000a000 08:15 581665     /lib/tls/i686/cmov/libnss_files-2.8.90.so
+...
+b7e5e000-b7fb6000 r-xp 00000000 08:15 581656     /lib/tls/i686/cmov/libc-2.8.90.so
+b7fb6000-b7fb8000 r--p 00158000 08:15 581656     /lib/tls/i686/cmov/libc-2.8.90.so
+b7fb8000-b7fb9000 rw-p 0015a000 08:15 581656     /lib/tls/i686/cmov/libc-2.8.90.so
+...
+b8006000-b8020000 r-xp 00000000 08:15 565466     /lib/ld-2.8.90.so
+b8020000-b8021000 r-xp b8020000 00:00 0          [vdso]
+b8021000-b8022000 r--p 0001a000 08:15 565466     /lib/ld-2.8.90.so
+b8022000-b8023000 rw-p 0001b000 08:15 565466     /lib/ld-2.8.90.so
+bff0e000-bff23000 rw-p bffeb000 00:00 0          [stack]
+</code></pre>
+<p>该进程也占用了 0x0000  0000-0xbfff ffff 的地址空间，Text Segment 也是 0x0804 8000-0x080f 4000，Data Segment 也是 0x080f 4000-0x080f 9000，和先前的进程一模一样，因为这些地址是在编译链接时写进 <code>/bin/bash</code> 这个可执行文件的，两个进程都加载它。这两个进程在同一个系统中同时运行着，它们的 Data  Segment 占用相同的 VA，但是两个进程各自干各自的事情，显然 Data  Segment 中的数据应该是不同的，相同的 VA 怎么会有不同的数据呢？因为它们被映射到不同的 PA。如下图所示。</p>
+<p id="c20-5">图 20.5. 进程地址空间是独立的</p>
+<p><img src="../images/link.sepva.png" alt="进程地址空间是独立的" /></p>
+<p>从图中还可以看到，两个进程都是 <code>bash</code> 进程，Text Segment 是一样的，并且 Text Segment 是只读的，不会被改写，因此操作系统会安排两个进程的 Text  Segment 共享相同的物理页面。由于每个进程都有自己的一套 VA 到 PA 的映射表，整个地址空间中的任何 VA 都在每个进程自己的映射表中查找相应的 PA，因此不可能访问到其它进程的地址，也就没有可能意外改写其它进程的数据。</p>
+<p>另外，注意到两个进程的共享库加载地址并不相同，共享库的加载地址是在运行时决定的，而不是写在 <code>/bin/bash</code> 这个可执行文件中。但即使如此，也不影响两个进程共享相同物理页面中的共享库，当然，只有只读的部分是共享的，可读可写的部分不共享。</p>
+<p>使用共享库可以大大节省内存。比如 <code>libc</code>，系统中几乎所有的进程都映射 <code>libc</code>到自己的进程地址空间，而 <code>libc</code> 的只读部分在物理内存中只需要存在一份，就可以被所有进程共享，这就是「共享库」这个名称的由来了。</p>
+<p>现在我们也可以理解为什么共享库必须是位置无关代码了。比如 <code>libc</code>，不同的进程虽然共享 <code>libc</code> 所在的物理页面，但这些物理页面被映射到各进程的虚拟地址空间时却位于不同的地址，所以要求 <code>libc</code> 的代码不管加载到什么地址都能正确执行。</p>
+<p>第三，VA 到 PA 的映射会给分配和释放内存带来方便，物理地址不连续的几块内存可以映射成虚拟地址连续的一块内存。比如要用 <code>malloc</code> 分配一块很大的内存空间，虽然有足够多的空闲物理内存，却没有足够大的<strong>连续</strong>空闲内存，这时就可以分配多个不连续的物理页面而映射到连续的虚拟地址范围。如下图所示。</p>
+<p id="c20-6">图 20.6. 不连续的 PA 可以映射为连续的 VA</p>
+<p><img src="../images/link.discontpa.png" alt="不连续的 PA 可以映射为连续的 VA" /></p>
+<p>第四，一个系统如果同时运行着很多进程，为各进程分配的内存之和可能会大于实际可用的物理内存，虚拟内存管理使得这种情况下各进程仍然能够正常运行。因为各进程分配的只不过是虚拟内存的页面，这些页面的数据可以映射到物理页面，也可以临时保存到磁盘上而不占用物理页面，在磁盘上临时保存虚拟内存页面的可能是一个磁盘分区，也可能是一个磁盘文件，称为交换设备（Swap  Device）。当物理内存不够用时，将一些不常用的物理页面中的数据临时保存到交换设备，然后这个物理页面就认为是空闲的了，可以重新分配给进程使用，这个过程称为换出（Page out）。如果进程要用到被换出的页面，就从交换设备再加载回物理内存，这称为换入（Page in）。换出和换入操作统称为换页（Paging），因此：</p>
+<p>系统中可分配的内存总量 = 物理内存的大小 + 交换设备的大小</p>
+<p>如下图所示。第一张图是换出，将物理页面中的数据保存到磁盘，并解除地址映射，释放物理页面。第二张图是换入，从空闲的物理页面中分配一个，将磁盘暂存的页面加载回内存，并建立地址映射。</p>
+<p id="c20-6">图 20.7. 换页</p>
+<p><img src="../images/link.swap.png" alt="换页" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../2-C-语言本质/ch21-预处理.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../2-C-语言本质/ch21-预处理.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

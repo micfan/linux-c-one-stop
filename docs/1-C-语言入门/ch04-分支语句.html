@@ -1,0 +1,471 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>分支语句 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html" class="active"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-4-章-分支语句"><a class="header" href="#第-4-章-分支语句">第 4 章 分支语句</a></h1>
+<h2 id="1-if-语句"><a class="header" href="#1-if-语句">1. if 语句</a></h2>
+<p>目前我们写的简单函数中可以有多条语句，但这些语句总是从前到后顺序执行的。除了顺序执行之外，有时候我们需要检查一个条件，然后根据检查的结果执行不同的后续代码，在 C 语言中可以用分支语句（Selection Statement）实现，比如：</p>
+<pre><code class="language-c">if (x != 0) {
+	printf(&quot;x is nonzero.\n&quot;);
+}
+</code></pre>
+<p>其中 <code>x != 0</code> 表示「x 不等于 0」的条件，这个表达式称为控制表达式（Controlling Expression）如果条件成立，则 <code>{}</code> 中的语句被执行，否则 <code>{}</code> 中的语句不执行，直接跳到 <code>}</code> 后面。<code>if</code> 和控制表达式改变了程序的控制流程（Control Flow），不再是从前到后顺序执行，而是根据不同的条件执行不同的语句，这种控制流程称为分支（Branch）。上例中的 <code>!=</code> 号表示「不等于」，像这样的运算符有：</p>
+<p id="t4-1">表 4.1. 关系运算符和相等性运算符</p>
+<table><thead><tr><th>运算符</th><th>含义</th><th>类型</th><th>优先级</th></tr></thead><tbody>
+<tr><td><code>==</code></td><td>等于</td><td>相等性运算符</td><td>低</td></tr>
+<tr><td><code>!=</code></td><td>不等于</td><td>相等性运算符</td><td>低</td></tr>
+<tr><td><code>&gt;</code></td><td>大于</td><td>关系运算符</td><td>高</td></tr>
+<tr><td><code>&lt;</code></td><td>小于</td><td>关系运算符</td><td>高</td></tr>
+<tr><td><code>&gt;=</code></td><td>大于或等于</td><td>关系运算符</td><td>高</td></tr>
+<tr><td><code>&lt;=</code></td><td>小于或等于</td><td>关系运算符</td><td>高</td></tr>
+</tbody></table>
+<p>注意以下几点：</p>
+<ol>
+<li>这里的 <code>==</code> 表示数学中的相等关系，相当于数学中的 <code>=</code> 号，初学者常犯的错误是在控制表达式中把 <code>==</code> 写成 <code>=</code>，在 C 语言中 <code>=</code> 号是赋值运算符，两者的含义完全不同。</li>
+<li>如果表达式所表示的比较关系成立则值为真（True），否则为假（False），在 C 语言中分别用 <code>int</code> 型的 <code>1</code> 和 <code>0</code> 表示。如果变量 <code>x</code> 的值是 <code>-1</code>，那么 <code>x&gt;0</code> 这个表达式的值为 <code>0</code>，<code>x&gt;-2</code> 这个表达式的值为 <code>1</code>。</li>
+<li>在数学中 <code>a&lt;b&lt;c</code> 表示 <code>b</code> 既大于 <code>a</code> 又小于 <code>c</code>，但作为 C 语言表达式却不是这样。以上几种运算符都是左结合的，请读者想一下这个表达式应如何求值。</li>
+<li>这些运算符的两个操作数应该是相同类型的，两边都是整型或者都是浮点型可以做比较，但两个字符串不能做比较，在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch25-C-%E6%A0%87%E5%87%86%E5%BA%93#_1-%E6%AF%94%E8%BE%83%E5%AD%97%E7%AC%A6%E4%B8%B2">第 25 章「C 标准库」第 1 节「比较字符串」</a>我们会介绍比较字符串的方法。</li>
+<li><code>==</code> 和 <code>!=</code> 称为相等性运算符（Equality Operator），其余四个称为关系运算符（Relational Operator），相等性运算符的优先级低于关系运算符。</li>
+</ol>
+<p>总结一下，<code>if (x != 0) { ... }</code> 这个语句的计算顺序是：首先求 <code>x != 0</code> 这个表达式的值，如果值为 <code>0</code>，就跳过 <code>{}</code> 中的语句直接执行后面的语句，如果值为 <code>1</code>，就先执行 <code>{}</code> 中的语句，然后再执行后面的语句。事实上控制表达式取任何非 <code>0</code> 值都表示真值，例如 <code>if (x) { ... }</code> 和 <code>if (x != 0) { ... }</code> 是等价的，如果 <code>x</code> 的值是 <code>2</code>，则 <code>x != 0</code> 的值是 <code>1</code>，但对于 <code>if</code> 来说不管是 <code>2</code> 还是 <code>1</code> 都表示真值。</p>
+<p>和 <code>if</code> 语句相关的语法规则如下：</p>
+<pre><code>语句 → if (控制表达式) 语句
+语句 → { 语句列表 }
+语句 → ;
+</code></pre>
+<p>在 C 语言中，任何允许出现语句的地方既可以是由 <code>;</code> 号结尾的一条语句，也可以是由 <code>{}</code> 括起来的若干条语句或声明组成的语句块（Statement Block），语句块和<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0">上一章</a>介绍的函数体的语法相同。注意语句块的 <code>}</code> 后面不需要加 <code>;</code> 号。如果 <code>}</code> 后面加了 <code>;</code> 号，则这个 <code>;</code> 号本身又是一条新的语句了，在 C 语言中一个单独的 <code>;</code> 号表示一条空语句（Null Statement）。上例的语句块中只有一条语句，其实没必要写成语句块，可以简单地写成：</p>
+<pre><code class="language-c">if (x != 0)
+	printf(&quot;x is nonzero.\n&quot;);
+</code></pre>
+<p>语句块中也可以定义局部变量，例如：</p>
+<pre><code class="language-c">void foo(void)
+{
+	int i = 0;
+	{
+		int i = 1;
+		int j = 2;
+		printf(&quot;i=%d, j=%d\n&quot;, i, j);
+	}
+	printf(&quot;i=%d\n&quot;, i); /* cannot access j here */
+}
+</code></pre>
+<p>和函数的局部变量同样道理，每次进入语句块时为变量 <code>j</code> 分配存储空间，每次退出语句块时释放变量 <code>j</code> 的存储空间。语句块也构成一个作用域，和<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#e3-6">第 3 章「简单函数」第 4 节「全局变量、局部变量和作用域」例 3.6 「作用域」</a>的分析类似，如果整个源文件是一张大纸，<code>foo</code> 函数是盖在上面的一张小纸，则函数中的语句块是盖在小纸上面的一张更小的纸。语句块中的变量 <code>i</code> 和函数的局部变量 <code>i</code> 是两个不同的变量，因此两次打印的 <code>i</code> 值是不同的；语句块中的变量 <code>j</code> 在退出语句块之后就没有了，因此最后一行的 <code>printf</code> 不能打印变量 <code>j</code>，否则编译器会报错。语句块可以用在任何允许出现语句的地方，不一定非得用在 <code>if</code> 语句中，单独使用语句块通常是为了定义一些比函数的局部变量更「局部」的变量。</p>
+<h3 id="习题"><a class="header" href="#习题">习题</a></h3>
+<ol>
+<li>
+<p>以下程序段编译能通过，执行也不出错，但是执行结果不正确（根据<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch01-%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5#_3-%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%B0%83%E8%AF%95">第 1 章「程序的基本概念」第 3 节「程序的调试」</a>的定义，这是一个语义错误），请分析一下哪里错了。还有，既然错了为什么编译能通过呢？</p>
+<pre><code class="language-c">int x = -1;
+if (x &gt; 0);
+	printf(&quot;x is positive.\n&quot;);
+</code></pre>
+</li>
+</ol>
+<h2 id="2-ifelse-语句"><a class="header" href="#2-ifelse-语句">2. if/else 语句</a></h2>
+<p>if 语句还可以带一个 else 子句（Clause），例如：</p>
+<pre><code class="language-c">if (x % 2 == 0)
+	printf(&quot;x is even.\n&quot;);
+else
+	printf(&quot;x is odd.\n&quot;);
+</code></pre>
+<p>这里的 <code>%</code> 是取模（Modulo）运算符，<code>x%2</code> 表示 <code>x</code> 除以 <code>2</code> 所得的余数（Remainder），C 语言规定 <code>%</code> 运算符的两个操作数必须是整型的。两个正数相除取余数很好理解，如果操作数中有负数，结果应该是正是负呢？C99 规定，如果 <code>a</code> 和 <code>b</code> 是整型，<code>b</code> 不等于 <code>0</code>，则表达式<code>(a/b)*b+a%b</code> 的值总是等于 <code>a</code>，再结合<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch02-%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F#_5-%E8%A1%A8%E8%BE%BE%E5%BC%8F">第 2 章「常量、变量和表达式」第 5 节「表达式」</a>讲过的整数除法运算要 Truncate Toward Zero，可以得到一个结论：<strong>% 运算符的结果总是与被除数同号</strong>（想一想为什么）。其它编程语言对取模运算的规定各不相同，也有规定结果和除数同号的，也有不做明确规定的。</p>
+<p>取模运算在程序中是非常有用的，例如上面的例子判断 <code>x</code> 的奇偶性（Parity），看 <code>x</code> 除以 <code>2</code> 的余数是不是 <code>0</code>，如果是 <code>0</code> 则打印 <code>x is even.</code>，如果不是 <code>0</code> 则打印 <code>x is odd.</code>，读者应该能看出 <code>else</code> 在这里的作用了，如果在上面的例子中去掉 <code>else</code>，则不管 <code>x</code> 是奇是偶，<code>printf(&quot;x is odd.\n&quot;);</code> 总是执行。为了让这条语句更有用，可以把它封装（Encapsulate）成一个函数：</p>
+<pre><code class="language-c">void print_parity(int x)
+{
+	if (x % 2 == 0)
+		printf(&quot;x is even.\n&quot;);
+	else
+		printf(&quot;x is odd.\n&quot;);
+}
+</code></pre>
+<p>把语句封装成函数的基本步骤是：<strong>把语句放到函数体中，把变量改成函数的参数</strong>。这样，以后要检查一个数的奇偶性只需调用这个函数而不必重复写这条语句了，例如：</p>
+<pre><code class="language-c">print_parity(17);
+print_parity(18);
+</code></pre>
+<p><code>if/else</code> 语句的语法规则如下：</p>
+<pre><code>语句 → if (控制表达式) 语句 else 语句
+</code></pre>
+<p>右边的「语句」既可以是一条语句，也可以是由 <code>{}</code> 括起来的语句块。一条 <code>if</code> 语句中包含一条子语句，一条 <code>if/else</code> 语句中包含两条子语句，子语句可以是任何语句或语句块，当然也可以是另外一条 <code>if</code> 或 <code>if/else</code> 语句。根据组合规则，<code>if/else</code> 可以嵌套使用。例如可以这样：</p>
+<pre><code class="language-c">if (x &gt; 0)
+	printf(&quot;x is positive.\n&quot;);
+else if (x &lt; 0)
+	printf(&quot;x is negative.\n&quot;);
+else
+	printf(&quot;x is zero.\n&quot;);
+</code></pre>
+<p>也可以这样：</p>
+<pre><code class="language-c">if (x &gt; 0) {
+	printf(&quot;x is positive.\n&quot;);
+} else {
+	if (x &lt; 0)
+		printf(&quot;x is negative.\n&quot;);
+	else
+		printf(&quot;x is zero.\n&quot;);
+}
+</code></pre>
+<p>现在有一个问题，类似 <code>if (A) if (B) C; else D;</code> 形式的语句怎么理解呢？可以理解成</p>
+<pre><code class="language-c">if (A)
+	if (B)
+		C;
+else
+	D;
+</code></pre>
+<p>也可以理解成</p>
+<pre><code class="language-c">if (A)
+	if (B)
+		C;
+	else
+		D;
+</code></pre>
+<p>在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch02-%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F#_1-%E7%BB%A7%E7%BB%AD-Hello-World">第 2 章「常量、变量和表达式」第 1 节「继续 Hello World」</a>讲过，C 代码的缩进只是为了程序员看起来方便，实际上对编译器不起任何作用，你的代码不管写成上面哪一种缩进格式，在编译器看起来都是一样的。那么编译器到底按哪种方式理解呢？也就是说，<code>else</code> 到底是和 <code>if (A)</code> 配对还是和 <code>if (B)</code> 配对？很多编程语言的语法都有这个问题，称为 Dangling-else 问题。C 语言规定，<strong>else 总是和它上面最近的一个 if 配对</strong>，因此应该理解成 <code>else</code> 和 <code>if (B)</code> 配对，也就是按第二种方式理解。如果你写成上面第一种缩进的格式就很危险了：你看到的是这样，而编译器理解的却是那样。如果你希望编译器按第一种方式理解，应该明确加上 <code>{}</code>：</p>
+<pre><code class="language-c">if (A) {
+	if (B)
+		C;
+} else
+	D;
+</code></pre>
+<p>顺便提一下，浮点型的精度有限，不适合用 <code>==</code> 运算符做精确比较。以下代码可以说明问题：</p>
+<pre><code class="language-c">double i = 20.0;
+double j = i / 7.0;
+if (j * 7.0 == i)
+	printf(&quot;Equal.\n&quot;);
+else
+	printf(&quot;Unequal.\n&quot;);
+</code></pre>
+<p>不同平台的浮点数实现有很多不同之处，在我的平台上运行这段程序结果为 <code>Unequal</code>，即使在你的平台上运行结果为 <code>Equal</code>，你再把 <code>i</code> 改成其它值试试，总有些值会使得结果为 <code>Unequal</code>。等学习了<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch14-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA#_4-%E6%B5%AE%E7%82%B9%E6%95%B0">第 14 章「计算机中数的表示」第 4 节「浮点数」</a>，你就知道为什么浮点型不能做精确比较了。</p>
+<h3 id="习题-1"><a class="header" href="#习题-1">习题</a></h3>
+<ol>
+<li>
+<p>写两个表达式，分别取整型变量 <code>x</code> 的个位和十位。</p>
+</li>
+<li>
+<p>写一个函数，参数是整型变量 <code>x</code>，功能是打印 <code>x</code> 的个位和十位。</p>
+</li>
+</ol>
+<h2 id="3-布尔代数"><a class="header" href="#3-布尔代数">3. 布尔代数</a></h2>
+<p>在<a href="#_1-if-%E8%AF%AD%E5%8F%A5">本章第 1 节「if 语句」</a>讲过，<code>a&lt;b&lt;c</code> 不表示 <code>b</code> 既大于 <code>a</code> 又小于 <code>c</code>，那么如果想表示这个含义该怎么写呢？可以这样：</p>
+<pre><code class="language-c">if (a &lt; b) {
+	if (b &lt; c) {
+		printf(&quot;b is between a and c.\n&quot;);
+	}
+}
+</code></pre>
+<p>我们也可以用逻辑与（Logical AND）运算符表示这两个条件同时成立。逻辑与运算符在 C 语言中写成两个与号（Ampersand）<code>&amp;&amp;</code> ，上面的语句可以改写为：</p>
+<pre><code class="language-c">if (a &lt; b &amp;&amp; b &lt; c) {
+	printf(&quot;b is between a and c.\n&quot;);
+}
+</code></pre>
+<p>对于 <code>a &lt; b &amp;&amp; b &lt; c</code> 这个控制表达式，要求「<code>a &lt; b</code> 的值非 0 」和「<code>b &lt; c</code> 的值非 0」这两个条件同时成立整个表达式的值才为 <code>1</code>，否则整个表达式的值为 <code>0</code>。也就是只有两个条件都为真，它们做逻辑与运算的结果才为真，有一个条件为假，则逻辑与运算的结果为假，如下表所示：</p>
+<p id="t4-2">表 4.2. AND 的真值表</p>
+<table><thead><tr><th>A</th><th>B</th><th>A AND B</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<p>这种表称为真值表（Truth Table）。注意逻辑与运算的操作数以非 0 表示真、以 0 表示假，而运算结果以 1 表示真、以 0 表示假（类型是 <code>int</code>），我们忽略这些细微的差别，在表中全部以 1 表示、真、以 0 表示假。C 语言还提供了逻辑或（Logical OR）运算符，写成两个管道符号（Pipe Sign） <code>||</code> ，逻辑非（Logical NOT）运算符，写成一个感叹号（Exclamation Mark） <code>!</code>，它们的真值表如下：</p>
+<p id="t4-3">表 4.3. OR 的真值表</p>
+<table><thead><tr><th>A</th><th>B</th><th>A OR B</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<p id="t4-4">表 4.4. NOT 的真值表</p>
+<table><thead><tr><th>A</th><th>NOT A</th></tr></thead><tbody>
+<tr><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td></tr>
+</tbody></table>
+<p>逻辑或表示两个条件只要有一个为真，它们做逻辑或运算的结果就为真，只有两个条件都为假，逻辑或运算的结果才为假。逻辑非的作用是对原来的逻辑值取反，原来是真的就是假，原来是假的就是真。逻辑非运算符只有一个操作数，称为<strong>单目运算符（Unary Operator）</strong>，以前讲过的加减乘除、赋值、相等性、关系、逻辑与、逻辑或运算符都有两个操作数，称为<strong>双目运算符（Binary Operator）</strong>。</p>
+<p>关于逻辑运算的数学体系称为布尔代数（Boolean Algebra），以它的创始人布尔命名。在编程语言中表示真和假的数据类型叫做布尔类型，在 C 语言中通常用 <code>int</code> 型来表示，非 0 表示真，0 表示假 <sup>[6]</sup>。布尔逻辑是写程序的基本功之一，程序中的很多错误都可以归因于逻辑错误。以下是一些布尔代数的基本定理，为了简洁易读，真和假用 <code>1</code> 和 <code>0</code> 表示，<code>AND</code> 用 <code>*</code> 号表示，<code>OR</code> 用 <code>+</code> 号表示（从真值表可以看出 <code>AND</code> 和 <code>OR</code> 运算确实有点像乘法和加法运算），<code>NOT</code> 用 <code>¬</code> 表示，变量 <code>x</code>、<code>y</code>、<code>z</code> 的值可能是 <code>0</code> 也可能是 <code>1</code>。</p>
+<blockquote>
+<p><sup>[6]</sup> C99 也定义了专门的布尔类型 <code>_Bool</code>，但目前没有被广泛使用。</p>
+</blockquote>
+<pre><code>¬¬x=x
+
+x*0=0
+x+1=1
+
+x*1=x
+x+0=x
+
+x*x=x
+x+x=x
+
+x*¬x=0
+x+¬x=1
+
+x*y=y*x
+x+y=y+x
+
+x*(y*z)=(x*y)*z
+x+(y+z)=(x+y)+z
+
+x*(y+z)=x*y+x*z
+x+y*z=(x+y)*(x+z)
+
+x+x*y=x
+x*(x+y)=x
+
+x*y+x*¬y=x
+(x+y)*(x+¬y)=x
+
+¬(x*y)=¬x+¬y
+¬(x+y)=¬x*¬y
+
+x+¬x*y=x+y
+x*(¬x+y)=x*y
+
+x*y+¬x*z+y*z=x*y+¬x*z
+(x+y)*(¬x+z)*(y+z)=(x+y)*(¬x+z)
+</code></pre>
+<p>除了第 1 行之外，这些公式都是每两行一组的，每组的两个公式就像对联一样：把其中一个公式中的 <code>*</code> 换成 <code>+</code>、<code>+</code> 换成 <code>*</code>、<code>0</code> 换成 <code>1</code>、<code>1</code> 换成 <code>0</code>，就变成了与它对称的另一个公式。这些定理都可以通过真值表证明，更多细节可参考有关数字逻辑的教材，例如 <em>数字逻辑基础</em>。我们将在本节的练习题中强化训练对这些定理的理解。</p>
+<p>目前为止介绍的这些运算符的优先级顺序是：<code>!</code> 高于 <code>* / %</code>，高于 <code>+ -</code>，高于 <code>&gt; &lt; &gt;= &lt;=</code>，高于 <code>==  !=</code>，高于 <code>&amp;&amp;</code>，高于 <code>||</code>，高于 <code>=</code>。写一个控制表达式很可能同时用到这些运算符中的多个，如果记不清楚运算符的优先级一定要多套括号。我们将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch16-%E8%BF%90%E7%AE%97%E7%AC%A6%E8%AF%A6%E8%A7%A3#_4-%E8%BF%90%E7%AE%97%E7%AC%A6%E6%80%BB%E7%BB%93">第 16 章「运算符详解」第 4 节「运算符总结」</a>总结 C 语言所有运算符的优先级和结合性。</p>
+<h3 id="习题-2"><a class="header" href="#习题-2">习题</a></h3>
+<ol>
+<li>
+<p>把代码段</p>
+<pre><code class="language-c">if (x &gt; 0 &amp;&amp; x &lt; 10);
+else
+	printf(&quot;x is out of range.\n&quot;);
+</code></pre>
+<p>改写成下面这种形式：</p>
+<pre><code class="language-c">if ( ____ || ____ )
+	printf(&quot;x is out of range.\n&quot;);
+</code></pre>
+<p><code>____</code> 应该怎么填？</p>
+</li>
+<li>
+<p>把代码段：</p>
+<pre><code class="language-c">if (x &gt; 0)
+	printf(&quot;Test OK!\n&quot;);
+else if (x &lt;= 0 &amp;&amp; y &gt; 0)
+	printf(&quot;Test OK!\n&quot;);
+else
+	printf(&quot;Test failed!\n&quot;);
+</code></pre>
+<p>改写成下面这种形式：</p>
+<pre><code class="language-c">if ( ____ &amp;&amp; ____ )
+	printf(&quot;Test failed!\n&quot;);
+else
+	printf(&quot;Test OK!\n&quot;);
+</code></pre>
+<p><code>____</code> 应该怎么填？</p>
+</li>
+<li>
+<p>有这样一段代码：</p>
+<pre><code class="language-c">if (x &gt; 1 &amp;&amp; y != 1) {
+	...
+} else if (x &lt; 1 &amp;&amp; y != 1) {
+	...
+} else {
+	...
+}
+</code></pre>
+<p>要进入最后一个 <code>else</code>，<code>x</code> 和 <code>y</code> 需要满足条件 <code>____</code> || <code>____</code>。这里应该怎么填？</p>
+</li>
+<li>
+<p>以下哪一个 <code>if</code> 判断条件是多余的可以去掉？这里所谓的「多余」是指，某种情况下如果本来应该打印 <code>Test OK!</code>，去掉这个多余条件后仍然打印 <code>Test OK!</code>，如果本来应该打印 <code>Test failed!</code>，去掉这个多余条件后仍然打印 <code>Test failed!</code>。</p>
+<pre><code class="language-c">if (x&lt;3 &amp;&amp; y&gt;3)
+	printf(&quot;Test OK!\n&quot;);
+else if (x&gt;=3 &amp;&amp; y&gt;=3)
+	printf(&quot;Test OK!\n&quot;);
+else if (z&gt;3 &amp;&amp; x&gt;=3)
+	printf(&quot;Test OK!\n&quot;);
+else if (z&lt;=3 &amp;&amp; y&gt;=3)
+	printf(&quot;Test OK!\n&quot;);
+else
+	printf(&quot;Test failed!\n&quot;);
+</code></pre>
+</li>
+</ol>
+<h2 id="4-switch-语句"><a class="header" href="#4-switch-语句">4. switch 语句</a></h2>
+<p><code>switch</code> 语句可以产生具有多个分支的控制流程。它的格式是：</p>
+<pre><code class="language-c">switch (控制表达式) {
+case 常量表达式： 语句列表
+case 常量表达式： 语句列表
+...
+default： 语句列表
+}
+</code></pre>
+<p>例如以下程序根据传入的参数 <code>1 ~ 7</code> 分别打印 Monday ~ Sunday：</p>
+<p id="e4-1">例 4.1. switch 语句</p>
+<p><img src="../images/cond.switch1.png" alt="switch 语句 1" /></p>
+<p>如果传入的参数是 <code>2</code>，则从 <code>case 2</code> 分支开始执行，先是打印相应的信息，然后遇到 <code>break</code> 语句，它的作用是跳出整个 <code>switch</code> 语句块。C 语言规定各 <code>case</code> 分支的常量表达式必须互不相同，如果控制表达式不等于任何一个常量表达式，则从 <code>default</code> 分支开始执行，通常把 <code>default</code> 分支写在最后，但不是必须的。使用 <code>switch</code> 语句要注意几点：</p>
+<p><code>case</code> 后面跟表达式的必须是常量表达式，这个值和全局变量的初始值一样必须在编译时计算出来。</p>
+<p><a href="#_2-ifelse-%E8%AF%AD%E5%8F%A5">本章第 2 节「if/else 语句」</a>讲过浮点型不适合做精确比较，所以 C 语言规定 <code>case</code> 后面跟的必须是整型常量表达式。</p>
+<p>进入 <code>case</code> 后如果没有遇到 <code>break</code> 语句就会一直往下执行，后面其它 <code>case</code> 或 <code>default</code> 分支的语句也会被执行到，直到遇到 <code>break</code>，或者执行到整个 <code>switch</code> 语句块的末尾。通常每个 <code>case</code> 后面都要加上 <code>break</code> 语句，但有时会故意不加 <code>break</code> 来利用这个特性，例如：</p>
+<p id="e4-2">例 4.2. 缺 break 的 switch 语句</p>
+<p><img src="../images/cond.switch2.png" alt="switch 语句 2" /></p>
+<p><code>switch</code> 语句不是必不可缺的，显然可以用一组 <code>if ... else if ... else if ... else ...</code> 代替，但是一方面用 <code>switch</code> 语句会使代码更清晰，另一方面，有时候编译器会对 <code>switch</code> 语句进行整体优化，使它比等价的 <code>if/else</code> 语句所生成的指令效率更高。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-C-语言入门/ch03-简单函数.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../1-C-语言入门/ch05-深入理解函数.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-C-语言入门/ch03-简单函数.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../1-C-语言入门/ch05-深入理解函数.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

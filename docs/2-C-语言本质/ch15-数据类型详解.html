@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>数据类型详解 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html" class="active"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-15-章-数据类型详解"><a class="header" href="#第-15-章-数据类型详解">第 15 章 数据类型详解</a></h1>
+<h2 id="1-整型"><a class="header" href="#1-整型">1. 整型</a></h2>
+<p>我们知道，在 C 语言中 char 型占一个字节的存储空间，一个字节通常是 8 个 bit。如果这 8 个 bit 按无符号整数来解释，取值范围是 0 ~ 255，如果按有符号整数来解释，采用 2's Complement 表示法，取值范围是 -128 ~ 127。C 语言规定了 signed 和 unsigned 两个关键字，unsigned char 型表示无符号数，signed char 型表示有符号数。</p>
+<p>那么以前我们常用的不带 signed 或 unsigned 关键字的 char 型是无符号数还是有符号数呢？C 标准规定这是 Implementation Defined，编译器可以定义 char 型是无符号的，也可以定义 char 型是有符号的，在该编译器所对应的体系结构上哪种实现效率高就可以采用哪种实现，x86 平台的 <code>gcc</code> 定义 char 型是有符号的。这也是 C 标准的 Rationale 之一：<strong>优先考虑效率，而可移植性尚在其次</strong>。这就要求程序员非常清楚这些规则，如果你要写可移植的代码，就必须清楚哪些写法是不可移植的，应该避免使用。另一方面，写不可移植的代码有时候也是必要的，比如 Linux 内核代码使用了很多只有 <code>gcc</code> 支持的语法特性以得到最佳的执行效率，在写这些代码的时候就没打算用别的编译器编译，也就没考虑可移植性的问题。如果要写不可移植的代码，你也必须清楚代码中的哪些部分是不可移植的，以及为什么要这样写，如果不是为了效率，一般来说就没有理由故意写不可移植的代码。从现在开始，我们会接触到很多 Implementation Defined 的特性，C 语言与平台和编译器是密不可分的，离开了具体的平台和编译器讨论 C 语言，就只能讨论到本书第一部分的程度了。注意，ASCII 码的取值范围是 0 ~ 127，所以不管 char 型是有符号的还是无符号的，存一个 ASCII 码都没有问题，一般来说，如果用 <code>char</code> 型存 ASCII 码字符，就不必明确写是 signed 还是 unsigned，如果用 char 型表示 8 位的整数，为了可移植性就必须写明是 signed 还是 unsigned。</p>
+<blockquote>
+<p><strong>Implementation-defined、Unspecified 和 Undefined</strong></p>
+<p>在 C 标准中没有做明确规定的地方会用 Implementation-defined、Unspecified 或 Undefined 来表述，在本书中有时把这三种情况统称为「未明确定义」的。这三种情况到底有什么不同呢？
+我们刚才看到一种 Implementation-defined 的情况，C 标准没有明确规定 char 是有符号的还是无符号的，但是要求编译器必须对此做出明确规定，并写在编译器的文档中。
+而对于 Unspecified 的情况，往往有几种可选的处理方式，C 标准没有明确规定按哪种方式处理，编译器可以自己决定，并且也不必写在编译器的文档中，这样即便用同一个编译器的不同版本来编译也可能得到不同的结果，因为编译器没有在文档中明确写它会怎么处理，那么不同版本的编译器就可以选择不同的处理方式，比如下一章我们会讲到一个函数调用的各个实参表达式按什么顺序求值是 Unspecified 的。
+Undefined 的情况则是完全不确定的，C 标准没规定怎么处理，编译器很可能也没规定，甚至也没做出错处理，有很多 Undefined 的情况编译器是检查不出来的，最终会导致运行时错误，比如数组访问越界就是 Undefined 的。
+初学者看到这些规则通常会很不舒服，觉得这不是在学编程而是在啃法律条文，结果越学越泄气。是的，C 语言并不像一个数学定理那么完美，现实世界里的东西总是不够完美的。但还好啦，C 程序员已经很幸福了，只要严格遵照 C 标准来写代码，不要去触碰那些阴暗角落，写出来的代码就有很好的可移植性。想想那些可怜的 JavaScript 程序员吧，他们甚至连一个可以遵照的标准都没有，一个浏览器一个样，甚至同一个浏览器的不同版本也差别很大，程序员不得不为每一种浏览器的每一个版本分别写不同的代码。</p>
+</blockquote>
+<p>除了 char 型之外，整型还包括 short int（或者简写为 short）、int、long int（或者简写为 long）、long long int（或者简写为 long long）等几种<sup>[25]</sup>，这些类型都可以加上 signed 或 unsigned 关键字表示有符号或无符号数。其实，对于有符号数在计算机中的表示是 Sign  and Magnitude、1's Complement 还是 2's Complement，C 标准也没有明确规定，也是 Implementation Defined。大多数体系结构都采用 2's Complement 表示法，x86 平台也是如此，从现在开始我们只讨论 2's Complement 表示法的情况。还有一点要注意，除了 char 型以外的这些类型如果不明确写 signed 或 unsigned 关键字都表示 signed，这一点是 C 标准明确规定的，不是 Implementation Defined。</p>
+<blockquote>
+<p><sup>[25]</sup> 我们在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB#_4-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E8%81%94%E5%90%88%E4%BD%93">第 19 章「汇编与 C 之间的关系」第 4 节「结构体和联合体」</a>还要介绍一种特殊的整型—— Bit-field。</p>
+</blockquote>
+<p>除了 char 型在 C 标准中明确规定占一个字节之外，其它整型占几个字节都是 Implementation Defined。通常的编译器实现遵守 ILP32 或 LP64 规范，如下表所示。</p>
+<p id="t15-1">表 15.1. ILP32 和 LP64</p>
+<table><thead><tr><th>类型</th><th>ILP32（位数）</th><th>LP64（位数）</th></tr></thead><tbody>
+<tr><td>char</td><td>8</td><td>8</td></tr>
+<tr><td>short</td><td>16</td><td>16</td></tr>
+<tr><td>int</td><td>32</td><td>32</td></tr>
+<tr><td>long</td><td>32</td><td>64</td></tr>
+<tr><td>long long</td><td>64</td><td>64</td></tr>
+<tr><td>指针</td><td>32</td><td>64</td></tr>
+</tbody></table>
+<p>ILP32 这个缩写的意思是 int（I）、long（L）和指针（P）类型都占 32 位，通常 32 位计算机的 C 编译器采用这种规范，x86 平台的 <code>gcc</code> 也是如此。LP64 是指 long（L）和指针占 64 位，通常 64 位计算机的 C 编译器采用这种规范。指针类型的长度总是和计算机的位数一致，至于什么是计算机的位数，指针又是一种什么样的类型，我们到<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch17-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80">第 17 章「计算机体系结构基础」</a>和<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch23-%E6%8C%87%E9%92%88">第 23 章「指针」</a>再分别详细解释。从现在开始本书做以下约定：<strong>在以后的陈述中，缺省平台是 x86 / Linux / gcc，遵循 ILP32，并且 char 是有符号的，我不会每次都加以说明，但说到其它平台时我会明确指出是什么平台</strong>。</p>
+<p>在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch02-%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F#_2-%E5%B8%B8%E9%87%8F">第 2 章「常量、变量和表达式」第 2 节「常量」</a>讲过 C 语言的常量有整数常量、字符常量、枚举常量和浮点数常量四种，其实字符常量和枚举常量的类型都是 int 型，因此前三种常量的类型都属于整型。整数常量有很多种，不全是 int 型的，下面我们详细讨论整数常量。</p>
+<p>以前我们只用到十进制的整数常量，其实在 C 语言中也可以用八进制和十六进制的整数常量<sup>[26]</sup>。八进制整数常量以 <code>0</code> 开头，后面的数字只能是 0 ~ 7，例如 022，因此十进制的整数常量就不能以 0 开头了，否则无法和八进制区分。十六进制整数常量以 <code>0x</code> 或 <code>0X</code> 开头，后面的数字可以是 <code>0 ~ 9</code>、<code>a ~ f</code> 和 <code>A ~ F</code>。在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch02-%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F#_6-%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81">第 2 章「常量、变量和表达式」第 6 节「字符类型与字符编码」</a>讲过一种转义序列，以 <code>\</code> 或 <code>\x</code> 加八进制或十六进制数字表示，这种表示方式相当于把八进制和十六进制整数常量开头的 <code>0</code> 替换成 <code>\</code> 了。</p>
+<blockquote>
+<p><sup>[26]</sup> 有些编译器（比如 <code>gcc</code>）也支持二进制的整数常量，以 <code>0b</code> 或 <code>0B</code> 开头，比如 <code>0b0001111</code>，但二进制的整数常量从未进入 C 标准，只是某些编译器的扩展，所以不建议使用，由于二进制和八进制、十六进制的对应关系非常明显，用八进制或十六进制常量完全可以代替使用二进制常量。</p>
+</blockquote>
+<p>整数常量还可以在末尾加 <code>u</code> 或 <code>U</code> 表示 unsigned，加 <code>l</code> 或 <code>L</code> 表示 long，加 <code>ll</code> 或 <code>LL</code> 表示 long long，例如 <code>0x1234U</code>，<code>98765ULL</code> 等。但事实上 <code>u</code>、<code>l</code>、<code>ll</code> 这几种后缀和上面讲的 unsigned、long、long long 关键字并不是一一对应的。这个对应关系比较复杂，准确的描述如下表所示（出自 <em>C99</em> 条款 6.4.4.1）。</p>
+<p id="t15-2">表 15.2. 整数常量的类型</p>
+<table><thead><tr><th>后缀</th><th>十进制常量</th><th>八进制或十六进制常量</th></tr></thead><tbody>
+<tr><td>无</td><td>int  long int  long long int</td><td>int  unsigned int  long int  unsigned long int  long long int  unsigned long long int</td></tr>
+<tr><td>u 或 U</td><td>unsigned int  unsigned long int  unsigned long long int</td><td>unsigned int  unsigned long int  unsigned long long int</td></tr>
+<tr><td>l 或 L</td><td>long int  long long int</td><td>long int  unsigned long int  long long int  unsigned long long int</td></tr>
+<tr><td>既有 u 或 U，又有 l 或 L</td><td>unsigned long int  unsigned long long int</td><td>unsigned long int  unsigned long long int</td></tr>
+<tr><td>ll 或 LL</td><td>long long int</td><td>long long int  unsigned long long int</td></tr>
+<tr><td>既有 u 或 U，又有 ll 或 LL</td><td>unsigned long long int</td><td>unsigned long long int</td></tr>
+</tbody></table>
+<p>给定一个整数常量，比如 <code>1234U</code>，那么它应该属于「u 或 U」这一行的「十进制常量」这一列，这个表格单元中列了三种类型 unsigned int、unsigned long int、unsigned long long int，从上到下找出第一个足够长的类型可以表示 <code>1234</code> 这个数，那么它就是这个整数常量的类型，如果 int 是 32 位的那么 unsigned int 就可以表示。</p>
+<p>再比如 <code>0xffff0000</code>，应该属于第一行「无」的第二列「八进制或十六进制常量」，这一列有六种类型 int、unsigned int、long int、unsigned long int、long long int、unsigned long long int，第一个类型 int 表示不了 <code>0xffff0000</code> 这么大的数，我们写这个十六进制常量是要表示一个正数，而它的 MSB（第 31 位）是 1，如果按有符号 int 类型来解释就成了负数了，第二个类型 unsigned int 可以表示这个数，所以这个十六进制常量的类型应该算 unsigned int。所以请注意，<code>0x7fffffff</code> 和 <code>0xffff0000</code> 这两个常量虽然看起来差不多，但前者是 int 型，而后者是 unsigned int 型。</p>
+<p>讲一个有意思的问题。我们知道 x86 平台上 int 的取值范围是 -2147483648 ~ 2147483647，那么用 <code>printf(&quot;%d\n&quot;, -2147483648);</code> 打印 int 类型的下界有没有问题呢？如果用 <code>gcc main.c -std=c99</code> 编译会有警告信息： <code>warning: format ‘%d’ expects type ‘int’, but argument 2 has type ‘long long int’</code>。这是因为，虽然 -2147483648 这个数值能够用 int 型表示，但在 C 语言中却没法写出对应这个数值的 int 型常量，C 编译器会把它当成一个整数常量 2147483648 和一个负号运算符组成的表达式，而整数常量 2147483648 已经超过了 <code>int</code> 型的取值范围，在 x86 平台上 int 和 long 的取值范围相同，所以这个常量也超过了 long 型的取值范围，根据上表第一行「无」的第一列「十进制常量」，这个整数常量应该算 long long 型的，前面再加个负号组成的表达式仍然是 long long 型，而 <code>printf</code> 的 <code>%d</code> 转换说明要求后面的参数是 int 型，所以编译器报警告。之所以编译命令要加 <code>-std=c99</code> 选项是因为 C99 以前对于整数常量的类型规定和上表有一些出入，即使不加这个选项也会报警告，但警告信息不准确，读者可以试试。如果改成 <code>printf(&quot;%d\n&quot;, -2147483647-1);</code> 编译器就不会报警告了，<code>-</code> 号运算符的两个操作数 -2147483647 和 1 都是 int 型，计算结果也应该是 int 型，并且它的值也没有超出 int 型的取值范围；或者改成 <code>printf(&quot;%lld\n&quot;, -2147483648);</code> 也可以，转换说明 <code>%lld</code> 告诉 <code>printf</code> 后面的参数是 long long 型，有些转换说明格式目前还没讲到，详见<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch25-C-%E6%A0%87%E5%87%86%E5%BA%93#_%E6%A0%BC%E5%BC%8F%E5%8C%96-IO-%E5%87%BD%E6%95%B0">第 25 章「C 标准库」第 2.9 节「格式化 I/O 函数」</a>。</p>
+<p>怎么样，整数常量没有你原来想的那么简单吧。再看一个不简单的问题。<code>long long i = 1234567890 * 1234567890;</code> 编译时会有警告信息： <code>warning: integer overflow in expression</code>。1234567890 是 int 型，两个 int 型相乘的表达式仍然是 int 型，而乘积已经超过 int 型的取值范围了，因此提示计算结果溢出。如果改成 <code>long long i = 1234567890LL * 1234567890;</code>，其中一个常量是 long long 型，另一个常量也会先转换成 long long 型再做乘法运算，两数相乘的表达式也是 long long 型，编译器就不会报警告了。有关类型转换的规则将在<a href="#_%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">本章第 3 节「类型转换」</a>详细介绍。</p>
+<h2 id="2-浮点型"><a class="header" href="#2-浮点型">2. 浮点型</a></h2>
+<p>C 标准规定的浮点型有 float、double、long double，和整型一样，既没有规定每种类型占多少字节，也没有规定采用哪种表示形式。浮点数的实现在各种平台上差异很大，有的处理器有浮点运算单元（FPU，Floating Point Unit），称为硬浮点（Hard-float）实现；有的处理器没有浮点运算单元，只能做整数运算，需要用整数运算来模拟浮点运算，称为软浮点（Soft-float）实现。大部分平台的浮点数实现遵循 IEEE 754，float 型通常是 32 位，double 型通常是 64 位。</p>
+<p>long double 型通常是比 double 型精度更高的类型，但各平台的实现有较大差异。在 x86 平台上，大多数编译器实现的 long double 型是 80 位，因为 x86 的浮点运算单元具有 80 位精度，<code>gcc</code> 实现的 long double 型是 12 字节（96位），这是为了对齐到 4 字节边界（在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB#_4-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E8%81%94%E5%90%88%E4%BD%93">第 19 章「汇编与 C 之间的关系」第 4 节「结构体和联合体」</a>详细讨论对齐的问题），也有些编译器实现的 long double 型和 double 型精度相同，没有充分利用 x86 浮点运算单元的精度。其它体系结构的浮点运算单元的精度不同，编译器实现也会不同，例如 PowerPC 上的 long double 型通常是 128 位。</p>
+<p>以前我们只用到最简单的浮点数常量，例如 3.14，现在看看浮点数常量还有哪些写法。由于浮点数在计算机中的表示是基于科学计数法的，所以浮点数常量也可以写成科学计数法的形式，尾数和指数之间用 e 或 E 隔开，例如 314e-2 表示 314×10<sup>-2</sup>，注意这种表示形式基数是 10 <sup>[27]</sup>，如果尾数的小数点左边或右边没有数字则表示这一部分为零，例如 3.e-1，.987等等。浮点数也可以加一个后缀，例如 3.14f、.01L，浮点数的后缀和类型之间的对应关系比较简单，没有后缀的浮点数常量是 double 型的，有后缀 f 或 F 的浮点数常量是 float 型的，有后缀 l 或 L 的浮点数常量是 long double 型的。</p>
+<blockquote>
+<p><sup>[27]</sup> C99 引入一种新的十六进制浮点数表示，基数是 2，本书不做详细介绍。</p>
+</blockquote>
+<h2 id="3-类型转换"><a class="header" href="#3-类型转换">3. 类型转换</a></h2>
+<p>如果有人问 C 语法规则中最复杂的是哪一部分，我一定会说是类型转换。从上面两节可以看出，有符号、无符号整数和浮点数加起来有那么多种类型，每两种类型之间都要定义一个转换规则，转换规则的数量自然很庞大，更何况由于各种体系结构对于整数和浮点数的实现很不相同，很多类型转换的情况都是 C 标准未做明确规定的阴暗角落。虽然我们写代码时不会故意去触碰这些阴暗角落，但有时候会不小心犯错，所以了解一些未明确规定的情况还是有必要的，可以在出错时更容易分析错误原因。本节分成几小节，首先介绍哪些情况下会发生类型转换，会把什么类型转成什么类型，然后介绍编译器如何处理这样的类型转换。</p>
+<h3 id="31-integer-promotion"><a class="header" href="#31-integer-promotion">3.1. Integer Promotion</a></h3>
+<p>在一个表达式中，凡是可以使用 int 或 unsigned int 类型做右值的地方也都可以使用有符号或无符号的 char 型、short 型和 Bit-field。如果原始类型的取值范围都能用 int 型表示，则其类型被提升为 int，如果原始类型的取值范围用 int 型表示不了，则提升为 unsigned int 型，这称为 Integer Promotion。做 Integer Promotion 只影响上述几种类型的值，对其它类型无影响。C99 规定 Integer Promotion 适用于以下几种情况：</p>
+<ol>
+<li>
+<p>如果一个函数的形参类型未知，例如使用了 Old Style C 风格的函数声明（详见<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#_2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0">第 3 章「简单函数」第 2 节「自定义函数」</a>），或者函数的参数列表中有 ...，那么调用函数时要对相应的实参做 Integer Promotion，此外，相应的实参如果是 float 型的也要被提升为 double 型，这条规则称为 Default Argument Promotion。我们知道 <code>printf</code> 的参数列表中有 <code>...</code>，除了第一个形参之外，其它形参的类型都是未知的，比如有这样的代码：</p>
+<pre><code class="language-c">char ch = 'A';
+printf(&quot;%c&quot;, ch);
+</code></pre>
+<p><code>ch</code> 要被提升为 int 型之后再传给 <code>printf</code>。</p>
+</li>
+<li>
+<p>算术运算中的类型转换。有符号或无符号的 char 型、short 型和 Bit-field 在做算术运算之前首先要做 Integer Promotion，然后才能参与计算。例如：</p>
+<pre><code class="language-c">unsigned char c1 = 255, c2 = 2;
+int n = c1 + c2;
+</code></pre>
+<p>计算表达式 <code>c1 + c2</code> 的过程其实是先把 <code>c1</code> 和 <code>c2</code> 提升为 int 型然后再相加（unsigned char 的取值范围是 0 ~ 255，完全可以用 int 表示，所以提升为 int 就可以了，不需要提升为 unsigned int），整个表达式的值也是 int 型，最后的结果是 257。假如没有这个提升的过程，<code>c1 + c2</code> 就溢出了，溢出会得到什么结果是 Undefined，在大多数平台上会把进位截掉，得到的结果应该是 1。</p>
+<p>除了 + 号之外还有哪些运算符在计算之前需要做 Integer Promotion 呢？我们在下一小节先介绍 Usual Arithmetic Conversion 规则，然后再解答这个问题。</p>
+</li>
+</ol>
+<h3 id="32-usual-arithmetic-conversion"><a class="header" href="#32-usual-arithmetic-conversion">3.2. Usual Arithmetic Conversion</a></h3>
+<p>两个算术类型的操作数做算术运算，比如 <code>a + b</code>，如果两边操作数的类型不同，编译器会自动做类型转换，使两边类型相同之后才做运算，这称为 Usual Arithmetic Conversion。转换规则如下：</p>
+<ol>
+<li>如果有一边的类型是 long double，则把另一边也转成 long double。</li>
+<li>否则，如果有一边的类型是 double，则把另一边也转成 double。</li>
+<li>否则，如果有一边的类型是 float，则把另一边也转成 float。</li>
+<li>否则，两边应该都是整型，首先按上一小节讲过的规则对 <code>a</code> 和 <code>b</code> 做 Integer Promotion，然后如果类型仍不相同，则需要继续转换。首先我们规定 char、short、int、long、long long 的转换级别（Integer Conversion Rank）一个比一个高，同一类型的有符号和无符号数具有相同的 Rank。转换规则如下：
+<ol>
+<li>如果两边都是有符号数，或者都是无符号数，那么较低 Rank 的类型转换成较高 Rank 的类型。例如 unsigned int 和 unsigned long 做算术运算时都转成 unsigned long。</li>
+<li>否则，如果一边是无符号数另一边是有符号数，无符号数的 Rank 不低于有符号数的 Rank，则把有符号数转成另一边的无符号类型。例如 unsigned long 和 int 做算术运算时都转成 unsigned long，unsigned long 和 long 做算术运算时也都转成 unsigned long。</li>
+<li>剩下的情况是：一边有符号另一边无符号，并且无符号数的 Rank 低于有符号数的 Rank。这时又分为两种情况，如果这个有符号数类型能够覆盖这个无符号数类型的取值范围，则把无符号数转成另一边的有符号类型。例如遵循 LP64 的平台上 unsigned int 和 long 在做算术运算时都转成 long。</li>
+<li>否则，也就是这个有符号数类型不足以覆盖这个无符号数类型的取值范围，则把两边都转成有符号数的 Rank 对应的无符号类型。例如在遵循 ILP32 的平台上 unsigned int 和 long 在做算术运算时都转成 unsigned long。</li>
+</ol>
+</li>
+</ol>
+<p>可见有符号和无符号整数的转换规则是十分复杂的，虽然这是有明确规定的，不属于阴暗角落，但为了程序的可读性不应该依赖这些规则来写代码。我讲这些规则，不是为了让你用，而是为了让你了解有符号数和无符号数混用会非常麻烦，从而避免触及这些规则，并且在程序出错时记得往这上面找原因。所以这些规则不需要牢记，但要知道有这么回事，以便在用到的时候能找到我书上的这一段。</p>
+<p>到目前为止我们学过的 <code>+  - * / % &gt; &lt; &gt;= &lt;= == !=</code> 运算符都需要做 Usual Arithmetic  Conversion，因为都要求两边操作数的类型一致，在下一章会介绍几种新的运算符也需要做 Usual Arithmetic  Conversion。单目运算符 <code>+ - ~</code> 只有一个操作数，移位运算符 <code>&lt;&lt;  &gt;&gt;</code> 两边的操作数类型不要求一致，这些运算不需要做 Usual Arithmetic Conversion，但也需要做 Integer Promotion，运算符 <code>~ &lt;&lt; &gt;&gt;</code> 将在下一章介绍。</p>
+<h3 id="33-由赋值产生的类型转换"><a class="header" href="#33-由赋值产生的类型转换">3.3. 由赋值产生的类型转换</a></h3>
+<p>如果赋值或初始化时等号两边的类型不相同，则编译器会把等号右边的类型转换成等号左边的类型再做赋值。例如 <code>int c = 3.14;</code>，编译器会把右边的 double 型转成 int 型再赋给变量 <code>c</code>。</p>
+<p>我们知道，函数调用传参的过程相当于定义形参并且用实参对其做初始化，函数返回的过程相当于定义一个临时变量并且用 <code>return</code> 的表达式对其做初始化，所以由赋值产生的类型转换也适用于这两种情况。例如一个函数的原型是 <code>int foo(int, int);</code>，则调用 <code>foo(3.1, 4.2)</code> 时会自动把两个 double 型的实参转成 int 型赋给形参，如果这个函数定义中有返回语句 <code>return 1.2;</code>，则返回值 <code>1.2</code> 会自动转成 int 型再返回。</p>
+<p>在函数调用和返回过程中发生的类型转换往往容易被忽视，因为函数原型和函数调用并没有写在一起。例如 <code>char c = getchar();</code>，看到这一句往往会想当然地认为 <code>getchar</code> 的返回值是 char 型，而事实上 <code>getchar</code> 的返回值是 int 型，这样赋值会引起类型转换，可能产生 Bug，我们在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch25-C-%E6%A0%87%E5%87%86%E5%BA%93#_25-%E4%BB%A5%E5%AD%97%E8%8A%82%E4%B8%BA%E5%8D%95%E4%BD%8D%E7%9A%84-IO-%E5%87%BD%E6%95%B0">第 25 章「C 标准库」第 2.5 节「以字节为单位的 I/O函数」</a>详细讨论这个问题。</p>
+<h3 id="34-强制类型转换"><a class="header" href="#34-强制类型转换">3.4. 强制类型转换</a></h3>
+<p>以上三种情况通称为隐式类型转换（Implicit Conversion，或者叫 Coercion），编译器根据它自己的一套规则将一种类型自动转换成另一种类型。除此之外，程序员也可以通过类型转换运算符（Cast Operator）自己规定某个表达式要转换成何种类型，这称为显式类型转换（Explicit Conversion）或强制类型转换（Type Cast）。例如计算表达式 <code>(double)3 + i</code>，首先将整数 3 强制转换成 double 型（值为 3.0），然后和整型变量 <code>i</code> 相加，这时适用 Usual Arithmetic Conversion 规则，首先把 <code>i</code> 也转成 double 型，然后两者相加，最后整个表达式也是 double 型的。这里的 <code>(double)</code> 就是一个类型转换运算符，这种运算符由一个类型名套 <code>()</code> 括号组成，属于单目运算符，后面的 3 是这个运算符的操作数。注意操作数的类型必须是标量类型，转换之后的类型必须是标量类型或者 <code>void</code> 型。</p>
+<h3 id="35-编译器如何处理类型转换"><a class="header" href="#35-编译器如何处理类型转换">3.5. 编译器如何处理类型转换</a></h3>
+<p>以上几小节介绍了哪些情况下会发生类型转换，并且明确了每种情况下会把什么类型转成什么类型，本节介绍编译器如何处理任意两种类型之间的转换。现在要把一个 M 位的类型（值为 X）转换成一个 N 位的类型，所有可能的情况如下表所示。</p>
+<p id="t15-3">表 15.3. 如何做类型转换</p>
+<table><thead><tr><th>待转换的类型</th><th>M &gt; N 的情况</th><th>M == N 的情况</th><th>M &lt; N 的情况</th></tr></thead><tbody>
+<tr><td>signed integer to signed integer</td><td>如果 X 在目标类型的取值范围内则值不变，否则 Implementation-defined</td><td>值不变</td><td>值不变</td></tr>
+<tr><td>unsigned integer to signed integer</td><td>如果 X 在目标类型的取值范围内则值不变，否则 Implementation-defined</td><td>如果 X 在目标类型的取值范围内则值不变，否则 Implementation-defined</td><td>值不变</td></tr>
+<tr><td>signed integer to unsigned integer</td><td>X % 2<sup>N</sup></td><td>X % 2<sup>N</sup></td><td>X % 2<sup>N</sup></td></tr>
+<tr><td>unsigned integer to unsigned integer</td><td>X % 2<sup>N</sup></td><td>值不变</td><td>值不变</td></tr>
+<tr><td>floating-point to signed or unsigned integer</td><td>Truncate toward Zero，如果 X 的整数部分超出目标类型的取值范围则 Undefined</td><td></td><td></td></tr>
+<tr><td>signed or unsigned integer to floating-point</td><td>如果 X 在目标类型的取值范围内则值不变，但有可能损失精度，如果 X 超出目标类型的取值范围则 Undefined</td><td></td><td></td></tr>
+<tr><td>floating-point to floating-point</td><td>如果 X 在目标类型的取值范围内则值不变，但有可能损失精度，如果 X 超出目标类型的取值范围则 Undefined</td><td>值不变</td><td>值不变</td></tr>
+</tbody></table>
+<p>注意上表中的 <strong>X % 2<sup>N</sup></strong>，我想表达的意思是「把 X 加上或者减去 2<sup>N</sup> 的整数倍，使结果落入 [0, 2<sup>N-1</sup>] 的范围内」，当 X 是负数时运算结果也得是正数，即运算结果和除数同号而不是和被除数同号，这不同于 C 语言 % 运算的定义。写程序时不要故意用上表中的规则，尤其不要触碰 Implementation-defined 和 Undefined 的情况，但程序出错时可以借助上表分析错误原因。</p>
+<p>下面举几个例子说明上表的用法。比如把 double 型转换成 short 型，对应表中的「floating-point to signed or unsigned integer」，如果原值在 (-32769.0, 32768.0) 之间则截掉小数部分得到转换结果，否则产生溢出，结果是 Undefined，例如对于 <code>short s = 32768.4;</code> 这个语句 <code>gcc</code> 会报警告。</p>
+<p>比如把 int 型转换成 <code>unsigned short</code> 型，对应表中的「signed integer to unsigned integer」，如果原值是正的，则把它除以 216 取模，其实就是取它的低 16 位，如果原值是负的，则加上 216 的整数倍，使结果落在 [0, 65535] 之间。</p>
+<p>比如把 int 类型转换成 short 类型，对应表中的「signed integer to signed integer」，如果原值在 [-32768, 32767] 之间则值不变，否则产生溢出，结果是 Implementation-defined，例如对于 <code>short s = -32769;</code> 这个语句 <code>gcc</code> 会报警告。</p>
+<p>最后一个例子，把 short 型转换成 int 型，对应表中的「signed integer to signed integer」，转换之后应该值不变。那怎么维持值不变呢？是不是在高位补 16 个 0 就行了呢？如果原值是 -1，十六进制表示就是 ffff，要转成 int 型的 -1 需要变成 ffffffff，因此需要在高位补 16 个 1 而不是 16 个 0。换句话说，要维持值不变，在高位补 1 还是补 0 取决于原来的符号位，这称为符号扩展（Sign Extension）。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2-C-语言本质/ch14-计算机中数的表示.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../2-C-语言本质/ch16-运算符详解.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2-C-语言本质/ch14-计算机中数的表示.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../2-C-语言本质/ch16-运算符详解.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>汇编与-C-之间的关系 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html" class="active"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-19-章-汇编与-c-之间的关系"><a class="header" href="#第-19-章-汇编与-c-之间的关系">第 19 章 汇编与 C 之间的关系</a></h1>
+<p>上一章我们学习了汇编的一些基础知识，本章我们进一步研究 C 程序编译之后的汇编是什么样的，C 语言的各种语法分别对应什么样的指令，从而更深入地理解 C 语言。<code>gcc</code> 还提供了一种扩展语法可以在 C 程序中内嵌汇编指令，这在内核代码中很常见，本章也会简要介绍这种用法。</p>
+<h2 id="1-函数调用"><a class="header" href="#1-函数调用">1. 函数调用</a></h2>
+<p>我们用下面的代码来研究函数调用的过程。</p>
+<p id="e19-1">例 19.1. 研究函数的调用过程</p>
+<pre><code class="language-c">int bar(int c, int d)
+{
+	int e = c + d;
+	return e;
+}
+
+int foo(int a, int b)
+{
+	return bar(a, b);
+}
+
+int main(void)
+{
+	foo(2, 3);
+	return 0;
+}
+</code></pre>
+<p>如果在编译时加上 <code>-g</code> 选项（在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch10-gdb">第 10 章「gdb」</a>讲过 <code>-g</code> 选项），那么用 <code>objdump</code> 反汇编时可以把 C 代码和汇编代码穿插起来显示，这样 C 代码和汇编代码的对应关系看得更清楚。反汇编的结果很长，以下只列出我们关心的部分。</p>
+<pre><code class="language-x86asm">$ gcc main.c -g
+$ objdump -dS a.out 
+...
+08048394 &lt;bar&gt;:
+int bar(int c, int d)
+{
+ 8048394:	55                   	push   %ebp
+ 8048395:	89 e5                	mov    %esp,%ebp
+ 8048397:	83 ec 10             	sub    $0x10,%esp
+	int e = c + d;
+ 804839a:	8b 55 0c             	mov    0xc(%ebp),%edx
+ 804839d:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80483a0:	01 d0                	add    %edx,%eax
+ 80483a2:	89 45 fc             	mov    %eax,-0x4(%ebp)
+	return e;
+ 80483a5:	8b 45 fc             	mov    -0x4(%ebp),%eax
+}
+ 80483a8:	c9                   	leave  
+ 80483a9:	c3                   	ret    
+
+080483aa &lt;foo&gt;:
+
+int foo(int a, int b)
+{
+ 80483aa:	55                   	push   %ebp
+ 80483ab:	89 e5                	mov    %esp,%ebp
+ 80483ad:	83 ec 08             	sub    $0x8,%esp
+	return bar(a, b);
+ 80483b0:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80483b3:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 80483b7:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80483ba:	89 04 24             	mov    %eax,(%esp)
+ 80483bd:	e8 d2 ff ff ff       	call   8048394 &lt;bar&gt;
+}
+ 80483c2:	c9                   	leave  
+ 80483c3:	c3                   	ret    
+
+080483c4 &lt;main&gt;:
+
+int main(void)
+{
+ 80483c4:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+ 80483c8:	83 e4 f0             	and    $0xfffffff0,%esp
+ 80483cb:	ff 71 fc             	pushl  -0x4(%ecx)
+ 80483ce:	55                   	push   %ebp
+ 80483cf:	89 e5                	mov    %esp,%ebp
+ 80483d1:	51                   	push   %ecx
+ 80483d2:	83 ec 08             	sub    $0x8,%esp
+	foo(2, 3);
+ 80483d5:	c7 44 24 04 03 00 00 	movl   $0x3,0x4(%esp)
+ 80483dc:	00 
+ 80483dd:	c7 04 24 02 00 00 00 	movl   $0x2,(%esp)
+ 80483e4:	e8 c1 ff ff ff       	call   80483aa &lt;foo&gt;
+	return 0;
+ 80483e9:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+ 80483ee:	83 c4 08             	add    $0x8,%esp
+ 80483f1:	59                   	pop    %ecx
+ 80483f2:	5d                   	pop    %ebp
+ 80483f3:	8d 61 fc             	lea    -0x4(%ecx),%esp
+ 80483f6:	c3                   	ret   
+...
+</code></pre>
+<p>要查看编译后的汇编代码，其实还有一种办法是 <code>gcc -S main.c</code>，这样只生成汇编代码 <code>main.s</code>，而不生成二进制的目标文件。</p>
+<p>整个程序的执行过程是 <code>main</code> 调用 <code>foo</code>，<code>foo</code> 调用 <code>bar</code>，我们用 <code>gdb</code> 跟踪程序的执行，直到 <code>bar</code> 函数中的 <code>int e = c + d;</code> 语句执行完毕准备返回时，这时在 <code>gdb</code> 中打印函数栈帧。</p>
+<pre><code class="language-x86asm">(gdb) start
+...
+main () at main.c:14
+14		foo(2, 3);
+(gdb) s
+foo (a=2, b=3) at main.c:9
+9		return bar(a, b);
+(gdb) s
+bar (c=2, d=3) at main.c:3
+3		int e = c + d;
+(gdb) disassemble 
+Dump of assembler code for function bar:
+0x08048394 &lt;bar+0&gt;:	push   %ebp
+0x08048395 &lt;bar+1&gt;:	mov    %esp,%ebp
+0x08048397 &lt;bar+3&gt;:	sub    $0x10,%esp
+0x0804839a &lt;bar+6&gt;:	mov    0xc(%ebp),%edx
+0x0804839d &lt;bar+9&gt;:	mov    0x8(%ebp),%eax
+0x080483a0 &lt;bar+12&gt;:	add    %edx,%eax
+0x080483a2 &lt;bar+14&gt;:	mov    %eax,-0x4(%ebp)
+0x080483a5 &lt;bar+17&gt;:	mov    -0x4(%ebp),%eax
+0x080483a8 &lt;bar+20&gt;:	leave  
+0x080483a9 &lt;bar+21&gt;:	ret    
+End of assembler dump.
+(gdb) si
+0x0804839d	3		int e = c + d;
+(gdb) si
+0x080483a0	3		int e = c + d;
+(gdb) si
+0x080483a2	3		int e = c + d;
+(gdb) si
+4		return e;
+(gdb) si
+5	}
+(gdb) bt
+#0  bar (c=2, d=3) at main.c:5
+#1  0x080483c2 in foo (a=2, b=3) at main.c:9
+#2  0x080483e9 in main () at main.c:14
+(gdb) info registers 
+eax            0x5	5
+ecx            0xbff1c440	-1074674624
+edx            0x3	3
+ebx            0xb7fe6ff4	-1208061964
+esp            0xbff1c3f4	0xbff1c3f4
+ebp            0xbff1c404	0xbff1c404
+esi            0x8048410	134513680
+edi            0x80482e0	134513376
+eip            0x80483a8	0x80483a8 &lt;bar+20&gt;
+eflags         0x200206	[ PF IF ID ]
+cs             0x73	115
+ss             0x7b	123
+ds             0x7b	123
+es             0x7b	123
+fs             0x0	0
+gs             0x33	51
+(gdb) x/20 $esp
+0xbff1c3f4:	0x00000000	0xbff1c6f7	0xb7efbdae	0x00000005
+0xbff1c404:	0xbff1c414	0x080483c2	0x00000002	0x00000003
+0xbff1c414:	0xbff1c428	0x080483e9	0x00000002	0x00000003
+0xbff1c424:	0xbff1c440	0xbff1c498	0xb7ea3685	0x08048410
+0xbff1c434:	0x080482e0	0xbff1c498	0xb7ea3685	0x00000001
+(gdb)
+</code></pre>
+<p>这里又用到几个新的 <code>gdb</code> 命令。<code>disassemble</code> 可以反汇编当前函数或者指定的函数，单独用 <code>disassemble</code> 命令是反汇编当前函数，如果 <code>disassemble</code> 命令后面跟函数名或地址则反汇编指定的函数。以前我们讲过 <code>step</code> 命令可以一行代码一行代码地单步调试，而这里用到的 <code>si</code> 命令可以一条指令一条指令地单步调试。<code>info registers</code> 可以显示所有寄存器的当前值。在 <code>gdb</code> 中表示寄存器名时前面要加个 <code>$</code>，例如 <code>p $esp</code> 可以打印 <code>esp</code> 寄存器的值，在上例中 <code>esp</code> 寄存器的值是 <code>0xbff1c3f4</code>，所以 <code>x/20 $esp</code> 命令查看内存中从 <code>0xbff1c3f4</code> 地址开始的 20 个 32 位数。在执行程序时，操作系统为进程分配一块栈空间来保存函数栈帧，<code>esp</code> 寄存器总是指向栈顶，在 x86 平台上这个栈是从高地址向低地址增长的，我们知道每次调用一个函数都要分配一个栈帧来保存参数和局部变量，现在我们详细分析这些数据在栈空间的布局，根据 <code>gdb</code> 的输出结果图示如下<sup>[29]</sup>：</p>
+<blockquote>
+<p><sup>[29]</sup> Linux 内核为每个新进程指定的栈空间的起始地址都会有些不同，所以每次运行这个程序得到的地址都不一样，但通常都是 <code>0xbf??????</code> 这样一个地址。</p>
+</blockquote>
+<p id="c19-1">图 19.1. 函数栈帧</p>
+<p><img src="../images/asmc.stackframe.png" alt="函数栈帧" /></p>
+<p>图中每个小方格表示 4 个字节的内存单元，例如 <code>b: 3</code> 这个小方格占的内存地址是 <code>0xbf822d20 ~ 0xbf822d23</code>，我把地址写在每个小方格的下边界线上，是为了强调该地址是内存单元的起始地址。我们从 <code>main</code> 函数的这里开始看起：</p>
+<pre><code class="language-asm6502">	foo(2, 3);
+ 80483d5:	c7 44 24 04 03 00 00 	movl   $0x3,0x4(%esp)
+ 80483dc:	00 
+ 80483dd:	c7 04 24 02 00 00 00 	movl   $0x2,(%esp)
+ 80483e4:	e8 c1 ff ff ff       	call   80483aa &lt;foo&gt;
+	return 0;
+ 80483e9:	b8 00 00 00 00       	mov    $0x0,%eax
+</code></pre>
+<p>要调用函数 <code>foo</code> 先要把参数准备好，第二个参数保存在 <code>esp+4</code> 指向的内存位置，第一个参数保存在 <code>esp</code> 指向的内存位置，可见参数是从右向左依次压栈的。然后执行 <code>call</code> 指令，这个指令有两个作用：</p>
+<ol>
+<li><code>foo</code> 函数调用完之后要返回到 <code>call</code> 的下一条指令继续执行，所以把 <code>call</code> 的下一条指令的地址 0x80483e9 压栈，同时把 <code>esp</code> 的值减 4，<code>esp</code> 的值现在是 0xbf822d18。</li>
+<li>修改程序计数器 <code>eip</code>，跳转到 <code>foo</code> 函数的开头执行。</li>
+</ol>
+<p>现在看 <code>foo</code> 函数的汇编代码：</p>
+<pre><code class="language-asm6502">int foo(int a, int b)
+{
+ 80483aa:	55                   	push   %ebp
+ 80483ab:	89 e5                	mov    %esp,%ebp
+ 80483ad:	83 ec 08             	sub    $0x8,%esp
+</code></pre>
+<p><code>push %ebp</code> 指令把 <code>ebp</code> 寄存器的值压栈，同时把 <code>esp</code> 的值减 4。<code>esp</code> 的值现在是 0xbf822d14，下一条指令把这个值传送给 <code>ebp</code> 寄存器。这两条指令合起来是把原来 <code>ebp</code> 的值保存在栈上，然后又给 <code>ebp</code> 赋了新值。在每个函数的栈帧中，<code>ebp</code> 指向栈底，而 <code>esp</code> 指向栈顶，在函数执行过程中 <code>esp</code> 随着压栈和出栈操作随时变化，而 <code>ebp</code> 是不动的，函数的参数和局部变量都是通过 <code>ebp</code> 的值加上一个偏移量来访问，例如 <code>foo</code> 函数的参数 <code>a</code> 和 <code>b</code> 分别通过 <code>ebp+8</code> 和 <code>ebp+12</code> 来访问。所以下面的指令把参数 <code>a</code> 和 <code>b</code> 再次压栈，为调用 <code>bar</code> 函数做准备，然后把返回地址压栈，调用 <code>bar</code> 函数：</p>
+<pre><code class="language-asm6502">	return bar(a, b);
+ 80483b0:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 80483b3:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 80483b7:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80483ba:	89 04 24             	mov    %eax,(%esp)
+ 80483bd:	e8 d2 ff ff ff       	call   8048394 &lt;bar&gt;
+</code></pre>
+<p>现在看 <code>bar</code> 函数的指令：</p>
+<pre><code class="language-asm6502">int bar(int c, int d)
+{
+ 8048394:	55                   	push   %ebp
+ 8048395:	89 e5                	mov    %esp,%ebp
+ 8048397:	83 ec 10             	sub    $0x10,%esp
+	int e = c + d;
+ 804839a:	8b 55 0c             	mov    0xc(%ebp),%edx
+ 804839d:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80483a0:	01 d0                	add    %edx,%eax
+ 80483a2:	89 45 fc             	mov    %eax,-0x4(%ebp)
+</code></pre>
+<p>这次又把 <code>foo</code> 函数的 <code>ebp</code> 压栈保存，然后给 <code>ebp</code> 赋了新值，指向 <code>bar</code> 函数栈帧的栈底，通过 <code>ebp+8</code> 和 <code>ebp+12</code> 分别可以访问参数 <code>c</code> 和 <code>d</code>。<code>bar</code> 函数还有一个局部变量 <code>e</code>，可以通过 <code>ebp-4</code> 来访问。所以后面几条指令的意思是把参数 <code>c</code> 和 <code>d</code> 取出来存在寄存器中做加法，计算结果保存在 <code>eax</code> 寄存器中，再把 <code>eax</code> 寄存器存回局部变量 <code>e</code> 的内存单元。</p>
+<p>在 <code>gdb</code> 中可以用 <code>bt</code> 命令和 <code>frame</code> 命令查看每层栈帧上的参数和局部变量，现在可以解释它的工作原理了：如果我当前在 <code>bar</code> 函数中，我可以通过 <code>ebp</code> 找到 <code>bar</code> 函数的参数和局部变量，也可以找到 <code>foo</code> 函数的 <code>ebp</code> 保存在栈上的值，有了 <code>foo</code> 函数的 <code>ebp</code>，又可以找到它的参数和局部变量，也可以找到 <code>main</code> 函数的 <code>ebp</code> 保存在栈上的值，因此各层函数栈帧通过保存在栈上的 <code>ebp</code> 的值串起来了。</p>
+<p>现在看 <code>bar</code> 函数的返回指令：</p>
+<pre><code class="language-asm6502">	return e;
+ 80483a5:	8b 45 fc             	mov    -0x4(%ebp),%eax
+}
+ 80483a8:	c9                   	leave  
+ 80483a9:	c3                   	ret
+</code></pre>
+<p><code>bar</code> 函数有一个 <code>int</code> 型的返回值，这个返回值是通过 <code>eax</code> 寄存器传递的，所以首先把 <code>e</code> 的值读到 <code>eax</code> 寄存器中。然后执行 <code>leave</code> 指令，这个指令是函数开头的 <code>push %ebp</code> 和 <code>mov %esp,%ebp</code> 的逆操作：</p>
+<ol>
+<li>把 <code>ebp</code> 的值赋给 <code>esp</code>，现在 <code>esp</code> 的值是 0xbf822d04。</li>
+<li>现在 <code>esp</code> 所指向的栈顶保存着 <code>foo</code> 函数栈帧的 <code>ebp</code>，把这个值恢复给 <code>ebp</code>，同时 <code>esp</code> 增加 4，<code>esp</code> 的值变成 0xbf822d08。</li>
+</ol>
+<p>最后是 <code>ret</code> 指令，它是 <code>call</code> 指令的逆操作：</p>
+<ol>
+<li>现在 <code>esp</code> 所指向的栈顶保存着返回地址，把这个值恢复给 <code>eip</code>，同时 <code>esp</code> 增加 4，<code>esp</code> 的值变成 0xbf822d0c。</li>
+<li>修改了程序计数器 <code>eip</code>，因此跳转到返回地址 0x80483c2 继续执行。</li>
+</ol>
+<p>地址 0x80483c2 处是 <code>foo</code> 函数的返回指令：</p>
+<pre><code class="language-asm6502"> 80483c2:	c9                   	leave  
+ 80483c3:	c3                   	ret
+</code></pre>
+<p>重复同样的过程，又返回到了 <code>main</code> 函数。注意函数调用和返回过程中的这些规则：</p>
+<ol>
+<li>参数压栈传递，并且是从右向左依次压栈。</li>
+<li><code>ebp</code> 总是指向当前栈帧的栈底。</li>
+<li>返回值通过 <code>eax</code> 寄存器传递。</li>
+</ol>
+<p>这些规则并不是体系结构所强加的，<code>ebp</code> 寄存器并不是必须这么用，函数的参数和返回值也不是必须这么传，只是操作系统和编译器选择了以这样的方式实现C代码中的函数调用，这称为 Calling Convention，Calling Convention 是操作系统二进制接口规范（ABI，Application Binary Interface）的一部分。</p>
+<h3 id="习题"><a class="header" href="#习题">习题</a></h3>
+<ol>
+<li>
+<p>在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#_2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0">第 3 章「简单函数」第 2 节「自定义函数」</a>讲过，Old Style C 风格的函数声明可以不指定参数个数和类型，这样编译器不会对函数调用做检查，那么如果调用时的参数类型不对或者参数个数不对会怎么样呢？比如把本节的例子改成这样：</p>
+<pre><code class="language-c">int foo();
+int bar();
+
+int main(void)
+{
+	foo(2, 3, 4);
+	return 0;
+}
+
+int foo(int a, int b)
+{
+	return bar(a);
+}
+
+int bar(int c, int d)
+{
+	int e = c + d;
+	return e;
+}
+</code></pre>
+<p><code>main</code> 函数调用 <code>foo</code> 时多传了一个参数，那么参数 <code>a</code> 和 <code>b</code> 分别取什么值？多的参数怎么办？<code>foo</code> 调用 <code>bar</code> 时少传了一个参数，那么参数 <code>d</code> 的值从哪里取得？请读者利用反汇编和 <code>gdb</code> 自己分析一下。我们再看一个参数类型不符的例子：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+	void foo();
+	char c = 60;
+	foo(c);
+	return 0;
+}
+
+void foo(double d)
+{
+	printf(&quot;%f\n&quot;, d);
+}
+</code></pre>
+<p>打印结果是多少？如果把声明 <code>void foo();</code> 改成 <code>void foo(double);</code>，打印结果又是多少？</p>
+</li>
+</ol>
+<h2 id="2-main-函数和启动例程"><a class="header" href="#2-main-函数和启动例程">2. main 函数和启动例程</a></h2>
+<p>为什么汇编程序的入口是 <code>_start</code>，而 C 程序的入口是 <code>main</code> 函数呢？本节就来解释这个问题。在讲<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch18-x86-%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80#e18-1">上章例 18.1 「最简单的汇编程序」</a>时，我们的汇编和链接步骤是：</p>
+<pre><code class="language-bash">$ as hello.s -o hello.o
+$ ld hello.o -o hello
+</code></pre>
+<p>以前我们常用 <code>gcc main.c -o main</code> 命令编译一个程序，其实也可以分三步做，第一步生成汇编代码，第二步生成目标文件，第三步生成可执行文件：</p>
+<pre><code class="language-bash">$ gcc -S main.c
+$ gcc -c main.s
+$ gcc main.o
+</code></pre>
+<p><code>-S</code> 选项生成汇编代码，<code>-c</code> 选项生成目标文件，此外在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch08-%E6%95%B0%E7%BB%84#_2-%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9A%E7%BB%9F%E8%AE%A1%E9%9A%8F%E6%9C%BA%E6%95%B0">第 8 章「数组」第 2 节「数组应用实例：统计随机数」</a>还讲过 <code>-E</code> 选项只做预处理而不编译，如果不加这些选项则 <code>gcc</code> 执行完整的编译步骤，直到最后链接生成可执行文件为止。如下图所示。</p>
+<p id="c19-2">图 19.2. gcc 命令的选项</p>
+<p><img src="../images/asmc.gcc.png" alt="gcc 命令的选项" /></p>
+<p>这些选项都可以和 <code>-o</code> 搭配使用，给输出的文件重新命名而不使用 <code>gcc</code> 默认的文件名（<code>xxx.c</code>、<code>xxx.s</code>、<code>xxx.o</code> 和 <code>a.out</code>），例如 <code>gcc main.o -o main</code> 将 <code>main.o</code> 链接成可执行文件 <code>main</code>。先前由汇编代码<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch18-x86-%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80#e18-1">上章例 18.1 「最简单的汇编程序」</a>生成的目标文件 <code>hello.o</code> 我们是用 <code>ld</code> 来链接的，可不可以用 <code>gcc</code> 链接呢？试试看。</p>
+<pre><code class="language-bash">$ gcc hello.o -o hello
+hello.o: In function `_start':
+(.text+0x0): multiple definition of `_start'
+/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib/crt1.o:(.text+0x0): first defined here
+/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib/crt1.o: In function `_start':
+(.text+0x18): undefined reference to `main'
+collect2: ld returned 1 exit status
+</code></pre>
+<p>提示两个错误：一是 <code>_start</code> 有多个定义，一个定义是由我们的汇编代码提供的，另一个定义来自 <code>/usr/lib/crt1.o</code>；二是 <code>crt1.o</code> 的 <code>_start</code> 函数要调用 <code>main</code> 函数，而我们的汇编代码中没有提供 <code>main</code> 函数的定义。从最后一行还可以看出这些错误提示是由 <code>ld</code> 给出的。由此可见，如果我们用 <code>gcc</code> 做链接，<code>gcc</code> 其实是调用 <code>ld</code> 将目标文件 <code>crt1.o</code> 和我们的 <code>hello.o</code> 链接在一起。<code>crt1.o</code> 里面已经提供了 <code>_start</code> 入口点，我们的汇编程序中再实现一个 <code>_start</code> 就是多重定义了，链接器不知道该用哪个，只好报错。另外，<code>crt1.o</code> 提供的 <code>_start</code> 需要调用 <code>main</code> 函数，而我们的汇编程序中没有实现 <code>main</code> 函数，所以报错。</p>
+<p>如果目标文件是由 C 代码编译生成的，用 <code>gcc</code> 做链接就没错了，整个程序的入口点是 <code>crt1.o</code> 中提供的 <code>_start</code>，它首先做一些初始化工作（以下称为启动例程，Startup Routine），然后调用 C 代码中提供的 <code>main</code> 函数。所以，以前我们说 <code>main</code> 函数是程序的入口点其实不准确，<code>_start</code> 才是真正的入口点，而 <code>main</code> 函数是被 <code>_start</code> 调用的。</p>
+<p>我们继续研究上一节的<a href="#e19-1">本章例 19.1 「研究函数的调用过程」</a>。如果分两步编译，第二步 <code>gcc main.o -o main</code> 其实是调用 <code>ld</code> 做链接的，相当于这样的命令：</p>
+<pre><code class="language-bash">$ ld /usr/lib/crt1.o /usr/lib/crti.o main.o -o main -lc -dynamic-linker /lib/ld-linux.so.2
+</code></pre>
+<p>也就是说，除了 <code>crt1.o</code> 之外其实还有 <code>crti.o</code>，这两个目标文件和我们的 <code>main.o</code> 链接在一起生成可执行文件 <code>main</code>。<code>-lc</code> 表示需要链接 <code>libc</code> 库，在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#_1-%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0">第 3 章「简单函数」第 1 节「数学函数」</a>讲过 <code>-lc</code> 选项是 <code>gcc</code> 默认的，不用写，而对于 <code>ld</code> 则不是默认选项，所以要写上。<code>-dynamic-linker /lib/ld-linux.so.2</code> 指定动态链接器是 <code>/lib/ld-linux.so.2</code>，稍后会解释什么是动态链接。</p>
+<p>那么 <code>crt1.o</code> 和 <code>crti.o</code> 里面都有什么呢？我们可以用 <code>readelf</code> 命令查看。在这里我们只关心符号表，如果只看符号表，可以用 <code>readelf</code> 命令的 <code>-s</code> 选项，也可以用 <code>nm</code> 命令。</p>
+<pre><code class="language-bash">$ nm /usr/lib/crt1.o 
+00000000 R _IO_stdin_used
+00000000 D __data_start
+         U __libc_csu_fini
+         U __libc_csu_init
+         U __libc_start_main
+00000000 R _fp_hw
+00000000 T _start
+00000000 W data_start
+         U main
+$ nm /usr/lib/crti.o
+         U _GLOBAL_OFFSET_TABLE_
+         w __gmon_start__
+00000000 T _fini
+00000000 T _init
+</code></pre>
+<p><code>U main</code> 这一行表示 <code>main</code> 这个符号在 <code>crt1.o</code> 中用到了，但是没有定义（U 表示Undefined），因此需要别的目标文件提供一个定义并且和 <code>crt1.o</code> 链接在一起。具体来说，在 <code>crt1.o</code> 中要用到 <code>main</code> 这个符号所代表的地址，例如有一条指令是 <code>push $符号 main 所代表的地址</code>，但不知道这个地址是多少，所以在 <code>crt1.o</code> 中这条指令暂时写成 <code>push $0x0</code>，等到和 <code>main.o</code> 链接成可执行文件时就知道这个地址是多少了，比如是 0x80483c4，那么可执行文件 <code>main</code> 中的这条指令就被链接器改成了 <code>push $0x80483c4</code>。链接器在这里起到符号解析（Symbol Resolution）的作用，在<a href="">上章第 5.2 节「可执行文件」</a>我们看到链接器起到重定位的作用，这两种作用都是通过修改指令中的地址实现的，链接器也是一种编辑器，<code>vi</code> 和 <code>emacs</code> 编辑的是源文件，而链接器编辑的是目标文件，所以链接器也叫 Link Editor。<code>T _start</code> 这一行表示 <code>_start</code> 这个符号在 <code>crt1.o</code> 中提供了定义，这个符号的类型是代码（T 表示 Text）。我们从上面的输出结果中选取几个符号用图示说明它们之间的关系：</p>
+<p id="c19-3">图 19.3. C 程序的链接过程</p>
+<p><img src="../images/asmc.link.png" alt="C 程序的链接过程" /></p>
+<p>其实上面我们写的 <code>ld</code> 命令做了很多简化，<code>gcc</code> 在链接时还用到了另外几个目标文件，所以上图多画了一个框，表示组成可执行文件 <code>main</code> 的除了 <code>main.o</code>、<code>crt1.o</code> 和 <code>crti.o</code> 之外还有其它目标文件，本书不做深入讨论，用 <code>gcc</code> 的 <code>-v</code> 选项可以了解详细的编译过程：</p>
+<pre><code class="language-bash">$ gcc -v main.c -o main
+Using built-in specs.
+Target: i486-linux-gnu
+...
+ /usr/lib/gcc/i486-linux-gnu/4.3.2/cc1 -quiet -v main.c -D_FORTIFY_SOURCE=2 -quiet -dumpbase main.c -mtune=generic -auxbase main -version -fstack-protector -o /tmp/ccRGDpua.s
+...
+ as -V -Qy -o /tmp/ccidnZ1d.o /tmp/ccRGDpua.s
+...
+ /usr/lib/gcc/i486-linux-gnu/4.3.2/collect2 --eh-frame-hdr -m elf_i386 --hash-style=both -dynamic-linker /lib/ld-linux.so.2 -o main -z relro /usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib/crt1.o /usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib/crti.o /usr/lib/gcc/i486-linux-gnu/4.3.2/crtbegin.o -L/usr/lib/gcc/i486-linux-gnu/4.3.2 -L/usr/lib/gcc/i486-linux-gnu/4.3.2 -L/usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/i486-linux-gnu/4.3.2/../../.. /tmp/ccidnZ1d.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i486-linux-gnu/4.3.2/crtend.o /usr/lib/gcc/i486-linux-gnu/4.3.2/../../../../lib/crtn.o
+</code></pre>
+<p>链接生成的可执行文件 <code>main</code> 中包含了各目标文件所定义的符号，通过反汇编可以看到这些符号的定义：</p>
+<pre><code class="language-bash">$ objdump -d main
+main:     file format elf32-i386
+
+
+Disassembly of section .init:
+
+08048274 &lt;_init&gt;:
+ 8048274:	55                   	push   %ebp
+ 8048275:	89 e5                	mov    %esp,%ebp
+ 8048277:	53                   	push   %ebx
+...
+Disassembly of section .text:
+
+080482e0 &lt;_start&gt;:
+ 80482e0:	31 ed                	xor    %ebp,%ebp
+ 80482e2:	5e                   	pop    %esi
+ 80482e3:	89 e1                	mov    %esp,%ecx
+...
+08048394 &lt;bar&gt;:
+ 8048394:	55                   	push   %ebp
+ 8048395:	89 e5                	mov    %esp,%ebp
+ 8048397:	83 ec 10             	sub    $0x10,%esp
+...
+080483aa &lt;foo&gt;:
+ 80483aa:	55                   	push   %ebp
+ 80483ab:	89 e5                	mov    %esp,%ebp
+ 80483ad:	83 ec 08             	sub    $0x8,%esp
+...
+080483c4 &lt;main&gt;:
+ 80483c4:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+ 80483c8:	83 e4 f0             	and    $0xfffffff0,%esp
+ 80483cb:	ff 71 fc             	pushl  -0x4(%ecx)
+...
+Disassembly of section .fini:
+
+0804849c &lt;_fini&gt;:
+ 804849c:	55                   	push   %ebp
+ 804849d:	89 e5                	mov    %esp,%ebp
+ 804849f:	53                   	push   %ebx
+</code></pre>
+<p><code>crt1.o</code> 中的未定义符号 <code>main</code> 在 <code>main.o</code> 中定义了，所以链接在一起就没问题了。<code>crt1.o</code> 还有一个未定义符号 <code>__libc_start_main</code> 在其它几个目标文件中也没有定义，所以在可执行文件 <code>main</code> 中仍然是个未定义符号。这个符号是在 <code>libc</code> 中定义的，<code>libc</code> 并不像其它目标文件一样链接到可执行文件 <code>main</code> 中，而是在运行时做动态链接：</p>
+<ol>
+<li>操作系统在加载执行 <code>main</code> 这个程序时，首先查看它有没有需要动态链接的未定义符号。</li>
+<li>如果需要做动态链接，就查看这个程序指定了哪些共享库（我们用 <code>-lc</code> 指定了 <code>libc</code>）以及用什么动态链接器来做动态链接（我们用 <code>-dynamic-linker /lib/ld-linux.so.2</code> 指定了动态链接器）。</li>
+<li>动态链接器在共享库中查找这些符号的定义，完成链接过程。</li>
+</ol>
+<p>了解了这些原理之后，现在我们来看 <code>_start</code> 的反汇编：</p>
+<pre><code class="language-asm6502">...
+Disassembly of section .text:
+
+080482e0 &lt;_start&gt;:
+ 80482e0:       31 ed                   xor    %ebp,%ebp
+ 80482e2:       5e                      pop    %esi
+ 80482e3:       89 e1                   mov    %esp,%ecx
+ 80482e5:       83 e4 f0                and    $0xfffffff0,%esp
+ 80482e8:       50                      push   %eax
+ 80482e9:       54                      push   %esp
+ 80482ea:       52                      push   %edx
+ 80482eb:       68 00 84 04 08          push   $0x8048400
+ 80482f0:       68 10 84 04 08          push   $0x8048410
+ 80482f5:       51                      push   %ecx
+ 80482f6:       56                      push   %esi
+ 80482f7:       68 c4 83 04 08          push   $0x80483c4
+ 80482fc:       e8 c3 ff ff ff          call   80482c4 &lt;__libc_start_main@plt&gt;
+...
+</code></pre>
+<p>首先将一系列参数压栈，然后调用 <code>libc</code> 的库函数 <code>__libc_start_main</code> 做初始化工作，其中最后一个压栈的参数 <code>push   $0x80483c4</code> 是 <code>main</code> 函数的地址，<code>__libc_start_main</code> 在完成初始化工作之后会调用 <code>main</code> 函数。由于 <code>__libc_start_main</code> 需要动态链接，所以这个库函数的指令在可执行文件 <code>main</code> 的反汇编中肯定是找不到的，然而我们找到了这个：</p>
+<pre><code class="language-asm6502">Disassembly of section .plt:
+...
+080482c4 &lt;__libc_start_main@plt&gt;:
+ 80482c4:       ff 25 04 a0 04 08       jmp    *0x804a004
+ 80482ca:       68 08 00 00 00          push   $0x8
+ 80482cf:       e9 d0 ff ff ff          jmp    80482a4 &lt;_init+0x30&gt;
+</code></pre>
+<p>这三条指令位于 <code>.plt</code> 段而不是 <code>.text</code> 段，<code>.plt</code> 段协助完成动态链接的过程。我们将在下一章详细讲解动态链接的过程。</p>
+<p><code>main</code> 函数最标准的原型应该是 <code>int main(int argc, char *argv[])</code>，也就是说启动例程会传两个参数给 <code>main</code> 函数，这两个参数的含义我们学了指针以后再解释。我们到目前为止都把 <code>main</code> 函数的原型写成 <code>int main(void)</code>，这也是 C 标准允许的，如果你认真分析了上一节的习题，你就应该知道，多传了参数而不用是没有问题的，少传了参数却用了则会出问题。</p>
+<p>由于 <code>main</code> 函数是被启动例程调用的，所以从 <code>main</code> 函数 <code>return</code> 时仍返回到启动例程中，<code>main</code> 函数的返回值被启动例程得到，如果将启动例程表示成等价的 C 代码（实际上启动例程一般是直接用汇编写的），则它调用 <code>main</code> 函数的形式是：</p>
+<pre><code class="language-bash">exit(main(argc, argv));
+</code></pre>
+<p>也就是说，启动例程得到 <code>main</code> 函数的返回值后，会立刻用它做参数调用 <code>exit</code> 函数。<code>exit</code> 也是 <code>libc</code> 中的函数，它首先做一些清理工作，然后调用上一章讲过的 <code>_exit</code> 系统调用终止进程，<code>main</code> 函数的返回值最终被传给 <code>_exit</code> 系统调用，成为进程的退出状态。我们也可以在 <code>main</code> 函数中直接调用 <code>exit</code> 函数终止进程而不返回到启动例程，例如：</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+
+int main(void)
+{
+	exit(4);
+}
+</code></pre>
+<p>这样和 <code>int main(void) { return 4; }</code> 的效果是一样的。在 Shell 中运行这个程序并查看它的退出状态：</p>
+<pre><code class="language-bash">$ ./a.out 
+$ echo $?
+4
+</code></pre>
+<p>按照惯例，退出状态为 <code>0</code> 表示程序执行成功，退出状态非 <code>0</code> 表示出错。注意，退出状态只有 8 位，而且被 Shell 解释成无符号数，如果将上面的代码改为 <code>exit(-1);</code> 或 <code>return -1;</code>，则运行结果为</p>
+<pre><code class="language-bash">$ ./a.out 
+$ echo $?
+255
+</code></pre>
+<p>注意，如果声明一个函数的返回值类型是 <code>int</code>，函数中每个分支控制流程必须写 <code>return</code> 语句指定返回值，如果缺了 <code>return</code> 则返回值不确定（想想这是为什么），编译器通常是会报警告的，但如果某个分支控制流程调用了 <code>exit</code> 或 <code>_exit</code> 而不写 <code>return</code>，编译器是允许的，因为它都没有机会返回了，指不指定返回值也就无所谓了。使用 <code>exit</code> 函数需要包含头文件 <code>stdlib.h</code>，而使用 <code>_exit</code> 函数需要包含头文件 <code>unistd.h</code>，以后还要详细解释这两个函数。</p>
+<h2 id="3-变量的存储布局"><a class="header" href="#3-变量的存储布局">3. 变量的存储布局</a></h2>
+<p>首先看下面的例子：</p>
+<p id="e19-2">例 19.2. 研究变量的存储布局</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+const int A = 10;
+int a = 20;
+static int b = 30;
+int c;
+
+int main(void)
+{
+	static int a = 40;
+	char b[] = &quot;Hello world&quot;;
+	register int c = 50;
+
+	printf(&quot;Hello world %d\n&quot;, c);
+
+	return 0;
+}
+</code></pre>
+<p>我们在全局作用域和 <code>main</code> 函数的局部作用域各定义了一些变量，并且引入一些新的关键字 <code>const</code>、<code>static</code>、<code>register</code> 来修饰变量，那么这些变量的存储空间是怎么分配的呢？我们编译之后用 <code>readelf</code> 命令看它的符号表，了解各变量的地址分布。注意在下面的清单中我把符号表按地址从低到高的顺序重新排列了，并且只截取我们关心的那几行。</p>
+<pre><code class="language-bash">$ gcc main.c -g
+$ readelf -a a.out
+...
+    68: 08048540     4 OBJECT  GLOBAL DEFAULT   15 A
+    69: 0804a018     4 OBJECT  GLOBAL DEFAULT   23 a
+    52: 0804a01c     4 OBJECT  LOCAL  DEFAULT   23 b
+    53: 0804a020     4 OBJECT  LOCAL  DEFAULT   23 a.1589
+    81: 0804a02c     4 OBJECT  GLOBAL DEFAULT   24 c
+...
+</code></pre>
+<p>变量 A 用 <code>const</code> 修饰，表示 A 是只读的，不可修改，它被分配的地址是 0x8048540，从 <code>readelf</code> 的输出可以看到这个地址位于 <code>.rodata</code> 段：</p>
+<pre><code class="language-bash">Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+...
+  [13] .text             PROGBITS        08048360 000360 0001bc 00  AX  0   0 16
+...
+  [15] .rodata           PROGBITS        08048538 000538 00001c 00   A  0   0  4
+...
+  [23] .data             PROGBITS        0804a010 001010 000014 00  WA  0   0  4
+  [24] .bss              NOBITS          0804a024 001024 00000c 00  WA  0   0  4
+...
+</code></pre>
+<p>它在文件中的地址是 0x538 ~ 0x554，我们用 <code>hexdump</code> 命令看看这个段的内容：</p>
+<pre><code class="language-bash">$ hexdump -C a.out
+...
+00000530  5c fe ff ff 59 5b c9 c3  03 00 00 00 01 00 02 00  |\...Y[..........|
+00000540  0a 00 00 00 48 65 6c 6c  6f 20 77 6f 72 6c 64 20  |....Hello world |
+00000550  25 64 0a 00 00 00 00 00  00 00 00 00 00 00 00 00  |%d..............|
+...
+</code></pre>
+<p>其中 0x540 地址处的 <code>0a 00 00 00</code> 就是变量 A。我们还看到程序中的字符串字面值 <code>&quot;Hello world %d\n&quot;</code> 分配在 <code>.rodata</code> 段的末尾，在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch08-%E6%95%B0%E7%BB%84#_4-%E5%AD%97%E7%AC%A6%E4%B8%B2">第 8 章「数组」第 4 节「字符串」</a>说过字符串字面值是只读的，相当于在全局作用域定义了一个 <code>const</code> 数组：</p>
+<pre><code class="language-c">const char helloworld[] = {'H', 'e', 'l', 'l', 'o', ' ',
+		 	'w', 'o', 'r', 'l', 'd', ' ', '%', 'd', '\n', '\0'};
+</code></pre>
+<p>程序加载运行时，<code>.rodata</code> 段和 <code>.text</code> 段通常合并到一个 Segment 中，操作系统将这个 Segment 的页面只读保护起来，防止意外的改写。这一点从 <code>readelf</code> 的输出也可以看出来：</p>
+<pre><code class="language-bash"> Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.ABI-tag .hash .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rel.dyn .rel.plt .init .plt .text .fini .rodata .eh_frame 
+   03     .ctors .dtors .jcr .dynamic .got .got.plt .data .bss 
+   04     .dynamic 
+   05     .note.ABI-tag 
+   06     
+   07     .ctors .dtors .jcr .dynamic .got 
+</code></pre>
+<p>注意，像 <code>A</code> 这种 <code>const</code> 变量在定义时必须初始化。因为只有初始化时才有机会给它一个值，一旦定义之后就不能再改写了，也就是不能再赋值了。</p>
+<p>从上面 <code>readelf</code> 的输出可以看到 <code>.data</code> 段从地址 0x804a010 开始，长度是 0x14，也就是到地址 0x804a024 结束。在 <code>.data</code> 段中有三个变量，<code>a</code>，<code>b</code> 和 <code>a.1589</code>。</p>
+<p><code>a</code> 是一个 <code>GLOBAL</code> 的符号，而 <code>b</code> 被 <code>static</code> 关键字修饰了，导致它成为一个 <code>LOCAL</code> 的符号，所以 <code>static</code> 在这里的作用是声明 <code>b</code> 这个符号为 <code>LOCAL</code> 的，不被链接器处理，在下一章我们会看到，如果把多个目标文件链接在一起，<code>LOCAL</code> 的符号只能在某一个目标文件中定义和使用，而不能定义在一个目标文件中却在另一个目标文件中使用。一个函数定义前面也可以用 <code>static</code> 修饰，表示这个函数名符号是 <code>LOCAL</code> 的。</p>
+<p>还有一个 <code>a.1589</code> 是什么呢？它就是 <code>main</code> 函数中的 <code>static int a</code>。函数中的 <code>static</code> 变量不同于以前我们讲的局部变量，它并不是在调用函数时分配，在函数返回时释放，而是像全局变量一样静态分配，所以用 <em>static</em> （静态）这个词。另一方面，函数中的 <code>static</code> 变量的作用域和以前讲的局部变量一样，只在函数中起作用，比如 <code>main</code> 函数中的 <code>a</code> 这个变量名只在 <code>main</code> 函数中起作用，在别的函数中说变量 <code>a</code> 就不是指它了，所以编译器给它的符号名加了一个后缀，变成 <code>a.1589</code>，以便和全局变量 <code>a</code> 以及其它函数的变量 <code>a</code> 区分开。</p>
+<p><code>.bss</code> 段从地址 0x804a024 开始（紧挨着 <code>.data</code> 段），长度为 0xc，也就是到地址 0x804a030 结束。变量 <code>c</code> 位于这个段。从上面的 <code>readelf</code> 输出可以看到，<code>.data</code> 和 <code>.bss</code> 在加载时合并到一个 Segment 中，这个 Segment 是可读可写的。<code>.bss</code> 段和 <code>.data</code> 段的不同之处在于，<code>.bss</code> 段在文件中不占存储空间，在加载时这个段用 0 填充。所以我们在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch03-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0#_4-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E3%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F">第 3 章「简单函数」第 4 节「全局变量、局部变量和作用域」</a>讲过，全局变量如果不初始化则初值为 0，同理可以推断，<code>static</code> 变量（不管是函数里的还是函数外的）如果不初始化则初值也是 0，也分配在 <code>.bss</code> 段。</p>
+<p>现在还剩下函数中的 <code>b</code> 和 <code>c</code> 这两个变量没有分析。上一节我们讲过函数的参数和局部变量是分配在栈上的，<code>b</code> 是数组也一样，也是分配在栈上的，我们看 <code>main</code> 函数的反汇编代码：</p>
+<pre><code class="language-bash">$ objdump -dS a.out
+...
+        char b[]=&quot;Hello world&quot;;
+ 8048430:       c7 45 ec 48 65 6c 6c    movl   $0x6c6c6548,-0x14(%ebp)
+ 8048437:       c7 45 f0 6f 20 77 6f    movl   $0x6f77206f,-0x10(%ebp)
+ 804843e:       c7 45 f4 72 6c 64 00    movl   $0x646c72,-0xc(%ebp)
+        register int c = 50;
+ 8048445:       b8 32 00 00 00          mov    $0x32,%eax
+
+        printf(&quot;Hello world %d\n&quot;, c);
+ 804844a:       89 44 24 04             mov    %eax,0x4(%esp)
+ 804844e:       c7 04 24 44 85 04 08    movl   $0x8048544,(%esp)
+ 8048455:       e8 e6 fe ff ff          call   8048340 &lt;printf@plt&gt;
+...
+</code></pre>
+<p>可见，给 <code>b</code> 初始化用的这个字符串 <code>&quot;Hello world&quot;</code> 并没有分配在 <code>.rodata</code> 段，而是直接写在指令里了，通过三条 <code>movl</code> 指令把 12 个字节写到栈上，这就是 <code>b</code> 的存储空间，如下图所示。</p>
+<p id="c19-4">图 19.4. 数组的存储布局</p>
+<p><img src="../images/asmc.array.png" alt="数组的存储布局" /></p>
+<p>注意，虽然栈是从高地址向低地址增长的，但数组总是从低地址向高地址排列的，按从低地址到高地址的顺序依次是 <code>b[0]</code>、<code>b[1]</code>、<code>b[2]</code>……这样，</p>
+<p>数组元素 <code>b[n]</code> 的地址  =  数组的基地址（<code>b</code> 做右值就表示这个基地址） + n × 每个元素的字节数</p>
+<p>当 n=0 时，元素 <code>b[0]</code> 的地址就是数组的基地址，因此数组下标要从 0 开始而不是从 1 开始。</p>
+<p>变量 <code>c</code> 并没有在栈上分配存储空间，而是直接存在 <code>eax</code> 寄存器里，后面调用 <code>printf</code> 也是直接从 <code>eax</code> 寄存器里取出 <code>c</code> 的值当参数压栈，这就是 <code>register</code> 关键字的作用，指示编译器尽可能分配一个寄存器来存储这个变量。我们还看到调用 <code>printf</code> 时对于 <code>&quot;Hello world %d\n&quot;</code> 这个参数压栈的是它在 <code>.rodata</code> 段中的首地址，而不是把整个字符串压栈，所以在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch08-%E6%95%B0%E7%BB%84#_4-%E5%AD%97%E7%AC%A6%E4%B8%B2">第 8 章「数组」第 4 节「字符串」</a>中说过，字符串在使用时可以看作数组名，如果做右值则表示数组首元素的地址（或者说指向数组首元素的指针），我们以后讲指针还要继续讨论这个问题。</p>
+<p>以前我们用「全局变量」和「局部变量」这两个概念，主要是从作用域上区分的，现在看来用这两个概念给变量分类太笼统了，需要进一步细分。我们总结一下相关的 C 语法。</p>
+<p>作用域（Scope）这个概念适用于所有标识符，而不仅仅是变量，C 语言的作用域分为以下几类：</p>
+<ul>
+<li>函数作用域（Function Scope），标识符在整个函数中都有效。只有语句标号属于函数作用域。标号在函数中不需要先声明后使用，在前面用一个 <code>goto</code> 语句也可以跳转到后面的某个标号，但仅限于同一个函数之中。</li>
+<li>文件作用域（File Scope），标识符从它声明的位置开始直到这个程序文件<sup>[30]</sup>的末尾都有效。例如上例中 <code>main</code> 函数外面的 <code>A</code>、<code>a</code>、<code>b</code>、<code>c</code>，还有 <code>main</code> 也算，<code>printf</code> 其实是在 <code>stdio.h</code> 中声明的，被包含到这个程序文件中了，所以也算文件作用域的。</li>
+<li>块作用域（Block Scope），标识符位于一对 <code>{}</code> 括号中（函数体或语句块），从它声明的位置开始到右}括号之间有效。例如上例中 <code>main</code> 函数里的 <code>a</code>、<code>b</code>、<code>c</code>。此外，函数定义中的形参也算块作用域的，从声明的位置开始到函数末尾之间有效。</li>
+<li>函数原型作用域（Function Prototype Scope），标识符出现在函数原型中，这个函数原型只是一个声明而不是定义（没有函数体），那么标识符从声明的位置开始到在这个原型末尾之间有效。例如 <code>int foo(int a, int b);</code> 中的 <code>a</code> 和 <code>b</code>。</li>
+</ul>
+<blockquote>
+<p><sup>[30]</sup> 为了容易阅读，这里我用了「程序文件」这个不严格的叫法。如果有文件 <code>a.c</code> 包含了 <code>b.h</code> 和 <code>c.h</code>，那么我所说的「程序文件」指的是经过预处理把 <code>b.h</code> 和 <code>c.h</code> 在 <code>a.c</code> 中展开之后生成的代码，在 C 标准中称为编译单元（Translation Unit）。每个编译单元可以分别编译成一个 <code>.o</code> 目标文件，最后这些目标文件用链接器链接到一起，成为一个可执行文件。C 标准中大量使用一些非常不通俗的名词，除了编译单元之外，还有编译器叫 Translator，变量叫 Object，本书不会采用这些名词，因为我不是在写 C 标准。</p>
+</blockquote>
+<p>对属于同一命名空间（Name Space）的重名标识符，内层作用域的标识符将覆盖外层作用域的标识符，例如局部变量名在它的函数中将覆盖重名的全局变量。命名空间可分为以下几类：</p>
+<ul>
+<li>语句标号单独属于一个命名空间。例如在函数中局部变量和语句标号可以重名，互不影响。由于使用标号的语法和使用其它标识符的语法都不一样，编译器不会把它和别的标识符弄混。</li>
+<li><code>struct</code>，<code>enum</code> 和 <code>union</code>（下一节介绍 <code>union</code>）的类型 Tag 属于一个命名空间。由于 Tag 前面总是带 <code>struct</code>，<code>enum</code> 或 <code>union</code> 关键字，所以编译器不会把它和别的标识符弄混。</li>
+<li><code>struct</code> 和 <code>union</code> 的成员名属于一个命名空间。由于成员名总是通过 <code>.</code> 或 <code>-&gt;</code> 运算符来访问而不会单独使用，所以编译器不会把它和别的标识符弄混。</li>
+<li>所有其它标识符，例如变量名、函数名、宏定义、<code>typedef</code> 的类型名、<code>enum</code> 成员等等都属于同一个命名空间。如果有重名的话，宏定义覆盖所有其它标识符，因为它在预处理阶段而不是编译阶段处理，除了宏定义之外其它几类标识符按上面所说的规则处理，内层作用域覆盖外层作用域。</li>
+</ul>
+<p>标识符的链接属性（Linkage）有三种：</p>
+<ul>
+<li>外部链接（External Linkage），如果最终的可执行文件由多个程序文件链接而成，一个标识符在任意程序文件中即使声明多次也都代表同一个变量或函数，则这个标识符具有 External Linkage。具有 External Linkage 的标识符编译后在符号表中是 <code>GLOBAL</code> 的符号。例如上例中 <code>main</code> 函数外面的 <code>a</code> 和 <code>c</code>，<code>main</code> 和 <code>printf</code>也算。</li>
+<li>内部链接（Internal Linkage），如果一个标识符在某个程序文件中即使声明多次也都代表同一个变量或函数，则这个标识符具有 Internal Linkage。例如上例中 <code>main</code> 函数外面的 <code>b</code>。如果有另一个 <code>foo.c</code> 程序和 <code>main.c</code> 链接在一起，在 <code>foo.c</code> 中也声明一个 <code>static int b;</code>，则那个 <code>b</code> 和这个 <code>b</code> 不代表同一个变量。具有 Internal Linkage 的标识符编译后在符号表中是 <code>LOCAL</code> 的符号，但 <code>main</code> 函数里面那个 <code>a</code> 不能算 Internal Linkage 的，因为即使在同一个程序文件中，在不同的函数中声明多次，也不代表同一个变量。</li>
+<li>无链接（No Linkage）。除以上情况之外的标识符都属于 No Linkage 的，例如函数的局部变量，以及不表示变量和函数的其它标识符。</li>
+</ul>
+<p>存储类修饰符（Storage Class Specifier）有以下几种关键字，可以修饰变量或函数声明：</p>
+<ul>
+<li><code>static</code>，用它修饰的变量的存储空间是静态分配的，用它修饰的文件作用域的变量或函数具有 Internal Linkage。</li>
+<li><code>auto</code>，用它修饰的变量在函数调用时自动在栈上分配存储空间，函数返回时自动释放，例如上例中 <code>main</code> 函数里的 <code>b</code> 其实就是用 <code>auto</code> 修饰的，只不过 <code>auto</code> 可以省略不写，<code>auto</code> 不能修饰文件作用域的变量。</li>
+<li><code>register</code>，编译器对于用 <code>register</code> 修饰的变量会尽可能分配一个专门的寄存器来存储，但如果实在分配不开寄存器，编译器就把它当 <code>auto</code> 变量处理了，<code>register</code> 不能修饰文件作用域的变量。现在一般编译器的优化都做得很好了，它自己会想办法有效地利用 CPU 的寄存器，所以现在 <code>register</code> 关键字也用得比较少了。</li>
+<li><code>extern</code>，上面讲过，链接属性是根据一个标识符多次声明时是不是代表同一个变量或函数来分类的，<code>extern</code> 关键字就用于多次声明同一个标识符，下一章再详细介绍它的用法。</li>
+<li><code>typedef</code>，在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch16-%E8%BF%90%E7%AE%97%E7%AC%A6%E8%AF%A6%E8%A7%A3#_24-sizeof-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E-typedef-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E">第 16 章「运算符详解」第 2.4 节「sizeof 运算符与 typedef 类型声明」</a>讲过这个关键字，它并不是用来修饰变量的，而是定义一个类型名。在那一节也讲过，看 <code>typedef</code> 声明怎么看呢，首先去掉 <code>typedef</code> 把它看成变量声明，看这个变量是什么类型的，那么 <code>typedef</code> 就定义了一个什么类型，也就是说，<code>typedef</code> 在语法结构中出现的位置和前面几个关键字一样，也是修饰变量声明的，所以从语法（而不是语义）的角度把它和前面几个关键字归类到一起。</li>
+</ul>
+<p>注意，上面介绍的 <code>const</code> 关键字不是一个 Storage Class Specifier，虽然看起来它也修饰一个变量声明，但是在以后介绍的更复杂的声明中 <code>const</code> 在语法结构中允许出现的位置和 Storage Class Specifier 是不完全相同的。<code>const</code> 和以后要介绍的 <code>restrict</code> 和 <code>volatile</code> 关键字属于同一类语法元素，称为类型限定符（Type Qualifier）。</p>
+<p>变量的生存期（Storage Duration，或者 Lifetime）分为以下几类：</p>
+<ul>
+<li>静态生存期（Static Storage Duration），具有外部或内部链接属性，或者被 <code>static</code> 修饰的变量，在程序开始执行时分配和初始化一次，此后便一直存在直到程序结束。这种变量通常位于 <code>.rodata</code>，<code>.data</code> 或 <code>.bss</code> 段，例如上例中 <code>main</code> 函数外的 <code>A</code>，<code>a</code>，<code>b</code>，<code>c</code>，以及 <code>main</code> 函数里的 <code>a</code>。</li>
+<li>自动生存期（Automatic Storage Duration），链接属性为无链接并且没有被 <code>static</code> 修饰的变量，这种变量在进入块作用域时在栈上或寄存器中分配，在退出块作用域时释放。例如上例中 <code>main</code> 函数里的 <code>b</code> 和 <code>c</code>。</li>
+<li>动态分配生存期（Allocated Storage Duration），以后会讲到调用 <code>malloc</code> 函数在进程的堆空间中分配内存，调用 <code>free</code> 函数可以释放这种存储空间。</li>
+</ul>
+<h2 id="4-结构体和联合体"><a class="header" href="#4-结构体和联合体">4. 结构体和联合体</a></h2>
+<p>我们继续用反汇编的方法研究一下 C 语言的结构体：</p>
+<p id="e19-3">例 19.3. 研究结构体</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(int argc, char** argv)
+{
+	struct {
+		char a;
+		short b;
+		int c;
+		char d;
+	} s;
+
+	s.a = 1;
+	s.b = 2;
+	s.c = 3;
+	s.d = 4;
+	printf(&quot;%u\n&quot;, sizeof(s));
+
+	return 0;
+}
+</code></pre>
+<p><code>main</code> 函数中几条语句的反汇编结果如下：</p>
+<pre><code class="language-asm6502">        s.a = 1;
+ 80483d5:       c6 45 f0 01             movb   $0x1,-0x10(%ebp)
+        s.b = 2;
+ 80483d9:       66 c7 45 f2 02 00       movw   $0x2,-0xe(%ebp)
+        s.c = 3;
+ 80483df:       c7 45 f4 03 00 00 00    movl   $0x3,-0xc(%ebp)
+        s.d = 4;
+ 80483e6:       c6 45 f8 04             movb   $0x4,-0x8(%ebp)
+</code></pre>
+<p>从访问结构体成员的指令可以看出，结构体的四个成员在栈上是这样排列的：</p>
+<p id="c19-5">图 19.5. 结构体的存储布局</p>
+<p><img src="../images/asmc.struct.png" alt="结构体的存储布局" /></p>
+<p>虽然栈是从高地址向低地址增长的，但结构体成员也是从低地址向高地址排列的，这一点和数组类似。但有一点和数组不同，结构体的各成员并不是一个紧挨一个排列的，中间有空隙，称为填充（Padding），不仅如此，在这个结构体的末尾也有三个字节的填充，所以 <code>sizeof(s)</code> 的值是 12。注意，<code>printf</code> 的 <code>%u</code> 转换说明表示无符号数，<code>sizeof</code> 的值是 <code>size_t</code> 类型的，是某种无符号整型。</p>
+<p>为什么编译器要这样处理呢？有一个知识点我此前一直回避没讲，那就是大多数计算机体系统结构对于访问内存的指令是有限制的，在 32 位平台上，访问 4 字节的指令（比如上面的 <code>movl</code>）所访问的内存地址应该是 4 的整数倍，访问两字节的指令（比如上面的 <code>movw</code>）所访问的内存地址应该是两字节的整数倍，这称为对齐（Alignment）。以前举的所有例子中的内存访问指令都满足这个限制条件，读者可以回头检验一下。如果指令所访问的内存地址没有正确对齐会怎么样呢？在有些平台上将不能访问内存，而是引发一个异常，在 x86 平台上倒是仍然能访问内存，但是不对齐的指令执行效率比对齐的指令要低，所以编译器在安排各种变量的地址时都会考虑到对齐的问题。对于本例中的结构体，编译器会把它的基地址对齐到4字节边界，也就是说，<code>ebp-0x10</code> 这个地址一定是4的整数倍。<code>s.a</code> 占一个字节，没有对齐的问题。<code>s.b</code> 占两个字节，如果 <code>s.b</code> 紧挨在 <code>s.a</code> 后面，它的地址就不能是两字节的整数倍了，所以编译器会在结构体中插入一个填充字节，使 <code>s.b</code> 的地址也是两字节的整数倍。<code>s.c</code> 占 4 字节，紧挨在 <code>s.b</code> 的后面就可以了，因为 <code>ebp-0xc</code> 这个地址也是 4 的整数倍。那么为什么 <code>s.d</code> 的后面也要有填充位填充到 4 字节边界呢？这是为了便于安排这个结构体后面的变量的地址，假如用这种结构体类型组成一个数组，那么后一个结构体只需和前一个结构体紧挨着排列就可以保证它的基地址仍然对齐到4字节边界了，因为在前一个结构体的末尾已经有了填充字节。事实上，C 标准规定数组元素必须紧挨着排列，不能有空隙，这样才能保证每个元素的地址可以按「基地址 + n × 元素大小」简单计算出来。</p>
+<p>合理设计结构体各成员的排列顺序可以节省存储空间，例如上例中的结构体改成这样就可以避免产生填充字节：</p>
+<pre><code class="language-c">struct {
+	char a;
+	char d;
+	short b;
+	int c;
+} s;
+</code></pre>
+<p>此外，<code>gcc</code> 提供了一种扩展语法可以消除结构体中的填充字节：</p>
+<pre><code class="language-c">struct {
+	char a;
+	short b;
+	int c;
+	char d;
+} __attribute__((packed)) s;
+</code></pre>
+<p>这样就不能保证结构体成员的对齐了，在访问 <code>b</code> 和 <code>c</code> 的时候可能会有效率问题，所以除非有特别的理由，一般不要使用这种语法。</p>
+<p>以前我们使用的数据类型都是占几个字节，最小的类型也要占一个字节，而在结构体中还可以使用 Bit-field 语法定义只占几个 bit 的成员。下面这个例子出自<a href="www.wangcong.org">王聪的网站</a>：</p>
+<p id="e19-4">例 19.4. Bit-field</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+typedef struct {
+	unsigned int one:1;
+	unsigned int two:3;
+	unsigned int three:10;
+	unsigned int four:5;
+	unsigned int :2;
+	unsigned int five:8;
+	unsigned int six:8;
+} demo_type;
+
+int main(void)
+{
+	demo_type s = { 1, 5, 513, 17, 129, 0x81 };
+	printf(&quot;sizeof demo_type = %u\n&quot;, sizeof(demo_type));
+	printf(&quot;values: s=%u,%u,%u,%u,%u,%u\n&quot;,
+	       s.one, s.two, s.three, s.four, s.five, s.six);
+
+	return 0;
+}
+</code></pre>
+<p><code>s</code> 这个结构体的布局如下图所示：</p>
+<p id="c19-6">图 19.6. Bit-field 的存储布局</p>
+<p><img src="../images/asmc.bitfield.png" alt="Bit-field 的存储布局" /></p>
+<p>Bit-field 成员的类型可以是 int 或 unsigned int，表示有符号数或无符号数，但不表示它像普通的 int 型一样占 4 个字节，它后面的数字是几就表示它占多少个 bit，也可以像 <code>unsigned int :2;</code> 这样定义一个未命名的 Bit-field，即使不写未命名的 Bit-field，编译器也有可能在两个成员之间插入填充位，如上图的 <code>five</code> 和 <code>six</code> 之间，这样 <code>six</code> 这个成员就刚好单独占一个字节了，访问效率会比较高，这个结构体的末尾还填充了 3 个字节，以便对齐到 4 字节边界。以前我们说过 x86 的 Byte Order 是小端的，从上图中 <code>one</code> 和 <code>two</code> 的排列顺序可以看出，如果对一个字节再细分，则字节中的 Bit Order 也是小端的，因为排在结构体前面的成员（靠近低地址一边的成员）取字节中的低位。关于如何排列 Bit-field 在 C 标准中没有详细的规定，这跟 Byte  Order、Bit  Order、对齐等问题都有关，不同的平台和编译器可能会排列得很不一样，要编写可移植的代码就不能假定 Bit-field 是按某一种固定方式排列的。Bit-field 在驱动程序中是很有用的，因为经常需要单独操作设备寄存器中的一个或几个 bit，但一定要小心使用，首先弄清楚每个 Bit-field 和实际 bit 的对应关系。</p>
+<p>和前面几个例子不一样，在上例中我没有给出反汇编结果，直接画了个图说这个结构体的布局是这样的，那我有什么证据这么说呢？上例的反汇编结果比较繁琐，我们可以通过另一种手段得到这个结构体的内存布局。C 语言还有一种类型叫联合体，用关键字 <code>union</code> 定义，其语法类似于结构体，例如：</p>
+<p id="e19-5">例 19.5. 联合体</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+typedef union {
+	struct {
+		unsigned int one:1;
+		unsigned int two:3;
+		unsigned int three:10;
+		unsigned int four:5;
+		unsigned int :2;
+		unsigned int five:8;
+		unsigned int six:8;
+	} bitfield;
+	unsigned char byte[8];
+} demo_type;
+
+int main(void)
+{
+	demo_type u = {{ 1, 5, 513, 17, 129, 0x81 }};
+	printf(&quot;sizeof demo_type = %u\n&quot;, sizeof(demo_type));
+	printf(&quot;values: u=%u,%u,%u,%u,%u,%u\n&quot;,
+	       u.bitfield.one, u.bitfield.two, u.bitfield.three,
+	       u.bitfield.four, u.bitfield.five, u.bitfield.six);
+	printf(&quot;hex dump of u: %x %x %x %x %x %x %x %x \n&quot;,
+	       u.byte[0], u.byte[1], u.byte[2], u.byte[3],
+	       u.byte[4], u.byte[5], u.byte[6], u.byte[7]);
+
+	return 0;
+}
+</code></pre>
+<p>一个联合体的各个成员占用相同的内存空间，联合体的长度等于其中最长成员的长度。比如 <code>u</code> 这个联合体占 8 个字节，如果访问成员 <code>u.bitfield</code>，则把这 8 个字节看成一个由 Bit-field 组成的结构体，如果访问成员 <code>u.byte</code>，则把这 8 个字节看成一个数组。联合体如果用 Initializer 初始化，则只初始化它的第一个成员，例如 <code>demo_type u = {{ 1, 5, 513, 17, 129, 0x81 }};</code> 初始化的是 <code>u.bitfield</code>，但是通过 <code>u.bitfield</code> 的成员看不出这 8 个字节的内存布局，而通过 <code>u.byte</code> 数组就可以看出每个字节分别是多少了。</p>
+<h3 id="习题-1"><a class="header" href="#习题-1">习题</a></h3>
+<ol>
+<li>编写一个程序，测试运行它的平台是大端还是小端字节序。</li>
+</ol>
+<h2 id="5-c-内联汇编"><a class="header" href="#5-c-内联汇编">5. C 内联汇编</a></h2>
+<p>用 C 写程序比直接用汇编写程序更简洁，可读性更好，但效率可能不如汇编程序，因为 C 程序毕竟要经由编译器生成汇编代码，尽管现代编译器的优化已经做得很好了，但还是不如手写的汇编代码。另外，有些平台相关的指令必须手写，在 C 语言中没有等价的语法，因为 C 语言的语法和概念是对各种平台的抽象，而各种平台特有的一些东西就不会在 C 语言中出现了，例如 x86 是端口 I/O，而 C 语言就没有这个概念，所以 <code>in/out</code> 指令必须用汇编来写。</p>
+<p>C 语言简洁易读，容易组织规模较大的代码，而汇编效率高，而且写一些特殊指令必须用汇编，为了把这两方面的好处都占全了，<code>gcc</code> 提供了一种扩展语法可以在 C 代码中使用内联汇编（Inline Assembly）。最简单的格式是 <code>__asm__(&quot;assembly code&quot;);</code>，例如 <code>__asm__(&quot;nop&quot;);</code> ，<code>nop</code> 这条指令什么都不做，只是让 CPU 空转一个指令执行周期。如果需要执行多条汇编指令，则应该用 <code>\n\t</code> 将各条指令分隔开，例如：</p>
+<pre><code class="language-asm6502">__asm__(&quot;movl $1, %eax\n\t&quot;
+	&quot;movl $4, %ebx\n\t&quot;
+	&quot;int $0x80&quot;);
+</code></pre>
+<p>通常 C 代码中的内联汇编需要和 C 的变量建立关联，需要用到完整的内联汇编格式：</p>
+<pre><code class="language-asm6502">__asm__(assembler template 
+	: output operands                  /* optional */
+	: input operands                   /* optional */
+	: list of clobbered registers      /* optional */
+	);
+</code></pre>
+<p>这种格式由四部分组成，第一部分是汇编指令，和上面的例子一样，第二部分和第三部分是约束条件，第二部分指示汇编指令的运算结果要输出到哪些 C 操作数中，C 操作数应该是左值表达式，第三部分指示汇编指令需要从哪些 C 操作数获得输入，第四部分是在汇编指令中被修改过的寄存器列表，指示编译器哪些寄存器的值在执行这条 <code>__asm__</code> 语句时会改变。后三个部分都是可选的，如果有就填写，没有就空着只写个 <code>:</code> 号。例如：</p>
+<p id="e19-6">例 19.6. 内联汇编</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() 
+{
+        int a = 10, b;
+
+	__asm__(&quot;movl %1, %%eax\n\t&quot;
+		&quot;movl %%eax, %0\n\t&quot;
+		:&quot;=r&quot;(b)        /* output */
+		:&quot;r&quot;(a)         /* input */
+		:&quot;%eax&quot;         /* clobbered register */
+		);
+	printf(&quot;Result: %d, %d\n&quot;, a, b);
+	return 0;
+}
+</code></pre>
+<p>这个程序将变量 <code>a</code> 的值赋给 <code>b</code>。<code>&quot;r&quot;(a)</code> 指示编译器分配一个寄存器保存变量 <code>a</code> 的值，作为汇编指令的输入，也就是指令中的 <code>%1</code>（按照约束条件的顺序，<code>b</code> 对应 <code>%0</code>，<code>a</code> 对应 <code>1%</code>），至于 <code>%1</code> 究竟代表哪个寄存器则由编译器自己决定。汇编指令首先把 <code>%1</code> 所代表的寄存器的值传给 <code>eax</code>（为了和 <code>%1</code> 这种占位符区分，<code>eax</code> 前面要求加两个 <code>%</code> 号），然后把 <code>eax</code> 的值再传给 <code>%0</code> 所代表的寄存器。<code>&quot;=r&quot;(b)</code> 就表示把 <code>%0</code> 所代表的寄存器的值输出给变量 <code>b</code>。在执行这两条指令的过程中，寄存器 <code>eax</code> 的值被改变了，所以把 <code>&quot;%eax&quot;</code> 写在第四部分，告诉编译器在执行这条 <code>__asm__</code> 语句时 <code>eax</code> 要被改写，所以在此期间不要用 <code>eax</code> 保存其它值。</p>
+<p>我们看一下这个程序的反汇编结果：</p>
+<pre><code class="language-bash">        __asm__(&quot;movl %1, %%eax\n\t&quot;
+ 80483dc:       8b 55 f8                mov    -0x8(%ebp),%edx
+ 80483df:       89 d0                   mov    %edx,%eax
+ 80483e1:       89 c2                   mov    %eax,%edx
+ 80483e3:       89 55 f4                mov    %edx,-0xc(%ebp)
+                &quot;movl %%eax, %0\n\t&quot;
+                :&quot;=r&quot;(b)        /* output */
+                :&quot;r&quot;(a)         /* input */
+                :&quot;%eax&quot;         /* clobbered register */
+                );
+</code></pre>
+<p>可见 <code>%0</code> 和 <code>%1</code> 都代表 <code>edx</code> 寄存器，首先把变量 <code>a</code>（位于 <code>ebp-8</code> 的位置）的值传给 <code>edx</code> 然后执行内联汇编的两条指令，然后把 <code>edx</code> 的值传给 <code>b</code>（位于 <code>ebp-12</code> 的位置）。</p>
+<p>关于内联汇编就介绍这么多，本书不做深入讨论。</p>
+<h2 id="6-volatile-限定符"><a class="header" href="#6-volatile-限定符">6. volatile 限定符</a></h2>
+<p>现在探讨一下编译器优化会对生成的指令产生什么影响，在此基础上介绍 C 语言的 <code>volatile</code> 限定符。看下面的例子。</p>
+<p id="e19-7">例 19.7. volatile 限定符</p>
+<pre><code class="language-c">/* artificial device registers */
+unsigned char recv;
+unsigned char send;
+
+/* memory buffer */
+unsigned char buf[3];
+
+int main(void)
+{
+	buf[0] = recv;
+	buf[1] = recv;
+	buf[2] = recv;
+	send = ~buf[0];
+	send = ~buf[1];
+	send = ~buf[2];
+
+	return 0;
+}
+</code></pre>
+<p>我们用 <code>recv</code> 和 <code>send</code> 这两个全局变量来模拟设备寄存器。假设某种平台采用内存映射 I/O，串口发送寄存器和串口接收寄存器位于固定的内存地址，而 <code>recv</code> 和 <code>send</code> 这两个全局变量也有固定的内存地址，所以在这个例子中把它们假想成串口接收寄存器和串口发送寄存器。在 <code>main</code> 函数中，首先从串口接收三个字节存到 <code>buf</code> 中，然后把这三个字节取反，依次从串口发送出<sup>[31]</sup>。我们查看这段代码的反汇编结果：</p>
+<blockquote>
+<p><sup>[31]</sup> 实际的串口设备通常有一些标志位指示是否有数据到达以及是否可以发送下一个字节的数据，通常要先查询这些标志位再做读写操作，在这个例子中我们抓主要矛盾，忽略这些细节。</p>
+</blockquote>
+<pre><code class="language-bash">        buf[0] = recv;
+ 80483a2:       0f b6 05 19 a0 04 08    movzbl 0x804a019,%eax
+ 80483a9:       a2 1a a0 04 08          mov    %al,0x804a01a
+        buf[1] = recv;
+ 80483ae:       0f b6 05 19 a0 04 08    movzbl 0x804a019,%eax
+ 80483b5:       a2 1b a0 04 08          mov    %al,0x804a01b
+        buf[2] = recv;
+ 80483ba:       0f b6 05 19 a0 04 08    movzbl 0x804a019,%eax
+ 80483c1:       a2 1c a0 04 08          mov    %al,0x804a01c
+        send = ~buf[0];
+ 80483c6:       0f b6 05 1a a0 04 08    movzbl 0x804a01a,%eax
+ 80483cd:       f7 d0                   not    %eax
+ 80483cf:       a2 18 a0 04 08          mov    %al,0x804a018
+        send = ~buf[1];
+ 80483d4:       0f b6 05 1b a0 04 08    movzbl 0x804a01b,%eax
+ 80483db:       f7 d0                   not    %eax
+ 80483dd:       a2 18 a0 04 08          mov    %al,0x804a018
+        send = ~buf[2];
+ 80483e2:       0f b6 05 1c a0 04 08    movzbl 0x804a01c,%eax
+ 80483e9:       f7 d0                   not    %eax
+ 80483eb:       a2 18 a0 04 08          mov    %al,0x804a018
+</code></pre>
+<p><code>movz</code> 指令把字长较短的值存到字长较长的存储单元中，存储单元的高位用 0 填充。该指令可以有 <code>b</code>（byte）、<code>w</code>（word）、<code>l</code>（long）三种后缀，分别表示单字节、两字节和四字节。比如 <code>movzbl 0x804a019,%eax</code> 表示把地址 0x804a019 处的一个字节存到 <code>eax</code> 寄存器中，而 <code>eax</code> 寄存器是四字节的，高三字节用 0 填充，而下一条指令 <code>mov    %al,0x804a01a</code> 中的 <code>al</code> 寄存器正是 <code>eax</code> 寄存器的低字节，把这个字节存到地址 0x804a01a 处的一个字节中。可以用不同的名字单独访问 x86 寄存器的低 8 位、次低 8 位、低 16 位或者完整的 32 位，以 <code>eax</code> 为例，<code>al</code> 表示低 8 位，<code>ah</code> 表示次低 8 位，<code>ax</code> 表示低 16 位，如下图所示。</p>
+<p id="c19-7">图 19.7. eax 寄存器</p>
+<p><img src="../images/asmc.eax.png" alt="eax寄存器" /></p>
+<p>但如果指定优化选项 <code>-O</code> 编译，反汇编的结果就不一样了：</p>
+<pre><code class="language-bash">$ gcc main.c -g -O
+$ objdump -dS a.out|less
+...
+        buf[0] = recv;
+ 80483ae:       0f b6 05 19 a0 04 08    movzbl 0x804a019,%eax
+ 80483b5:       a2 1a a0 04 08          mov    %al,0x804a01a
+        buf[1] = recv;
+ 80483ba:       a2 1b a0 04 08          mov    %al,0x804a01b
+        buf[2] = recv;
+ 80483bf:       a2 1c a0 04 08          mov    %al,0x804a01c
+        send = ~buf[0];
+        send = ~buf[1];
+        send = ~buf[2];
+ 80483c4:       f7 d0                   not    %eax
+ 80483c6:       a2 18 a0 04 08          mov    %al,0x804a018
+...
+</code></pre>
+<p>前三条语句从串口接收三个字节，而编译生成的指令显然不符合我们的意图：只有第一条语句从内存地址 0x804a019 读一个字节到寄存器 <code>eax</code> 中，然后从寄存器 <code>al</code> 保存到 <code>buf[0]</code>，后两条语句就不再从内存地址 0x804a019 读取，而是直接把寄存器 <code>al</code> 的值保存到 <code>buf[1]</code> 和 <code>buf[2]</code>。后三条语句把 <code>buf</code> 中的三个字节取反再发送到串口，编译生成的指令也不符合我们的意图：只有最后一条语句把 <code>eax</code> 的值取反写到内存地址 0x804a018 了，前两条语句形同虚设，根本不生成指令。</p>
+<p>为什么编译器优化的结果会错呢？因为编译器并不知道 0x804a018 和 0x804a019 是设备寄存器的地址，把它们当成普通的内存单元了。如果是普通的内存单元，只要程序不去改写它，它就不会变，可以先把内存单元里的值读到寄存器缓存起来，以后每次用到这个值就直接从寄存器读取，这样效率更高，我们知道读寄存器远比读内存要快。另一方面，如果对一个普通的内存单元连续做三次写操作，只有最后一次的值会保存到内存单元中，所以前两次写操作是多余的，可以优化掉。访问设备寄存器的代码这样优化就错了，因为设备寄存器往往具有以下特性：</p>
+<ul>
+<li>设备寄存器中的数据不需要改写就可以自己发生变化，每次读上来的值都可能不一样。</li>
+<li>连续多次向设备寄存器中写数据并不是在做无用功，而是有特殊意义的。</li>
+</ul>
+<p>用优化选项编译生成的指令明显效率更高，但使用不当会出错，为了避免编译器自作聪明，把不该优化的也优化了，程序员应该明确告诉编译器哪些内存单元的访问是不能优化的，在 C 语言中可以用 <code>volatile</code> 限定符修饰变量，就是告诉编译器，即使在编译时指定了优化选项，每次读这个变量仍然要老老实实从内存读取，每次写这个变量也仍然要老老实实写回内存，不能省略任何步骤。我们把代码的开头几行改成：</p>
+<pre><code class="language-c">/* artificial device registers */
+volatile unsigned char recv;
+volatile unsigned char send;
+</code></pre>
+<p>然后指定优化选项 <code>-O</code> 编译，查看反汇编的结果：</p>
+<pre><code class="language-bash">        buf[0] = recv;
+ 80483a2:       0f b6 05 19 a0 04 08    movzbl 0x804a019,%eax
+ 80483a9:       a2 1a a0 04 08          mov    %al,0x804a01a
+        buf[1] = recv;
+ 80483ae:       0f b6 15 19 a0 04 08    movzbl 0x804a019,%edx
+ 80483b5:       88 15 1b a0 04 08       mov    %dl,0x804a01b
+        buf[2] = recv;
+ 80483bb:       0f b6 0d 19 a0 04 08    movzbl 0x804a019,%ecx
+ 80483c2:       88 0d 1c a0 04 08       mov    %cl,0x804a01c
+        send = ~buf[0];
+ 80483c8:       f7 d0                   not    %eax
+ 80483ca:       a2 18 a0 04 08          mov    %al,0x804a018
+        send = ~buf[1];
+ 80483cf:       f7 d2                   not    %edx
+ 80483d1:       88 15 18 a0 04 08       mov    %dl,0x804a018
+        send = ~buf[2];
+ 80483d7:       f7 d1                   not    %ecx
+ 80483d9:       88 0d 18 a0 04 08       mov    %cl,0x804a018
+</code></pre>
+<p>确实每次读 <code>recv</code> 都从内存地址 0x804a019 读取，每次写 <code>send</code> 也都写到内存地址 0x804a018 了。值得注意的是，每次写 <code>send</code> 并不需要取出 <code>buf</code> 中的值，而是取出先前缓存在寄存器 <code>eax</code>、<code>edx</code>、<code>ecx</code> 中的值，做取反运算然后写下去，这是因为 <code>buf</code> 并没有用 <code>volatile</code> 限定，读者可以试着在 <code>buf</code> 的定义前面也加上 <code>volatile</code>，再优化编译，再查看反汇编的结果。</p>
+<p><code>gcc</code> 的编译优化选项有 <code>-O0</code>、<code>-O</code>、<code>-O1</code>、<code>-O2</code>、<code>-O3</code>、<code>-Os</code> 几种。<code>-O0</code> 表示不优化，这是缺省的选项。<code>-O1</code>、<code>-O2</code> 和 <code>-O3</code> 这几个选项一个比一个优化得更多，编译时间也更长。<code>-O</code> 和 <code>-O1</code> 相同。<code>-Os</code> 表示为缩小目标文件的尺寸而优化。具体每种选项做了哪些优化请参考 <code>gcc(1)</code> 的 Man Page。</p>
+<p>从上面的例子还可以看到，如果在编译时指定了优化选项，源代码和生成指令的次序可能无法对应，甚至有些源代码可能不对应任何指令，被彻底优化掉了。这一点在用 <code>gdb</code> 做源码级调试时尤其需要注意（做指令级调试没关系），在为调试而编译时不要指定优化选项，否则可能无法一步步跟踪源代码的执行过程。</p>
+<p>有了 <code>volatile</code> 限定符，是可以防止编译器优化对设备寄存器的访问，但是对于有 Cache 的平台，仅仅这样还不够，还是无法防止 Cache 优化对设备寄存器的访问。在访问普通的内存单元时，Cache 对程序员是透明的，比如执行了 <code>movzbl 0x804a019,%eax</code> 这样一条指令，我们并不知道 <code>eax</code> 的值是真的从内存地址 0x804a019 读到的，还是从 Cache 中读到的，如果 Cache 已经缓存了这个地址的数据就从 Cache 读，如果 Cache 没有缓存就从内存读，这些步骤都是硬件自动做的，而不是用指令控制 Cache 去做的，程序员写的指令中只有寄存器、内存地址，而没有 Cache，程序员甚至不需要知道 Cache 的存在。同样道理，如果执行了 <code>mov    %al,0x804a01a</code> 这样一条指令，我们并不知道寄存器的值是真的写回内存了，还是只写到了 Cache 中，以后再由 Cache 写回内存，即使只写到了 Cache 中而暂时没有写回内存，下次读 0x804a01a 这个地址时仍然可以从 Cache 中读到上次写的数据。然而，在读写设备寄存器时 Cache 的存在就不容忽视了，如果串口发送和接收寄存器的内存地址被 Cache 缓存了会有什么问题呢？如下图所示。</p>
+<p id="c19-8">图 19.8. 串口发送和接收寄存器被 Cache 缓存会有什么问题</p>
+<p><img src="../images/asmc.nocache.png" alt="串口发送和接收寄存器被 Cache 缓存会有什么问题" /></p>
+<p>如果串口发送寄存器的地址被 Cache 缓存，CPU 执行单元对串口发送寄存器做写操作都写到 Cache 中去了，串口发送寄存器并没有及时得到数据，也就不能及时发送，CPU 执行单元先后发出的 1、2、3 三个字节都会写到 Cache 中的同一个单元，最后 Cache 中只保存了第 3 个字节，如果这时 Cache 把数据写回到串口发送寄存器，只能把第 3 个字节发送出去，前两个字节就丢失了。与此类似，如果串口接收寄存器的地址被 Cache 缓存，CPU 执行单元在读第 1 个字节时，Cache 会从串口接收寄存器读上来缓存，然而串口接收寄存器后面收到的 2、3 两个字节 Cache 并不知道，因为 Cache 把串口接收寄存器当作普通内存单元，并且相信内存单元中的数据是不会自己变的，以后每次读串口接收寄存器时，Cache 都会把缓存的第 1 个字节提供给 CPU 执行单元。</p>
+<p>通常，有 Cache 的平台都有办法对某一段地址范围禁用 Cache，一般是在页表中设置的，可以设定哪些页面允许 Cache 缓存，哪些页面不允许 Cache 缓存，MMU 不仅要做地址转换和访问权限检查，也要和 Cache 协同工作。</p>
+<p>除了设备寄存器需要用 <code>volatile</code> 限定之外，当一个全局变量被同一进程中的多个控制流程访问时也要用 <code>volatile</code> 限定，比如信号处理函数和多线程。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../2-C-语言本质/ch18-x86-汇编程序基础.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../2-C-语言本质/ch20-链接详解.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../2-C-语言本质/ch18-x86-汇编程序基础.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../2-C-语言本质/ch20-链接详解.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

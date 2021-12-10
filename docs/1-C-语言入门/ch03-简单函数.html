@@ -1,0 +1,573 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>简单函数 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html" class="active"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-3-章-简单函数"><a class="header" href="#第-3-章-简单函数">第 3 章 简单函数</a></h1>
+<h2 id="1-数学函数"><a class="header" href="#1-数学函数">1. 数学函数</a></h2>
+<p>在数学中我们用过 sin 和 ln 这样的函数，例如 sin(π/2)=1，ln1=0 等等，在 C 语言中也可以使用这些函数（ln 函数在 C 标准库中叫做 <code>log</code>）：</p>
+<p id="e3-1">例 3.1. 在 C 语言中使用数学函数</p>
+<pre><code class="language-c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+	double pi = 3.1416;
+	printf(&quot;sin(pi/2)=%f\nln1=%f\n&quot;, sin(pi/2), log(1.0));
+	return 0;
+}
+</code></pre>
+<p>编译运行这个程序，结果如下：</p>
+<pre><code class="language-bash">$ gcc main.c -lm
+$ ./a.out
+sin(pi/2)=1.000000
+ln1=0.000000
+</code></pre>
+<p>在数学中写一个函数有时候可以省略括号，而 C 语言要求一定要加上括号，例如 <code>log(1.0)</code>。在 C 语言的术语中，<code>1.0</code> 是参数（Argument），<code>log</code> 是函数（Function），<code>log(1.0)</code> 是函数调用（Function Call）。<code>sin(pi/2)</code> 和 <code>log(1.0)</code> 这两个函数调用在我们的 <code>printf</code> 语句中处于什么位置呢？在上一章讲过，这应该是写表达式的位置。因此<strong>函数调用也是一种表达式</strong>，这个表达式由函数调用运算符（即 <code>(</code> <code>)</code> 括号）和两个操作数组成，操作数 <code>log</code> 是一个函数名（Function Designator），它的类型是一种函数类型（Function Type），操作数 <code>1.0</code> 是 <code>double</code> 型的。<code>log(1.0)</code> 这个表达式的值就是对数运算的结果，也是 <code>double</code> 型的，在 C 语言中函数调用表达式的值称为<strong>函数的返回值（Return Value）</strong>。总结一下我们新学的语法规则：</p>
+<pre><code>表达式 → 函数名
+表达式 → 表达式(参数列表)
+参数列表 → 表达式, 表达式, ...
+</code></pre>
+<p>现在我们可以完全理解 <code>printf</code> 语句了：原来 <code>printf</code> 也是一个函数，上例中的 <code>printf(&quot;sin(pi/2)=%f\nln1=%f\n&quot;, sin(pi/2), log(1.0))</code> 是带三个参数的函数调用，而函数调用也是一种表达式，因此 <code>printf</code> 语句也是表达式语句的一种。但是 <code>printf</code> 感觉不像一个数学函数，为什么呢？因为像 <code>log</code> 这种函数，我们传进去一个参数会得到一个返回值，我们调用 <code>log</code> 函数就是为了得到它的返回值，至于 <code>printf</code>，我们并不关心它的返回值（事实上它也有返回值，表示实际打印的字符数），我们调用 <code>printf</code> 不是为了得到它的返回值，而是为了利用它所产生的副作用（Side Effect）——打印。<strong>C 语言的函数可以有 Side Effect，这一点是它和数学函数在概念上的根本区别</strong>。</p>
+<p>Side Effect 这个概念也适用于运算符组成的表达式。比如 <code>a + b</code> 这个表达式也可以看成一个函数调用，把运算符 <code>+</code> 看作函数，它的两个参数是 <code>a</code> 和 <code>b</code>，返回值是两个参数的和，传入两个参数，得到一个返回值，并没有产生任何 Side Effect。而赋值运算符是有 Side Effect 的，如果把 <code>a = b</code> 这个表达式看成函数调用，返回值就是所赋的值，既是 <code>b</code> 的值也是 <code>a</code> 的值，但除此之外还产生了 Side Effect，就是变量 <code>a</code> 被改变了，改变计算机存储单元里的数据或者做输入输出操作都算 Side Effect。</p>
+<p>回想一下我们的学习过程，一开始我们说赋值是一种语句，后来学了表达式，我们说赋值语句是表达式语句的一种；一开始我们说 <code>printf</code> 是一种语句，现在学了函数，我们又说 <code>printf</code> 也是表达式语句的一种。随着我们一步步的学习，把原来看似不同类型的语句统一成一种语句了。学习的过程总是这样，初学者一开始接触的很多概念从严格意义上说是错的，但是很容易理解，随着一步步学习，在理解原有概念的基础上不断纠正，不断泛化（Generalize）。比如一年级老师说小数不能减大数，其实这个概念是错的，后来引入了负数就可以减了，后来引入了分数，原来的正数和负数的概念就泛化为整数，上初中学了无理数，原来的整数和分数的概念就泛化为有理数，再上高中学了复数，有理数和无理数的概念就泛化为实数。坦白说，到目前为止本书的很多说法都是不完全正确的，但这是学习理解的必经阶段，到后面的章节都会逐步纠正的。</p>
+<p>程序第一行的 <code>#</code> 号（Pound Sign，Number Sign 或 Hash Sign）和 <code>include</code> 表示包含一个头文件（Header File），后面尖括号（Angel Bracket）中就是文件名（这些头文件通常位于 /usr/include 目录下）。头文件中声明了我们程序中使用的库函数，根据先声明后使用的原则，要使用 <code>printf</code> 函数必须包含 <code>stdio.h</code>，要使用数学函数必须包含 <code>math.h</code>，如果什么库函数都不使用就不必包含任何头文件，例如写一个程序 <code>int main(void){int a;a=2;return 0;}</code>，不需要包含头文件就可以编译通过，当然这个程序什么也做不了。</p>
+<p>使用 <code>math.h</code> 中声明的库函数还有一点特殊之处，<code>gcc</code> 命令行必须加 <code>-lm</code> 选项，因为数学函数位于 <code>libm.so</code> 库文件中（这些库文件通常位于 /lib 目录下），<code>-lm</code> 选项告诉编译器，我们程序中用到的数学函数要到这个库文件里找。本书用到的大部分库函数（例如 <code>printf</code>）位于 <code>libc.so</code> 库文件中，使用 <code>libc.so</code> 中的库函数在编译时不需要加 <code>-lc</code>选项，当然加了也不算错，因为这个选项是<code>gcc</code> 的默认选项。关于头文件和库函数目前理解这么多就可以了，到<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch20-%E9%93%BE%E6%8E%A5%E8%AF%A6%E8%A7%A3">第 20 章「链接详解」</a>再详细解释。</p>
+<blockquote>
+<p><strong>C 标准库和 glibc</strong></p>
+<p>C 标准主要由两部分组成，一部分描述 C 的语法，另一部分描述 C 标准库。C 标准库定义了一组标准头文件，每个头文件中包含一些相关的函数、变量、类型声明和宏定义。要在一个平台上支持 C 语言，不仅要实现 C 编译器，还要实现 C 标准库，这样的实现才算符合 C 标准。不符合 C 标准的实现也是存在的，例如很多单片机的 C 语言开发工具中只有 C 编译器而没有完整的 C 标准库。</p>
+<p>在 Linux 平台上最广泛使用的 C 函数库是 glibc，其中包括 C 标准库的实现，也包括本书第三部分介绍的所有系统函数。几乎所有 C 程序都要调用 glibc 的库函数，所以 glibc 是 Linux 平台 C 程序运行的基础。glibc 提供一组头文件和一组库文件，最基本、最常用的 C 标准库函数和系统函数在 libc.so 库文件中，几乎所有 C 程序的运行都依赖于 libc.so，有些做数学计算的 C 程序依赖于 libm.so，以后我们还会看到多线程的 C 程序依赖于 libpthread.so。以后我说 libc 时专指 libc.so 这个库文件，而说 glibc 时指的是 glibc 提供的所有库文件。</p>
+<p>glibc 并不是 Linux 平台唯一的基础 C 函数库，也有人在开发别的 C 函数库，比如适用于嵌入式系统的 uClibc。</p>
+</blockquote>
+<h2 id="2-自定义函数"><a class="header" href="#2-自定义函数">2. 自定义函数</a></h2>
+<p>我们不仅可以调用 C 标准库提供的函数，也可以定义自己的函数，事实上我们已经这么做了：我们定义了 <code>main</code> 函数。例如：</p>
+<pre><code class="language-c">int main(void)
+{
+	int hour = 11;
+	int minute = 59;
+	printf(&quot;%d and %d hours\n&quot;, hour, minute / 60);
+	return 0;
+}
+</code></pre>
+<p><code>main</code> 函数的特殊之处在于执行程序时它自动被操作系统调用，操作系统就认准了 <code>main</code> 这个名字，除了名字特殊之外，<code>main</code> 函数和别的函数没有区别。我们对照着 <code>main</code> 函数的定义来看语法规则：</p>
+<pre><code>函数定义 → 返回值类型 函数名(参数列表) 函数体
+函数体 → { 语句列表 }
+语句列表 → 语句列表项 语句列表项 ...
+语句列表项 → 语句
+语句列表项 → 变量声明、类型声明或非定义的函数声明
+非定义的函数声明 → 返回值类型 函数名(参数列表);
+</code></pre>
+<p>我们稍后再详细解释「函数定义」和「非定义的函数声明」的区别。从<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch07-%E7%BB%93%E6%9E%84%E4%BD%93">第 7 章「结构体」</a>开始我们才会看到类型声明，所以现在暂不讨论。</p>
+<p>给函数命名也要遵循上一章讲过的标识符命名规则。由于我们定义的 <code>main</code> 函数不带任何参数，参数列表应写成 <code>void</code>。函数体可以由若干条语句和声明组成，C89 要求所有声明写在所有语句之前（本书的示例代码都遵循这一规定），而 C99 的新特性允许语句和声明按任意顺序排列，只要每个标识符都遵循先声明后使用的原则就行。<code>main</code> 函数的返回值是 <code>int</code> 型的，<code>return 0;</code> 这个语句表示返回值是 <code>0</code>，<code>main</code> 函数的返回值是返回给操作系统看的，因为 <code>main</code> 函数是被操作系统调用的，通常程序执行成功就返回 <code>0</code>，在执行过程中出错就返回一个非零值。比如我们将 <code>main</code> 函数中的 <code>return</code> 语句改为 <code>return 4;</code> 再执行它，执行结束后可以在 Shell 中看到它的退出状态（Exit Status）：</p>
+<pre><code class="language-bash">$ ./a.out 
+11 and 0 hours
+$ echo $?
+4
+</code></pre>
+<p><code>$?</code> 是 Shell 中的一个特殊变量，表示上一条命令的退出状态。关于 <code>main</code> 函数需要注意两点：</p>
+<ol>
+<li>K&amp;R 书上的 <code>main</code> 函数定义写成 <code>main(){...}</code> 的形式，不写返回值类型也不写参数列表，这是 Old Style C 的风格。Old Style C 规定不写返回值类型就表示返回 <code>int</code> 型，不写参数列表就表示参数类型和个数没有明确指出。这种宽松的规定使编译器无法检查程序中可能存在的 Bug，增加了调试难度，不幸的是现在的 C 标准为了兼容旧的代码仍然保留了这种语法，但读者绝不应该继续使用这种语法。</li>
+<li>其实操作系统在调用 <code>main</code> 函数时是传参数的，<code>main</code> 函数最标准的形式应该是 <code>int main(int argc, char *argv[])</code>，在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch23-%E6%8C%87%E9%92%88#_6-%E6%8C%87%E5%90%91%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84">第 23 章「指针」第 6 节「指向指针的指针与指针数组」</a>详细介绍。C 标准也允许 <code>int main(void)</code> 这种写法，如果不使用系统传进来的两个参数也可以写成这种形式。但除了这两种形式之外，定义 <code>main</code> 函数的其它写法都是错误的或不可移植的。</li>
+</ol>
+<p>关于返回值和 <code>return</code> 语句我们将在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch05-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0#_1-return-%E8%AF%AD%E5%8F%A5">第 5 章「深入理解函数」第 1 节「return 语句」</a>详细讨论，我们先从不带参数也没有返回值的函数开始学习定义和使用函数：</p>
+<p id="e3-2">例 3.2. 最简单的自定义函数</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void newline(void)
+{
+	printf(&quot;\n&quot;);
+}
+
+int main(void)
+{
+	printf(&quot;First Line.\n&quot;);
+	newline();
+	printf(&quot;Second Line.\n&quot;);
+	return 0;
+}
+</code></pre>
+<p>执行结果是：</p>
+<pre><code class="language-bash">First Line.
+
+Second Line.
+</code></pre>
+<p>我们定义了一个 <code>newline</code> 函数给 <code>main</code> 函数调用，它的作用是打印一个换行，所以执行结果中间多了一个空行。<code>newline</code> 函数不仅不带参数，也没有返回值，返回值类型为 <code>void</code> 表示没有返回值<sup>[4]</sup>，这说明我们调用这个函数完全是为了利用它的 Side Effect。如果我们想要多次插入空行就可以多次调用 <code>newline</code>函数：</p>
+<blockquote>
+<p><sup>[4]</sup> 敏锐的读者可能会发现一个矛盾：如果函数 <code>newline</code> 没有返回值，那么表达式 <code>newline()</code> 不就没有值了吗？然而上一章讲过任何表达式都有值和类型两个基本属性。其实这正是设计 <code>void</code> 这么一个关键字的原因：首先从语法上规定没有返回值的函数调用表达式有一个 <code>void</code> 类型的值，这样任何表达式都有值，不必考虑特殊情况，编译器的语法解析比较容易实现；然后从语义上规定 <code>void</code> 类型的表达式不能参与运算，因此 <code>newline() + 1</code> 这样的表达式不能通过语义检查，从而兼顾了语法上的一致和语义上的不矛盾。</p>
+</blockquote>
+<pre><code class="language-c">int main(void)
+{
+	printf(&quot;First Line.\n&quot;);
+	newline();
+	newline();
+	newline();
+	printf(&quot;Second Line.\n&quot;);
+	return 0;
+}
+</code></pre>
+<p>如果我们总需要三个三个地插入空行，我们可以再定义一个 <code>threeline</code> 函数每次插入三个空行：</p>
+<p id="e3-3">例 3.3. 较简单的自定义函数</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void newline(void)
+{
+	printf(&quot;\n&quot;);
+}
+
+void threeline(void)
+{
+	newline();
+	newline();
+	newline();
+}
+
+int main(void)
+{
+	printf(&quot;Three lines:\n&quot;);
+	threeline();
+	printf(&quot;Another three lines.\n&quot;);
+	threeline();
+	return 0;
+}
+</code></pre>
+<p>通过这个简单的例子可以体会到：</p>
+<ol>
+<li>同一个函数可以被多次调用。</li>
+<li>可以用一个函数调用另一个函数，后者再去调第三个函数。</li>
+<li>通过自定义函数可以给一组复杂的操作起一个简单的名字，例如 <code>threeline</code>。对于 <code>main</code> 函数来说，只需要通过 <code>threeline</code> 这个简单的名字来调用就行了，不必知道打印三个空行具体怎么做，所有的复杂操作都被隐藏在 <code>threeline</code> 这个名字后面。</li>
+<li>使用自定义函数可以使代码更简洁，<code>main</code> 函数在任何地方想打印三个空行只需调用一个简单的 <code>threeline()</code>，而不必每次都写三个 <code>printf(&quot;\n&quot;)</code>。</li>
+</ol>
+<p>读代码和读文章不一样，按从上到下从左到右的顺序读代码未必是最好的。比如上面的例子，按源文件的顺序应该是先看 <code>newline</code> 再看 <code>threeline</code> 再看 <code>main</code>。如果你换一个角度，按代码的执行顺序来读也许会更好：首先执行的是 <code>main</code> 函数中的语句，在一条 <code>printf</code> 之后调用了 <code>threeline</code>，这时再去看 <code>threeline</code> 的定义，其中又调用了 <code>newline</code>，这时再去看 <code>newline</code> 的定义，<code>newline</code> 里面有一条 <code>printf</code>，执行完成后返回 <code>threeline</code>，这里还剩下两次 <code>newline</code> 调用，效果也都一样，执行完之后返回 <code>main</code>，接下来又是一条 <code>printf</code> 和一条 <code>threeline</code>。如下图所示：</p>
+<p id="c3-1">图 3.1. 函数调用的执行顺序</p>
+<p><img src="../images/func.funccall.png" alt="函数调用的执行顺序" /></p>
+<p>读代码的过程就是模仿计算机执行程序的过程，我们不仅要记住当前读到了哪一行代码，还要记住现在读的代码是被哪个函数调用的，这段代码返回后应该从上一个函数的什么地方接着往下读。</p>
+<p>现在澄清一下函数声明、函数定义、函数原型（Prototype）这几个概念。比如 <code>void threeline(void)</code> 这一行，声明了一个函数的名字、参数类型和个数、返回值类型，这称为函数原型。在代码中可以单独写一个函数原型，后面加 <code>;</code> 号结束，而不写函数体，例如：</p>
+<pre><code class="language-c">void threeline(void);
+</code></pre>
+<p>这种写法只能叫函数声明而不能叫函数定义，只有带函数体的声明才叫定义。上一章讲过，只有分配存储空间的变量声明才叫变量定义，其实函数也是一样，编译器只有见到函数定义才会生成指令，而指令在程序运行时当然也要占存储空间。那么没有函数体的函数声明有什么用呢？它为编译器提供了有用的信息，编译器在翻译代码的过程中，只有见到函数原型（不管带不带函数体）之后才知道这个函数的名字、参数类型和返回值，这样碰到函数调用时才知道怎么生成相应的指令，所以函数原型必须出现在函数调用之前，这也是遵循「先声明后使用」的原则。</p>
+<p>在上面的例子中，<code>main</code> 调用 <code>threeline</code>，<code>threeline</code> 再调用 <code>newline</code>，要保证每个函数的原型出现在调用之前，就只能按先 <code>newline</code> 再 <code>threeline</code> 再 <code>main</code> 的顺序定义了。如果使用不带函数体的声明，则可以改变函数的定义顺序：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void newline(void);
+void threeline(void);
+
+int main(void)
+{
+	...
+}
+
+void newline(void)
+{
+	...
+}
+
+void threeline(void)
+{
+	...
+}
+</code></pre>
+<p>这样仍然遵循了先声明后使用的原则。</p>
+<p>由于有 Old Style C 语法的存在，并非所有函数声明都包含完整的函数原型，例如 <code>void threeline();</code> 这个声明并没有明确指出参数类型和个数，所以不算函数原型，这个声明提供给编译器的信息只有函数名和返回值类型。如果在这样的声明之后调用函数，编译器不知道参数的类型和个数，就不会做语法检查，所以很容易引入 Bug。读者需要了解这个知识点以便维护别人用 Old Style C 风格写的代码，但绝不应该按这种风格写新的代码。</p>
+<p>如果在调用函数之前没有声明会怎么样呢？有的读者也许碰到过这种情况，我可以解释一下，但绝不推荐这种写法。比如按上面的顺序定义这三个函数，但是把开头的两行声明去掉：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+	printf(&quot;Three lines:\n&quot;);
+	threeline();
+	printf(&quot;Another three lines.\n&quot;);
+	threeline();
+	return 0;
+}
+
+void newline(void)
+{
+	printf(&quot;\n&quot;);
+}
+
+void threeline(void)
+{
+	newline();
+	newline();
+	newline();
+}
+</code></pre>
+<p>编译时会报警告：</p>
+<pre><code class="language-bash">$ gcc main.c
+main.c:17: warning: conflicting types for ‘threeline’
+main.c:6: warning: previous implicit declaration of ‘threeline’ was here
+</code></pre>
+<p>但仍然能编译通过，运行结果也对。这里涉及到的规则称为函数的隐式声明（Implicit Declaration），在 <code>main</code> 函数中调用 <code>threeline</code> 时并没有声明它，编译器认为此处隐式声明了 <code>int threeline(void);</code>，隐式声明的函数返回值类型都是 <code>int</code>，由于我们调用这个函数时没有传任何参数，所以编译器认为这个隐式声明的参数类型是 <code>void</code>，这样函数的参数和返回值类型都确定下来了，编译器根据这些信息为函数调用生成相应的指令。然后编译器接着往下看，看到 <code>threeline</code> 函数的原型是 <code>void threeline(void)</code>，和先前的隐式声明的返回值类型不符，所以报警告。好在我们也没用到这个函数的返回值，所以执行结果仍然正确。</p>
+<h2 id="3-形参和实参"><a class="header" href="#3-形参和实参">3. 形参和实参</a></h2>
+<p>下面我们定义一个带参数的函数，我们需要在函数定义中指明参数的个数和每个参数的类型，定义参数就像定义变量一样，需要为每个参数指明类型，参数的命名也要遵循标识符命名规则。例如：</p>
+<p id="e3-4">例 3.4. 带参数的自定义函数</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void print_time(int hour, int minute)
+{
+	printf(&quot;%d:%d\n&quot;, hour, minute);
+}
+
+int main(void)
+{
+	print_time(23, 59);
+	return 0;
+}
+</code></pre>
+<p>需要注意的是，定义变量时可以把相同类型的变量列在一起，而定义参数却不可以，例如下面这样的定义是错的：</p>
+<pre><code class="language-c">void print_time(int hour, minute)
+{
+	printf(&quot;%d:%d\n&quot;, hour, minute);
+}
+</code></pre>
+<p>学习 C 语言的人肯定都乐意看到这句话：「变量是这样定义的，参数也是这样定义的，一模一样」，这意味着不用专门去记住参数应该怎么定义了。谁也不愿意看到这句话：「定义变量可以这样写，而定义参数却不可以」。C 语言的设计者也不希望自己设计的语法规则里到处都是例外，一个容易被用户接受的设计应该遵循<strong>最少例外原则</strong>（Rule of Least Surprise）。其实关于参数的这条规定也不算十分例外，也是可以理解的，请读者想想为什么要这么规定。学习编程语言不应该死记各种语法规定，如果能够想清楚设计者这么规定的原因（Rationale），不仅有助于记忆，而且会有更多收获。本书在必要的地方会解释一些 Rationale，或者启发读者自己去思考，例如上一节在脚注中解释了<code>void</code>关键字的 Rationale。<em>C99 Rationale</em> 是随 C99 标准一起发布的，值得参考。</p>
+<p>总的来说，C 语言的设计是非常优美的，只要理解了少数基本概念和基本原则就可以根据组合规则写出任意复杂的程序，很少有例外的规定说这样组合是不允许的，或者那样类推是错误的。相反，C++ 的设计就非常复杂，充满了例外，全世界没几个人能把 C++ 的所有规则都牢记于心，因而 C++ 的设计一直饱受争议，这个观点在 <em>UNIX 编程艺术</em> 中有详细阐述。</p>
+<p>在本书中，凡是提醒读者注意的地方都是多少有些 Surprise 的地方，初学者如果按常理来想很可能要想错，所以需要特别提醒一下。而初学者容易犯的另外一些错误，完全是因为没有掌握好基本概念和基本原理，或者根本无视组合规则而全凭自己主观臆断所致，对这一类问题本书不会做特别的提醒，例如有的初学者看完<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch02-%E5%B8%B8%E9%87%8F%E3%80%81%E5%8F%98%E9%87%8F%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F">第 2 章「常量、变量和表达式」</a>之后会这样打印 π 的值：</p>
+<pre><code class="language-c">double pi=3.1416;
+printf(&quot;pi\n&quot;);
+</code></pre>
+<p>之所以会犯这种错误，一是不理解 Literal 的含义，二是自己想当然地把变量名组合到字符串里去，而事实上根本没有这条语法规则。如果连这样的错误都需要在书上专门提醒，就好比提醒小孩吃饭一定要吃到嘴里，不要吃到鼻子里，更不要吃到耳朵里一样。</p>
+<p>回到正题。我们调用 <code>print_time(23, 59)</code> 时，函数中的参数 <code>hour</code> 就代表 <code>23</code>，参数 <code>minute</code>就代表 <code>59</code>。确切地说，当我们讨论函数中的 <code>hour</code> 这个参数时，我们所说的「参数」是指形参（Parameter），当我们讨论传一个参数 <code>23</code> 给函数时，我们所说的「参数」是指实参（Argument），但我习惯都叫参数而不习惯总把形参、实参这两个文绉绉的词挂在嘴边（事实上大多数人都不习惯），读者可以根据上下文判断我说的到底是形参还是实参。记住这条基本原理：<strong>形参相当于函数中定义的变量，调用函数传递参数的过程相当于定义形参变量并且用实参的值来初始化</strong>。例如这样调用：</p>
+<pre><code class="language-c">void print_time(int hour, int minute)
+{
+	printf(&quot;%d:%d\n&quot;, hour, minute);
+}
+
+int main(void)
+{
+	int h = 23, m = 59;
+	print_time(h, m);
+	return 0;
+}
+</code></pre>
+<p>相当于在函数 <code>print_time</code> 中执行了这样一些语句：</p>
+<pre><code class="language-c">int hour = h;
+int minute = m;
+printf(&quot;%d:%d\n&quot;, hour, minute);
+</code></pre>
+<p><code>main</code> 函数的变量 <code>h</code> 和 <code>print_time</code> 函数的参数 <code>hour</code> 是两个不同的变量，只不过它们的存储空间中都保存了相同的值 <code>23</code>，因为变量 <code>h</code> 的值赋给了参数 <code>hour</code>。同理，变量 <code>m</code> 的值赋给了参数 <code>minute</code>。C 语言的这种传递参数的方式称为 Call by Value。在调用函数时，每个参数都需要得到一个值，函数定义中有几个形参，在调用时就要传几个实参，不能多也不能少，每个参数的类型也必须对应上。</p>
+<p>肯定有读者注意到了，为什么我们每次调用 <code>printf</code> 传的实参个数都不一样呢？因为 C 语言规定了一种特殊的参数列表格式，用命令 <code>man 3 printf</code> 可以查看到 <code>printf</code> 函数的原型：</p>
+<pre><code class="language-c">int printf(const char *format, ...);
+</code></pre>
+<p>第一个参数是 <code>const char *</code> 类型的，后面的 <code>...</code> 可以代表 0 个或任意多个参数，这些参数的类型也是不确定的，这称为可变参数（Variable Argument），<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch24-%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3#_6-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0">第 24 章「函数接口」第 6 节「可变参数」</a>将会详细讨论这种格式。总之，每个函数的原型都明确规定了返回值类型以及参数的类型和个数，即使像 <code>printf</code> 这样规定为「不确定」也是一种明确的规定，调用函数时要严格遵守这些规定，有时候我们把函数叫做<strong>接口</strong>（Interface），调用函数就是使用这个接口，使用接口的前提是必须和接口保持一致。</p>
+<blockquote>
+<p><strong>Man Page</strong></p>
+<p>Man Page 是 Linux 开发最常用的参考手册，由很多页面组成，每个页面描述一个主题，这些页面被组织成若干个 Section。FHS（Filesystem Hierarchy Standard）标准规定了 Man Page 各 Section 的含义如下：</p>
+<p id="t3-1">表 3.1. Man Page 的 Section</p>
+<table><thead><tr><th>Section</th><th>描述</th></tr></thead><tbody>
+<tr><td>1</td><td>用户命令，例如 <code>ls(1)</code></td></tr>
+<tr><td>2</td><td>系统调用，例如 <code>_exit(2)</code></td></tr>
+<tr><td>3</td><td>库函数，例如 <code>printf(3)</code></td></tr>
+<tr><td>4</td><td>特殊文件，例如 <code>null(4)</code> 描述了设备文件 /dev/null、/dev/zero 的作用</td></tr>
+<tr><td>5</td><td>系统配置文件的格式，例如 <code>passwd(5)</code> 描述了系统配置文件 /etc/passwd 的格式</td></tr>
+<tr><td>6</td><td>游戏</td></tr>
+<tr><td>7</td><td>其它杂项，例如 <code>bash-builtins(7)</code> 描述了 bash 的各种内建命令</td></tr>
+<tr><td>8</td><td>系统管理命令，例如 <code>ifconfig(8)</code></td></tr>
+</tbody></table>
+<p>注意区分用户命令和系统管理命令，用户命令通常位于 /bin 和 /usr/bin 目录，系统管理命令通常位于 /sbin 和 /usr/sbin 目录，一般用户可以执行用户命令，而执行系统管理命令经常需要 root 权限。系统调用和库函数的区别将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB#_2-main-%E5%87%BD%E6%95%B0%E5%92%8C%E5%90%AF%E5%8A%A8%E4%BE%8B%E7%A8%8B">第 19 章「汇编与 C 之间的关系」第 2 节「main 函数和启动例程」</a>说明。</p>
+<p>Man Page 中有些页面有重名，比如敲 <code>man printf</code> 命令看到的并不是 C 函数 <code>printf</code> ，而是位于第 1 个 Section 的系统命令 <code>printf</code>，要查看位于第 3 个 Section 的 <code>printf</code> 函数应该敲 <code>man 3 printf</code>，也可以敲 <code>man -k printf</code> 命令搜索哪些页面的主题包含 <code>printf</code> 关键字。本书会经常出现类似 <code>printf(3)</code> 这样的写法，括号中的 <code>3</code> 表示 Man Page 的第 3 个 Section，或者表示「我这里想说的是 <code>printf</code> 库函数而不是 <code>printf</code> 命令」。</p>
+</blockquote>
+<h3 id="习题"><a class="header" href="#习题">习题</a></h3>
+<ol>
+<li>
+<p>定义一个函数 increment，它的作用是把传进来的参数加 1。例如：</p>
+<pre><code class="language-c">void increment(int x)
+{
+	x = x + 1;
+}
+
+int main(void)
+{
+	int i = 1, j = 2;
+	increment(i); /* i now becomes 2 */
+	increment(j); /* j now becomes 3 */
+	return 0;
+}
+</code></pre>
+<p>我们在 <code>main</code> 函数中调用 <code>increment</code> 增加变量 <code>i</code> 和 <code>j</code> 的值，这样能奏效吗？为什么？</p>
+</li>
+<li>
+<p>如果在一个程序中调用了 <code>printf</code> 函数却不包含头文件，例如 <code>int main(void) { printf(&quot;\n&quot;); }</code>，编译时会报警告： <code>warning: incompatible implicit declaration of built-in function ‘printf’</code>。请分析错误原因。</p>
+</li>
+</ol>
+<h2 id="4-全局变量局部变量和作用域"><a class="header" href="#4-全局变量局部变量和作用域">4. 全局变量、局部变量和作用域</a></h2>
+<p>我们把函数中定义的变量称为局部变量（Local Variable），由于形参相当于函数中定义的变量，所以形参也是一种局部变量。在这里「局部」有两层含义：</p>
+<ol>
+<li>
+<p><strong>一个函数中定义的变量不能被另一个函数使用</strong>。例如 <code>print_time</code> 中的 <code>hour</code> 和 <code>minute</code> 在 <code>main</code> 函数中没有定义，不能使用，同样 <code>main</code> 函数中的局部变量也不能被 <code>print_time</code> 函数使用。如果这样定义：</p>
+<pre><code class="language-c">void print_time(int hour, int minute)
+{
+	printf(&quot;%d:%d\n&quot;, hour, minute);
+}
+
+int main(void)
+{
+	int hour = 23, minute = 59;
+	print_time(hour, minute);
+	return 0;
+}
+</code></pre>
+<p><code>main</code> 函数中定义了局部变量 <code>hour</code>，<code>print_time</code> 函数中也有参数 <code>hour</code>，虽然它们名称相同，但仍然是两个不同的变量，代表不同的存储单元。<code>main</code> 函数的局部变量 <code>minute</code> 和 <code>print_time</code> 函数的参数 <code>minute</code> 也是如此。</p>
+</li>
+<li>
+<p><strong>每次调用函数时局部变量都表示不同的存储空间</strong>。局部变量在每次函数调用时分配存储空间，在每次函数返回时释放存储空间，例如调用 <code>print_time(23, 59)</code> 时分配 <code>hour</code> 和 <code>minute</code> 两个变量的存储空间，在里面分别存上 <code>23</code> 和 <code>59</code>，函数返回时释放它们的存储空间，下次再调用 <code>print_time(12, 20)</code> 时又分配 <code>hour</code> 和 <code>minute</code> 的存储空间，在里面分别存上 <code>12</code> 和 <code>20</code>。</p>
+</li>
+</ol>
+<p>与局部变量的概念相对的是<strong>全局变量</strong>（Global Variable），全局变量定义在所有的函数体之外，它们在程序开始运行时分配存储空间，在程序结束时释放存储空间，在任何函数中都可以访问全局变量，例如：</p>
+<p id="e3-5">例 3.5. 全局变量</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int hour = 23, minute = 59;
+
+void print_time(void)
+{
+	printf(&quot;%d:%d in print_time\n&quot;, hour, minute);
+}
+
+int main(void)
+{
+	print_time();
+	printf(&quot;%d:%d in main\n&quot;, hour, minute);
+	return 0;
+}
+</code></pre>
+<p>正因为全局变量在任何函数中都可以访问，所以在程序运行过程中全局变量被读写的顺序从源代码中是看不出来的，源代码的书写顺序并不能反映函数的调用顺序。程序出现了 Bug 往往就是因为在某个不起眼的地方对全局变量的读写顺序不正确，如果代码规模很大，这种错误是很难找到的。而对局部变量的访问不仅局限在一个函数内部，而且局限在一次函数调用之中，从函数的源代码很容易看出访问的先后顺序是怎样的，所以比较容易找到 Bug。因此，虽然全局变量用起来很方便，但一定要慎用，能用函数传参代替的就不要用全局变量。</p>
+<p>如果全局变量和局部变量重名了会怎么样呢？如果上面的例子改为：</p>
+<p id="e3-6">例 3.6. 作用域</p>
+<p><img src="../images/func.scope.png" alt="作用域" /></p>
+<p>则第一次调用 <code>print_time</code> 打印的是全局变量的值，第二次直接调用 <code>printf</code> 打印的则是 <code>main</code> 函数局部变量的值。在 C 语言中每个标识符都有特定的作用域，全局变量是定义在所有函数体之外的标识符，它的作用域从定义的位置开始直到源文件结束，而 <code>main</code> 函数局部变量的作用域仅限于 <code>main</code> 函数之中。如上图所示，设想整个源文件是一张大纸，也就是全局变量的作用域，而 <code>main</code> 函数是盖在这张大纸上的一张小纸，也就是 <code>main</code> 函数局部变量的作用域。在小纸上用到标识符 <code>hour</code> 和 <code>minute</code> 时应该参考小纸上的定义，因为大纸（全局变量的作用域）被盖住了，如果在小纸上用到某个标识符却没有找到它的定义，那么再去翻看下面的大纸上有没有定义，例如上图中的变量 <code>x</code>。</p>
+<p>到目前为止我们在初始化一个变量时都是用常量做 Initializer，其实也可以用表达式做 Initializer，但要注意一点：<strong>局部变量可以用类型相符的任意表达式来初始化，而全局变量只能用常量表达式（Constant Expression）初始化</strong>。例如，全局变量 <code>pi</code> 这样初始化是合法的：</p>
+<pre><code class="language-c">double pi = 3.14 + 0.0016;
+</code></pre>
+<p>但这样初始化是不合法的：</p>
+<pre><code class="language-c">double pi = acos(-1.0);
+</code></pre>
+<p>然而局部变量这样初始化却是可以的。程序开始运行时要用适当的值来初始化全局变量，所以初始值必须保存在编译生成的可执行文件中，因此初始值在<strong>编译时</strong>就要计算出来，然而上面第二种 Initializer 的值必须在程序<strong>运行时</strong>调用 <code>acos</code> 函数才能得到，所以不能用来初始化全局变量。请注意区分编译时和运行时这两个概念。为了简化编译器的实现，C 语言从语法上规定全局变量只能用常量表达式来初始化，因此下面这种全局变量初始化是不合法的：</p>
+<pre><code class="language-c">int minute = 360;
+int hour = minute / 60;
+</code></pre>
+<p>虽然在编译时计算出 <code>hour</code> 的初始值是可能的，但是 <code>minute / 60</code> 不是常量表达式，不符合语法规定，所以编译器不必想办法去算这个初始值。</p>
+<p>如果全局变量在定义时不初始化则初始值是 <code>0</code>，如果局部变量在定义时不初始化则初始值是不确定的。所以，<strong>局部变量在使用之前一定要先赋值</strong>，如果基于一个不确定的值做后续计算肯定会引入 Bug。</p>
+<p>如何证明「局部变量的存储空间在每次函数调用时分配，在函数返回时释放」？当我们想要确认某些语法规则时，可以查教材，也可以查 C99，但最快捷的办法就是编个小程序验证一下：</p>
+<p id="e3-7">例 3.7. 验证局部变量存储空间的分配和释放</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void foo(void)
+{
+	int i;
+	printf(&quot;%d\n&quot;, i);
+	i = 777;
+}
+
+int main(void)
+{
+	foo();
+	foo();
+	return 0;
+}
+</code></pre>
+<p>第一次调用 <code>foo</code> 函数，分配变量 <code>i</code> 的存储空间，然后打印 <code>i</code> 的值，由于 <code>i</code> 未初始化，打印的应该是一个不确定的值，然后把 <code>i</code> 赋值为 <code>777</code>，函数返回，释放i的存储空间。第二次调用 <code>foo</code> 函数，分配变量 <code>i</code> 的存储空间，然后打印 <code>i</code> 的值，由于 <code>i</code> 未初始化，如果打印的又是一个不确定的值，就证明了「局部变量的存储空间在每次函数调用时分配，在函数返回时释放」。分析完了，我们运行程序看看是不是像我们分析的这样：</p>
+<pre><code class="language-bash">134518128
+777
+</code></pre>
+<p>结果出乎意料，第二次调用打印的 <code>i</code> 值正是第一次调用末尾赋给i的值 <code>777</code>。有一种初学者是这样，原本就没有把这条语法规则记牢，或者对自己的记忆力没信心，看到这个结果就会想：哦那肯定是我记错了，改过来记吧，应该是「函数中的局部变量具有一直存在的固定的存储空间，每次函数调用时使用它，返回时也不释放，再次调用函数时它应该还能保持上次的值」。还有一种初学者是怀疑论者或不可知论者，看到这个结果就会想：教材上明明说「局部变量的存储空间在每次函数调用时分配，在函数返回时释放」，那一定是教材写错了，教材也是人写的，是人写的就难免出错，哦，连 C99 也这么写的啊，C99 也是人写的，也难免出错，或者 C99 也许没错，但是反正运行结果就是错了，计算机这东西真靠不住，太容易受电磁干扰和宇宙射线影响了，我的程序写得再正确也有可能被干扰得不能正确运行。</p>
+<p>这是初学者最常见的两种心态。不从客观事实和逻辑推理出发分析问题的真正原因，而仅凭主观臆断胡乱给问题定性，「说你有罪你就有罪」。先不要胡乱怀疑，我们再做一次实验，在两次 <code>foo</code> 函数调用之间插一个别的函数调用，结果就大不相同了：</p>
+<pre><code class="language-c">int main(void)
+{
+	foo();
+	printf(&quot;hello\n&quot;);
+	foo();
+	return 0;
+}
+</code></pre>
+<p>结果是：</p>
+<pre><code class="language-bash">134518200
+hello
+0
+</code></pre>
+<p>这一回，第二次调用 <code>foo</code> 打印的i值又不是 <code>777</code> 了而是 <code>0</code>，「局部变量的存储空间在每次函数调用时分配，在函数返回时释放」这个结论似乎对了，但另一个结论又不对了：全局变量不初始化才是 <code>0</code> 啊，不是说「局部变量不初始化则初值不确定」吗？</p>
+<p>关键的一点是，我说「初值不确定」，有没有说这个不确定值不能是 <code>0</code>？有没有说这个不确定值不能是上次调用赋的值？在这里「不确定」的准确含义是：每次调用这个函数时局部变量的初值可能不一样，运行环境不同，函数的调用次序不同，都会影响到局部变量的初值。在运用逻辑推理时一定要注意，<strong>不要把必要条件（Necessary Condition）当充分条件（Sufficient Condition）</strong>，这一点在 Debug 时尤其重要，看到错误现象不要轻易断定原因是什么，一定要考虑再三，找出它的真正原因。例如，不要看到第二次调用打印 <code>777</code> 就下结论「函数中的局部变量具有一直存在的固定的存储空间，每次函数调用时使用它，返回时也不释放，再次调用函数时它应该还能保持上次的值」，这个结论倒是能推出 <code>777</code> 这个结果，但反过来由 <code>777</code> 这个结果却不能推出这样的结论。所以说 <code>777</code> 这个结果是该结论的必要条件，但不是充分条件。也不要看到第二次调用打印 <code>0</code> 就断定「局部变量未初始化则初值为 0」，<code>0</code> 这个结果是该结论的必要条件，但也不是充分条件。至于为什么会有这些现象，为什么这个不确定的值刚好是 <code>777</code>，或者刚好是 <code>0</code>，等学到<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch19-%E6%B1%87%E7%BC%96%E4%B8%8E-C-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB#_e19-1">第 19 章「汇编与 C 之间的关系」例 19.1 「研究函数的调用过程」</a>就能解释这些现象了。</p>
+<p>从<a href="#_2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0">本章第 2 节「自定义函数」</a>介绍的语法规则可以看出，非定义的函数声明也可以写在局部作用域中，例如：</p>
+<pre><code class="language-c">int main(void)
+{
+	void print_time(int, int);
+	print_time(23, 59);
+	return 0;
+}
+</code></pre>
+<p>这样声明的标识符 <code>print_time</code> 具有局部作用域，只在 <code>main</code> 函数中是有效的函数名，出了 <code>main</code> 函数就不存在 <code>print_time</code> 这个标识符了。</p>
+<p>写非定义的函数声明时参数可以只写类型而不起名，例如上面代码中的 <code>void print_time(int, int);</code>，只要告诉编译器参数类型是什么，编译器就能为 <code>print_time(23, 59)</code> 函数调用生成正确的指令。另外注意，虽然在一个函数体中可以声明另一个函数，但不能定义另一个函数，C 语言不允许嵌套定义函数<sup>[5]</sup>。</p>
+<blockquote>
+<p><sup>[5]</sup> 但 gcc 的扩展特性允许嵌套定义函数，本书不做详细讨论。</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-C-语言入门/ch02-常量、变量和表达式.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../1-C-语言入门/ch04-分支语句.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-C-语言入门/ch02-常量、变量和表达式.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../1-C-语言入门/ch04-分支语句.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

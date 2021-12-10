@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>常量、变量和表达式 - Linux C 编程一站式学习</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">说明</a></li><li class="chapter-item expanded affix "><a href="../历史.html">历史</a></li><li class="chapter-item expanded affix "><a href="../前言.html">前言</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/TOC.html"><strong aria-hidden="true">1.</strong> C语言入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../1-C-语言入门/ch01-程序的基本概念.html"><strong aria-hidden="true">1.1.</strong> 程序的基本概念</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch02-常量、变量和表达式.html" class="active"><strong aria-hidden="true">1.2.</strong> 常量、变量和表达式</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch03-简单函数.html"><strong aria-hidden="true">1.3.</strong> 简单函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch04-分支语句.html"><strong aria-hidden="true">1.4.</strong> 分支语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch05-深入理解函数.html"><strong aria-hidden="true">1.5.</strong> 深入理解函数</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch06-循环语句.html"><strong aria-hidden="true">1.6.</strong> 循环语句</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch07-结构体.html"><strong aria-hidden="true">1.7.</strong> 结构体</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch08-数组.html"><strong aria-hidden="true">1.8.</strong> 数组</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch09-编码风格.html"><strong aria-hidden="true">1.9.</strong> 编码风格</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch10-gdb.html"><strong aria-hidden="true">1.10.</strong> gdb</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch11-排序与查找.html"><strong aria-hidden="true">1.11.</strong> 排序与查找</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch12-栈与队列.html"><strong aria-hidden="true">1.12.</strong> 栈与队列</a></li><li class="chapter-item expanded "><a href="../1-C-语言入门/ch13-本阶段总结.html"><strong aria-hidden="true">1.13.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../2-C-语言本质/TOC.html"><strong aria-hidden="true">2.</strong> C-语言本质</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../2-C-语言本质/ch14-计算机中数的表示.html"><strong aria-hidden="true">2.1.</strong> 计算机中数的表示</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch15-数据类型详解.html"><strong aria-hidden="true">2.2.</strong> 数据类型详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch16-运算符详解.html"><strong aria-hidden="true">2.3.</strong> 运算符详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch17-计算机体系结构基础.html"><strong aria-hidden="true">2.4.</strong> 计算机体系结构基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch18-x86-汇编程序基础.html"><strong aria-hidden="true">2.5.</strong> x86-汇编程序基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch19-汇编与-C-之间的关系.html"><strong aria-hidden="true">2.6.</strong> 汇编与-C-之间的关系</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch20-链接详解.html"><strong aria-hidden="true">2.7.</strong> 链接详解</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch21-预处理.html"><strong aria-hidden="true">2.8.</strong> 预处理</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch22-Makefile-基础.html"><strong aria-hidden="true">2.9.</strong> Makefile-基础</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch23-指针.html"><strong aria-hidden="true">2.10.</strong> 指针</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch24-函数接口.html"><strong aria-hidden="true">2.11.</strong> 函数接口</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch25-C-标准库.html"><strong aria-hidden="true">2.12.</strong> C-标准库</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch26-链表、二叉树和哈希表.html"><strong aria-hidden="true">2.13.</strong> 链表、二叉树和哈希表</a></li><li class="chapter-item expanded "><a href="../2-C-语言本质/ch27-本阶段总结.html"><strong aria-hidden="true">2.14.</strong> 本阶段总结</a></li></ol></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/TOC.html"><strong aria-hidden="true">3.</strong> Linux-系统编程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch28-文件与-IO.html"><strong aria-hidden="true">3.1.</strong> 文件与-IO</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch29-文件系统.html"><strong aria-hidden="true">3.2.</strong> 文件系统</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch30-进程.html"><strong aria-hidden="true">3.3.</strong> 进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch31-Shell-脚本.html"><strong aria-hidden="true">3.4.</strong> Shell-脚本</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch32-正则表达式.html"><strong aria-hidden="true">3.5.</strong> 正则表达式</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch33-信号.html"><strong aria-hidden="true">3.6.</strong> 信号</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch34-终端、作业控制与守护进程.html"><strong aria-hidden="true">3.7.</strong> 终端、作业控制与守护进程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch35-线程.html"><strong aria-hidden="true">3.8.</strong> 线程</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch36-TCP-IP-协议基础.html"><strong aria-hidden="true">3.9.</strong> TCP-IP-协议基础</a></li><li class="chapter-item expanded "><a href="../3-Linux-系统编程/ch37-socket-编程.html"><strong aria-hidden="true">3.10.</strong> 编程</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Linux C 编程一站式学习</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第-2-章-常量变量和表达式"><a class="header" href="#第-2-章-常量变量和表达式">第 2 章 常量、变量和表达式</a></h1>
+<h2 id="1-继续-hello-world"><a class="header" href="#1-继续-hello-world">1. 继续 Hello World</a></h2>
+<p>在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch01-%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5#_4-%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F">上章「程序的基本概念」第 4 节「第一个程序」</a>中，读者应该已经尝试对 <code>Hello world</code> 程序做各种改动看编译运行结果，其中有些改动会导致编译出错，有些改动会影响程序的输出，有些改动则没有任何影响，下面我们总结一下。首先，注释可以跨行，也可以穿插在程序之中，看下面的例子。</p>
+<p id="e2-1">例 2.1. 带更多注释的 Hello World</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/* 
+ * comment1
+ * main: generate some simple output
+ */
+
+int main(void)
+{
+	printf(/* comment2 */&quot;Hello, world.\n&quot;); /* comment3 */
+	return 0;
+}
+</code></pre>
+<p>第一个注释跨了四行，头尾两行是注释的界定符（Delimiter） <code>/*</code> 和 <code>*/</code>，中间两行开头的 <code>*</code> 号（Asterisk）并没有特殊含义，只是为了看起来整齐，这不是语法规则而是大家都遵守的 C 代码风格（Coding Style）之一，代码风格将在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch09-%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC">第 9 章「编码风格」</a>详细介绍。</p>
+<p>使用注释需要注意两点：</p>
+<ol>
+<li>注释不能嵌套（Nest）使用，就是说一个注释的文字中不能再出现 <code>/*</code> 和 <code>*/</code> 了，例如 <code>/* text1 /* text2 */ text3 */</code> 是错误的，编译器只把 <code>/* text1 /* text2 */</code> 看成注释，后面的 <code>text3 */</code> 无法解析，因而会报错。</li>
+<li>有的 C 代码中有类似 <code>// comment</code> 的注释，两个 <code>/</code> 斜线（Slash）表示从这里直到该行末尾的所有字符都属于注释，这种注释不能跨行，也不能穿插在一行代码中间。这是从 C++ 借鉴的语法，在 C99 中被标准化。</li>
+</ol>
+<blockquote>
+<p><strong>C 语言标准</strong></p>
+<p>C 语言的发展历史大致上分为三个阶段：Old Style C、C89 和 C99。Ken Thompson 和 Dennis Ritchie 最初发明 C 语言时有很多语法和现在最常用的写法并不一样，但为了向后兼容性（Backward Compatibility），这些语法仍然在 C89 和 C99 中保留下来了，本书不详细讲 Old Style C，但在必要的地方会加以说明。C89 是最早的 C 语言规范，于 1989 年提出，1990 年首先由 ANSI （美国国家标准委员会，American National Standards Institute）推出，后来被接纳为 ISO 国际标准（ISO/IEC 9899:1990），因而有时也称为 C90，最经典的 C 语言教材 <em>K&amp;R</em> 就是基于这个版本的，C89 是目前最广泛采用的 C 语言标准，大多数编译器都完全支持 C89。C99 标准（ISO/IEC 9899:1999）是在 1999 年推出的，加入了许多新特性，但目前仍没有得到广泛支持，在 C99 推出之后相当长的一段时间里，连 gcc 也没有完全实现 C99 的所有特性。C99 标准详见 <a href="https://en.wikipedia.org/wiki/C99">C99</a>。本书讲 C 的语法以 C99 为准，但示例代码通常只使用 C89 语法，很少使用 C99 的新特性。</p>
+<p>C 标准的目的是为了精确定义 C 语言，而不是为了教别人怎么编程，C 标准在表达上追求准确和无歧义，却十分不容易看懂，<em>Standard C</em> 和 <em>Standard C Library</em> 是对 C89 及其修订版本的阐释（可惜作者没有随 C99 更新这两本书），比 C 标准更容易看懂，另外，参考 <em>C99 Rationale</em> 也有助于加深对 C 标准的理解。</p>
+</blockquote>
+<p>像 <code>&quot;Hello, world.\n&quot;</code> 这种由双引号（Double Quote）引起来的一串字符称为字符串字面值（String Literal），或者简称字符串。注意，程序的运行结果并没有双引号，<code>printf</code> 打印出来的只是里面的一串字符 <code>Hello, world.</code> ，因此双引号是字符串字面值的界定符，夹在双引号中间的一串字符才是它的内容。注意，打印出来的结果也没有 <code>\n</code> 这两个字符，这是为什么呢？在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch01-%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5#_2-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%92%8C%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80">第 1 章「程序的基本概念」第 2 节「自然语言和形式语言」</a>中提到过，C 语言规定了一些转义序列（Escape Sequence），这里的 <code>\n</code> 并不表示它的字面意思，也就是说并不表示 <code>\</code> 和 <code>n</code> 这两个字符本身，而是合起来表示一个换行符（Line Feed）。例如我们写三条打印语句：</p>
+<pre><code class="language-c">printf(&quot;Hello, world.\n&quot;);
+printf(&quot;Goodbye, &quot;);
+printf(&quot;cruel world!\n&quot;);
+</code></pre>
+<p>运行的结果是第一条语句单独打到第一行，后两条语句都打到第二行。为了节省篇幅突出重点，以后的例子通常省略 <code>#include</code> 和 <code>int main(void) { ... }</code> 这些 Boilerplate，但读者在练习时需要加上这些构成一个完整的程序才能编译通过。C 标准规定的转义字符有以下几种：</p>
+<p id="c2-1">表 2.1. C 标准规定的转义字符</p>
+<table><thead><tr><th>字面</th><th>转义</th></tr></thead><tbody>
+<tr><td><code>\'</code></td><td>单引号 '（Single Quote或Apostrophe）</td></tr>
+<tr><td><code>\&quot;</code></td><td>双引号 &quot;（Double Quote）</td></tr>
+<tr><td><code>\?</code></td><td>问号 ?（Question Mark）</td></tr>
+<tr><td><code>\\</code></td><td>反斜线 \（Backslash）</td></tr>
+<tr><td><code>\a</code></td><td>响铃（Alert或Bell）</td></tr>
+<tr><td><code>\b</code></td><td>退格（Backspace）</td></tr>
+<tr><td><code>\f</code></td><td>分页符（Form Feed）</td></tr>
+<tr><td><code>\n</code></td><td>换行（Line Feed）</td></tr>
+<tr><td><code>\r</code></td><td>回车（Carriage Return）</td></tr>
+<tr><td><code>\t</code></td><td>水平制表符（Horizontal Tab）</td></tr>
+<tr><td><code>\v</code></td><td>垂直制表符（Vertical Tab）</td></tr>
+</tbody></table>
+<p>如果在字符串字面值中要表示单引号和问号，既可以使用转义序列 <code>\'</code> 和 <code>\?</code>，也可以直接用字符 <code>'</code> 和 <code>?</code>，而要表示 <code>\</code> 或 <code>&quot;</code> 则必须使用转义序列，因为 <code>\</code> 字符表示转义而不表示它的字面含义，<code>&quot;</code> 表示字符串的界定符而不表示它的字面含义。可见转义序列有两个作用：一是把普通字符转义成特殊字符，例如把字母 <code>n</code> 转义成换行符；二是把特殊字符转义成普通字符，例如 <code>\</code> 和 <code>&quot;</code> 是特殊字符，转义后取它的字面值。</p>
+<p>C 语言规定了几个控制字符，不能用键盘直接输入，因此采用 <code>\</code> 加字母的转义序列表示。<code>\a</code> 是响铃字符，在字符终端下显示这个字符的效果是 PC 喇叭发出嘀的一声，在图形界面终端下的效果取决于终端的实现。在终端下显示 <code>\b</code> 和按下退格键的效果相同。<code>\f</code> 是分页符，主要用于控制打印机在打印源代码时提前分页，这样可以避免一个函数跨两页打印。<code>\n</code> 和 <code>\r</code> 分别表示 Line Feed 和 Carriage Return，这两个词来自老式的英文打字机，Line Feed 是跳到下一行（进纸，喂纸，有个喂的动作所以是 feed），Carriage Return 是回到本行开头（Carriage 是卷着纸的轴，随着打字慢慢左移，打完一行就一下子移回最右边），如果你看过欧美的老电影应该能想起来这是什么。用老式打字机打完一行之后需要这么两个动作，<code>\r\n</code>，所以现在 Windows 上的文本文件用 <code>\r\n</code> 做行分隔符，许多应用层网络协议（如 HTTP）也用 <code>\r\n</code> 做行分隔符，而 Linux 和各种 UNIX 上的文本文件只用 <code>\n</code> 做行分隔符。在终端下显示 <code>\t</code> 和按下 <code>Tab</code> 键的效果相同，用于在终端下定位表格的下一列，<code>\v</code> 用于在终端下定位表格的下一行。<code>\v</code> 比较少用，<code>\t</code> 比较常用，以后将「水平制表符」简称为「制表符」或 <code>Tab</code>。请读者用 <code>printf</code> 语句试试这几个控制字符的作用。</p>
+<p>注意 <code>&quot;Goodbye, &quot;</code> 末尾的空格，字符串字面值中的空格也算一个字符，也会出现在输出结果中，而程序中别处的空格和 <code>Tab</code> 多一个少一个往往是无关紧要的，不会对编译的结果产生任何影响，例如不缩进不会影响程序的结果，<code>main</code> 后面多几个空格也没影响，但是 <code>int</code> 和 <code>main</code> 之间至少要有一个空格分隔开：</p>
+<pre><code class="language-c">int main    (void)
+{
+printf(&quot;Hello, world.\n&quot;);
+return 0;
+}
+</code></pre>
+<p>不仅空格和 <code>Tab</code> 是无关紧要的，换行也是如此，我甚至可以把整个程序写成一行，但是 <code>include</code> 必须单独占一行：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(void){printf(&quot;Hello, world.\n&quot;);return 0;}
+</code></pre>
+<p>这样也行，但肯定不是好的代码风格，去掉缩进已经很影响可读性了，写成现在这个样子可读性更差。如果编译器说第 2 行有错误，也很难判断是哪个语句有错误。所以，<strong>好的代码风格要求缩进整齐，每个语句一行，适当留空行。</strong></p>
+<h2 id="2-常量"><a class="header" href="#2-常量">2. 常量</a></h2>
+<p>常量（Constant）是程序中最基本的元素，有字符（Character）常量、整数（Integer）常量、浮点数（Floating Point）常量和枚举常量。枚举常量将在<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch07-%E7%BB%93%E6%9E%84%E4%BD%93#_3-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A0%87%E5%BF%97">第 7 章「结构体」第 3 节「数据类型标志」</a>介绍。下面看一个例子：</p>
+<pre><code class="language-c">printf(&quot;character: %c\ninteger: %d\nfloating point: %f\n&quot;, '}', 34, 3.14);
+</code></pre>
+<p>字符常量要用单引号括起来，例如上面的 <code>'}'</code>，注意单引号只能括一个字符而不能像双引号那样括一串字符，字符常量也可以是一个转义序列，例如 <code>'\n'</code>，这时虽然单引号括了两个字符，但实际上只表示一个字符。和字符串字面值中使用转义序列有一点区别，如果在字符常量中要表示双引号 <code>&quot;</code> 和问号 <code>?</code>，既可以使用转义序列 <code>\&quot;</code>和 <code>\?</code>，也可以直接用字符 <code>&quot;</code> 和 <code>?</code>，而要表示 <code>'</code> 和 <code>\</code> 则必须使用转义序列。<sup>[2]</sup></p>
+<blockquote>
+<p><sup>[2]</sup> 读者可能会奇怪，为什么需要规定一个转义序列 <code>\?</code> 呢？因为 C 语言规定了一些三连符（Trigraph），在某些特殊的终端上缺少某些字符，需要用 Trigraph 输入，例如用 <code>??=</code> 表示 <code>#</code> 字符。Trigraph 极不常用，介绍这个只是为了让读者理解 C 语言规定转义序列的作用，即特殊字符转普通字符，普通字符转特殊字符，<code>?</code> 也是一种特殊字符。极不常用的 C 语法在本书中通常不会介绍。</p>
+</blockquote>
+<p>计算机中整数和小数的内部表示方式不同（将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch14-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA">第 14 章「计算机中数的表示」</a>详细介绍），因而在 C 语言中是两种不同的类型（Type），例如上例的 <code>34</code> 和 <code>3.14</code>，小数在计算机术语中称为浮点数。这个语句的输出结果和 <code>Hello world</code> 不太一样，字符串 <code>&quot;character: %c\ninteger: %d\nfloating point: %f\n&quot;</code> 并不是按原样打印输出的，而是输出成这样：</p>
+<pre><code class="language-bash">character: }
+integer: 34
+floating point: 3.14
+</code></pre>
+<p><code>printf</code> 中的第一个字符串称为格式化字符串（Format String），它规定了后面几个常量以何种格式插入到这个字符串中，在格式化字符串中 <code>%</code> 号（Percent Sign）后面加上字母 <code>c</code>、<code>d</code>、<code>f</code> 分别表示字符型、整型和浮点型的转换说明（Conversion Specification），转换说明只在格式化字符串中占个位置，并不出现在最终的打印结果中，这种用法通常叫做占位符（Placeholder）。这也是一种字面意思与真实意思不同的情况，但是转换说明和转义序列又有区别：转义序列是编译时处理的，而转换说明是在运行时调用 <code>printf</code> 函数处理的。源文件中的字符串字面值是 <code>&quot;character: %c\ninteger: %d\nfloating point: %f\n&quot;</code>，<code>\n</code> 占两个字符，而编译之后保存在可执行文件中的字符串是 <code>character： %c</code> 换行 <code>integer: %d</code> 换行 <code>floating point: %f</code> 换行，<code>\n</code> 已经被替换成一个换行符，而 <code>%c</code> 不变，然后在运行时这个字符串被传给 <code>printf</code>，<code>printf</code> 再把其中的 <code>%c</code>、<code>%d</code>、<code>%f</code> 解释成转换说明。</p>
+<p>有时候不同类型的数据很容易弄混，例如 <code>&quot;5&quot;</code>、<code>'5'</code>、<code>5</code>，如果你注意了它们的界定符就会很清楚，第一个是字符串字面值，第二个是字符，第三个是整数，看了本章后面几节你就知道为什么一定要严格区分它们之间的差别了。</p>
+<h3 id="习题"><a class="header" href="#习题">习题</a></h3>
+<ol>
+<li>总结前面介绍的转义序列的规律，想想在 <code>printf</code> 的格式化字符串中怎么表示一个 <code>%</code> 字符？写个小程序试验一下。</li>
+</ol>
+<h2 id="3-变量"><a class="header" href="#3-变量">3. 变量</a></h2>
+<p>变量（Variable）是编程语言最重要的概念之一，变量是计算机存储器中的一块命名的空间，可以在里面存储一个值（Value），存储的值是可以随时变的，比如这次存个字符 <code>'a'</code> 下次存个字符 <code>'b'</code>，正因为变量的值可以随时变所以才叫变量。</p>
+<p>常量有不同的类型，因此变量也有不同的类型，变量的类型也决定了它所占的存储空间的大小。例如以下四个语句定义了四个变量 <code>fred</code>、<code>bob</code>、<code>jimmy</code> 和 <code>tom</code>，它们的类型分别是字符型、整型、浮点型：</p>
+<pre><code class="language-c">char fred;
+int bob;
+float jimmy;
+double tom;
+</code></pre>
+<blockquote>
+<p><strong>声明和定义</strong></p>
+<p>C 语言中的声明（Declaration）有变量声明、函数声明和类型声明三种。如果一个变量或函数的声明要求编译器为它分配存储空间，那么也可以称为定义（Definition），因此定义是声明的一种。在接下来几章的示例代码中变量声明都是要分配存储空间的，因而都是定义，等学到<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch20-%E9%93%BE%E6%8E%A5%E8%AF%A6%E8%A7%A3#_2-%E5%AE%9A%E4%B9%89%E5%92%8C%E5%A3%B0%E6%98%8E">第 20 章「链接详解」第 2 节「定义和声明」</a>我们会看到哪些变量声明不分配存储空间因而不是定义。在下一章我们会看到函数的定义和声明也是这样区分的，分配存储空间的函数声明可以称为函数定义。从<a href="1-C-%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/ch07-%E7%BB%93%E6%9E%84%E4%BD%93">第 7 章「结构体」</a>开始我们会看到类型声明，声明一个类型是不分配存储空间的，但似乎叫「类型定义」听起来也不错，所以在本书中「类型定义」和「类型声明」表示相同的含义。声明和语句类似，也是以 <code>;</code> 号结尾的，但是在语法上声明和语句是有区别的，语句只能出现在 <code>{}</code> 括号中，而声明既可以出现在 <code>{}</code> 中也可以出现在所有 <code>{}</code> 之外。</p>
+</blockquote>
+<p>浮点型有三种，<code>float</code> 是单精度浮点型，<code>double</code> 是双精度浮点型，<code>long double</code> 是精度更高的浮点型。它们之间的区别和转换规则将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch15-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3">第 15 章「数据类型详解」</a>详细介绍，在随后的几章中我们只使用 <code>double</code> 类型，上一节介绍的常量 <code>3.14</code> 应该看作 <code>double</code> 类型的常量，<code>printf</code> 的 <code>%f</code> 也应该看作 <code>double</code> 型的转换说明。给变量起名不能太随意，上面四个变量的名字就不够好，我们猜不出这些变量是用来存什么的。而像下面这样起名就很好：</p>
+<pre><code class="language-c">char firstletter;
+char lastletter;
+int hour, minute;
+</code></pre>
+<p>我们可以猜得到这些变量是用来存什么的，前两个变量的取值范围应该是 <code>'A'</code> ~ <code>'Z'</code> 或 <code>'a'</code> ~ <code>'z'</code>，变量 <code>hour</code> 的取值范围应该是 <code>0</code> ~ <code>23</code>，变量 <code>minute</code> 的取值范围应该是 <code>0</code> ~ <code>59</code>，所以应该给变量起有意义的名字。从这个例子中我们也看到两个相同类型的变量（hour 和 minute）可以一起声明。</p>
+<p>给变量起名有一定的限制，C 语言规定必须以字母或下划线 <code>_</code>（Underscore）开头，后面可以跟若干个字母、数字、下划线，但不能有其它字符。例如这些是合法的变量名： <code>Abc</code>、<code>__abc__</code>、<code>_123</code>。但这些是不合法的变量名：<code>3abc</code>、<code>ab$</code>。其实这个规则不仅适用于变量名，也适用于所有可以由程序员起名的语法元素，例如以后要讲的函数名、宏定义、结构体成员名等，在 C 语言中这些统称为标识符（Identifier）。</p>
+<p>另外要注意，表示类型的 <code>char</code>、<code>int</code>、<code>float</code>、<code>double</code> 等虽然符合上述规则，但也不能用作标识符。在 C 语言中有些单词有特殊意义，不允许用作标识符，这些单词称为关键字（Keyword）或保留字（Reserved Word）。通常用于编程的文本编辑器都会高亮显示（Highlight）这些关键字，所以只要小心一点通常不会误用作标识符。C99 规定的关键字有：</p>
+<pre><code class="language-c">auto  break  case  char  const  continue  default  do  double
+else  enum  extern  float  for  goto  if  inline  int  long
+register  restrict  return  short  signed  sizeof  static  struct  switch  typedef
+union  unsigned  void  volatile  while  _Bool  _Complex  _Imaginary
+</code></pre>
+<p>还有一点要注意，<strong>一般来说应避免使用以下划线开头的标识符</strong>，以下划线开头的标识符只要不和 C 语言关键字冲突的都是合法的，但是往往被编译器用作一些功能扩展，C 标准库也定义了很多以下划线开头的标识符，所以除非你对编译器和 C 标准库特别清楚，一般应避免使用这种标识符，以免造成命名冲突。</p>
+<p>请记住：<strong>理解一个概念不是把定义背下来就行了，一定要理解它的外延和内涵，也就是什么情况属于这个概念，什么情况不属于这个概念，什么情况虽然属于这个概念但一般推荐的做法（Best Practice）是要尽量避免这种情况，这才算是真正理解了。</strong></p>
+<h2 id="4-赋值"><a class="header" href="#4-赋值">4. 赋值</a></h2>
+<p>定义了变量之后，我们要把值存到它们所表示的存储空间里，可以用赋值（Assignment）语句实现：</p>
+<pre><code class="language-c">char firstletter;
+int hour, minute;
+firstletter = 'a';   /* give firstletter the value 'a' */
+hour = 11;           /* assign the value 11 to hour */
+minute = 59;         /* set minute to 59 */
+</code></pre>
+<p>注意变量一定要先声明后使用，编译器必须先看到变量声明，才知道 <code>firstletter</code>、<code>hour</code> 和 <code>minute</code> 是变量名，各自代表一块存储空间。另外，变量声明中的类型表明这个变量代表多大的一块存储空间，这样编译器才知道如何读写这块存储空间。还要注意，这里的等号不表示数学里的相等关系，和 <code>1+1=2</code> 的等号是不同的，这里的等号表示赋值。在数学上不会有 <code>i=i+1</code> 这种等式成立，而在 C 语言中表示把变量 <code>i</code> 的存储空间中的值取出来，再加上 <code>1</code>，得到的结果再存回i的存储空间中。再比如，在数学上 <code>a=7</code> 和 <code>7=a</code> 是一样的，而在 C 语言中后者是不合法的。总结一下：定义一个变量，就是分配一块存储空间并给它命名；给一个变量赋值，就是把一个值保存到这块存储空间中。变量的定义和赋值也可以一步完成，这称为变量的初始化（Initialization），例如要达到上面代码的效果也可以这样写：</p>
+<pre><code class="language-c">char firstletter = 'a';
+int hour = 11, minute = 59;
+</code></pre>
+<p>在初始化语句中，等号右边的值叫做 Initializer，例如上面的 <code>'a'</code>、<code>11</code> 和 <code>59</code>。注意，<strong>初始化是一种特殊的声明，而不是一种赋值语句</strong>。就目前来看，先定义一个变量再给它赋值和定义这个变量的同时给它初始化所达到的效果是一样的，C 语言的很多语法规则既适用于赋值也适用于初始化，但在以后的学习中你也会了解到它们之间的不同，请在学习过程中注意总结赋值和初始化的相同和不同之处。</p>
+<p>如果在纸上「跑」一个程序（每个初学编程的人都要练这项基本功），可以用一个框表示变量的存储空间，在框的外边标上变量名，在框里记上它的值，如下图所示。</p>
+<p id="c2-1">图 2.1. 在纸上表示变量</p>
+<p><img src="../images/expr.variable.png" alt="在纸上表示变量" /></p>
+<p>你可以用不同形状的框表示不同类型的变量，这样可以提醒你给变量赋的值必须符合它的类型。如果所赋的值和变量的类型不符会导致编译器报警告或报错（这是一种语义错误），例如：</p>
+<pre><code class="language-c">int hour, minute;
+hour = &quot;Hello.&quot;;       /* WRONG ! */
+minute = &quot;59&quot;;         /* WRONG !! */
+</code></pre>
+<p>注意第 3 个语句，把 <code>&quot;59&quot;</code> 赋给 <code>minute</code> 看起来像是对的，但是类型不对，字符串不能赋给整型变量。</p>
+<p>既然可以为变量的存储空间赋值，就应该可以把值取出来用，现在我们取出这些变量的值用 <code>printf</code> 打印：</p>
+<pre><code class="language-c">printf(&quot;Current time is %d:%d&quot;, hour, minute);
+</code></pre>
+<p>变量名用在等号左边表示赋值，而用在 <code>printf</code> 中表示把它的存储空间中的值取出来替换在那里。不同类型的变量所占的存储空间大小是不同的，数据表示方式也不同，变量的最小存储单位是字节（Byte），在 C 语言中 <code>char</code> 型变量占一个字节，其它类型的变量占多少字节在不同平台上有不同的规定，将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch15-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3">第 15 章「数据类型详解」</a>详细讨论。</p>
+<h2 id="5-表达式"><a class="header" href="#5-表达式">5. 表达式</a></h2>
+<p>常量和变量都可以参与加减乘除运算，例如 <code>1+1</code>、<code>hour-1</code>、<code>hour * 60 + minute</code>、<code>minute/60</code> 等。这里的 <code>+ - * /</code> 称为运算符（Operator），而参与运算的常量和变量称为操作数（Operand），上面四个由运算符和操作数所组成的算式称为表达式（Expression）。</p>
+<p>和数学上规定的一样，<code>hour * 60 + minute</code> 这个表达式应该先算乘再算加，也就是说运算符是有优先级（Precedence）的，<code>*</code> 和 <code>/</code> 是同一优先级，<code>+</code> 和 <code>-</code>是同一优先级，<code>*</code> 和 <code>/</code> 的优先级高于 <code>+</code> 和 <code>-</code>。对于同一优先级的运算从左到右计算，如果不希望按默认的优先级计算则要加 <code>()</code> 括号（Parenthesis）。例如 <code>(3+4)*5/6</code> 应先算 <code>3+4</code>，再算 <code>*5</code>，再算 <code>/6</code>。</p>
+<p>前面讲过打印语句和赋值语句，现在我们定义：在任意表达式后面加个 <code>;</code> 号也是一种语句，称为表达式语句。例如：</p>
+<pre><code class="language-c">hour * 60 + minute;
+</code></pre>
+<p>这是个合法的语句，但这个语句在程序中起不到任何作用，把 <code>hour</code> 的值和 <code>minute</code> 的值取出来加乘，得到的计算结果却没有保存，白算了一通。再比如：</p>
+<pre><code class="language-c">int total_minute;
+total_minute = hour * 60 + minute;
+</code></pre>
+<p>这个语句就很有意义，把计算结果保存在另一个变量 <code>total_minute</code> 里。事实上 <code>=</code> 也是一种运算符，称为赋值运算符，赋值语句就是一种表达式语句，<code>=</code> 的优先级比 <code>+</code> 和 <code>*</code> 都低，所以先算出 <code>=</code> 右边的结果然后才做赋值操作，整个表达式 <code>total_minute = hour * 60 + minute</code> 加个 <code>;</code> 构成一个语句。</p>
+<p><strong>任何表达式都有值和类型两个基本属性</strong>。<code>hour * 60 + minute</code> 的值是由三个 <code>int</code> 型的操作数计算出来的，所以这个表达式的类型也是 <code>int</code> 型。同理，表达式 <code>total_minute = hour * 60 + minute</code> 的类型也是 <code>int</code>，它的值是多少呢？C 语言规定 <code>=</code> 运算符的计算结果就是 <code>=</code> 左边被赋予的那个值，所以这个表达式的值和 <code>hour * 60 + minute</code> 的值相同，也和 <code>total_minute</code> 的值相同。</p>
+<p><code>=</code> 运算符还有一个和 <code>+ - * /</code> 不同的特性，如果一个表达式中出现多个等号，不是从左到右计算而是从右到左计算，例如：</p>
+<pre><code class="language-c">int total_minute, total;
+total = total_minute = hour * 60 + minute;
+</code></pre>
+<p>计算顺序是先算 <code>hour * 60 + minute</code> 得到一个结果，然后算右边的等号，就是把 <code>hour * 60 + minute</code> 的结果赋给变量 <code>total_minute</code>，这个结果同时也是整个表达式 <code>total_minute = hour * 60 + minute</code> 的值，再算左边的 <code>=</code>，即把这个值再赋给变量 <code>total</code>。同样优先级的运算符是从左到右计算还是从右到左计算称为运算符的结合性（Associativity）。<code>+ - * /</code> 是左结合的，<code>=</code> 是右结合的。</p>
+<p>现在我们总结一下到目前为止学过的语法规则：</p>
+<pre><code>表达式 → 标识符
+表达式 → 常量
+表达式 → 字符串字面值
+表达式 → (表达式)
+表达式 → 表达式 + 表达式
+表达式 → 表达式 - 表达式
+表达式 → 表达式 * 表达式
+表达式 → 表达式 / 表达式
+表达式 → 表达式 = 表达式
+语句 → 表达式;
+语句 → printf(表达式, 表达式, 表达式, ...);
+变量声明 → 类型 标识符 = Initializer, 标识符 = Initializer, ...;
+（= Initializer 的部分可以不写）
+</code></pre>
+<p>注意，<strong>本书所列的语法规则都是简化过的，是不准确的，目的是为了便于初学者理解</strong>，比如上面所列的语法规则并没有描述运算符的优先级和结合性。完整的 C 语法规则请参考 <em>C99 Annex A</em>。</p>
+<p>表达式可以是单个的常量或变量，也可以是根据以上规则组合而成的更复杂的表达式。以前我们用 <code>printf</code> 打印常量或变量的值，现在可以用 <code>printf</code> 打印更复杂的表达式的值，例如：</p>
+<pre><code class="language-c">printf(&quot;%d:%d is %d minutes after 00:00\n&quot;, hour, minute, hour * 60 + minute);
+</code></pre>
+<p>编译器在翻译这条语句时，首先根据上述语法规则把这个语句解析成下图所示的语法树，然后再根据语法树生成相应的指令。语法树的末端的是一个个 Token，每一步展开利用一条语法规则。</p>
+<p id="c2-2">图 2.2. 语法树</p>
+<p><img src="../images/expr.parse.png" alt="语法树" /></p>
+<p>根据这些语法规则进一步组合可以写出更复杂的语句，比如在一条语句中完成计算、赋值和打印功能：</p>
+<pre><code class="language-c">printf(&quot;%d:%d is %d minutes after 00:00\n&quot;, hour, minute, total_minute = hour * 60 + minute);
+</code></pre>
+<p>理解组合（Composition）规则是理解语法规则的关键所在，正因为可以根据语法规则任意组合，我们才可以用简单的常量、变量、表达式、语句搭建出任意复杂的程序，以后我们学习新的语法规则时会进一步体会到这一点。从上面的例子可以看出，表达式不宜过度组合，否则会给阅读和调试带来困难。</p>
+<p>根据语法规则组合出来的表达式在语义上并不总是正确的，例如：</p>
+<pre><code class="language-c">minute + 1 = hour;
+</code></pre>
+<p><code>=</code> 左边的表达式要求表示一个存储位置而不是一个值，这是 <code>=</code> 运算符和 <code>+ - * /</code> 运算符的又一个显著不同。有的表达式既可以表示一个存储位置也可以表示一个值，而有的表达式只能表示值，不能表示存储位置，例如 <code>minute + 1</code> 这个表达式就不能表示存储位置，放在 <code>=</code> 左边是语义错误。表达式所表示的存储位置称为左值（lvalue）（允许放在 <code>=</code> 左边），而以前我们所说的表达式的值也称为右值（rvalue）（只能放在 <code>=</code> 右边）。上面的话换一种说法就是：<strong>有的表达式既可以做左值也可以做右值，而有的表达式只能做右值</strong>。目前我们学过的表达式中只有变量可以做左值，可以做左值的表达式还有几种，以后会讲到。</p>
+<p>我们看一个有意思的例子，如果定义三个变量 <code>int a, b, c;</code>，表达式 <code>a = b = c</code> 是合法的，先求 <code>b = c</code> 的值，再把这个值赋给 <code>a</code>，而表达式 <code>(a = b) = c</code> 是不合法的，先求 <code>(a = b)</code> 的值没问题，但 <code>(a = b)</code> 这个表达式不能再做左值了，因此放在 <code>= c</code> 的 <code>=</code> 左边是错的。</p>
+<p>关于整数除法运算有一点特殊之处：</p>
+<pre><code class="language-c">hour = 11;
+minute = 59;
+printf(&quot;%d and %d hours\n&quot;, hour, minute / 60);
+</code></pre>
+<p>执行结果是 <code>11 and 0 hours</code>，也就是说 <code>59/60</code> 得 <code>0</code>，这是因为两个 <code>int</code> 型操作数相除的表达式仍为 <code>int</code> 型，只能保存计算结果的整数部分，即使小数部分是 <code>0.98</code> 也要舍去。</p>
+<p>向下取整的运算称为 <code>Floor</code> ，用数学符号 <code>⌊ ⌋</code> 表示；向上取整的运算称为 <code>Ceiling</code>，用数学符号 <code>⌈ ⌉</code> 表示。例如：</p>
+<pre><code>⌊ 59 / 60⌋ =  0
+⌈ 59 / 60⌉ =  1
+⌊-59 / 60⌋ = -1
+⌈-59 / 60⌉ =  0
+</code></pre>
+<p>在 C 语言中整数除法取的既不是 <code>Floor</code> 也不是 <code>Ceiling</code>，无论操作数是正是负总是把小数部分截掉，在数轴上向零的方向取整（Truncate toward Zero），或者说当操作数为正的时候相当于 <code>Floor</code>，当操作符为负的时候相当于 <code>Ceiling</code>。回到先前的例子，要得到更精确的结果可以这样：</p>
+<pre><code class="language-c">printf(&quot;%d hours and %d percent of an hour\n&quot;, hour, minute * 100 / 60);
+printf(&quot;%d and %f hours\n&quot;, hour, minute / 60.0);
+</code></pre>
+<p>在第二个 <code>printf</code> 中，表达式是 <code>minute / 60.0</code>，<code>60.0</code> 是 <code>double</code> 型的，<code>/</code> 运算符要求左右两边的操作数类型一致，而现在并不一致。C 语言规定了一套隐式类型转换规则，在这里编译器自动把左边的 <code>minute</code> 也转成 <code>double</code> 型来计算，整个表达式的值也是 <code>double</code> 型的，在格式化字符串中应该用 <code>%f</code> 转换说明与之对应。本来编程语言作为一种形式语言要求有简单而严格的规则，自动类型转换规则不仅很复杂，而且使 C 语言的形式看起来也不那么严格了，C 语言这么设计是为了书写程序简便而做的折衷，有些事情编译器可以自动做好，程序员就不必每次都写一堆繁琐的转换代码。然而 C 语言的类型转换规则非常难掌握，本书的前几章会尽量避免类型转换，到<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch15-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3#_3-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">第 15 章「数据类型详解」第 3 节「类型转换」</a>再集中解决这个问题。</p>
+<h3 id="习题-1"><a class="header" href="#习题-1">习题</a></h3>
+<ol>
+<li>假设变量 <code>x</code> 和 <code>n</code> 是两个正整数，我们知道 <code>x/n</code> 这个表达式的结果要取 <code>Floor</code>，例如 <code>x</code> 是 <code>17</code>，<code>n</code> 是 <code>4</code>，则结果是 <code>4</code>。如果希望结果取 <code>Ceiling</code> 应该怎么写表达式呢？例如 <code>x</code> 是 <code>17</code>，<code>n</code> 是 <code>4</code>，则结果是 <code>5</code>；<code>x</code> 是 <code>16</code>，<code>n</code> 是 <code>4</code>，则结果是 <code>4</code>。</li>
+</ol>
+<h2 id="6-字符类型与字符编码"><a class="header" href="#6-字符类型与字符编码">6. 字符类型与字符编码</a></h2>
+<p>字符常量或字符型变量也可以当作整数参与运算，例如：</p>
+<pre><code class="language-c">printf(&quot;%c\n&quot;, 'a'+1);
+</code></pre>
+<p>执行结果是 <code>b</code>。</p>
+<p>我们知道，符号在计算机内部也用数字表示，每个字符在计算机内部用一个整数表示，称为字符编码（Character Encoding），目前最常用的是 ASCII 码（American Standard Code for Information Interchange，美国信息交换标准码），详见<a href="../%E9%99%84%E5%BD%95-A-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81#ca-1">图 A.1 「ASCII 码表」</a>。表中每一栏的最后一列是字符，前三列分别是用十进制（Dec）、十六进制（Hex）和八进制（Oct）表示的字符编码，各种进制之间的换算将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch14-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA#_2-%E4%B8%8D%E5%90%8C%E8%BF%9B%E5%88%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8D%A2%E7%AE%97">第 14 章「计算机中数的表示」第 2 节「不同进制之间的换算」</a>介绍。从十进制那一列可以看出 ASCII 码的取值范围是 0 ~ 127 。表中的很多字符是不可见字符（Non-printable Character）或空白字符（Whitespace）<sup>[3]</sup>，不能像字母 <code>a</code> 这样把字符本身填在表中，而是用一个名字来描述该字符，例如 <code>CR</code> (carriage return)、<code>LF</code> (NL line feed，newline)、<code>DEL</code> 等等。作为练习，请读者查一查<a href="#c2-1">表 2.1 「C标准规定的转义字符」</a>中的字符在 ASCII 码表中的什么位置。</p>
+<blockquote>
+<p><sup>[3]</sup> 空白字符在不同的上下文中有不同的含义，在 C 语言中空白字符定义为空格、水平 <code>Tab</code>、垂直 <code>Tab</code>、换行和分页符，本书在使用「空白字符」这个词时会明确说明在当前上下文中空白字符指的是哪些字符。</p>
+</blockquote>
+<p>回到刚才的例子，在 ASCII 码中字符 <code>a</code> 是 <code>97</code>，字符 <code>b</code> 是 <code>98</code>。计算 <code>'a'+1</code> 这个表达式，应该按 ASCII 码把 <code>'a'</code> 当作整数值 <code>97</code>，然后加 <code>1</code>，得到 <code>98</code>，然后 <code>printf</code> 把 <code>98</code> 这个整数值当作 ASCII 码来解释，打印出相应的字符 <code>b</code>。</p>
+<p>之前我们说「整型」是指 <code>int</code> 型，而现在我们知道 <code>char</code> 型本质上就是整数，只不过取值范围比 <code>int</code> 型小，所以以后我们把 <code>char</code> 型和 <code>int</code> 型统称为整数类型（Integer Type）或简称整型，以后我们还要学习几种类型也属于整型，将在<a href="2-C-%E8%AF%AD%E8%A8%80%E6%9C%AC%E8%B4%A8/ch15-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3#_1-%E6%95%B4%E5%9E%8B">第 15 章「数据类型详解」第 1 节「整型」</a>详细介绍。</p>
+<p>字符 <code>'a'</code> ~ <code>'z'</code>、<code>'A' </code>~ <code>'Z'</code>、<code>'0'</code> ~ <code>'9'</code>的 ASCII 码都是连续的，因此表达式 <code>'a'+25</code> 和 <code>'z'</code> 的值相等，<code>'0'+9</code> 和 <code>'9'</code> 的值也相等。注意 <code>'0'</code> ~ <code>'9'</code>的 ASCII 码是十六进制的 <code>30</code> ~ <code>39</code>，和整数值 0 ~ 9 是不相等的。</p>
+<p>字符也可以用 ASCII 码转义序列表示，这种转义序列由 <code>\</code> 加上 1 ~ 3 个八进制数字组成，或者由 <code>\x</code> 或 <code>\X</code> 加上 1 ~ 2 个十六进制数字组成，可以用在字符常量或字符串字面值中。例如 <code>'\0'</code> 表示 <code>NUL</code> 字符（Null Character），<code>'\11'</code> 或 <code>'\x9'</code> 表示 <code>Tab</code> 字符，<code>&quot;\11&quot;</code> 或 <code>&quot;\x9&quot;</code> 表示由 <code>Tab</code> 字符组成的字符串。注意 <code>'0'</code> 的 ASCII 码是 <code>48</code>，而 <code>'\0'</code>的 ASCII 码是 <code>0</code>，两者是不同的。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-C-语言入门/ch01-程序的基本概念.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../1-C-语言入门/ch03-简单函数.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-C-语言入门/ch01-程序的基本概念.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../1-C-语言入门/ch03-简单函数.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
