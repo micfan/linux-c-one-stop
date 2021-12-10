@@ -29,7 +29,7 @@ int main(void)
 
 如果在编译时加上 `-g` 选项（在[第 10 章「gdb」](1-C-语言入门/ch10-gdb)讲过 `-g` 选项），那么用 `objdump` 反汇编时可以把 C 代码和汇编代码穿插起来显示，这样 C 代码和汇编代码的对应关系看得更清楚。反汇编的结果很长，以下只列出我们关心的部分。
 
-```bash
+```x86asm
 $ gcc main.c -g
 $ objdump -dS a.out 
 ...
@@ -98,7 +98,7 @@ int main(void)
 
 整个程序的执行过程是 `main` 调用 `foo`，`foo` 调用 `bar`，我们用 `gdb` 跟踪程序的执行，直到 `bar` 函数中的 `int e = c + d;` 语句执行完毕准备返回时，这时在 `gdb` 中打印函数栈帧。
 
-```bash
+```x86asm
 (gdb) start
 ...
 main () at main.c:14
